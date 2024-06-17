@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Moonlight
+Comment=Stream games and other applications from another PC running Sunshine or GeForce Experience
+Exec=mullvad-exclude /usr/bin/flatpak run --branch=stable --arch=x86_64 --command=moonlight com.moonlight_stream.Moonlight
+Icon=com.moonlight_stream.Moonlight
+Terminal=false
+Type=Application
+Categories=Qt;Game;
+Keywords=nvidia;gamestream;stream;sunshine;remote play;
+X-Flatpak=com.moonlight_stream.Moonlight
