@@ -49,6 +49,7 @@
   };
 
   home = {
+    enableNixpkgsReleaseCheck = false;
     homeDirectory = "/var/home/josh";
     sessionPath = [
       "$HOME/.local/lib/node_modules/bin"
