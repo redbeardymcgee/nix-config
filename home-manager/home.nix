@@ -565,78 +565,78 @@
           # }
         ];
       };
-      # plugins = {
-      #   allmytoes = pkgs.fetchFromGitLab {
-      #     owner = "allmytoes";
-      #     repo = "allmytoes";
-      #     rev = "a4ab6b23de491bfea2c889907e5ba41216b3dde9";
-      #     hash = "sha256-5GKscLo0MRSeWnVJc3aU/VdDxQGeg3P/+WKwkTNnqGc=";
-      #   };
-      #   # TODO: yazi 0.26+
-      #   #
-      #   # fast-enter = pkgs.fetchFromGitHub {
-      #   #   owner = "ourongxing";
-      #   #   repo = "fast-enter.yazi";
-      #   #   rev = "2864c5998d89ad4ff6b17d6f758b7690a69cda47";
-      #   #   hash = "sha256-WIgWh1QRGC0IWvFJ1fTBw8c6m6DfxjbCH9WC3zBte1s=";
-      #   # };
-      #   fg = pkgs.fetchFromGitHub {
-      #     owner = "DreamMaoMao";
-      #     repo = "fg.yazi";
-      #     rev = "f7d41ae71249515763d9ee04ddf4bdc3b0b42f55";
-      #     hash = "sha256-6LpnyXB7mri6aVEfnv6aG2mWlzpvaD8SiMqwUS+jJr0=";
-      #   };
-      #   glow = pkgs.fetchFromGitHub {
-      #     owner = "Reledia";
-      #     repo = "glow.yazi";
-      #     rev = "536185a4e60ac0adc11d238881e78678fdf084ff";
-      #     hash = "sha256-NcMbYjek99XgWFlebU+8jv338Vk1hm5+oW5gwH+3ZbI=";
-      #   };
-      #   hexyl = pkgs.fetchFromGitHub {
-      #     owner = "Reledia";
-      #     repo = "hexyl.yazi";
-      #     rev = "64daf93a67d75eff871befe52d9013687171ffad";
-      #     hash = "sha256-B2L3/Q1g0NOO6XEMIMGBC/wItbNgBVpbaMMhiXOYcrI=";
-      #   };
-      #   # TODO: after yazi 0.26+:
-      #   # - https://github.com/DreamMaoMao/searchjump.yazi
-      #   # - https://github.com/yazi-rs/plugins/tree/main/jump-to-char.yazi
-      #   #
-      #   # keyjump = pkgs.fetchFromGitHub {
-      #   #   owner = "DreamMaoMao";
-      #   #   repo = "keyjump.yazi";
-      #   #   rev = "c0c22184dff798be1cf4940ac74c590707a03ad6";
-      #   #   hash = "sha256-FHvhyD9PAiglL03SbuJdRaZ36FzjIDpIHrKt2PFvAQI=";
-      #   # };
-      #   miller = pkgs.fetchFromGitHub {
-      #     owner = "Reledia";
-      #     repo = "miller.yazi";
-      #     rev = "75f00026a0425009edb6fedcfbe893f3d2ddedf4";
-      #     hash = "sha256-u8xadj6/s16xXUAWGezYBqnygKaFMnRUsqtjMDr6DZA=";
-      #   };
-      #   ouch = pkgs.fetchFromGitHub {
-      #     owner = "ndtoan96";
-      #     repo = "ouch.yazi";
-      #     rev = "694d149be5f96eaa0af68d677c17d11d2017c976";
-      #     hash = "sha256-J3vR9q4xHjJt56nlfd+c8FrmMVvLO78GiwSNcLkM4OU=";
-      #   };
-      #   # TODO: after yazi 0.26:
-      #   #
-      #   # smart-filter = pkgs.fetchFromGitHub {
-      #   #   owner = "yazi-rs";
-      #   #   repo = "plugins/smart-filter.yazi";
-      #   #   rev = "ff84ac3d42eb5c9e0d05aabf44852c062e9440ee";
-      #   #   hash = "sha256-smartxfilterAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=";
-      #   # };
-      #   # TODO: after yazi 0.26:
-      #   #
-      #   # yamb = pkgs.fetchFromGitHub {
-      #   #   owner = "h-hg";
-      #   #   repo = "yamb.yazi";
-      #   #   rev = "3636c80f94448347f8047cfbfc1ca6099dcd4d71";
-      #   #   hash = "sha256-81rrxjdWlpICQ12EfOcvXpvnWXeWgA5GYBfoHXxBe1g=";
-      #   # };
-      # };
+      plugins = {
+        allmytoes = pkgs.fetchFromGitLab {
+          owner = "allmytoes";
+          repo = "allmytoes";
+          rev = "a4ab6b23de491bfea2c889907e5ba41216b3dde9";
+          hash = "sha256-5GKscLo0MRSeWnVJc3aU/VdDxQGeg3P/+WKwkTNnqGc=";
+        };
+        # TODO: yazi 0.26+
+        #
+        # fast-enter = pkgs.fetchFromGitHub {
+        #   owner = "ourongxing";
+        #   repo = "fast-enter.yazi";
+        #   rev = "2864c5998d89ad4ff6b17d6f758b7690a69cda47";
+        #   hash = "sha256-WIgWh1QRGC0IWvFJ1fTBw8c6m6DfxjbCH9WC3zBte1s=";
+        # };
+        fg = pkgs.fetchFromGitHub {
+          owner = "DreamMaoMao";
+          repo = "fg.yazi";
+          rev = "f7d41ae71249515763d9ee04ddf4bdc3b0b42f55";
+          hash = "sha256-6LpnyXB7mri6aVEfnv6aG2mWlzpvaD8SiMqwUS+jJr0=";
+        };
+        glow = pkgs.fetchFromGitHub {
+          owner = "Reledia";
+          repo = "glow.yazi";
+          rev = "536185a4e60ac0adc11d238881e78678fdf084ff";
+          hash = "sha256-NcMbYjek99XgWFlebU+8jv338Vk1hm5+oW5gwH+3ZbI=";
+        };
+        hexyl = pkgs.fetchFromGitHub {
+          owner = "Reledia";
+          repo = "hexyl.yazi";
+          rev = "64daf93a67d75eff871befe52d9013687171ffad";
+          hash = "sha256-B2L3/Q1g0NOO6XEMIMGBC/wItbNgBVpbaMMhiXOYcrI=";
+        };
+        # TODO: after yazi 0.26+:
+        # - https://github.com/DreamMaoMao/searchjump.yazi
+        # - https://github.com/yazi-rs/plugins/tree/main/jump-to-char.yazi
+        #
+        # keyjump = pkgs.fetchFromGitHub {
+        #   owner = "DreamMaoMao";
+        #   repo = "keyjump.yazi";
+        #   rev = "c0c22184dff798be1cf4940ac74c590707a03ad6";
+        #   hash = "sha256-FHvhyD9PAiglL03SbuJdRaZ36FzjIDpIHrKt2PFvAQI=";
+        # };
+        miller = pkgs.fetchFromGitHub {
+          owner = "Reledia";
+          repo = "miller.yazi";
+          rev = "75f00026a0425009edb6fedcfbe893f3d2ddedf4";
+          hash = "sha256-u8xadj6/s16xXUAWGezYBqnygKaFMnRUsqtjMDr6DZA=";
+        };
+        ouch = pkgs.fetchFromGitHub {
+          owner = "ndtoan96";
+          repo = "ouch.yazi";
+          rev = "694d149be5f96eaa0af68d677c17d11d2017c976";
+          hash = "sha256-J3vR9q4xHjJt56nlfd+c8FrmMVvLO78GiwSNcLkM4OU=";
+        };
+        # TODO: after yazi 0.26:
+        #
+        # smart-filter = pkgs.fetchFromGitHub {
+        #   owner = "yazi-rs";
+        #   repo = "plugins/smart-filter.yazi";
+        #   rev = "ff84ac3d42eb5c9e0d05aabf44852c062e9440ee";
+        #   hash = "sha256-smartxfilterAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=";
+        # };
+        # TODO: after yazi 0.26:
+        #
+        # yamb = pkgs.fetchFromGitHub {
+        #   owner = "h-hg";
+        #   repo = "yamb.yazi";
+        #   rev = "3636c80f94448347f8047cfbfc1ca6099dcd4d71";
+        #   hash = "sha256-81rrxjdWlpICQ12EfOcvXpvnWXeWgA5GYBfoHXxBe1g=";
+        # };
+      };
       settings = {
         plugin = {
           preloaders = [
