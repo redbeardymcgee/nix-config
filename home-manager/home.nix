@@ -231,17 +231,10 @@
     };
     fzf = {
       enable = true;
-      changeDirWidgetCommand = "fd";
-      changeDirWidgetOptions = [
-        "--type d"
-      ];
-      defaultCommand = "fd";
-      defaultOptions = [
-        "--type f"
-      ];
-      fileWidgetCommand = "fd";
+      changeDirWidgetCommand = "fd --type d";
+      defaultCommand = "fd --type f";
+      fileWidgetCommand = "fd --type f";
       fileWidgetOptions = [
-        "--type f"
         "--preview 'head {}'"
       ];
       historyWidgetOptions = [
@@ -250,7 +243,6 @@
       ];
       tmux = {
         enableShellIntegration = true;
-        # ShellIntegrationOptions = "";
       };
     };
     git = {
