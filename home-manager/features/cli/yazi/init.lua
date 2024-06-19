@@ -76,8 +76,8 @@ function Status:render(area)
 	}
 end
 
-require("keyjump"):setup({
-	icon_fg = "#fda1a1",
-})
+-- require("keyjump"):setup({
+-- 	icon_fg = "#fda1a1",
+-- })
 
-require("starship"):setup()
+-- require("starship"):setup()

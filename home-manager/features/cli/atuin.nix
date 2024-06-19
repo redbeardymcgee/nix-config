@@ -4,7 +4,7 @@
     settings = {
       auto_sync = false;
       daemon = {
-        enabled = true;
+        enabled = false;
         sync_frequency = 120;
         systemd_socket = true;
       };
@@ -46,18 +46,18 @@
       workspaces = true;
     };
   };
-  systemd.user.services.atuind = {
-    Install = {
-      WantedBy = [ "default.target" ];
-    };
-    Service = {
-      ExecStart = "${pkgs.atuin}/bin/atuin daemon";
-      Environment = [ ''ATUIN_LOG="info"'' ];
-      Restart = "on-failure";
-      Type = "exec";
-    };
-    Unit = {
-      Description = "Atuin shell history manager daemon";
-    };
-  };
+  # systemd.user.services.atuind = {
+  #   Install = {
+  #     WantedBy = [ "default.target" ];
+  #   };
+  #   Service = {
+  #     ExecStart = "${pkgs.atuin}/bin/atuin daemon";
+  #     Environment = [ ''ATUIN_LOG="info"'' ];
+  #     Restart = "on-failure";
+  #     Type = "exec";
+  #   };
+  #   Unit = {
+  #     Description = "Atuin shell history manager daemon";
+  #   };
+  # };
 }
