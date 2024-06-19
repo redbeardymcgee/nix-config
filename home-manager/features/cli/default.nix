@@ -1,7 +1,30 @@
 { pkgs, ... }: {
   imports = [
     ./atuin.nix
+    ./bash.nix
+    ./bat.nix
+    ./direnv.nix
+    ./eza.nix
+    ./fastfetch.nix
+    ./fd.nix
+    ./fish.nix
+    ./fzf.nix
+    ./git.nix
+    ./gitui.nix
+    ./go.nix
+    ./htop.nix
+    ./jq.nix
+    ./less.nix
+    ./man.nix
+    ./nix-index.nix
+    ./ripgrep.nix
+    ./ssh.nix
     ./starship.nix
+    ./tealdeer.nix
+    ./tmux.nix
+    ./yazi.nix
+    ./zk.nix
+    ./zoxide.nix
   ];
   home.packages = with pkgs; [
     curlie
