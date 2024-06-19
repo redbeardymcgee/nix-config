@@ -16,6 +16,7 @@
 
     # You can also split up your configuration and import pieces of it here:
     # ./nvim.nix
+    ./features/cli
   ];
 
   nixpkgs = {
@@ -63,82 +64,82 @@
       NODE_PATH = "~/.local/lib/node_modules";
       VISUAL = "nvim";
     };
-    packages = with pkgs; [
-      curlie
-      difftastic
-      dogdns
-      entr
-      gping
-      grex
-      gtrash
-      hexyl
-      lazydocker
-      miller
-      neovim
-      nerdfonts
-      nmap
-      nodejs
-      ouch
-      procs
-      python3
-      python311Packages.libtmux
-      racket
-      ripdrag
-      rustup
-      yq
-    ];
+    # packages = with pkgs; [
+    #   curlie
+    #   difftastic
+    #   dogdns
+    #   entr
+    #   gping
+    #   grex
+    #   gtrash
+    #   hexyl
+    #   lazydocker
+    #   miller
+    #   neovim
+    #   nerdfonts
+    #   nmap
+    #   nodejs
+    #   ouch
+    #   procs
+    #   python3
+    #   python311Packages.libtmux
+    #   racket
+    #   ripdrag
+    #   rustup
+    #   yq
+    # ];
     stateVersion = "24.05";
     username = "josh";
   };
 
   programs = {
-    atuin = {
-      enable = true;
-      settings = {
-        auto_sync = false;
-        daemon = {
-          enabled = true;
-          sync_frequency = 120;
-          systemd_socket = true;
-        };
-        enter_accept = true;
-        filter_mode_shell_up_key_binding = "directory";
-        stats = {
-          common_subcommands = [
-            "apt"
-            "cargo"
-            "chezmoi"
-            "composer"
-            "distrobox"
-            "dnf"
-            "docker"
-            "git"
-            "go"
-            "ip"
-            "kubectl"
-            "nix"
-            "nmcli"
-            "npm"
-            "npx"
-            "pecl"
-            "pnpm"
-            "podman"
-            "port"
-            "systemctl"
-            "tmux"
-            "yarn"
-          ];
-          ignored_commands = [
-            "cd"
-            "ls"
-            "vi"
-            "vim"
-          ];
-        };
-        update_check = false;
-        workspaces = true;
-      };
-    };
+    # atuin = {
+    #   enable = true;
+    #   settings = {
+    #     auto_sync = false;
+    #     daemon = {
+    #       enabled = true;
+    #       sync_frequency = 120;
+    #       systemd_socket = true;
+    #     };
+    #     enter_accept = true;
+    #     filter_mode_shell_up_key_binding = "directory";
+    #     stats = {
+    #       common_subcommands = [
+    #         "apt"
+    #         "cargo"
+    #         "chezmoi"
+    #         "composer"
+    #         "distrobox"
+    #         "dnf"
+    #         "docker"
+    #         "git"
+    #         "go"
+    #         "ip"
+    #         "kubectl"
+    #         "nix"
+    #         "nmcli"
+    #         "npm"
+    #         "npx"
+    #         "pecl"
+    #         "pnpm"
+    #         "podman"
+    #         "port"
+    #         "systemctl"
+    #         "tmux"
+    #         "yarn"
+    #       ];
+    #       ignored_commands = [
+    #         "cd"
+    #         "ls"
+    #         "vi"
+    #         "vim"
+    #       ];
+    #     };
+    #     update_check = false;
+    #     workspaces = true;
+    #   };
+    # };
     bash = {
       enable = true;
       bashrcExtra = ''
@@ -387,24 +388,6 @@
           IdentityFile ~/.ssh/rbmpc-to-nixedia
           ProxyJump josh@mcgeedia
       '';
-    };
-    starship = {
-      enable = true;
-      enableTransience = true;
-      settings = {
-        format = lib.concatStrings [
-          "\${custom.yazi}"
-          "$character"
-        ];
-        right_format = lib.concatStrings [
-          "$all"
-        ];
-        custom.yazi = {
-          description = "Indicate when the shell was launched by `yazi`";
-          symbol = " ";
-          when = ''test -n "$YAZI_LEVEL"'';
-        };
-      };
     };
     tealdeer = {
       enable = true;
@@ -732,7 +715,25 @@
     ssh-agent.enable = true;
   };
 
-  systemd.user.startServices = "sd-switch";
+  systemd.user = {
+    startServices = "sd-switch";
+    services = {
+      # atuind = {
+      #   Install = {
+      #     WantedBy = [ "default.target" ];
+      #   };
+      #   Service = {
+      #     ExecStart = "${pkgs.atuin}/bin/atuin daemon";
+      #     Environment = [ ''ATUIN_LOG="info"'' ];
+      #     Restart = "on-failure";
+      #     Type = "exec";
+      #   };
+      #   Unit = {
+      #     Description = "Atuin shell history manager daemon";
+      #   };
+      # };
+    };
+  };
 
   targets.genericLinux.enable = true;
 
