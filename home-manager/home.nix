@@ -50,6 +50,7 @@
   };
 
   home = {
+    # FIXME: stinky warning suppression
     enableNixpkgsReleaseCheck = false;
     homeDirectory = "/var/home/josh";
     sessionPath = [

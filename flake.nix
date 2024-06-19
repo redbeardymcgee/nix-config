@@ -19,6 +19,7 @@
     # Also see the 'unstable-packages' overlay at 'overlays/default.nix'.
 
     # Home manager
+    # FIXME: stinky warning suppressed in home-manager/home.nix
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs-unstable";
 
