@@ -22,7 +22,7 @@
     ./starship.nix
     ./tealdeer.nix
     ./tmux.nix
-    ./yazi.nix
+    ./yazi
     ./zk.nix
     ./zoxide.nix
   ];
@@ -38,7 +38,7 @@
     lazydocker
     miller
     neovim
-    nerdfonts
+    (nerdfonts.override { fonts = [ "FiraCode" ]; })
     nmap
     nodejs
     ouch

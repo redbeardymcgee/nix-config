@@ -10,7 +10,7 @@
       set -g @plugin 'joshmedeski/tmux-nerd-font-window-name'
 
       set -g @plugin 'rickstaa/tmux-notify'
-      set -g @tnotify-prompt-suffixes '❯'
+      set -g @tnotify-prompt-suffixes '◉'
       set -g @tnotify-verbose 'on'
 
       set -g @plugin 'jaclu/tmux-power-zoom'

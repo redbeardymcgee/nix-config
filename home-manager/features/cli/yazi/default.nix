@@ -2,6 +2,7 @@
   programs.yazi = {
     enable = true;
     enableFishIntegration = false;
+    initLua = ./init.lua;
     keymap = {
       manager.prepend_keymap = [
         {

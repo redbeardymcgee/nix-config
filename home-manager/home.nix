@@ -52,7 +52,7 @@
   home = {
     # FIXME: stinky warning suppression
     enableNixpkgsReleaseCheck = false;
-    homeDirectory = "/var/home/josh";
+    homeDirectory = "/home/josh";
     sessionPath = [
       "$HOME/.local/lib/node_modules/bin"
       "$HOME/.cargo/bin"
@@ -63,6 +63,7 @@
       MANPAGER="sh -c 'col -bx | bat -l man -p'";
       MANROFFOPT="-c";
       NODE_PATH = "~/.local/lib/node_modules";
+      # NIXOS_OZONE_WL = "1";
       VISUAL = "nvim";
     };
     stateVersion = "24.05";
