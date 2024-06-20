@@ -1,4 +1,7 @@
 { pkgs, ... }: {
+  home.packages = with pkgs; [
+    ripdrag
+  ];
   programs.yazi = {
     enable = true;
     enableFishIntegration = false;

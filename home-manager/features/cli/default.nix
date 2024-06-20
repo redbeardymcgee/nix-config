@@ -3,6 +3,7 @@
     ./atuin.nix
     ./bash.nix
     ./bat.nix
+    ./bottom.nix
     ./direnv.nix
     ./eza.nix
     ./fastfetch.nix
@@ -38,14 +39,11 @@
     lazydocker
     miller
     neovim
-    (nerdfonts.override { fonts = [ "FiraCode" ]; })
     nmap
     nodejs
     ouch
     procs
     python3
-    python311Packages.libtmux
-    ripdrag
     rustup
     yq
   ];

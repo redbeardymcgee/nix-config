@@ -5,7 +5,7 @@
       "--glob=!.git/*"
       "--max-columns=120"
       "--max-columns-preview"
-      "smart-case"
+      "--smart-case"
     ];
   };
 }
