@@ -27,9 +27,9 @@
         riverctl map $mode None XF86AudioNext  spawn 'playerctl next'
       done
 
-      rivertile -view-padding 6 -outer-padding 6 &
-
       way-displays > "/tmp/way-displays.$XDG_VTNR.$USER.log" 2>&1 &
+
+      rivertile -view-padding 6 -outer-padding 6 &
     '';
     settings = {
       declare-mode = [
@@ -48,7 +48,7 @@
       };
       map = {
         normal = {
-	        "Super+Shift Return" = "spawn 'foot'";
+	        "Super+Shift Return" = "spawn 'footclient'";
           "Super D" = "spawn '$(tofi-drun)'";
           "Super+Shift D" = "spawn '$(tofi-run)'";
 

@@ -8,4 +8,5 @@
     nyxt
     pamixer
   ];
+  services.easyeffects.enable = true;
 }

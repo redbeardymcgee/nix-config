@@ -11,18 +11,21 @@
   };
 
   inputs = {
+    catppuccin.url = "github:catppuccin/nix";
+
+    nixos-hardware.url = "github:NixOS/nixos-hardware/master";
+
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     # Also see the 'unstable-packages' overlay at 'overlays/default.nix'.
 
     # Home manager
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
-
-    catppuccin.url = "github:catppuccin/nix";
   };
 
   outputs = {
     self,
+    nixos-hardware, 
     nixpkgs,
     home-manager,
     catppuccin,
@@ -57,12 +60,26 @@
     # NixOS configuration entrypoint
     # Available through 'nixos-rebuild --flake .#your-hostname'
     nixosConfigurations = {
-      xin = nixpkgs.lib.nixosSystem {
-        specialArgs = { inherit inputs outputs; };
+      rbmpc = nixpkgs.lib.nixosSystem {
         modules = [
-          # > Our main nixos configuration file <
           ./nixos/configuration.nix
+          home-manager.nixosModules.home-manager
+          {
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            # home-manager.users.jdoe = import ./home.nix;
+
+            # Optionally, use home-manager.extraSpecialArgs to pass
+            # arguments to home.nix
+          }
+          nixos-hardware.nixosModules.common-hidpi
+          nixos-hardware.nixosModules.common-pc
+          nixos-hardware.nixosModules.common-pc-ssd
+          nixos-hardware.nixosModules.common-gpu-nvidia
+          nixos-hardware.nixosModules.common-cpu-intel-kaby-lake
         ];
+        specialArgs = { inherit inputs outputs; };
+        system = "x86_64-linux";
       };
     };
 

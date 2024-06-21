@@ -9,10 +9,8 @@
       hint-font = false;
       # matching-algorithm = "fuzzy";
 
-      # Theme options
       font = "FiraCode";
-      font-size = 20;
-
+      font-size = 16;
       outline-width = 0;
       border-width = 0;
       padding-left = "4%";
