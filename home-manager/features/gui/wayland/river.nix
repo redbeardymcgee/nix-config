@@ -49,8 +49,8 @@
       map = {
         normal = {
 	        "Super+Shift Return" = "spawn 'foot'";
-          "Super D" = "spawn 'tofi-drun'";
-          "Super+Shift D" = "spawn 'tofi-run'";
+          "Super D" = "spawn '$(tofi-drun)'";
+          "Super+Shift D" = "spawn '$(tofi-run)'";
 
           "Super N" = "spawn 'fnottctl dismiss'";
           "Super+Alt N" = "spawn 'fnottctl dismiss all'";

@@ -2,10 +2,10 @@
   programs.fzf = {
     enable = true;
     changeDirWidgetCommand = "fd --type d";
-    defaultCommand = "fd --type f";
+    defaultCommand = "fd";
     fileWidgetCommand = "fd --type f";
     fileWidgetOptions = [
-      "--preview 'head {}'"
+      "--preview 'bat -n --color always --file-name {} {}'"
     ];
     historyWidgetOptions = [
       "--sort"
