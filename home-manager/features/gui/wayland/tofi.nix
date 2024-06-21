@@ -7,9 +7,9 @@
       fuzzy-match = true;
       hide-cursor = true;
       hint-font = false;
-      # matching-algorithm = "fuzzy";
+      matching-algorithm = "fuzzy";
 
-      font = "FiraCode";
+      font = "FiraCode Nerd Font";
       font-size = 16;
       outline-width = 0;
       border-width = 0;

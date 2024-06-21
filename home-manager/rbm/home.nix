@@ -1,8 +1,8 @@
 {
+  config,
   inputs,
   outputs,
   lib,
-  config,
   pkgs,
   ...
 }: {
@@ -13,34 +13,12 @@
 
     # Or modules exported from other flakes (such as nix-colors):
     # inputs.nix-colors.homeManagerModules.default
+    inputs.catppuccin.homeManagerModules.catppuccin
 
     # You can also split up your configuration and import pieces of it here:
     # ./nvim.nix
-    ./features
+    ../features
   ];
-
-  nixpkgs = {
-    # You can add overlays here
-    overlays = [
-      # Add overlays your own flake exports (from overlays and pkgs dir):
-      outputs.overlays.additions
-      outputs.overlays.modifications
-      outputs.overlays.unstable-packages
-
-      # You can also add overlays exported from other flakes:
-      # neovim-nightly-overlay.overlays.default
-
-      # Or define it inline, for example:
-      # (final: prev: {
-      #   hi = final.hello.overrideAttrs (oldAttrs: {
-      #     patches = [ ./change-hello-to-hi.patch ];
-      #   });
-      # })
-    ];
-    config = {
-      allowUnfree = true;
-    };
-  };
 
   catppuccin = {
     enable = true;
@@ -56,8 +34,6 @@
     ];
     sessionVariables = {
       EDITOR = "nvim";
-      MANPAGER="sh -c 'col -bx | bat -l man -p'";
-      MANROFFOPT="-c";
       NODE_PATH = "~/.local/lib/node_modules";
       VISUAL = "nvim";
     };
@@ -92,6 +68,6 @@
 
   xdg = {
     mimeApps.enable = true;
-    # portal.enable = true;
+    portal.enable = true;
   };
 }
