@@ -16,7 +16,6 @@
       ./openssh.nix
       ./pipewire.nix
       ./qemu.nix
-      ./steam-hardware.nix
       ./systemd-initrd.nix
     ]
     ++ (builtins.attrValues outputs.nixosModules);

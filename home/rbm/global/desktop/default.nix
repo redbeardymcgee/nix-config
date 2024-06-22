@@ -13,6 +13,8 @@
     nyxt
     pamixer
     qpwgraph
+    element-desktop
+    vesktop
   ];
   services.easyeffects.enable = true;
 }

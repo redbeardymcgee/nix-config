@@ -1,5 +1,5 @@
 { ... }: {
-  kanata = {
+  services.kanata = {
     enable = true;
     keyboards."rbm".config = ''
       (defsrc caps)

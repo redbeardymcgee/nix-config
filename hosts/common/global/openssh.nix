@@ -29,34 +29,34 @@ in {
   };
 
   programs.ssh = {
-    knownHosts = lib.genAttrs hosts (hostname: {
-      publicKeyFile = ../../${hostname}/ed25519_key.pub;
-      extraHostNames =
-        [
-          "${hostname}.home.local"
-        ]
-        ++
-        # Alias for localhost if it's the same host
-        (lib.optional (hostname == config.networking.hostName) "localhost") ;
-    });
+    # knownHosts = lib.genAttrs hosts (hostname: {
+    #   publicKeyFile = ../../${hostname}/ed25519_key.pub;
+    #   extraHostNames =
+    #     [
+    #       "${hostname}.home.local"
+    #     ]
+    #     ++
+    #     # Alias for localhost if it's the same host
+    #     (lib.optional (hostname == config.networking.hostName) "localhost") ;
+    # });
   };
 
   # Passwordless sudo when SSH'ing with keys
   security = {
     pam.services.sudo = {config, ...}: {
+      rules.auth.rssh = {
+        order = config.rules.auth.ssh_agent_auth.order - 1;
+        control = "sufficient";
+        modulePath = "${pkgs.pam_rssh}/lib/libpam_rssh.so";
+        settings.authorized_keys_command =
+          pkgs.writeShellScript "get-authorized-keys"
+          ''
+            cat "/etc/ssh/authorized_keys.d/$1"
+          '';
+      };
+    };
     sudo.extraConfig = ''
       Defaults env_keep+=SSH_AUTH_SOCK
     '';
-    rules.auth.rssh = {
-      order = config.rules.auth.ssh_agent_auth.order - 1;
-      control = "sufficient";
-      modulePath = "${pkgs.pam_rssh}/lib/libpam_rssh.so";
-      settings.authorized_keys_command =
-        pkgs.writeShellScript "get-authorized-keys"
-        ''
-          cat "/etc/ssh/authorized_keys.d/$1"
-        '';
-      };
-    };
   };
 }

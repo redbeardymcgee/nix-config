@@ -25,11 +25,11 @@
         "nix-command"
       ];
       flake-registry = "";
+      trusted-users = [
+        "root"
+        "@wheel"
+      ];
       warn-dirty = false;
     };
-    trusted-users = [
-      "root"
-      "@wheel"
-    ];
   };
 }

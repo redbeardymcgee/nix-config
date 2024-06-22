@@ -1,15 +1,8 @@
 { pkgs, ... }: {
   imports = [
-    ./foot.nix
-    ./fnott.nix
     ./firefox.nix
-    ./river.nix
-    ./tofi.nix
-    ./way-displays.nix
   ];
   home.packages = with pkgs; [
-    element-desktop
-    vesktop
     wayshot
   ];
   home.sessionVariables = {

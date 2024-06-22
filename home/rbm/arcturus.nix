@@ -7,8 +7,8 @@
   imports = [
     ./global
 
-    ./global/features/gui/gamemode.nix
-    ./global/features/desktop/river
+    ./global/desktop/river
+    ./global/desktop/wayland
     # ./features/desktop/hyprland
     # ./features/rgb
     # ./features/productivity
