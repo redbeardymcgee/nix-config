@@ -1,0 +1,18 @@
+{ pkgs, ... }: {
+  environment = {
+    pathsToLink = [
+      "/share/xdg-desktop-portal"
+      "/share/applications"
+    ];
+    systemPackages = with pkgs; [
+      libnotify
+    ];
+  };
+
+  home.packages = with pkgs; [
+    nyxt
+    pamixer
+    qpwgraph
+  ];
+  services.easyeffects.enable = true;
+}

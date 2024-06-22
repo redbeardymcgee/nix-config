@@ -4,7 +4,7 @@
     enableTransience = true;
     settings = {
       format = lib.concatStrings [
-        "\${custom.yazi}"
+        '' ''${custom.yazi} ''
         "$character"
       ];
       right_format = lib.concatStrings [

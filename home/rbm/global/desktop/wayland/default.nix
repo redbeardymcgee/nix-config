@@ -2,6 +2,7 @@
   imports = [
     ./foot.nix
     ./fnott.nix
+    ./firefox.nix
     ./river.nix
     ./tofi.nix
     ./way-displays.nix
