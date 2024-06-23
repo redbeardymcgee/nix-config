@@ -11,7 +11,7 @@
     gc = {
       automatic = true;
       dates = "weekly";
-      options = "--delete-older-than +5";
+      options = "--delete-older-than 30d";
     };
     package = pkgs.nixVersions.latest;
     registry = lib.mapAttrs (_: flake: {inherit flake;}) flakeInputs;

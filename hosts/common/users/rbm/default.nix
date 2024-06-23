@@ -1,15 +1,15 @@
 {
   pkgs,
   config,
-  # lib,
   ...
 }: let
-  ifTheyExist = groups: builtins.filter (group: builtins.hasAttr group config.users.groups) groups;
+  ifExist = groups: builtins.filter (group: builtins.hasAttr group config.users.groups) groups;
 in {
   home-manager.users.rbm = import ../../../../home/rbm/${config.networking.hostName}.nix;
 
   users.users.rbm = {
-    extraGroups = ifTheyExist [
+    description = "josh";
+    extraGroups = ifExist [
       "audio"
       "docker"
       "git"
@@ -19,21 +19,20 @@ in {
       "kvm"
       "mysql"
       "network"
+      "networkmanager"
       "podman"
       "video"
       "wheel"
       "wireshark"
     ];
+    hashedPassword = "$y$j9T$NmHSd/vNRVZnq8XMjboqb.$zDRNKunxvFgsVTb8URv6xOWjj3yCIGKc1YqvcPd8FP0";
     isNormalUser = true;
     packages = [pkgs.home-manager];
     shell = pkgs.bash;
-
-    # openssh.authorizedKeys.keys = lib.splitString "\n" (builtins.readFile ../../../../home/rbm/ssh.pub);
-    # hashedPasswordFile = config.sops.secrets.rbm-password.path;
+      openssh.authorizedKeys.keys = [
+        # TODO: Add your SSH public key(s) here, if you plan on using SSH to connect
+        #
+        # openssh.authorizedKeys.keys = lib.splitString "\n" (builtins.readFile ../../../../home/rbm/ssh.pub);
+      ];
   };
-
-  # sops.secrets.rbm-password = {
-  #   sopsFile = ../../secrets.yaml;
-  #   neededForUsers = true;
-  # };
 }
