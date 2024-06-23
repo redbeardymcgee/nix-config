@@ -24,6 +24,8 @@
     ../common/users
   ];
 
+  fileSystems."/boot".options = [ "umask=0077" ];
+
   hardware = {
     bluetooth = {
       enable = true;

@@ -31,6 +31,7 @@
     curlie
     difftastic
     dogdns
+    dust
     entr
     gping
     grex

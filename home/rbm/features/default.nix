@@ -1,48 +1,4 @@
-{
-  inputs,
-  lib,
-  pkgs,
-  config,
-  outputs,
-  ...
-}: {
-  imports =
-    [
-      # inputs.impermanence.nixosModules.home-manager.impermanence
-      inputs.catppuccin.homeManagerModules.catppuccin
-
-    ./cli
-    ]
-    ++ (builtins.attrValues outputs.homeManagerModules);
-
-  catppuccin = {
-    enable = true;
-    flavor = "mocha";
-  };
-
-  home = {
-    homeDirectory = lib.mkDefault "/home/${config.home.username}";
-    packages = with pkgs; [
-      dust
-      gcc
-      unzip
-    ];
-    stateVersion = lib.mkDefault "24.05";
-    sessionPath = [
-      "$HOME/.local/lib/node_modules/bin"
-      "$HOME/.cargo/bin"
-      "$HOME/.local/bin"
-    ];
-    sessionVariables = {
-      EDITOR = "nvim";
-      NODE_PATH = "~/.local/lib/node_modules";
-      VISUAL = "nvim";
-    };
-    username = lib.mkDefault "rbm";
-  };
-
-  news.display = "silent";
-
+{ lib, pkgs, ... }: {
   nix = {
     package = lib.mkDefault pkgs.nix;
     settings = {
@@ -53,16 +9,6 @@
       ];
       warn-dirty = false;
     };
-  };
-
-  programs = {
-    home-manager.enable = true;
-  };
-
-  services = {
-    playerctld.enable = true;
-    remmina.enable = true;
-    ssh-agent.enable = true;
   };
 
   systemd.user = {
@@ -83,7 +29,7 @@
         };
       };
     startServices = "sd-switch";
-    };
+  };
 
   xdg = {
     mimeApps.enable = true;

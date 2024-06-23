@@ -27,12 +27,11 @@ in {
     ];
     hashedPassword = "$y$j9T$NmHSd/vNRVZnq8XMjboqb.$zDRNKunxvFgsVTb8URv6xOWjj3yCIGKc1YqvcPd8FP0";
     isNormalUser = true;
-    packages = [pkgs.home-manager];
+    openssh.authorizedKeys.keys = [
+      # TODO: Add your SSH public key(s) here, if you plan on using SSH to connect
+      #
+      # openssh.authorizedKeys.keys = lib.splitString "\n" (builtins.readFile ../../../../home/rbm/ssh.pub);
+    ];
     shell = pkgs.bash;
-      openssh.authorizedKeys.keys = [
-        # TODO: Add your SSH public key(s) here, if you plan on using SSH to connect
-        #
-        # openssh.authorizedKeys.keys = lib.splitString "\n" (builtins.readFile ../../../../home/rbm/ssh.pub);
-      ];
   };
 }

@@ -19,11 +19,6 @@
     ]
     ++ (builtins.attrValues outputs.nixosModules);
 
-  home-manager.useGlobalPkgs = true;
-  home-manager.extraSpecialArgs = {
-    inherit inputs outputs;
-  };
-
   environment = {
     # TODO: KDE only?
     profileRelativeSessionVariables = {
@@ -31,10 +26,18 @@
     };
   };
 
+  home-manager = {
+    useGlobalPkgs = true;
+    extraSpecialArgs = {
+        inherit inputs outputs;
+      };
+    };
+
   nixpkgs = {
     overlays = builtins.attrValues outputs.overlays;
     config = {
       allowUnfree = true;
+      allowUnfreePredicate = _: true;
     };
   };
 
