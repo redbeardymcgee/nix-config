@@ -27,11 +27,12 @@
   };
 
   home-manager = {
-    useGlobalPkgs = true;
     extraSpecialArgs = {
         inherit inputs outputs;
       };
-    };
+    useUserPackages = true;
+    useGlobalPkgs = true;
+  };
 
   nixpkgs = {
     overlays = builtins.attrValues outputs.overlays;

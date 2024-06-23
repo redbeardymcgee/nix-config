@@ -14,13 +14,7 @@
     ./hardware-configuration.nix
 
     ../common/global
-
-    ../common/optional/gamemode.nix
-    ../common/optional/podman.nix
-    ../common/optional/quietboot.nix
-    ../common/optional/steam-hardware.nix
-    ../common/optional/systemd-boot.nix
-
+    ../common/optional
     ../common/users
   ];
 
@@ -38,10 +32,10 @@
     };
     enableAllFirmware = true;
     enableRedistributableFirmware = true;
-    opengl = {
+    graphics = {
       enable = true;
-      driSupport = true;
-      driSupport32Bit = true;
+      # driSupport = true;
+      enable32Bit = true;
     };
     pulseaudio = {
       enable = false;

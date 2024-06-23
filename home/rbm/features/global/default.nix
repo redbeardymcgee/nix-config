@@ -9,8 +9,6 @@
   imports =
   [
     inputs.catppuccin.homeManagerModules.catppuccin
-
-    ../features/cli
   ]
   ++ (builtins.attrValues outputs.homeManagerModules);
 
@@ -19,7 +17,14 @@
      flavor = "mocha";
    };
 
-  news.display = "silent";
+  dconf.settings = {
+    "org/virt-manager/virt-manager/connections" = {
+      autoconnect = [ "qemu:///system" ];
+      uris = [ "qemu:///system" ];
+    };
+  };
+
+  news.display = "show";
 
   home = {
     homeDirectory = lib.mkDefault "/home/${config.home.username}";
@@ -38,12 +43,8 @@
       NODE_PATH = "$HOME/local/lib/node_modules";
       VISUAL = "nvim";
     };
-    username = lib.mkDefault "${config.home.username}";
+    username = lib.mkDefault "rbm";
   };
-
-   services = {
-     playerctld.enable = true;
-     remmina.enable = true;
-     ssh-agent.enable = true;
-   };
+ 
+  programs.home-manager.enable = true;
 }

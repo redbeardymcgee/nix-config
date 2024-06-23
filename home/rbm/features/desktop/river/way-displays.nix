@@ -2,6 +2,7 @@
   home.packages = with pkgs; [
     way-displays
   ];
+
   # xdg.configFile."way-displays/cfg.yaml".source = (pkgs.formats.yaml {}).generate "cfg.yaml" {
   # };
   xdg.configFile."way-displays/cfg.yaml".text = ''

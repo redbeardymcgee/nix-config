@@ -1,0 +1,1 @@
+{services.remmina.enable = true;}

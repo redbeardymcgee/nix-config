@@ -1,6 +1,7 @@
 { ... }: {
   wayland.windowManager.river = {
     enable = true;
+
     extraConfig = ''
       for i in $(seq 1 9)
       do
@@ -31,6 +32,7 @@
 
       rivertile -view-padding 6 -outer-padding 6 &
     '';
+
     settings = {
       declare-mode = [
         "locked"

@@ -4,7 +4,11 @@
     qemu_kvm
     qemu-utils
   ];
-  programs.virt-manager.enable = true;
+
+  programs = {
+    virt-manager.enable = true;
+  };
+
   virtualisation = {
     kvmgt = {
       enable = true;

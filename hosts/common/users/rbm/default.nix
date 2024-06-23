@@ -1,11 +1,17 @@
 {
+  inputs,
+  outputs,
   pkgs,
   config,
   ...
 }: let
   ifExist = groups: builtins.filter (group: builtins.hasAttr group config.users.groups) groups;
 in {
-  home-manager.users.rbm = import ../../../../home/rbm/${config.networking.hostName}.nix;
+  home-manager = {
+    users = {
+      rbm = import ../../../../home/rbm/${config.networking.hostName}.nix;
+    };
+  };
 
   users.users.rbm = {
     description = "josh";

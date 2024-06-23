@@ -1,16 +1,4 @@
-{ lib, pkgs, ... }: {
-  nix = {
-    package = lib.mkDefault pkgs.nix;
-    settings = {
-      experimental-features = [
-        "ca-derivations"
-        "flakes"
-        "nix-command"
-      ];
-      warn-dirty = false;
-    };
-  };
-
+{ pkgs, ... }: {
   systemd.user = {
     services = {
         mpris-proxy = {
@@ -29,10 +17,5 @@
         };
       };
     startServices = "sd-switch";
-  };
-
-  xdg = {
-    mimeApps.enable = true;
-    portal.enable = true;
   };
 }

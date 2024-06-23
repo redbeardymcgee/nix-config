@@ -1,10 +1,15 @@
 {
   imports = [
-    ./global
+    ./features/global
 
-    ./features
+    ./features/cli
     ./features/desktop/river
     ./features/desktop/wayland
+
+    ./features/services/mpris-proxy.nix
+    ./features/services/playerctld.nix
+    ./features/services/remmina.nix
+    ./features/services/ssh-agent.nix
   ];
   #   -------    ------
   # | DVI-D-1 | | DP-3 |
