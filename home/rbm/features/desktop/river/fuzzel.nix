@@ -1,5 +1,5 @@
 { ... }: {
-  programs.tofi = {
+  programs.fuzzel = {
     enable = true;
     settings = {
       ascii-input = true;
