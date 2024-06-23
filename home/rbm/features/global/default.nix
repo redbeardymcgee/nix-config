@@ -31,8 +31,8 @@
     packages = with pkgs; [
       gcc
       unzip
-      x-terminal-emulator
-      xterm-256color
+      # x-terminal-emulator
+      # xterm-256color
     ];
     stateVersion = lib.mkDefault "24.05";
     sessionPath = [

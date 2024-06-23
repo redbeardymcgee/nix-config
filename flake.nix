@@ -57,7 +57,19 @@
 
     nixosConfigurations = {
       arcturus = lib.nixosSystem {
-        modules = [ ./hosts/arcturus ];
+        modules = [
+        ./hosts/arcturus
+        home-manager.nixosModules.home-manager
+        {
+          home-manager.extraSpecialArgs = {
+            inherit inputs outputs;
+          };
+          home-manager.useGlobalPkgs = true;
+          home-manager.useUserPackages = true;
+          home-manager.backupFileExtension = "backup";
+          home-manager.users.rbm = import ./home/rbm/arcturus.nix;
+        }
+      ];
         specialArgs = { inherit inputs outputs; };
       };
     };
