@@ -23,6 +23,7 @@
   home = {
     homeDirectory = lib.mkDefault "/home/${config.home.username}";
     packages = with pkgs; [
+      dust
       gcc
       unzip
     ];

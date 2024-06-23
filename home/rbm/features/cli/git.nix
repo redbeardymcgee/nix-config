@@ -1,4 +1,4 @@
-{
+{ pkgs, ... }: {
   programs.git = {
     enable = true;
     aliases = {
@@ -7,9 +7,14 @@
     };
     difftastic.enable = true;
     extraConfig = {
+      branch.sort = "committerdate";
+      column.ui = "auto";
+      commit.verbose = true;
+      diff.algorithm = "histogram";
       init = {
         defaultBranch = "main";
       };
+      log.date = "iso";
       pull = {
         ff = "only";
       };
@@ -17,17 +22,20 @@
         ui = true;
       };
       merge = {
-        conflictstyle = "diff3";
+        conflictstyle = "zdiff3";
       };
       pager = {
         colorMoved = "default";
       };
+      push.autoSetupRemote = true;
+      rerere.enabled = true;
     };
     ignores = [
       "*~"
       "*.swp"
       "*.bak"
     ];
+    package = pkgs.gitAndTools.gitFull;
     userName = "redbeardymcgee";
     userEmail = "redbeardymcgee@gmail.com";
   };

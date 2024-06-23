@@ -1,21 +1,9 @@
 {
-  pkgs,
-  config,
-  lib,
-  ...
-}: {
   imports = [
-    ./global
+    ./features
 
-    ./global/desktop/river
-    ./global/desktop/wayland
-    # ./features/desktop/hyprland
-    # ./features/rgb
-    # ./features/productivity
-    # ./features/pass
-    # ./features/games
-    # ./features/games/star-citizen.nix
-    # ./features/games/yuzu.nix
+    ./features/desktop/river
+    ./features/desktop/wayland
   ];
 
   #  ------   -----   ------
