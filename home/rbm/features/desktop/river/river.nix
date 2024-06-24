@@ -2,7 +2,7 @@
   wayland.windowManager.river = {
     enable = true;
 
-    extraConfig = ''
+    extraConfig = /*sh*/ ''
       for i in $(seq 1 9)
       do
         tags=$((1 << ($i - 1)))
@@ -40,7 +40,7 @@
 	      "passthrough"
       ];
       default-layout = "rivertile";
-      focus-follows-cursor = "always";
+      focus-follows-cursor = "normal";
       input = {
         pointer-main = {
       	  accel-profile = "flat";
@@ -50,7 +50,7 @@
       };
       map = {
         normal = {
-	        "Super+Shift Return" = "spawn 'footclient'";
+	        "Super+Shift Return" = "spawn 'footclient tmux attach'";
           "Super D" = "spawn '$(fuzzel)'";
           "Super+Shift D" = "spawn '$(fuzzel -d)'";
 
@@ -115,7 +115,7 @@
       set-repeat = "50 300";
       spawn = [
         "systemctl --user import-environment"
-        "footclient"
+        "sleep 3; footclient tmux attach"
         "firefox"
         "vesktop"
       ];
