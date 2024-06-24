@@ -1,15 +1,21 @@
-{
+{ pkgs, ... }: {
   imports = [
     ./features/global
 
     ./features/cli
+    ./features/desktop
     ./features/desktop/river
     ./features/desktop/wayland
 
+    ./features/services/easyeffects.nix
     ./features/services/mpris-proxy.nix
     ./features/services/playerctld.nix
     ./features/services/remmina.nix
     ./features/services/ssh-agent.nix
+  ];
+  home.packages = with pkgs; [
+    (nerdfonts.override { fonts = [ "FiraCode" ]; })
+    # firefox
   ];
   #   -------    ------
   # | DVI-D-1 | | DP-3 |

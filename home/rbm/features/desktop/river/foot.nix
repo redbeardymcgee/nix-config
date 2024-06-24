@@ -5,7 +5,7 @@
     settings = {
       main = {
         dpi-aware = "yes";
-        font = "FiraCode Nerd Font:size=10";
+        font = "FiraCode Nerd Font";
       };
       mouse = {
         hide-when-typing = "yes";

@@ -3,8 +3,9 @@
   ...
 }: {
   console = {
-    useXkbConfig = true;
     earlySetup = false;
+    font = "Lat2-Terminus16";
+    useXkbConfig = true;
   };
 
   boot = {

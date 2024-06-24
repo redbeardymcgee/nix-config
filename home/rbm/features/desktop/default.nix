@@ -1,20 +1,16 @@
 { pkgs, ... }: {
-  environment = {
-    pathsToLink = [
-      "/share/xdg-desktop-portal"
-      "/share/applications"
-    ];
-    systemPackages = with pkgs; [
-      libnotify
-    ];
-  };
+  imports = [
+    ./firefox.nix
+    # ./xdg-terminal-exec.nix
+  ];
 
   home.packages = with pkgs; [
+    element-desktop
+    # firefox
+    # libnotify
     nyxt
     pamixer
     qpwgraph
-    element-desktop
     vesktop
   ];
-  services.easyeffects.enable = true;
 }

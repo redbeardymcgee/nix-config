@@ -1,6 +1,7 @@
 { pkgs, ... }: {
   imports = [
     ./firefox.nix
+    ./xdg-portal.nix
   ];
   home.packages = with pkgs; [
     wayshot

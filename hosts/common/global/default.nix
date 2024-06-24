@@ -23,6 +23,10 @@
     profileRelativeSessionVariables = {
       QT_PLUGIN_PATH = ["/lib/qt-6/plugins"];
     };
+    pathsToLink = [
+      "/share/xdg-desktop-portal"
+      "/share/applications"
+    ];
   };
 
   nixpkgs = {
