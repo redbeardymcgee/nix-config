@@ -24,8 +24,6 @@
     };
   };
 
-  news.display = "show";
-
   home = {
     homeDirectory = lib.mkDefault "/home/${config.home.username}";
     packages = with pkgs; [
@@ -47,6 +45,8 @@
     };
     username = lib.mkDefault "rbm";
   };
- 
+
+  news.display = "show";
+
   programs.home-manager.enable = true;
 }

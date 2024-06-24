@@ -1,9 +1,11 @@
 { pkgs, ... }: {
   home.packages = with pkgs; [
+    poppler
     ripdrag
   ];
   programs.yazi = {
     enable = true;
+    # package = yazi.packages.${pkgs.system}.default;
     enableFishIntegration = false;
     initLua = ./init.lua;
     keymap = {

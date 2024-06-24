@@ -8,12 +8,6 @@
   ifExist = groups: builtins.filter (group: builtins.hasAttr group config.users.groups) groups;
 in {
   home-manager = {
-    backupFileExtension = "backup";
-    extraSpecialArgs = {
-      inherit inputs outputs;
-    };
-    useGlobalPkgs = true;
-    useUserPackages = true;
     users = {
       rbm = import ../../../../home/rbm/${config.networking.hostName}.nix;
     };

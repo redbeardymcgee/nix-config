@@ -1,19 +1,16 @@
-{ pkgs, ... }:
-let
-  nerdfont = "${pkgs.nerdfonts}";
-in {
+{ ... }: {
   programs.tofi = {
     enable = true;
     settings = {
       ascii-input = true;
       auto-accept-single = false;
       fuzzy-match = true;
-      matching-algorithm = "fuzzy";
-
-      font = "${pkgs.nerdfonts}/share/fonts/truetype/NerdFonts/FiraCodeNerdFontMono-Regular.ttf";
-      font-size = 16;
       hide-cursor = true;
       hint-font = false;
+      matching-algorithm = "fuzzy";
+
+      font = "FiraCode Nerd Font";
+      font-size = 16;
       outline-width = 0;
       border-width = 0;
       padding-left = "4%";

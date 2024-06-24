@@ -5,8 +5,7 @@
 }: {
   imports =
     [
-      inputs.home-manager.nixosModules.home-manager
-
+    inputs.home-manager.nixosModules.home-manager
       ./greetd.nix
       ./kanata.nix
       ./locale.nix
@@ -26,20 +25,21 @@
     };
   };
 
-  home-manager = {
-    extraSpecialArgs = {
-        inherit inputs outputs;
-      };
-    useUserPackages = true;
-    useGlobalPkgs = true;
-  };
-
   nixpkgs = {
     overlays = builtins.attrValues outputs.overlays;
     config = {
       allowUnfree = true;
       allowUnfreePredicate = _: true;
     };
+  };
+
+  home-manager = {
+    backupFileExtension = "backup";
+    extraSpecialArgs = {
+      inherit inputs outputs;
+    };
+    useGlobalPkgs = true;
+    useUserPackages = true;
   };
 
   programs.dconf.enable = true;
