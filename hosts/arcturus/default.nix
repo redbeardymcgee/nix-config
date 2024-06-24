@@ -14,7 +14,10 @@
     ./hardware-configuration.nix
 
     ../common/global
+
     ../common/optional
+    ../common/optional/systemd-networkd.nix
+
     ../common/users
   ];
 
@@ -34,7 +37,6 @@
     enableRedistributableFirmware = true;
     graphics = {
       enable = true;
-      # driSupport = true;
       enable32Bit = true;
     };
     pulseaudio = {
@@ -67,7 +69,7 @@
   networking = {
     domain = "home.local";
     hostName = "arcturus";
-    networkmanager.enable = true;
+    # networkmanager.enable = true;
   };
 
   users.mutableUsers = false;
