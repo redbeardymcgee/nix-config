@@ -3,8 +3,7 @@
   ...
 }: {
   console = {
-    earlySetup = false;
-    font = "ter-u28n";
+    font = "ter-u14n";
     packages = with pkgs; [ terminus_font ];
     useXkbConfig = true;
   };
@@ -23,12 +22,15 @@
     kernelParams = [
       "boot.shell_on_fail"
       "loglevel=3"
-      "quiet"
+      # "quiet"
       "rd.systemd.show_status=false"
       "rd.udev.log_level=3"
       "splash"
     ];
     consoleLogLevel = 0;
-    initrd.verbose = false;
+    initrd = {
+      kernelModules = [ "nvidia" ];
+      verbose = false;
+    };
   };
 }
