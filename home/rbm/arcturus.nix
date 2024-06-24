@@ -14,7 +14,7 @@
     ./features/services/ssh-agent.nix
   ];
   home.packages = with pkgs; [
-    (nerdfonts.override { fonts = [ "FiraCode" ]; })
+    fira-code-nerdfont
     # firefox
   ];
   #   -------    ------

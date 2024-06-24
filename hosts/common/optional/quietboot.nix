@@ -4,7 +4,8 @@
 }: {
   console = {
     earlySetup = false;
-    font = "Lat2-Terminus16";
+    font = "ter-u28n";
+    packages = with pkgs; [ terminus_font ];
     useXkbConfig = true;
   };
 
