@@ -7,7 +7,7 @@
   nix = let
     flakeInputs = lib.filterAttrs (_: lib.isType "flake") inputs;
   in {
-    channel.enable = false;
+    # channel.enable = false;
     gc = {
       automatic = true;
       dates = "weekly";

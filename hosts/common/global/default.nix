@@ -1,6 +1,7 @@
 {
   inputs,
   outputs,
+  pkgs,
   ...
 }: {
   imports =
@@ -14,11 +15,15 @@
       ./openssh.nix
       ./pipewire.nix
       ./qemu.nix
+      ./sudo.nix
       ./systemd-initrd.nix
     ]
     ++ (builtins.attrValues outputs.nixosModules);
 
   environment = {
+    systemPackages = with pkgs; [
+      libnotify
+    ];
     # TODO: KDE only?
     profileRelativeSessionVariables = {
       QT_PLUGIN_PATH = ["/lib/qt-6/plugins"];
@@ -51,19 +56,16 @@
   services = {
     avahi.enable = true;
     blueman.enable = true;
-    openssh = {
-      enable = true;
-      settings = {
-        PermitRootLogin = "no";
-        PasswordAuthentication = false;
-      };
-    };
   };
 
   system = {
     autoUpgrade.enable = true;
     stateVersion = "24.05"; # Did you read the comment?
   };
+
+  # systemd.network = {
+  #   enable = true;
+  # };
 }
 
 

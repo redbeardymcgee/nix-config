@@ -1,14 +1,4 @@
-{
-  # outputs,
-  # lib,
-  # config,
-  pkgs,
-  ...
-}:
-# let
-#   hosts = lib.attrNames outputs.nixosConfigurations;
-# in
-{
+{ pkgs, ... }: {
   services.openssh = {
     enable = true;
     settings = {
