@@ -22,7 +22,7 @@
     ./ssh.nix
     ./starship.nix
     ./tealdeer.nix
-    ./tmux.nix
+    ./tmux
     ./yazi
     ./zk.nix
     ./zoxide.nix

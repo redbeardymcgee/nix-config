@@ -38,6 +38,7 @@ in {
       #
       # openssh.authorizedKeys.keys = lib.splitString "\n" (builtins.readFile ../../../../home/rbm/ssh.pub);
     ];
+    packages = [pkgs.home-manager];
     shell = pkgs.bash;
   };
 }

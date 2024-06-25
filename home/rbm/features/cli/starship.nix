@@ -140,7 +140,6 @@
       localip = {
         ssh_only = true;
         format = " ◯[$localipv4](bold magenta)";
-        disabled = false;
       };
       lua = {
         format = " lua [$symbol$version]($style)";
@@ -165,7 +164,6 @@
         format = " nim [$symbol($version )]($style)";
       };
       nix_shell = {
-        disabled = true;
         symbol = " ";
         format = " nix [$symbol$state $name]($style)";
       };
@@ -260,7 +258,6 @@
         bash_indicator = " 󱆃";
         fish_indicator = " ";
         zsh_indicator = " ";
-        disabled = false;
       };
       spack = {
         symbol = "◇ ";
@@ -276,10 +273,8 @@
         format = "[$symbol]($style)";
         style = "italic bright-purple";
         symbol = "◇┈";
-        disabled = false;
       };
       time = {
-        disabled = false;
         format = "[ $time]($style)";
         time_format = "%R";
         utc_time_offset = "local";
@@ -289,7 +284,6 @@
         style_user = "yellow bold";
         style_root = "purple bold italic";
         format = "[$user]($style) ▻ ";
-        disabled = false;
       };
       zig = {
         symbol = " ";

@@ -1,11 +1,13 @@
-{ ... }: {
+{ pkgs, ... }: {
   programs.fuzzel = {
     enable = true;
     settings = {
       main = {
-        font = "FiraCode Nerd Font:size=10";
+        font = "FiraCode Nerd Font:size=14";
         fields = "categories,comment,exec,filename,generic,keywords,name";
-        terminal = "footclient";
+        show-actions = true;
+        terminal = "${pkgs.foot}/bin/foot";
+        width = "50";
       };
       colors = {
         background = "1e1e2edd";

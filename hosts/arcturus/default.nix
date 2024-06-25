@@ -72,5 +72,7 @@
     # networkmanager.enable = true;
   };
 
+  security.pam.services.swaylock = {};
+
   users.mutableUsers = false;
 }

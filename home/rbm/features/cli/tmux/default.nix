@@ -61,5 +61,6 @@
     ];
     prefix = "C-a";
     terminal = "tmux-256color";
+    tmuxp.enable = true;
   };
 }

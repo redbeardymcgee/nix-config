@@ -4,19 +4,20 @@
   pkgs,
   ...
 }: {
-  imports =
-    [
-    inputs.home-manager.nixosModules.home-manager
-      ./greetd.nix
-      ./kanata.nix
+  imports = [
+      inputs.home-manager.nixosModules.home-manager
       ./locale.nix
       ./nix-ld.nix
       ./nix.nix
-      ./openssh.nix
-      ./pipewire.nix
       ./qemu.nix
       ./sudo.nix
       ./systemd-initrd.nix
+
+      ../services/greetd.nix
+      ../services/kanata.nix
+      ../services/libinput.nix
+      ../services/openssh.nix
+      ../services/pipewire.nix
     ]
     ++ (builtins.attrValues outputs.nixosModules);
 
@@ -62,10 +63,6 @@
     autoUpgrade.enable = true;
     stateVersion = "24.05"; # Did you read the comment?
   };
-
-  # systemd.network = {
-  #   enable = true;
-  # };
 }
 
 

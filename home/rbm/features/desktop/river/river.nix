@@ -18,9 +18,9 @@
 
       for mode in normal locked
       do
-        riverctl map $mode None XF86AudioRaiseVolume  spawn 'pamixer -i 5'
-        riverctl map $mode None XF86AudioLowerVolume  spawn 'pamixer -d 5'
-        riverctl map $mode None XF86AudioMute         spawn 'pamixer --toggle-mute'
+        riverctl map $mode None XF86AudioRaiseVolume  spawn 'swayosd-client --output-volume raise'
+        riverctl map $mode None XF86AudioLowerVolume  spawn 'swayosd-client --output-volume lower'
+        riverctl map $mode None XF86AudioMute         spawn 'swayosd-client --output-volume mute-toggle'
 
         riverctl map $mode None XF86AudioMedia spawn 'playerctl play-pause'
         riverctl map $mode None XF86AudioPlay  spawn 'playerctl play-pause'
@@ -50,9 +50,10 @@
       };
       map = {
         normal = {
-	        "Super+Shift Return" = "spawn 'footclient tmux attach'";
-          "Super D" = "spawn '$(fuzzel)'";
-          "Super+Shift D" = "spawn '$(fuzzel -d)'";
+	        "Super Space" = "spawn 'footclient'";
+          "Super T" = "spawn 'foot'";
+          "None Menu" = "spawn '$(fuzzel)'";
+          "Super Menu" = "spawn '$(fuzzel -dR)'";
 
           "Super N" = "spawn 'fnottctl dismiss'";
           "Super+Alt N" = "spawn 'fnottctl dismiss all'";
@@ -60,8 +61,10 @@
 
           "Super F" = "toggle-fullscreen";
           "Super+Shift F" = "toggle-float";
-	        "Super Q" = "close";
 	        "Super Return" = "zoom";
+
+	        "Super Q" = "close";
+          "Super+Shift Q" = "spawn 'swaylock'";
 
           "Super Period" = "focus-output next";
           "Super Comma" = "focus-output previous";
@@ -115,7 +118,7 @@
       set-repeat = "50 300";
       spawn = [
         "systemctl --user import-environment"
-        "sleep 3; footclient tmux attach"
+        "sleep 3; footclient"
         "firefox"
         "vesktop"
       ];

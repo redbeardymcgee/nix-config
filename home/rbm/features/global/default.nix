@@ -9,6 +9,8 @@
   imports =
   [
     inputs.catppuccin.homeManagerModules.catppuccin
+
+    ./nixpkgs.nix
   ]
   ++ (builtins.attrValues outputs.homeManagerModules);
 
