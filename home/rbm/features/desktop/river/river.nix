@@ -28,8 +28,8 @@
         riverctl map $mode None XF86AudioNext  spawn 'playerctl next'
       done
 
+      xdg-user-dirs &
       way-displays > "/tmp/way-displays.$XDG_VTNR.$USER.log" 2>&1 &
-
       rivertile -view-padding 6 -outer-padding 6 &
     '';
 
@@ -117,7 +117,7 @@
       set-repeat = "50 300";
       spawn = [
         "systemctl --user import-environment"
-        "sleep 3; footclient"
+        "foot tmuxp localhost"
         "firefox"
         "vesktop"
       ];

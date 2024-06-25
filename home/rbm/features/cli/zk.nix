@@ -3,11 +3,9 @@
     enable = true;
     settings = {
       alias = {
-        gen = "neuron gen -o public";
         last = "zk edit --limit 1 --sort modified- $@";
         lucky = "zk list --quiet --format full --sort random --limit 1";
         recent = "zk edit --sort created- --created-after 'last two weeks' --interactive";
-        serve = "neuron gen -wS";
       };
       extra.author = "rbm";
       filter = {

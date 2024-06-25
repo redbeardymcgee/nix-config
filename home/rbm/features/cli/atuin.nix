@@ -46,7 +46,9 @@
       workspaces = true;
     };
   };
+
   # systemd.user.services.atuind = {
+  #   enable = false;
   #   Install = {
   #     WantedBy = [ "default.target" ];
   #   };

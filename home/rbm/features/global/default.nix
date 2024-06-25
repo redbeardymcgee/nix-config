@@ -32,6 +32,7 @@
       gcc
       pavucontrol
       unzip
+      xdg-user-dirs
       # x-terminal-emulator
       # xterm-256color
     ];
