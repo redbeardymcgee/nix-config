@@ -1,7 +1,6 @@
 { ... }: {
   programs.foot = {
     enable = true;
-    server.enable = true;
     settings = {
       main = {
         dpi-aware = "yes";
@@ -17,6 +16,7 @@
       };
     };
   };
+
   programs.fish = {
     functions = {
       foot_cmd_start = {

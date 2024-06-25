@@ -1,8 +1,0 @@
-session_name: localhost
-windows:
-  - window_name: main
-    layout: tiled
-    panes:
-      - shell_command:
-          - cd ~/nix-config
-          - yy

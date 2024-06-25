@@ -20,10 +20,6 @@
         gp = "gtrash put";
         rm = "gtrash put";
         vim = "nvim";
-        "-h" = {
-          position = "anywhere";
-          expansion = "-h 2>&1 | bathelp";
-        };
         "--help" = {
           position = "anywhere";
           expansion = "--help 2>&1 | bathelp";

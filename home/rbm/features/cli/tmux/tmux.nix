@@ -1,14 +1,4 @@
-{ pkgs, ... }: {
-  imports = [
-    ./localhost.nix
-    ./mcgeedia.nix
-    ./tmux.nix
-  ];
-
-  home.packages = with pkgs; [
-    python311Packages.libtmux
-  ];
-
+{ pkgs, ...}: {
   programs.tmux = {
     enable = true;
     baseIndex = 1;

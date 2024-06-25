@@ -50,8 +50,7 @@
       };
       map = {
         normal = {
-	        "Super Space" = "spawn 'footclient'";
-          "Super T" = "spawn 'foot'";
+	        "Super Space" = "spawn 'foot tmuxp localhost'";
           "None Menu" = "spawn '$(fuzzel)'";
           "Super Menu" = "spawn '$(fuzzel -dR)'";
 
