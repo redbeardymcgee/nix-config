@@ -1,6 +1,6 @@
 { pkgs, ... }: {
   home.sessionVariables = {
-    BATPAGER = "less -RF";
+    BATPAGER = "less -FiRX";
     MANPAGER = "sh -c 'col -bx | bat -l man -p'";
     MANROFFOPT = "-c";
   };

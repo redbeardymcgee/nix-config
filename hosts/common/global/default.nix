@@ -1,11 +1,11 @@
 {
-  inputs,
+  # inputs,
   outputs,
   pkgs,
   ...
 }: {
   imports = [
-      inputs.home-manager.nixosModules.home-manager
+      # inputs.home-manager.nixosModules.home-manager
       ./locale.nix
       ./nix-ld.nix
       ./nix.nix
@@ -43,14 +43,14 @@
     };
   };
 
-  home-manager = {
-    backupFileExtension = "backup";
-    extraSpecialArgs = {
-      inherit inputs outputs;
-    };
-    useGlobalPkgs = true;
-    useUserPackages = true;
-  };
+  # home-manager = {
+  #   backupFileExtension = "backup";
+  #   extraSpecialArgs = {
+  #     inherit inputs outputs;
+  #   };
+  #   useGlobalPkgs = true;
+  #   useUserPackages = true;
+  # };
 
   programs.dconf.enable = true;
 

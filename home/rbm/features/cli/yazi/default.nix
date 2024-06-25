@@ -1,7 +1,8 @@
-{ pkgs, ... }: {
+{ pkgs, yazi, ... }: {
   home.packages = with pkgs; [
     poppler
     ripdrag
+    # yazi.packages.${pkgs.system}.default
   ];
   programs.yazi = {
     enable = true;

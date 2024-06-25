@@ -73,19 +73,27 @@
           home-manager.backupFileExtension = "backup";
           home-manager.users.rbm = import ./home/rbm/arcturus.nix;
         }
+        ({ pkgs, ... }: {
+						environment.systemPackages = [ yazi.packages.${pkgs.system}.default ];
+        })
       ];
         specialArgs = { inherit inputs outputs; };
       };
     };
 
-    homeConfigurations = {
-      rbm = lib.homeManagerConfiguration {
-        extraSpecialArgs = {
-          inherit inputs outputs;
-        };
-        modules = [ ./home/rbm/arcturus.nix ];
-        pkgs = pkgsFor.x86_64-linux;
-      };
-    };
+    # homeConfigurations = {
+    #   rbm = lib.homeManagerConfiguration {
+    #     extraSpecialArgs = {
+    #       inherit inputs outputs;
+    #     };
+    #     modules = [
+    #       ./home/rbm/arcturus.nix
+    # 	#      ({ pkgs, ... }: {
+    # 	# 	home.packages = [ yazi.packages.${pkgs.system}.default ];
+    # 	# })
+    #     ];
+    #     pkgs = pkgsFor.x86_64-linux;
+    #   };
+    # };
   };
 }
