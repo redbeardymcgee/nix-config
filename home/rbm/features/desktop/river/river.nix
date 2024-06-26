@@ -50,14 +50,15 @@
       };
       map = {
         normal = {
-	        "Super Space" = "spawn 'foot tmuxp localhost'";
+	        "Super Space" = "spawn 'foot tmuxp load -y localhost'";
           "None Menu" = "spawn '$(rofi -show combi)'";
           "Super Menu" = "spawn '$(rofi -show run)'";
-          "Super+Shift A" = "spawn '$(rofi-pulse-select)'";
+          "Super+Shift A" = "spawn '$(rofi-pulse-select sink)'";
           "Super+Shift B" = "spawn '$(rofi-bluetooth)'";
           "Super+Shift E" = "spawn '$(rofimoji)'";
-          "Super+Shift P" = "spawn '$(rofi-power-menu)'";
+          "Super+Shift P" = "spawn '$(rofi -show power-menu -modi power-menu:rofi-power-menu)'";
           "Super+Shift X" = "spawn '$(rofi-rbw)'";
+          # "None Print" = "spawn '$(rofi-screenshot)'";
 
           "Super N" = "spawn 'fnottctl dismiss'";
           "Super+Alt N" = "spawn 'fnottctl dismiss all'";
@@ -80,25 +81,25 @@
 	        "Super K" = "focus-view up";
 	        "Super L" = "focus-view right";
 
-          "Super+Alt H" = "resize horizontal -100";
-          "Super+Alt J" = "resize vertical 100";
-          "Super+Alt K" = "resize vertical -100";
-          "Super+Alt L" = "resize horizontal 100";
-
-          "Super+Alt+Control H" = "snap left";
-          "Super+Alt+Control J" = "snap down";
-          "Super+Alt+Control K" = "snap up";
-          "Super+Alt+Control L" = "snap right";
-
-	        "Super+Alt+Shift H" = "move left 100";
-	        "Super+Alt+Shift J" = "move down 100";
-	        "Super+Alt+Shift K" = "move up 100";
-	        "Super+Alt+Shift L" = "move right 100";
-
 	        "Super+Shift H" = "swap left";
 	        "Super+Shift J" = "swap down";
 	        "Super+Shift K" = "swap up";
 	        "Super+Shift L" = "swap right";
+
+          # "Super+Alt H" = "resize horizontal -100";
+          # "Super+Alt J" = "resize vertical 100";
+          # "Super+Alt K" = "resize vertical -100";
+          # "Super+Alt L" = "resize horizontal 100";
+
+          # "Super+Alt+Control H" = "snap left";
+          # "Super+Alt+Control J" = "snap down";
+          # "Super+Alt+Control K" = "snap up";
+          # "Super+Alt+Control L" = "snap right";
+
+	        # "Super+Alt+Shift H" = "move left 100";
+	        # "Super+Alt+Shift J" = "move down 100";
+	        # "Super+Alt+Shift K" = "move up 100";
+	        # "Super+Alt+Shift L" = "move right 100";
 
           "Super F11" = "enter-mode passthrough";
 	      };

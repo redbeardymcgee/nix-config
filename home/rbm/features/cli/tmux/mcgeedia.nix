@@ -9,6 +9,9 @@
           {
             window_name = "main";
             focus = true;
+            options = {
+              remain-on-exit = true;
+            };
             panes = [
               {
                 shell_command = [
@@ -19,10 +22,13 @@
           }
           {
             window_name = "cfg";
-            start_directory = "~/nix-config";
+            options = {
+              remain-on-exit = true;
+            };
             panes = [
               {
                 shell_command = [
+                  "cd ~/nix-config"
                   "${pkgs.neovim}/bin/nvim ."
                 ];
               }
@@ -30,10 +36,10 @@
           }
           {
             window_name = "docker";
-            start_directory = "/opt/containers";
             panes = [
               {
                 shell_command = [
+                  "cd /opt/containers"
                   "${pkgs.neovim}/bin/nvim ."
                 ];
               }
@@ -42,6 +48,9 @@
           {
             window_name = "cfg";
             window_index = "0";
+            options = {
+              remain-on-exit = true;
+            };
             panes = [
               {
                 shell = "${pkgs.bottom}/bin/btm";

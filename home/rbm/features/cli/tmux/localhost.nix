@@ -8,6 +8,9 @@
           {
             window_name = "main";
             focus = true;
+            options = {
+              remain-on-exit = true;
+            };
             panes = [
               { shell_command = [ "yy" ]; }
             ];
@@ -15,6 +18,9 @@
           {
             window_name = "cfg";
             start_directory = "~/nix-config";
+            options = {
+              remain-on-exit = true;
+            };
             panes = [
               {
                 shell_command = [
@@ -24,8 +30,11 @@
             ];
           }
           {
-            window_name = "cfg";
+            window_name = "monitor";
             window_index = "0";
+            options = {
+              remain-on-exit = true;
+            };
             panes = [
               {
                 shell = "${pkgs.bottom}/bin/btm";

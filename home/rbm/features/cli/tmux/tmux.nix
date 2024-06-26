@@ -30,6 +30,7 @@
       run '~/.config/tmux/plugins/tpm/tpm'
     '';
     historyLimit = 10000;
+    keyMode = "vi";
     mouse = true;
     newSession = true;
     plugins = with pkgs.tmuxPlugins; [

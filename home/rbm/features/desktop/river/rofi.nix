@@ -23,7 +23,7 @@
       rofi-power-menu
       rofi-pulse-select
       rofi-rbw
-      rofi-screenshot
+      # rofi-screenshot
     ];
     sessionVariables = {
       ROFI_SYSTEMD_TERM = "${pkgs.foot}/bin/foot";
