@@ -1,6 +1,4 @@
 {
-  inputs,
-  outputs,
   pkgs,
   config,
   ...
@@ -9,7 +7,7 @@
 in {
   home-manager = {
     users = {
-      rbm = import ../../../../home/rbm/${config.networking.hostName}.nix;
+      rbm = import ../../../../home/rbm/arcturus.nix;
     };
   };
 
@@ -38,7 +36,7 @@ in {
       #
       # openssh.authorizedKeys.keys = lib.splitString "\n" (builtins.readFile ../../../../home/rbm/ssh.pub);
     ];
-    packages = [pkgs.home-manager];
+    packages = [ pkgs.home-manager ];
     shell = pkgs.bash;
   };
 }

@@ -17,4 +17,13 @@
       };
     };
   };
+
+  wayland.windowManager = {
+    river.settings.map.normal = {
+      "Super N" = "spawn 'fnottctl dismiss'";
+      "Super+Alt N" = "spawn 'fnottctl dismiss all'";
+      "Super+Shift N" = "spawn 'fnottctl actions'";
+    };
+  };
+
 }

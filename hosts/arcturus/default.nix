@@ -1,6 +1,7 @@
 {
   config,
   inputs,
+  outputs,
   pkgs,
   ...
 }: {
@@ -10,6 +11,7 @@
     inputs.nixos-hardware.nixosModules.common-pc
     inputs.nixos-hardware.nixosModules.common-pc-ssd
     inputs.nixos-hardware.nixosModules.common-gpu-nvidia
+    inputs.home-manager.nixosModules.home-manager
 
     ./hardware-configuration.nix
 
@@ -39,7 +41,6 @@
         };
       };
     };
-    enableAllFirmware = true;
     enableRedistributableFirmware = true;
     graphics = {
       enable = true;
@@ -75,7 +76,6 @@
   networking = {
     domain = "home.local";
     hostName = "arcturus";
-    # networkmanager.enable = true;
   };
 
   security.pam.services.swaylock = {};

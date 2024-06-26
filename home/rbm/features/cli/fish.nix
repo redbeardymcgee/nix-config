@@ -1,4 +1,4 @@
-{
+{ pkgs, ... }: {
   programs.fish = {
     enable = true;
 
@@ -15,6 +15,17 @@
         wraps = "yazi";
       };
     };
+
+    plugins = [
+      {
+        name = "grc";
+        src = pkgs.fishPlugins.grc.src;
+      }
+      {
+        name = "autopair";
+        src = pkgs.fishPlugins.autopair.src;
+      }
+    ];
 
     shellAbbrs = rec {
         gp = "gtrash put";
@@ -35,7 +46,7 @@
         v = vim;
     };
 
-    shellAliases = rec {
+    shellAliases = {
       bathelp = "bat --plain --language=help";
 
       dps = ''
@@ -44,4 +55,8 @@
 
     };
   };
+
+  home.packages = with pkgs; [
+    grc
+  ];
 }

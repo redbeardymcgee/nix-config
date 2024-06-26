@@ -1,4 +1,4 @@
-{ ... }: {
+{
   wayland.windowManager.river = {
     enable = true;
 
@@ -28,7 +28,7 @@
         riverctl map $mode None XF86AudioNext  spawn 'playerctl next'
       done
 
-      xdg-user-dirs &
+      xdg-user-dirs-update &
       way-displays > "/tmp/way-displays.$XDG_VTNR.$USER.log" 2>&1 &
       rivertile -view-padding 6 -outer-padding 6 &
     '';
@@ -50,26 +50,10 @@
       };
       map = {
         normal = {
-	        "Super Space" = "spawn 'foot tmuxp load -y localhost'";
-          "None Menu" = "spawn '$(rofi -show combi)'";
-          "Super Menu" = "spawn '$(rofi -show run)'";
-          "Super+Shift A" = "spawn '$(rofi-pulse-select sink)'";
-          "Super+Shift B" = "spawn '$(rofi-bluetooth)'";
-          "Super+Shift E" = "spawn '$(rofimoji)'";
-          "Super+Shift P" = "spawn '$(rofi -show power-menu -modi power-menu:rofi-power-menu)'";
-          "Super+Shift X" = "spawn '$(rofi-rbw)'";
-          # "None Print" = "spawn '$(rofi-screenshot)'";
-
-          "Super N" = "spawn 'fnottctl dismiss'";
-          "Super+Alt N" = "spawn 'fnottctl dismiss all'";
-          "Super+Shift N" = "spawn 'fnottctl actions'";
-
           "Super F" = "toggle-fullscreen";
           "Super+Shift F" = "toggle-float";
 	        "Super Return" = "zoom";
-
 	        "Super Q" = "close";
-          "Super+Shift Q" = "spawn 'swaylock'";
 
           "Super Period" = "focus-output next";
           "Super Comma" = "focus-output previous";
@@ -85,6 +69,8 @@
 	        "Super+Shift J" = "swap down";
 	        "Super+Shift K" = "swap up";
 	        "Super+Shift L" = "swap right";
+
+          # TODO: Layer these into resize and move modes
 
           # "Super+Alt H" = "resize horizontal -100";
           # "Super+Alt J" = "resize vertical 100";

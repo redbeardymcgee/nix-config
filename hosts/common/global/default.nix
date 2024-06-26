@@ -1,11 +1,11 @@
 {
-  # inputs,
+  inputs,
   outputs,
   pkgs,
   ...
 }: {
   imports = [
-      # inputs.home-manager.nixosModules.home-manager
+      inputs.home-manager.nixosModules.home-manager
       ./locale.nix
       ./nix-ld.nix
       ./nix.nix
@@ -43,16 +43,19 @@
     };
   };
 
-  # home-manager = {
-  #   backupFileExtension = "backup";
-  #   extraSpecialArgs = {
-  #     inherit inputs outputs;
-  #   };
-  #   useGlobalPkgs = true;
-  #   useUserPackages = true;
-  # };
+  home-manager = {
+    backupFileExtension = "backup";
+    extraSpecialArgs = {
+      inherit inputs outputs;
+    };
+    useGlobalPkgs = true;
+    useUserPackages = true;
+  };
 
-  programs.dconf.enable = true;
+  programs = {
+    dconf.enable = true;
+    fish.enable = true;
+  };
 
   services = {
     avahi.enable = true;
@@ -60,7 +63,7 @@
   };
 
   system = {
-    autoUpgrade.enable = true;
+    autoUpgrade.enable = false;
     stateVersion = "24.05"; # Did you read the comment?
   };
 }

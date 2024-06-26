@@ -2,10 +2,11 @@
   home.packages = with pkgs; [
     poppler
     ripdrag
-    # yazi.packages.${pkgs.system}.default
   ];
+
   programs.yazi = {
     enable = true;
+
     # package = yazi.packages.${pkgs.system}.default;
     enableFishIntegration = false;
     initLua = ./init.lua;
@@ -97,12 +98,12 @@
       ];
     };
     plugins = {
-      allmytoes = pkgs.fetchFromGitLab {
-        owner = "allmytoes";
-        repo = "allmytoes";
-        rev = "a4ab6b23de491bfea2c889907e5ba41216b3dde9";
-        hash = "sha256-5GKscLo0MRSeWnVJc3aU/VdDxQGeg3P/+WKwkTNnqGc=";
-      };
+      # allmytoes = pkgs.fetchFromGitLab {
+      #   owner = "allmytoes";
+      #   repo = "allmytoes";
+      #   rev = "a4ab6b23de491bfea2c889907e5ba41216b3dde9";
+      #   hash = "sha256-5GKscLo0MRSeWnVJc3aU/VdDxQGeg3P/+WKwkTNnqGc=";
+      # };
       # TODO: yazi 0.26+
       #
       # fast-enter = pkgs.fetchFromGitHub {

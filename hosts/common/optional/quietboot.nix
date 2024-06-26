@@ -12,6 +12,7 @@
   boot = {
     plymouth = {
       enable = true;
+
       theme = "pixels";
       themePackages = with pkgs; [
         (adi1090x-plymouth-themes.override {
@@ -30,7 +31,25 @@
     ];
     consoleLogLevel = 0;
     initrd = {
-      preLVMCommands = "${pkgs.kbd}/bin/setleds +num";
+      systemd = {
+        enable = true;
+
+        units = {
+          activate-numlock = {
+            name = "activate-numlock.service";
+            text = ''
+              [Unit]
+              Description=Activate numlock in early boot
+
+              [Service]
+              ExecStart=${pkgs.kbd}/bin/setleds +num
+
+              [Install]
+              WantedBy=multi-user.target
+            '';
+          };
+        };
+      };
       kernelModules = [ "nvidia" ];
       verbose = false;
     };

@@ -44,4 +44,10 @@
     };
     shellInitLast = "update_cwd_osc";
   };
+
+  wayland.windowManager = {
+    river.settings.map.normal = {
+      "Super Space" = "spawn 'foot tmuxp load -y localhost'";
+    };
+  };
 }
