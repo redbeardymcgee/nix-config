@@ -15,7 +15,13 @@
 
     ../common/global
 
-    ../common/optional
+    ../common/optional/systemd-networkd.nix
+    ../common/optional/gamemode.nix
+    ../common/optional/kmscon.nix
+    ../common/optional/podman.nix
+    ../common/optional/quietboot.nix
+    ../common/optional/steam-hardware.nix
+    ../common/optional/systemd-boot.nix
     ../common/optional/systemd-networkd.nix
 
     ../common/users

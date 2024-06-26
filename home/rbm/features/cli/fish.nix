@@ -1,7 +1,9 @@
 {
   programs.fish = {
     enable = true;
+
     functions = {
+      fish_greeting = "";
       yy = {
         body = ''
           set tmp (mktemp -p $XDG_RUNTIME_DIR yazi-cwd.XXXXXX)
@@ -13,23 +15,33 @@
         wraps = "yazi";
       };
     };
-    interactiveShellInit = ''
-      set -U fish_greeting
-    '';
-    shellAbbrs = {
+
+    shellAbbrs = rec {
         gp = "gtrash put";
         rm = "gtrash put";
-        vim = "nvim";
+
         "--help" = {
           position = "anywhere";
           expansion = "--help 2>&1 | bathelp";
         };
+
+        hm = "home-manager --flake .";
+        hms = "home-manager switch --flake .";
+        snr = "sudo nixos-rebuild --flake .";
+        snrs = "sudo nixos-rebuild switch --flake .";
+
+        vim = "nvim";
+        vi = vim;
+        v = vim;
     };
-    shellAliases = {
+
+    shellAliases = rec {
       bathelp = "bat --plain --language=help";
+
       dps = ''
         docker ps --format "table {{.ID}}\t{{.Names}}\t{{.Networks}}\t{{.State}}\t{{.CreatedAt}}"
       '';
+
     };
   };
 }

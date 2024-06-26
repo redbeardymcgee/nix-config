@@ -51,8 +51,13 @@
       map = {
         normal = {
 	        "Super Space" = "spawn 'foot tmuxp localhost'";
-          "None Menu" = "spawn '$(fuzzel)'";
-          "Super Menu" = "spawn '$(fuzzel -dR)'";
+          "None Menu" = "spawn '$(rofi -show combi)'";
+          "Super Menu" = "spawn '$(rofi -show run)'";
+          "Super+Shift A" = "spawn '$(rofi-pulse-select)'";
+          "Super+Shift B" = "spawn '$(rofi-bluetooth)'";
+          "Super+Shift E" = "spawn '$(rofimoji)'";
+          "Super+Shift P" = "spawn '$(rofi-power-menu)'";
+          "Super+Shift X" = "spawn '$(rofi-rbw)'";
 
           "Super N" = "spawn 'fnottctl dismiss'";
           "Super+Alt N" = "spawn 'fnottctl dismiss all'";
@@ -116,8 +121,8 @@
       set-cursor-warp = "on-focus-change";
       set-repeat = "50 300";
       spawn = [
-        "systemctl --user import-environment"
-        "foot tmuxp localhost"
+        "'systemctl --user import-environment'"
+        "'foot tmuxp localhost'"
         "firefox"
         "vesktop"
       ];

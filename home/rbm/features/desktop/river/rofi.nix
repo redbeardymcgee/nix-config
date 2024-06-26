@@ -6,7 +6,7 @@
     extraConfig = {
       cycle = true;
       font = "FiraCode Nerd Font 14";
-      modes = "combi,drun,run,window";
+      modes = "combi,drun,window";
       terminal = "${pkgs.foot}/bin/foot";
       kb-primary-paste = "Control+v,Shift+Insert";
       kb-secondary-paste = "Control+Shift+v,Control+Insert";

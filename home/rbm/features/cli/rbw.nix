@@ -4,7 +4,7 @@
     settings = {
       email = "redbeardymcgee@gmail.com";
       lock_timeout = 86400;
-      pinentry = pkgs.rofi-pinentry;
+      pinentry = pkgs.pinentry-rofi;
     };
   };
 }
