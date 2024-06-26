@@ -2,8 +2,9 @@
   imports = [
     ./fnott.nix
     ./foot.nix
-    ./fuzzel.nix
+    # ./fuzzel.nix
     ./river.nix
+    ./rofi.nix
     # ./tofi.nix
     ./swaylock.nix
     ./way-displays.nix
