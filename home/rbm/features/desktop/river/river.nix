@@ -109,7 +109,7 @@
       set-repeat = "50 300";
       spawn = [
         "'systemctl --user import-environment'"
-        "'foot tmuxp localhost'"
+        "'foot tmuxp load -y localhost'"
         "firefox"
         "vesktop"
       ];
