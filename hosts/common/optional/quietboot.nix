@@ -39,10 +39,10 @@
             name = "activate-numlock.service";
             text = ''
               [Unit]
-              Description=Activate numlock in early boot
+              Description=Activate numlock before login
 
               [Service]
-              ExecStart=${pkgs.kbd}/bin/setleds +num
+              ExecStart=${pkgs.numlockx}/bin/numlockx on; ${pkgs.kbd}/bin/setleds +num
 
               [Install]
               WantedBy=multi-user.target
