@@ -1,10 +1,6 @@
 {pkgs, ...}: {
   services.swayidle = {
     enable = true;
-    # events = {
-    #   event = "after-resume";
-    #   command = "${pkgs.swaylock}/bin/swaylock";
-    # };
     timeouts = [
       {
         timeout = 180;
