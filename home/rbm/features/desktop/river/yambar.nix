@@ -1,12 +1,23 @@
 {lib, ...}: {
   programs.yambar = {
     enable = true;
-    settings = let
+    settings = with lib.lists; let
       red = "F38BA8FF";
-
       mantle = "181825FF";
       overlay1 = "7F849CFF";
       subtext1 = "BAC2DEFF";
+
+      anchors = fold (a: b: a // b) {} (
+        forEach (range 1 9) (i: let
+          num = toString i;
+        in {
+          "id == ${num}" = {
+            string = {
+              text = "${num}";
+            };
+          };
+        })
+      );
 
       bg_default = {
         stack = [
@@ -22,19 +33,7 @@
 
       font_default = "FiraCode Nerd Font:size=10";
     in {
-      bar = with lib.lists; let
-        anchors = fold (a: b: a // b) {} (
-          forEach (range 1 9) (i: let
-            num = toString i;
-          in {
-            "id == ${num}" = {
-              string = {
-                text = "${num}";
-              };
-            };
-          })
-        );
-
+      bar = let
         river_base = {
           left-margin = 10;
           right-margin = 13;
