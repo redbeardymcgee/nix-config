@@ -31,7 +31,7 @@
     ../common/users
   ];
 
-  fileSystems."/boot".options = [ "umask=0077" ];
+  fileSystems."/boot".options = ["umask=0077"];
 
   hardware = {
     bluetooth = {

@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{pkgs, ...}: {
   home.sessionVariables = {
     BATPAGER = "less -FiRX";
     MANPAGER = "sh -c 'col -bx | bat -l man -p'";

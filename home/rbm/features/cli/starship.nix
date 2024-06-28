@@ -1,10 +1,10 @@
-{ lib, ... }: {
+{lib, ...}: {
   programs.starship = {
     enable = true;
     enableTransience = true;
     settings = {
       format = lib.concatStrings [
-        '' ''${custom.yazi} ''
+        ''''${custom.yazi} ''
         "$character"
       ];
       right_format = lib.concatStrings [
@@ -72,7 +72,8 @@
         symbol = " ";
         format = " elm [$symbol($version )]($style)";
       };
-      env_var.VIMSHELL = { # vim subshell
+      env_var.VIMSHELL = {
+        # vim subshell
         format = "[$env_value]($style)";
         style = "green italic";
       };
@@ -155,7 +156,7 @@
       };
       nodejs = {
         format = " node [◫ ($version)](italic bright-green)";
-        detect_files = [ "package-lock.json" "yarn.lock" ];
+        detect_files = ["package-lock.json" "yarn.lock"];
         version_format = "$major.$minor";
         symbol = " ";
       };

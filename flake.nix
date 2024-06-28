@@ -41,14 +41,15 @@
     inherit (self) outputs;
     lib = nixpkgs.lib // home-manager.lib;
     forEachSystem = f: lib.genAttrs (import systems) (system: f pkgsFor.${system});
-    pkgsFor = lib.genAttrs (import systems)
-    (
-      system:
-        import nixpkgs {
-          inherit system;
-          config.allowUnfree = true;
-        }
-    );
+    pkgsFor =
+      lib.genAttrs (import systems)
+      (
+        system:
+          import nixpkgs {
+            inherit system;
+            config.allowUnfree = true;
+          }
+      );
   in {
     inherit lib;
     nixosModules = import ./modules/nixos;
@@ -62,13 +63,13 @@
     nixosConfigurations = {
       arcturus = lib.nixosSystem {
         modules = [
-        ./hosts/arcturus
-        ({ pkgs, ... }: {
-          environment.systemPackages = [ yazi.packages.${pkgs.system}.default ];
-        })
-      ];
+          ./hosts/arcturus
+          ({pkgs, ...}: {
+            environment.systemPackages = [yazi.packages.${pkgs.system}.default];
+          })
+        ];
 
-        specialArgs = { inherit inputs outputs; };
+        specialArgs = {inherit inputs outputs;};
       };
     };
 

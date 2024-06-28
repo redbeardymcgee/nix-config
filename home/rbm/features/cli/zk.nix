@@ -11,7 +11,7 @@
       filter = {
         recents = "--sort created- --created-after 'last two weeks'";
       };
-      format= {
+      format = {
         markdown = {
           link-format = "[[{{filename}}]]";
           colon-tags = true;

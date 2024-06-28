@@ -1,8 +1,12 @@
-{ pkgs, lib, ... }: {
- xdg.configFile = {
+{
+  pkgs,
+  lib,
+  ...
+}: {
+  xdg.configFile = {
     "tmuxp/mcgeedia.json" = {
       enable = true;
-      text = lib.generators.toJSON { } {
+      text = lib.generators.toJSON {} {
         session_name = "mcgeedia";
         shell_command_before = "ssh mcgeedia";
         windows = [

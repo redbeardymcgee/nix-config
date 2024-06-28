@@ -1,4 +1,4 @@
-{ lib, ... }: {
+{lib, ...}: {
   wayland.windowManager.river = {
     enable = true;
 
@@ -11,28 +11,31 @@
     settings = {
       declare-mode = [
         "locked"
-	      "normal"
-	      "passthrough"
+        "normal"
+        "passthrough"
         "resize"
       ];
       default-layout = "rivertile";
       focus-follows-cursor = "normal";
       input = {
         pointer-main = {
-      	  accel-profile = "flat";
-      	  events = true;
-      	  tap = false;
-      	};
+          accel-profile = "flat";
+          events = true;
+          tap = false;
+        };
       };
       map = with lib.lists; let
         allTagsMask = toString ((pow2 32) - 1);
-        pow2 = n: if n == 0 then 1 else 2 * (pow2 (n - 1));
-        tagMappings = fold (a: b: a // b) {} (forEach (range 1 9) (i:
-          let
-            tagmask = toString (pow2 (i - 1));
-            num = toString i;
-          in
-            {
+        pow2 = n:
+          if n == 0
+          then 1
+          else 2 * (pow2 (n - 1));
+        tagMappings = fold (a: b: a // b) {} (
+          forEach (range 1 9) (
+            i: let
+              tagmask = toString (pow2 (i - 1));
+              num = toString i;
+            in {
               "Super ${num}" = "set-focused-tags ${tagmask}";
               "Super+Shift ${num}" = "set-view-tags ${tagmask}";
               "Super+Control ${num}" = "toggle-focused-tags ${tagmask}";
@@ -42,17 +45,16 @@
         );
 
         mediaKeys = {
-          "None XF86AudioMute" =  "spawn 'swayosd-client --output-volume mute-toggle'";
-          "None XF86AudioLowerVolume" =  "spawn 'swayosd-client --output-volume lower'";
-          "None XF86AudioRaiseVolume" =  "spawn 'swayosd-client --output-volume raise'";
+          "None XF86AudioMute" = "spawn 'swayosd-client --output-volume mute-toggle'";
+          "None XF86AudioLowerVolume" = "spawn 'swayosd-client --output-volume lower'";
+          "None XF86AudioRaiseVolume" = "spawn 'swayosd-client --output-volume raise'";
 
           "None XF86AudioMedia" = "spawn 'playerctl play-pause'";
           "None XF86AudioNext" = "spawn 'playerctl next'";
           "None XF86AudioPlay" = "spawn 'playerctl play-pause'";
           "None XF86AudioPrev" = "spawn 'playerctl previous'";
         };
-      in
-      {
+      in {
         normal = {
           inherit tagMappings mediaKeys;
 
@@ -83,7 +85,7 @@
           "Super+Shift 0" = "set-view-tags ${allTagsMask}";
         };
         locked = mediaKeys;
-        passthrough  = {
+        passthrough = {
           "Super F11" = "enter-mode normal";
         };
         windowmove = {
@@ -103,7 +105,6 @@
           # "Super+Alt+Shift J" = "move down 100";
           # "Super+Alt+Shift K" = "move up 100";
           # "Super+Alt+Shift L" = "move right 100";
-
         };
       };
       map-pointer = {

@@ -1,8 +1,12 @@
-{ pkgs, lib, ...}: {
+{
+  pkgs,
+  lib,
+  ...
+}: {
   xdg.configFile = {
     "tmuxp/localhost.json" = {
       enable = true;
-      text = lib.generators.toJSON { } {
+      text = lib.generators.toJSON {} {
         session_name = "localhost";
         windows = [
           {
@@ -12,7 +16,7 @@
               remain-on-exit = true;
             };
             panes = [
-              { shell_command = [ "yy" ]; }
+              {shell_command = ["yy"];}
             ];
           }
           {

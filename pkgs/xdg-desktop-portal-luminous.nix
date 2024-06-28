@@ -1,25 +1,25 @@
-{ lib
-, stdenv
-, clang
-, cargo
-, cmake
-, rustc
-, libxkbcommon
-, glib
-, inih
-, pango
-, cairo
-, fetchFromGitHub
-, meson
-, ninja
-, pkg-config
-, pipewire
-, slurp
-, wayland
-, wayland-protocols
-, wayland-scanner
+{
+  lib,
+  stdenv,
+  clang,
+  cargo,
+  cmake,
+  rustc,
+  libxkbcommon,
+  glib,
+  inih,
+  pango,
+  cairo,
+  fetchFromGitHub,
+  meson,
+  ninja,
+  pkg-config,
+  pipewire,
+  slurp,
+  wayland,
+  wayland-protocols,
+  wayland-scanner,
 }:
-
 stdenv.mkDerivation rec {
   pname = "xdg-desktop-portal-luminous";
   version = "0.1.4";
@@ -32,7 +32,7 @@ stdenv.mkDerivation rec {
   };
 
   strictDeps = true;
-  depsBuildBuild = [ pkg-config ];
+  depsBuildBuild = [pkg-config];
   nativeBuildInputs = [
     cairo
     cargo
@@ -56,13 +56,13 @@ stdenv.mkDerivation rec {
   ];
 
   postInstall = ''
-    wrapProgram $out/libexec/xdg-desktop-portal-wlr --prefix PATH ":" ${lib.makeBinPath [ slurp ]}
+    wrapProgram $out/libexec/xdg-desktop-portal-wlr --prefix PATH ":" ${lib.makeBinPath [slurp]}
   '';
 
   meta = with lib; {
     homepage = "https://github.com/emersion/xdg-desktop-portal-wlr";
     description = "xdg-desktop-portal backend for wlroots";
-    maintainers = with maintainers; [ redbeardymcgee ];
+    maintainers = with maintainers; [redbeardymcgee];
     platforms = platforms.linux;
     license = licenses.gpl3;
   };

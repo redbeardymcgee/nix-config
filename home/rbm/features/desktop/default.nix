@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{pkgs, ...}: {
   imports = [
     ./firefox.nix
     # ./xdg-terminal-exec.nix

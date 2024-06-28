@@ -1,4 +1,4 @@
-{ ... }: {
+{...}: {
   services.fnott = {
     enable = true;
     settings = {
@@ -25,5 +25,4 @@
       "Super+Shift N" = "spawn 'fnottctl actions'";
     };
   };
-
 }

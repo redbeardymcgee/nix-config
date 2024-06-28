@@ -1,2 +1,1 @@
 {services.easyeffects.enable = true;}
-

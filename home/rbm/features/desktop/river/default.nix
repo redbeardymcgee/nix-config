@@ -8,6 +8,7 @@
     # ./tofi.nix
     ./swaylock.nix
     ./way-displays.nix
+    ./yambar.nix
 
     ../../services/easyeffects.nix
     ../../services/ssh-agent.nix

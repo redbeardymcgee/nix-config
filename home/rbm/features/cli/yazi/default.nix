@@ -1,4 +1,8 @@
-{ pkgs, yazi, ... }: {
+{
+  pkgs,
+  yazi,
+  ...
+}: {
   home.packages = with pkgs; [
     poppler
     ripdrag
@@ -13,7 +17,7 @@
     keymap = {
       manager.prepend_keymap = [
         {
-          on = [ "<C-s>" ];
+          on = ["<C-s>"];
           run = ''shell "$SHELL" --block --confirm'';
           desc = "Open shell here";
         }
@@ -23,20 +27,20 @@
         #   desc = "Smart filter";
         # }
         {
-          on = [ "p" ];
+          on = ["p"];
           run = "plugin --sync smart-paste";
           desc = "Paste into the hovered directory or CWD";
         }
         {
-          on = [ "<C-n>" ];
+          on = ["<C-n>"];
           run = ''shell 'ripdrag "$@" -x 2>/dev/null &' --confirm'';
           desc = "Drag and drop into the hovered directory or CWD";
         }
         {
-          on = [ "y" ];
+          on = ["y"];
           run = [
             "yank"
-            '' shell --confirm 'echo "$@" | xclip -i -selection clipboard -t text/uri-list' ''
+            ''shell --confirm 'echo "$@" | xclip -i -selection clipboard -t text/uri-list' ''
           ];
           desc = "Copy selected paths and files to clipboard";
         }
@@ -46,17 +50,17 @@
         #   desc = "Keyjump (Normal mode)";
         # }
         {
-          on = [ "f"  "g" ];
+          on = ["f" "g"];
           run = "plugin fg";
           desc = "find file by content (fuzzy match)";
         }
         {
-          on = [ "f"  "G" ];
+          on = ["f" "G"];
           run = "plugin fg --args='rg'";
           desc = "find file by content (ripgrep match)";
         }
         {
-          on = [ "f"  "f" ];
+          on = ["f" "f"];
           run = "plugin fg --args='fzf'";
           desc = "find file by file name";
         }
@@ -172,10 +176,22 @@
     settings = {
       plugin = {
         preloaders = [
-          { mime = "image/vnd.djvu"; run = "noop"; }
-          { mime = "image/*"; run = "allmytoes"; }
-          { mime = "video/*"; run = "video"; }
-          { mime = "application/pdf"; run = "pdf"; }
+          {
+            mime = "image/vnd.djvu";
+            run = "noop";
+          }
+          {
+            mime = "image/*";
+            run = "allmytoes";
+          }
+          {
+            mime = "video/*";
+            run = "video";
+          }
+          {
+            mime = "application/pdf";
+            run = "pdf";
+          }
           # TODO: yazi 0.26+
           # {
           #   name = "*";
@@ -186,27 +202,91 @@
           # }
         ];
         previewers = [
-          { name = "*/"; run = "folder"; sync = true; }
-          { mime = "text/*"; run = "code"; }
-          { mime = "*/xml"; run = "code"; }
-          { mime = "*/javascript"; run = "code"; }
-          { mime = "*/x-wine-extension-ini"; run = "code"; }
-          { mime = "application/json"; run = "json"; }
-          { mime = "image/vnd.djvu"; run = "noop"; }
-          { mime = "image/*"; run = "allmytoes"; }
-          { mime = "video/*"; run = "video"; }
-          { mime = "application/pdf"; run = "pdf"; }
-          { mime = "application/*zip"; run = "ouch"; }
-          { mime = "application/x-tar"; run = "ouch"; }
-          { mime = "application/x-bzip"; run = "ouch"; }
-          { mime = "application/x-bzip2"; run = "ouch"; }
-          { mime = "application/x-7z-compressed"; run = "ouch"; }
-          { mime = "application/x-rar"; run = "ouch"; }
-          { mime = "application/x-xz"; run = "ouch"; }
-          { mime = "text/csv"; run = "miller"; }
-          { mime = "audio/*"; run = "exifaudio"; }
-          { name = "*.md"; run = "glow"; }
-          { name = "*"; run = "hexyl"; }
+          {
+            name = "*/";
+            run = "folder";
+            sync = true;
+          }
+          {
+            mime = "text/*";
+            run = "code";
+          }
+          {
+            mime = "*/xml";
+            run = "code";
+          }
+          {
+            mime = "*/javascript";
+            run = "code";
+          }
+          {
+            mime = "*/x-wine-extension-ini";
+            run = "code";
+          }
+          {
+            mime = "application/json";
+            run = "json";
+          }
+          {
+            mime = "image/vnd.djvu";
+            run = "noop";
+          }
+          {
+            mime = "image/*";
+            run = "allmytoes";
+          }
+          {
+            mime = "video/*";
+            run = "video";
+          }
+          {
+            mime = "application/pdf";
+            run = "pdf";
+          }
+          {
+            mime = "application/*zip";
+            run = "ouch";
+          }
+          {
+            mime = "application/x-tar";
+            run = "ouch";
+          }
+          {
+            mime = "application/x-bzip";
+            run = "ouch";
+          }
+          {
+            mime = "application/x-bzip2";
+            run = "ouch";
+          }
+          {
+            mime = "application/x-7z-compressed";
+            run = "ouch";
+          }
+          {
+            mime = "application/x-rar";
+            run = "ouch";
+          }
+          {
+            mime = "application/x-xz";
+            run = "ouch";
+          }
+          {
+            mime = "text/csv";
+            run = "miller";
+          }
+          {
+            mime = "audio/*";
+            run = "exifaudio";
+          }
+          {
+            name = "*.md";
+            run = "glow";
+          }
+          {
+            name = "*";
+            run = "hexyl";
+          }
         ];
       };
     };

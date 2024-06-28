@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{pkgs, ...}: {
   imports = [
     ./features/global
 
@@ -6,8 +6,6 @@
     ./features/desktop
     ./features/desktop/river
     ./features/desktop/wayland
-
-    ./features/services/udisks2.nix
   ];
 
   home.packages = with pkgs; [

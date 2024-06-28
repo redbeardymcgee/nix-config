@@ -4,7 +4,8 @@
   pkgs,
   ...
 }: {
-  imports = [
+  imports =
+    [
       inputs.home-manager.nixosModules.home-manager
       ./locale.nix
       ./nix.nix
@@ -66,5 +67,3 @@
     stateVersion = "24.05"; # Did you read the comment?
   };
 }
-
-

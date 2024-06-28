@@ -7,22 +7,22 @@
   ...
 }: {
   imports =
-  [
-    inputs.catppuccin.homeManagerModules.catppuccin
+    [
+      inputs.catppuccin.homeManagerModules.catppuccin
 
-    ./nixpkgs.nix
-  ]
-  ++ (builtins.attrValues outputs.homeManagerModules);
+      ./nixpkgs.nix
+    ]
+    ++ (builtins.attrValues outputs.homeManagerModules);
 
-   catppuccin = {
-     enable = true;
-     flavor = "mocha";
-   };
+  catppuccin = {
+    enable = true;
+    flavor = "mocha";
+  };
 
   dconf.settings = {
     "org/virt-manager/virt-manager/connections" = {
-      autoconnect = [ "qemu:///system" ];
-      uris = [ "qemu:///system" ];
+      autoconnect = ["qemu:///system"];
+      uris = ["qemu:///system"];
     };
   };
 

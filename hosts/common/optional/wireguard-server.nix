@@ -1,4 +1,4 @@
-{ ... }: {
+{...}: {
   networking.firewall.allowedUDPPorts = [51820];
   networking.useNetworkd = true;
   systemd.network = {
@@ -40,4 +40,3 @@
     };
   };
 }
-

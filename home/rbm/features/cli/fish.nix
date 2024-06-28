@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{pkgs, ...}: {
   programs.fish = {
     enable = true;
 
@@ -28,22 +28,22 @@
     ];
 
     shellAbbrs = rec {
-        gp = "gtrash put";
-        rm = "gtrash put";
+      gp = "gtrash put";
+      rm = "gtrash put";
 
-        "--help" = {
-          position = "anywhere";
-          expansion = "--help 2>&1 | bathelp";
-        };
+      "--help" = {
+        position = "anywhere";
+        expansion = "--help 2>&1 | bathelp";
+      };
 
-        hm = "home-manager --flake .";
-        hms = "home-manager switch --flake .";
-        snr = "sudo nixos-rebuild --flake .";
-        snrs = "sudo nixos-rebuild switch --flake .";
+      hm = "home-manager --flake .";
+      hms = "home-manager switch --flake .";
+      snr = "sudo nixos-rebuild --flake .";
+      snrs = "sudo nixos-rebuild switch --flake .";
 
-        vim = "nvim";
-        vi = vim;
-        v = vim;
+      vim = "nvim";
+      vi = vim;
+      v = vim;
     };
 
     shellAliases = {

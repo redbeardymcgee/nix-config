@@ -1,11 +1,8 @@
-{
-  pkgs,
-  ...
-}: {
+{pkgs, ...}: {
   console = {
     earlySetup = true;
     font = "ter-u14n";
-    packages = with pkgs; [ terminus_font ];
+    packages = with pkgs; [terminus_font];
     useXkbConfig = true;
   };
 
@@ -16,7 +13,7 @@
       theme = "pixels";
       themePackages = with pkgs; [
         (adi1090x-plymouth-themes.override {
-          selected_themes = [ "pixels" ];
+          selected_themes = ["pixels"];
         })
       ];
     };
@@ -50,7 +47,7 @@
       #     };
       #   };
       # };
-      kernelModules = [ "nvidia" ];
+      kernelModules = ["nvidia"];
       verbose = false;
     };
   };

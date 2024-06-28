@@ -1,7 +1,4 @@
-{
-  config,
-  ...
-}: {
+{config, ...}: {
   boot.extraModulePackages = [config.boot.kernelPackages.wireguard];
   systemd.network = {
     enable = true;
@@ -18,7 +15,7 @@
           PrivateKeyFile = "/run/keys/wireguard-privkey";
           ListenPort = 9918;
         };
-        wireguardPeers = [          
+        wireguardPeers = [
           # configuration since nixos-unstable/nixos-24.11
           {
             PublicKey = "OhApdFoOYnKesRVpnYRqwk3pdM247j8PPVH5K7aIKX0=";

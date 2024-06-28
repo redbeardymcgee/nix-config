@@ -11,7 +11,7 @@
     enable = true;
     dnssec = "true";
     dnsovertls = "true";
-    domains = [ "~." ];
+    domains = ["~."];
     fallbackDns = [
       "1.1.1.1"
       "1.0.0.1"
