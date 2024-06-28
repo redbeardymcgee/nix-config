@@ -72,16 +72,16 @@
       };
     };
 
-    # homeConfigurations = {
-    #   rbm = lib.homeManagerConfiguration {
-    #     extraSpecialArgs = {
-    #       inherit inputs outputs;
-    #     };
-    #     modules = [
-    #       ./home/rbm/arcturus.nix
-    #     ];
-    #     pkgs = pkgsFor.x86_64-linux;
-    #   };
-    # };
+    homeConfigurations = {
+      rbm = lib.homeManagerConfiguration {
+        extraSpecialArgs = {
+          inherit inputs outputs;
+        };
+        modules = [
+          ./home/rbm/arcturus.nix
+        ];
+        pkgs = pkgsFor.x86_64-linux;
+      };
+    };
   };
 }

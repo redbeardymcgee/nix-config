@@ -31,25 +31,25 @@
     ];
     consoleLogLevel = 0;
     initrd = {
-      systemd = {
-        enable = true;
-
-        units = {
-          activate-numlock = {
-            name = "activate-numlock.service";
-            text = ''
-              [Unit]
-              Description=Activate numlock before login
-
-              [Service]
-              ExecStart=${pkgs.numlockx}/bin/numlockx on; ${pkgs.kbd}/bin/setleds +num
-
-              [Install]
-              WantedBy=multi-user.target
-            '';
-          };
-        };
-      };
+      # systemd = {
+      #   enable = true;
+      #
+      #   units = {
+      #     activate-numlock = {
+      #       name = "activate-numlock.service";
+      #       text = ''
+      #         [Unit]
+      #         Description=Activate numlock before login
+      #
+      #         [Service]
+      #         ExecStart=${pkgs.kbd}/bin/setleds +num
+      #
+      #         [Install]
+      #         WantedBy=multi-user.target
+      #       '';
+      #     };
+      #   };
+      # };
       kernelModules = [ "nvidia" ];
       verbose = false;
     };

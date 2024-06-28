@@ -4,7 +4,6 @@
       settings = {
         default_session = {
           command = /*sh*/ ''
-          ${pkgs.numlockx}/bin/numlockx on &
           ${pkgs.greetd.tuigreet}/bin/tuigreet \
             --asterisks \
             --cmd ${pkgs.river}/bin/river \

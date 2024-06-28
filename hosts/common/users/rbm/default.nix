@@ -5,11 +5,11 @@
 }: let
   ifExist = groups: builtins.filter (group: builtins.hasAttr group config.users.groups) groups;
 in {
-  home-manager = {
-    users = {
-      rbm = import ../../../../home/rbm/arcturus.nix;
-    };
-  };
+  # home-manager = {
+  #   users = {
+  #     rbm = import ../../../../home/rbm/arcturus.nix;
+  #   };
+  # };
 
   users.users.rbm = {
     description = "josh";
