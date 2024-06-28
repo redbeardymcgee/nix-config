@@ -38,7 +38,8 @@
               "Super+Control ${num}" = "toggle-focused-tags ${tagmask}";
               "Super+Shift+Control ${num}" = "toggle-view-tags ${tagmask}";
             }
-          ));
+          )
+        );
 
         mediaKeys = {
           "None XF86AudioMute" =  "spawn 'swayosd-client --output-volume mute-toggle'";

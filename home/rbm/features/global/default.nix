@@ -33,7 +33,7 @@
       pavucontrol
       unzip
       xdg-user-dirs
-      # x-terminal-emulator
+      # xdg-terminal-emulator
       # xterm-256color
     ];
     stateVersion = lib.mkDefault "24.05";
@@ -51,6 +51,4 @@
   };
 
   news.display = "show";
-
-  # programs.home-manager.enable = true;
 }
