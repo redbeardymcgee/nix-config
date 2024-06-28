@@ -7,7 +7,6 @@
   imports = [
       inputs.home-manager.nixosModules.home-manager
       ./locale.nix
-      ./nix-ld.nix
       ./nix.nix
       ./qemu.nix
       ./sudo.nix

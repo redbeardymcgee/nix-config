@@ -16,5 +16,6 @@
     ../../services/remmina.nix
     ../../services/swayidle.nix
     ../../services/swayosd.nix
+    ../../services/udiskie.nix
   ];
 }
