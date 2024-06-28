@@ -135,6 +135,35 @@
             };
           }
         ];
+
+        center = [
+          {
+            clock = {
+              time-format = "%H:%M %Z";
+              content = [
+                {
+                  string = {
+                    text = "󰸗";
+                    right-margin = 2;
+                  };
+                }
+                {
+                  string = {
+                    text = "{date}";
+                    right-margin = 5;
+                  };
+                }
+                {
+                  string = {
+                    text = "";
+                    right-margin = 2;
+                  };
+                }
+                {string = {text = "{time}";};}
+              ];
+            };
+          }
+        ];
       };
     };
   };

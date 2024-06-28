@@ -15,4 +15,6 @@
     useUserPackages = true;
     backupFileExtension = "backup";
   };
+
+  users.mutableUsers = false;
 }
