@@ -52,4 +52,5 @@
   };
 
   news.display = "show";
+  systemd.user.startServices = "sd-switch";
 }

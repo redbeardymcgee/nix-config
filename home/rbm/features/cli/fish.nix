@@ -37,9 +37,10 @@
       };
 
       hm = "home-manager --flake .";
-      hms = "home-manager switch --flake .";
+      hmb = "home-manager --flake . build";
+      hms = "home-manager --flake . switch";
       snr = "sudo nixos-rebuild --flake .";
-      snrs = "sudo nixos-rebuild switch --flake .";
+      snrs = "sudo nixos-rebuild --flake . switch";
 
       vim = "nvim";
       vi = vim;

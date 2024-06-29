@@ -17,6 +17,5 @@
     backupFileExtension = "backup";
   };
 
-  systemd.user.services.startServices = "sd-switch";
   users.mutableUsers = false;
 }
