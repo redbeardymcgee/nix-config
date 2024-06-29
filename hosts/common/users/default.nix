@@ -4,6 +4,7 @@
   ...
 }: {
   imports = [
+    inputs.home-manager.nixosModules.home-manager
     ./rbm
   ];
 
@@ -16,5 +17,6 @@
     backupFileExtension = "backup";
   };
 
+  startServices = "sd-switch";
   users.mutableUsers = false;
 }

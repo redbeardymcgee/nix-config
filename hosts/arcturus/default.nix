@@ -1,7 +1,6 @@
 {
   config,
   inputs,
-  outputs,
   pkgs,
   ...
 }: {
@@ -81,6 +80,4 @@
   };
 
   security.pam.services.swaylock = {};
-
-  users.mutableUsers = false;
 }
