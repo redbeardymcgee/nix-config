@@ -12,6 +12,5 @@
       Restart = "on-failure";
       Type = "exec";
     };
-    startServices = "sd-switch";
   };
 }
