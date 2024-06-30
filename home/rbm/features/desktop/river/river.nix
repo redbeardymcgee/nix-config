@@ -127,7 +127,6 @@
       set-repeat = "50 300";
 
       spawn = [
-        "'systemctl --user import-environment'"
         "'way-displays > $XDG_RUNTIME_DIR/way-displays.log 2>&1'"
         "xdg-user-dirs-update"
 

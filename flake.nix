@@ -64,9 +64,9 @@
       arcturus = lib.nixosSystem {
         modules = [
           ./hosts/arcturus
-          ({pkgs, ...}: {
-            environment.systemPackages = [yazi.packages.${pkgs.system}.default];
-          })
+          # ({pkgs, ...}: {
+          #   environment.systemPackages = [yazi.packages.${pkgs.system}.default];
+          # })
         ];
 
         specialArgs = {inherit inputs outputs;};

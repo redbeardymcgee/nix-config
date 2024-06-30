@@ -1,74 +1,48 @@
-function Manager:render(area)
-	local chunks = self:layout(area)
-
-	local bar = function(c, x, y)
-		x, y = math.max(0, x), math.max(0, y)
-		return ui.Bar(
-			ui.Rect({
-				x = x,
-				y = y,
-				w = ya.clamp(0, area.w - x, 1),
-				h = math.min(1, area.h),
-			}),
-			ui.Bar.TOP
-		):symbol(c)
-	end
-
-	return ya.flat({
-		ui.Bar(chunks[1], ui.Bar.RIGHT):symbol(THEME.manager.border_symbol):style(THEME.manager.border_style),
-		ui.Bar(chunks[3], ui.Bar.LEFT):symbol(THEME.manager.border_symbol):style(THEME.manager.border_style),
-
-		bar("┬", chunks[1].right - 1, chunks[1].y),
-		bar("┴", chunks[1].right - 1, chunks[1].bottom - 1),
-		bar("┬", chunks[2].right, chunks[2].y),
-		bar("┴", chunks[2].right, chunks[1].bottom - 1),
-
-		-- Parent
-		Parent:render(chunks[1]:padding(ui.Padding.xy(1))),
-		-- Current
-		Current:render(chunks[2]:padding(ui.Padding.y(1))),
-		-- Preview
-		Preview:render(chunks[3]:padding(ui.Padding.xy(1))),
-	})
-end
-
 function Header:host()
 	if ya.target_family() ~= "unix" then
-		return ui.Line({})
+		return ui.Line {}
 	end
-	return ui.Span(ya.user_name() .. "@" .. ya.host_name() .. ":"):fg("blue")
+	return ui.Span(ya.user_name() .. "󰁥" .. ya.host_name() .. "󱗿"):fg("blue")
 end
 
 function Header:render(area)
 	self.area = area
 
-	local right = ui.Line({ self:count(), self:tabs() })
-	local left = ui.Line({ self:host(), self:cwd(math.max(0, area.w - right:width())) })
+	local right = ui.Line { self:count(), self:tabs() }
+	local left = ui.Line { self:host(), self:cwd(math.max(0, area.w - right:width())) }
 	return {
 		ui.Paragraph(area, { left }),
 		ui.Paragraph(area, { right }):align(ui.Paragraph.RIGHT),
 	}
 end
 
+function Status:name()
+	local h = cx.active.current.hovered
+	if not h then
+		return ui.Span("")
+	end
+	return ui.Span(" " .. h.name)
+end
+
 function Status:owner()
 	local h = cx.active.current.hovered
 	if h == nil or ya.target_family() ~= "unix" then
-		return ui.Line({})
+		return ui.Line {}
 	end
 
-	return ui.Line({
+	return ui.Line {
 		ui.Span(ya.user_name(h.cha.uid) or tostring(h.cha.uid)):fg("magenta"),
 		ui.Span(":"),
 		ui.Span(ya.group_name(h.cha.gid) or tostring(h.cha.gid)):fg("magenta"),
 		ui.Span(" "),
-	})
+	}
 end
 
 function Status:render(area)
 	self.area = area
 
-	local left = ui.Line({ self:mode(), self:size(), self:name() })
-	local right = ui.Line({ self:owner(), self:permissions(), self:percentage(), self:position() })
+	local left = ui.Line { self:mode(), self:size(), self:name() }
+	local right = ui.Line { self:owner(), self:permissions(), self:percentage(), self:position() }
 	return {
 		ui.Paragraph(area, { left }),
 		ui.Paragraph(area, { right }):align(ui.Paragraph.RIGHT),
@@ -76,8 +50,30 @@ function Status:render(area)
 	}
 end
 
--- require("keyjump"):setup({
--- 	icon_fg = "#fda1a1",
--- })
+require("starship"):setup()
 
--- require("starship"):setup()
+require("searchjump"):setup {
+    unmatch_fg = "#928374",
+    match_str_fg = "#000000",
+    match_str_bg = "#73AC3A",
+    lable_fg = "#EADFC8",
+    lable_bg = "#BA603D",
+    only_current = false, -- only search the current window
+    show_search_in_statusbar = true,
+    auto_exit_when_unmatch = true,
+    search_patterns = {}  -- demo:{"%.e%d+","s%d+e%d+"}
+}
+
+require("yamb"):setup {
+  -- Optional, the path ending with path seperator represents folder.
+  -- bookmarks = bookmarks,
+  -- Optional, the cli of fzf.
+  cli = "fzf",
+  -- Optional, a string used for randomly generating keys, where the preceding characters have higher priority.
+  keys = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ",
+  -- Optional, the path of bookmarks
+  -- path = (ya.target_family() == "windows" and os.getenv("APPDATA") .. "\\yazi\\config\\bookmark") or
+  --       (os.getenv("HOME") .. "/.config/yazi/bookmark"),
+}
+
+-- require("full-border"):setup()

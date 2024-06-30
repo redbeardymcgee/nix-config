@@ -2,12 +2,12 @@
   programs.yambar = {
     enable = true;
     settings = with lib.lists; let
-      red = "F38BA8FF";
       mantle = "181825FF";
-      overlay1 = "7F849CFF";
-      subtext1 = "BAC2DEFF";
+      red = "F38BA8FF";
+      text = "CDD6F4FF";
+      subtext0 = "A6ADC8FF";
 
-      anchors = fold (a: b: a // b) {} (
+      scratchTags = fold (a: b: a // b) {} (
         forEach (range 1 9) (i: let
           num = toString i;
         in {
@@ -19,48 +19,68 @@
         })
       );
 
+      anchors =
+        scratchTags
+        // {
+          "id == 1" = {
+            string = {
+              text = "󰽟";
+            };
+          };
+          "id == 2" = {
+            string = {
+              text = "";
+            };
+          };
+          "id == 3" = {
+            string = {
+              text = "󰮃";
+            };
+          };
+        };
+
       bg_default = {
         stack = [
           {background = {color = mantle;};}
           {
             underline = {
-              color = subtext1;
+              color = subtext0;
               size = 4;
             };
           }
         ];
       };
 
-      font_default = "FiraCode Nerd Font:size=10";
+      font_default = "FiraCode Nerd Font:size=12";
     in {
       bar = let
         river_base = {
           left-margin = 10;
-          right-margin = 13;
+          right-margin = 10;
 
           conditions =
             anchors
             // {
-              "id == 10" = {
+              "id == 32" = {
                 string = {
-                  text = "scratch";
+                  text = "";
                 };
               };
             };
 
           default = {
-            string = {
-              text = "";
-            };
+            empty = {};
           };
         };
       in {
         font = font_default;
-        height = 20;
+        height = 30;
         location = "top";
         margin = 0;
+        left-margin = 5;
+        right-margin = 5;
         layer = "bottom";
-        foreground = overlay1;
+        foreground = text;
         background = mantle;
 
         left = [
@@ -139,12 +159,12 @@
         center = [
           {
             clock = {
-              time-format = "%H:%M %Z";
+              time-format = "%H:%M";
               content = [
                 {
                   string = {
                     text = "󰸗";
-                    right-margin = 2;
+                    right-margin = 3;
                   };
                 }
                 {
@@ -156,11 +176,45 @@
                 {
                   string = {
                     text = "";
-                    right-margin = 2;
+                    right-margin = 5;
                   };
                 }
-                {string = {text = "{time}";};}
+                {
+                  string = {
+                    text = "{time}";
+                    right-margin = 5;
+                  };
+                }
               ];
+            };
+          }
+        ];
+
+        right = [
+          {
+            removables = {
+              content = {
+                map = {
+                  conditions = {
+                    "~mounted".string = {
+                      text = "{label}";
+                      max = 8;
+                      right-margin = 3;
+                    };
+                    "mounted" = {
+                      string = {
+                        text = "{label}";
+                        max = 8;
+                        right-margin = 5;
+                        deco.underline = {
+                          size = 2;
+                          color = subtext0;
+                        };
+                      };
+                    };
+                  };
+                };
+              };
             };
           }
         ];

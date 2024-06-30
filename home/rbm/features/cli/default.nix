@@ -34,6 +34,8 @@
     dogdns
     dust
     entr
+    exiftool
+    glow
     gping
     grex
     gtrash
@@ -44,9 +46,12 @@
     nmap
     nodejs
     ouch
+    poppler
     procs
     python3
+    ripdrag
     rustup
+    transmission_4
     yq
   ];
 }

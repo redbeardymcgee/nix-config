@@ -4,8 +4,10 @@
     ./xdg-portal.nix
   ];
   home.packages = with pkgs; [
+    cliphist
     lswt
     wayshot
+    wl-clipboard
   ];
   home.sessionVariables = {
     SDL_VIDEODRIVER = "wayland";
