@@ -2,7 +2,7 @@ function Header:host()
 	if ya.target_family() ~= "unix" then
 		return ui.Line {}
 	end
-	return ui.Span(ya.user_name() .. "󰁥" .. ya.host_name() .. "󱗿"):fg("blue")
+	return ui.Span(ya.user_name() .. " 󰁥 " .. ya.host_name()):fg("blue")
 end
 
 function Header:render(area)
@@ -76,4 +76,4 @@ require("yamb"):setup {
   --       (os.getenv("HOME") .. "/.config/yazi/bookmark"),
 }
 
--- require("full-border"):setup()
+require("full-border"):setup()
