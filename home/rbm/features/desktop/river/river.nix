@@ -127,19 +127,19 @@
       set-repeat = "50 300";
 
       spawn = [
-        "'way-displays > $XDG_RUNTIME_DIR/way-displays.log 2>&1'"
+        ''way-displays > "$XDG_RUNTIME_DIR/way-displays-$XDG_SEAT.log" 2>&1''
         "xdg-user-dirs-update"
 
-        "'riverctl focus-output DP-3'"
+        ''riverctl focus-output DP-3''
         "yambar"
         "firefox"
         "vesktop"
 
-        "'riverctl focus-output DVI-D-1'"
+        ''riverctl focus-output DVI-D-1''
         "yambar"
-        "'foot tmuxp load -y localhost'"
+        ''foot tmuxp load -y localhost''
 
-        "'rivertile -view-padding 6 -outer-padding 6'"
+        ''rivertile -view-padding 3 -outer-padding 3''
       ];
     };
   };

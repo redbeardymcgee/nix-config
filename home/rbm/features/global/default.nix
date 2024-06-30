@@ -9,7 +9,6 @@
   imports =
     [
       inputs.catppuccin.homeManagerModules.catppuccin
-      # inputs.home-manager.nixosModules.home-manager
 
       ./nixpkgs.nix
     ]

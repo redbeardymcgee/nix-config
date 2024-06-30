@@ -1,7 +1,4 @@
-{
-  pkgs,
-  ...
-}: {
+{ pkgs, ... }: {
   xdg.configFile = {
     "tmuxp/localhost.yaml" = {
       enable = true;

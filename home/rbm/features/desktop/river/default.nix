@@ -1,5 +1,6 @@
 {
   imports = [
+    ./ags
     ./fnott.nix
     ./foot.nix
     ./river.nix

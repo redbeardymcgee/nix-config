@@ -19,12 +19,12 @@
         }
         {
           on = ["c" "m"];
-          run = "plugin chmod ";
+          run = "plugin chmod";
           desc = "Chmod on selected files";
         }
         {
           on = ["<C-d>"];
-          run = "plugin diff ";
+          run = "plugin diff";
           desc = "Diff the selected with the hovered file";
         }
         {
@@ -34,7 +34,7 @@
         }
         {
           on = ["p"];
-          run = "plugin --sync smart-paste";
+          run = "plugin smart-paste --sync";
           desc = "Paste into the hovered directory or CWD";
         }
         {
@@ -46,7 +46,7 @@
           on = ["y"];
           run = [
             "yank"
-            ''shell --confirm 'printf %s\\n "file://$@"| wl-copy -t text/uri-list' ''
+            ''shell 'printf %s\\n "file://$@"| wl-copy -t text/uri-list' --confirm''
           ];
           desc = "Copy selected paths and files to clipboard";
         }
@@ -112,17 +112,17 @@
         }
         {
           on = ["T"];
-          run = "plugin --sync hide-preview";
+          run = "plugin hide-preview --sync";
           desc = "Hide or show preview";
         }
         {
           on = ["t"];
-          run = "plugin --sync max-preview";
+          run = "plugin max-preview --sync";
           desc = "Maximize or restore preview";
         }
         {
           on = ["l"];
-          run = "plugin --sync fast-enter";
+          run = "plugin fast-enter --sync";
           desc = "Enter the subfolder faster, or open the file directly";
         }
       ];
