@@ -5,6 +5,11 @@
     disableConfirmationPrompt = true;
     escapeTime = 0;
     extraConfig = ''
+      set -g allow-passthrough on
+
+      set -ga update-environment TERM
+      set -ga update-environment TERM_PROGRAM
+
       set -g @plugin 'b0o/tmux-autoreload'
       set -g @plugin 'sunaku/tmux-navigate'
       set -g @plugin 'joshmedeski/tmux-nerd-font-window-name'
