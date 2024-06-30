@@ -3,25 +3,33 @@
     way-displays
   ];
 
-  # xdg.configFile."way-displays/cfg.yaml".source = (pkgs.formats.yaml {}).generate "cfg.yaml" {
-  # };
-  xdg.configFile."way-displays/cfg.yaml".text = ''
-    MODE:
-      - NAME_DESC: "BNQ BenQ XL2420Z 41E09757SL0 (DVI-D-1)"
-        MAX: TRUE
-      - NAME_DESC: "Samsung Electric Company SE790C (DP-3)"
-        MAX: TRUE
+  xdg.configFile."way-displays/cfg.yaml".source = (pkgs.formats.yaml {}).generate "cfg.yaml" {
+    mode = [
+      {
+        name_desc = "BNQ BenQ XL2420Z 41E09757SL0 (DVI-D-1)";
+        max = true;
+      }
+      {
+        name_desc = "Samsung Electric Company SE790C (DP-1)";
+        max = true;
+      }
+    ];
 
-    ORDER:
-      - '!^DVI-D-.*'
-      - '!DP-.*'
+    order = [
+      ''!^DVI-D-.*''
+      ''!DP-.*''
+    ];
 
-    SCALE:
-      - NAME_DESC: "Samsung Electric Company SE790C (DP-3)"
-        SCALE: 1.25
+    scale = [
+      {
+        name_desc = "Samsung Electric Company SE790C (DP-1)";
+        scale = 1.25;
+      }
+    ];
 
-    VRR_OFF:
-      - "SE790C"
-      - "BenQ XL2420Z"
-  '';
+    vrr_off = [
+      "SE790C"
+      "BenQ XL2420Z"
+    ];
+  };
 }

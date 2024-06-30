@@ -1,12 +1,11 @@
 {
   pkgs,
-  lib,
   ...
 }: {
   xdg.configFile = {
-    "tmuxp/localhost.json" = {
+    "tmuxp/localhost.yaml" = {
       enable = true;
-      text = lib.generators.toJSON {} {
+      source = (pkgs.formats.yaml {}).generate "localhost.yaml" {
         session_name = "localhost";
         windows = [
           {
