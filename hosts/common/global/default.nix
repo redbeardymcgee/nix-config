@@ -55,6 +55,13 @@
   programs = {
     dconf.enable = true;
     fish.enable = true;
+    nh = {
+        enable = true;
+        clean = {
+            enable = true;
+            extraArgs = "--keep-since 7d --keep 5";
+          };
+      };
   };
 
   services = {

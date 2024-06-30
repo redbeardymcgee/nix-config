@@ -28,8 +28,11 @@
     ./zk.nix
     ./zoxide.nix
   ];
+
   home.packages = with pkgs; [
+    comma
     curlie
+    devenv
     difftastic
     dogdns
     dust
@@ -41,9 +44,11 @@
     gtrash
     hexyl
     lazydocker
+    manix
     miller
     neovim
     nmap
+    nurl
     nodejs
     ouch
     poppler

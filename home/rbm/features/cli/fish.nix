@@ -39,6 +39,10 @@
       hm = "home-manager --flake .";
       hmb = "home-manager --flake . build";
       hms = "home-manager --flake . switch";
+      nhb = "nh home build";
+      nhs = "nh home switch";
+      nob = "nh os build";
+      nos = "nh os switch";
       snr = "sudo nixos-rebuild --flake .";
       snrs = "sudo nixos-rebuild --flake . switch";
 

@@ -44,6 +44,7 @@
     ];
     sessionVariables = {
       EDITOR = "nvim";
+      FLAKE = "$HOME/nix-config";
       NODE_PATH = "$HOME/local/lib/node_modules";
       VISUAL = "nvim";
     };
