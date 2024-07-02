@@ -1,16 +1,22 @@
-{lib, ...}: {
+{
+  lib,
+  pkgs,
+  ...
+}: {
+  home.packages = [pkgs.rivercarro];
   wayland.windowManager.river = {
     enable = true;
 
     settings = {
       declare-mode = [
+        "layout"
         "locked"
+        "move"
         "normal"
         "passthrough"
-        "windowmove"
       ];
 
-      default-layout = "rivertile";
+      default-layout = "rivercarro";
       focus-follows-cursor = "normal";
 
       input = {
@@ -56,18 +62,18 @@
           tagMappings
           // mediaKeys
           // {
-            "Super R" = "enter-mode windowmove";
             "Super F11" = "enter-mode passthrough";
+            "Super R" = "enter-mode layout";
+            "Super W" = "enter-mode move";
+
+            "Super Q" = "close";
+            "Super+Control+Shift Q" = "riverctl exit";
 
             "Super F" = "toggle-fullscreen";
             "Super+Shift F" = "toggle-float";
-            "Super Return" = "zoom";
-            "Super Q" = "close";
 
-            "Super Period" = "focus-output next";
-            "Super Comma" = "focus-output previous";
-            "Super+Shift Period" = "send-to-output next";
-            "Super+Shift Comma" = "send-to-output previous";
+            "Super Return" = "send-layout-cmd rivercarro 'main-location-cycle left,down,right,up,monocle'";
+            "Super Z" = "zoom";
 
             "Super H" = "focus-view left";
             "Super J" = "focus-view down";
@@ -79,33 +85,76 @@
             "Super+Shift K" = "swap up";
             "Super+Shift L" = "swap right";
 
+            "Super Period" = "focus-output next";
+            "Super Comma" = "focus-output previous";
+            "Super+Shift Period" = "send-to-output next";
+            "Super+Shift Comma" = "send-to-output previous";
+
             "Super 0" = "set-focused-tags ${allTagsMask}";
             "Super+Shift 0" = "set-view-tags ${allTagsMask}";
           };
 
-        locked = mediaKeys;
+        locked =
+          mediaKeys
+          // {
+            "None Return" = "enter-mode normal";
+            "None Escape" = "enter-mode normal";
+          };
 
         passthrough = {
+          "None Return" = "enter-mode normal";
+          "None Escape" = "enter-mode normal";
           "Super F11" = "enter-mode normal";
         };
 
-        windowmove = {
+        layout = {
           "None Return" = "enter-mode normal";
+          "None Escape" = "enter-mode normal";
+
+          "Alt H" = "resize horizontal -50";
+          "Alt J" = "resize vertical 50";
+          "Alt K" = "resize vertical -50";
+          "Alt L" = "resize horizontal 50";
 
           "None H" = "resize horizontal -100";
           "None J" = "resize vertical 100";
           "None K" = "resize vertical -100";
           "None L" = "resize horizontal 100";
 
-          "Super H" = "move left 100";
-          "Super J" = "move down 100";
-          "Super K" = "move up 100";
-          "Super L" = "move right 100";
+          "Control H" = "resize horizontal -500";
+          "Control J" = "resize vertical 500";
+          "Control K" = "resize vertical -500";
+          "Control L" = "resize horizontal 500";
 
-          "Super+Shift H" = "snap left";
-          "Super+Shift J" = "snap down";
-          "Super+Shift K" = "snap up";
-          "Super+Shift L" = "snap right";
+          "Super K" = "send-layout-cmd rivercarro 'main-location top";
+          "Super L" = "send-layout-cmd rivercarro 'main-location right";
+          "Super J" = "send-layout-cmd rivercarro 'main-location bottom";
+          "Super H" = "send-layout-cmd rivercarro 'main-location left";
+        };
+
+        move = {
+          "None Return" = "enter-mode normal";
+          "None Escape" = "enter-mode normal";
+
+          "Alt H" = "move left 50";
+          "Alt J" = "move down 50";
+          "Alt K" = "move up 50";
+          "Alt L" = "move right 50";
+
+          "None H" = "move left 100";
+          "None J" = "move down 100";
+          "None K" = "move up 100";
+          "None L" = "move right 100";
+
+          "Control H" = "move left 500";
+          "Control J" = "move down 500";
+          "Control K" = "move up 500";
+          "Control L" = "move right 500";
+
+          "Shift H" = "snap left";
+          "Shift J" = "snap down";
+          "Shift K" = "snap up";
+          "Shift L" = "snap right";
         };
       };
 
@@ -127,19 +176,17 @@
       set-repeat = "50 300";
 
       spawn = [
-        ''way-displays > "$XDG_RUNTIME_DIR/way-displays-$XDG_SEAT.log" 2>&1''
+        '''way-displays > "$XDG_RUNTIME_DIR/way-displays.$XDG_SEAT.log" 2>&1' ''
         "xdg-user-dirs-update"
 
-        ''riverctl focus-output DP-3''
         "yambar"
         "firefox"
         "vesktop"
 
-        ''riverctl focus-output DVI-D-1''
-        "yambar"
-        ''foot tmuxp load -y localhost''
+        ''"foot tmuxp load -y localhost" ''
 
-        ''rivertile -view-padding 3 -outer-padding 3''
+        # ''"rivertile -view-padding 2 -outer-padding 2" ''
+        ''"rivercarro -outer-gaps 0" ''
       ];
     };
   };
