@@ -1,6 +1,11 @@
-{ pkgs, ... }: {
+{pkgs, ...}: {
   xdg.configFile = {
-    "tmuxp/mcgeedia.yaml" = {
+    "tmuxp/mcgeedia.yaml" = let
+      opts = {
+        automatic-rename = false;
+        remain-on-exit = true;
+      };
+    in {
       enable = true;
       source = (pkgs.formats.yaml {}).generate "mcgeedia.yaml" {
         session_name = "mcgeedia";
@@ -8,54 +13,39 @@
         windows = [
           {
             window_name = "main";
-            focus = true;
-            options = {
-              remain-on-exit = true;
-            };
-            panes = [
-              {
-                shell_command = [
-                  "yy"
-                ];
-              }
-            ];
+            options = opts;
+            panes = [{shell_command = ["yy"];}];
           }
           {
             window_name = "cfg";
-            options = {
-              remain-on-exit = true;
-            };
+            options = opts;
             panes = [
               {
                 shell_command = [
                   "cd ~/nix-config"
-                  "${pkgs.neovim}/bin/nvim ."
+                  "nvim ."
                 ];
               }
             ];
           }
           {
             window_name = "docker";
+            focus = true;
+            options = opts;
             panes = [
               {
                 shell_command = [
                   "cd /opt/containers"
-                  "${pkgs.neovim}/bin/nvim ."
+                  "nvim ."
                 ];
               }
             ];
           }
           {
-            window_name = "cfg";
-            window_index = "0";
-            options = {
-              remain-on-exit = true;
-            };
-            panes = [
-              {
-                shell = "${pkgs.bottom}/bin/btm";
-              }
-            ];
+            window_name = "monitor";
+            window_index = 0;
+            options = opts;
+            panes = [{shell = ["~/.nix-profile/bin/btm"];}];
           }
         ];
       };

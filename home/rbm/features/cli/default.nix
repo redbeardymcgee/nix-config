@@ -30,6 +30,7 @@
   ];
 
   home.packages = with pkgs; [
+    alejandra
     comma
     devenv
     difftastic
@@ -49,5 +50,6 @@
     python3
     ripdrag
     transmission_4
+    yq
   ];
 }
