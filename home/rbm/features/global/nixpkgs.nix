@@ -7,18 +7,20 @@
 }: let
   flakeInputs = lib.filterAttrs (_: lib.isType "flake") inputs;
 in {
-  nix = {
-    settings = {
-      experimental-features = [
-        "nix-command"
-        "flakes"
-        "ca-derivations"
-      ];
-      warn-dirty = false;
-      flake-registry = "";
-    };
-    registry = lib.mapAttrs (_: flake: {inherit flake;}) flakeInputs;
-  };
+  # nix = {
+  #   package = lib.mkDefault pkgs.nix;
+  #   registry = lib.mapAttrs (_: flake: {inherit flake;}) flakeInputs;
+  #
+  #   settings = {
+  #     experimental-features = [
+  #       "nix-command"
+  #       "flakes"
+  #       "ca-derivations"
+  #     ];
+  #     warn-dirty = false;
+  #     flake-registry = "";
+  #   };
+  # };
 
   home.sessionVariables = {
     NIX_PATH = lib.concatStringsSep ":" (lib.mapAttrsToList (n: _: "${n}=flake:${n}") flakeInputs);

@@ -31,32 +31,23 @@
 
   home.packages = with pkgs; [
     comma
-    curlie
     devenv
     difftastic
-    dogdns
-    dust
     entr
     exiftool
     glow
-    gping
-    grex
     gtrash
     hexyl
     lazydocker
     manix
     miller
     neovim
-    nmap
-    nurl
     nodejs
     ouch
     poppler
     procs
     python3
     ripdrag
-    rustup
     transmission_4
-    yq
   ];
 }

@@ -1,7 +1,7 @@
 {pkgs, ...}: {
   console = {
     earlySetup = true;
-    font = "ter-u14n";
+    font = "ter-u12n";
     packages = with pkgs; [terminus_font];
     useXkbConfig = true;
   };
@@ -17,7 +17,9 @@
         })
       ];
     };
+
     loader.timeout = 0;
+
     kernelParams = [
       "boot.shell_on_fail"
       "loglevel=3"
@@ -26,7 +28,9 @@
       "rd.udev.log_level=3"
       "splash"
     ];
+
     consoleLogLevel = 0;
+
     initrd = {
       # systemd = {
       #   enable = true;
@@ -47,6 +51,7 @@
       #     };
       #   };
       # };
+
       kernelModules = ["nvidia"];
       verbose = false;
     };
