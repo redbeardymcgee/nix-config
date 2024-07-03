@@ -23,7 +23,7 @@
           desc = "Chmod on selected files";
         }
         {
-          on = ["<C-d>"];
+          on = ["c" "D"];
           run = "plugin diff";
           desc = "Diff the selected with the hovered file";
         }
@@ -38,7 +38,7 @@
           desc = "Paste into the hovered directory or CWD";
         }
         {
-          on = ["<C-n>"];
+          on = ["<C-d>"];
           run = ''shell 'ripdrag "$@" -x 2>/dev/null &' --confirm'';
           desc = "Drag and drop into the hovered directory or CWD";
         }
@@ -51,17 +51,12 @@
           desc = "Copy selected paths and files to clipboard";
         }
         {
-          on = ["i"];
+          on = ["g" "s"];
           run = "plugin searchjump";
           desc = "searchjump mode";
         }
         {
           on = ["f" "g"];
-          run = "plugin fg";
-          desc = "find file by content (fuzzy match)";
-        }
-        {
-          on = ["f" "G"];
           run = "plugin fg --args='rg'";
           desc = "find file by content (ripgrep match)";
         }
@@ -71,52 +66,52 @@
           desc = "find file by file name";
         }
         {
-          on = ["u" "a"];
+          on = ["b" "a"];
           run = "plugin yamb --args=save";
           desc = "Add bookmark";
         }
         {
-          on = ["u" "g"];
+          on = ["b" "k"];
           run = "plugin yamb --args=jump_by_key";
           desc = "Jump to a bookmark by key";
         }
         {
-          on = ["u" "G"];
+          on = ["b" "b"];
           run = "plugin yamb --args=jump_by_fzf";
           desc = "Jump to a bookmark by fzf";
         }
         {
-          on = ["u" "d"];
+          on = ["b" "d"];
           run = "plugin yamb --args=delete_by_key";
           desc = "Delete a bookmark by key";
         }
         {
-          on = ["u" "D"];
+          on = ["b" "F"];
           run = "plugin yamb --args=delete_by_fzf";
           desc = "Delete a bookmark by fzf";
         }
         {
-          on = ["u" "A"];
+          on = ["b" "D"];
           run = "plugin yamb --args=delete_all";
           desc = "Delete all bookmarks";
         }
         {
-          on = ["u" "r"];
+          on = ["b" "r"];
           run = "plugin yamb --args=rename_by_key";
-          desc = "Delete all bookmarks";
+          desc = "Rename a bookmark by key";
         }
         {
-          on = ["u" "R"];
+          on = ["b" "R"];
           run = "plugin yamb --args=rename_by_fzf";
-          desc = "Delete all bookmarks";
+          desc = "Rename a bookmark by fzf";
         }
         {
-          on = ["T"];
+          on = ["t"];
           run = "plugin hide-preview --sync";
           desc = "Hide or show preview";
         }
         {
-          on = ["t"];
+          on = ["T"];
           run = "plugin max-preview --sync";
           desc = "Maximize or restore preview";
         }

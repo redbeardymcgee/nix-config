@@ -1,4 +1,5 @@
 {
+  home.sessionVariables = {ZK_NOTEBOOK_DIR = "~/Documents/Notebook";};
   programs.zk = {
     enable = true;
     settings = {

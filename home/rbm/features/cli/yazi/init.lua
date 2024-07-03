@@ -53,27 +53,17 @@ end
 require("starship"):setup()
 
 require("searchjump"):setup {
-    unmatch_fg = "#928374",
-    match_str_fg = "#000000",
-    match_str_bg = "#73AC3A",
-    lable_fg = "#EADFC8",
-    lable_bg = "#BA603D",
+    unmatch_fg = "#a6adc8",
+    match_str_fg = "#cba6f7",
+    match_str_bg = "#7f849c",
+    lable_bg = "#6c7086",
+    lable_fg = "#000000",
     only_current = false, -- only search the current window
     show_search_in_statusbar = true,
     auto_exit_when_unmatch = true,
     search_patterns = {}  -- demo:{"%.e%d+","s%d+e%d+"}
 }
 
-require("yamb"):setup {
-  -- Optional, the path ending with path seperator represents folder.
-  -- bookmarks = bookmarks,
-  -- Optional, the cli of fzf.
-  cli = "fzf",
-  -- Optional, a string used for randomly generating keys, where the preceding characters have higher priority.
-  keys = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ",
-  -- Optional, the path of bookmarks
-  -- path = (ya.target_family() == "windows" and os.getenv("APPDATA") .. "\\yazi\\config\\bookmark") or
-  --       (os.getenv("HOME") .. "/.config/yazi/bookmark"),
-}
+require("yamb"):setup {}
 
 require("full-border"):setup()

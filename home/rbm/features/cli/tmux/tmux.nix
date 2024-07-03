@@ -20,14 +20,14 @@
         set -g @plugin 'b0o/tmux-autoreload'
         set -g @plugin 'sunaku/tmux-navigate'
         set -g @plugin 'joshmedeski/tmux-nerd-font-window-name'
+        set -g @plugin 'jaclu/tmux-power-zoom'
+        set -g @plugin 'omerxx/tmux-sessionx'
+        set -g @plugin 'niqodea/tmux-matryoshka'
+        set -g @plugin 'lljbash/tmux-update-display'
 
         set -g @plugin 'rickstaa/tmux-notify'
         set -g @tnotify-prompt-suffixes '◉'
         set -g @tnotify-verbose 'on'
-
-        set -g @plugin 'jaclu/tmux-power-zoom'
-
-        set -g @plugin 'omerxx/tmux-sessionx'
 
         set -g @sessionx-additional-options '--tmux center'
         set -g @sessionx-tree-mode 'on'
@@ -39,6 +39,8 @@
         run '~/.config/tmux/plugins/tpm/tpm'
 
         bind -n M-C source-file ~/.config/tmux/tmux.conf
+        bind r respawn-pane
+        bind R respawn-window
       '';
     historyLimit = 10000;
     keyMode = "vi";

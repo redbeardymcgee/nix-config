@@ -14,8 +14,6 @@
   };
 
   inputs = {
-    ags.url = "github:Aylur/ags";
-
     catppuccin.url = "github:catppuccin/nix";
 
     home-manager = {
