@@ -17,6 +17,7 @@
   catppuccin = {
     enable = true;
     flavor = "mocha";
+    pointerCursor.enable = true;
   };
 
   dconf.settings = {

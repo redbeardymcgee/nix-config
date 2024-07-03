@@ -3,10 +3,7 @@
     enable = true;
 
     settings = {
-      terminal = [
-        "xdg-terminal-exec"
-        "foot"
-      ];
+      terminal = "xdg-terminal-exec";
     };
   };
 }

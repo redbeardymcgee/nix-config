@@ -57,10 +57,18 @@
           "None XF86AudioPlay" = "spawn 'playerctl play-pause'";
           "None XF86AudioPrev" = "spawn 'playerctl previous'";
         };
+
+        swapWinKeys = {
+          "Super+Shift H" = "swap left";
+          "Super+Shift J" = "swap down";
+          "Super+Shift K" = "swap up";
+          "Super+Shift L" = "swap right";
+        };
       in {
         normal =
-          tagMappings
-          // mediaKeys
+          mediaKeys
+          // swapWinKeys
+          // tagMappings
           // {
             "Super F11" = "enter-mode passthrough";
             "Super R" = "enter-mode layout";
@@ -79,11 +87,6 @@
             "Super J" = "focus-view down";
             "Super K" = "focus-view up";
             "Super L" = "focus-view right";
-
-            "Super+Shift H" = "swap left";
-            "Super+Shift J" = "swap down";
-            "Super+Shift K" = "swap up";
-            "Super+Shift L" = "swap right";
 
             "Super Period" = "focus-output next";
             "Super Comma" = "focus-output previous";
@@ -107,30 +110,32 @@
           "Super F11" = "enter-mode normal";
         };
 
-        layout = {
-          "None Return" = "enter-mode normal";
-          "None Escape" = "enter-mode normal";
+        layout =
+          swapWinKeys
+          // {
+            "None Return" = "enter-mode normal";
+            "None Escape" = "enter-mode normal";
 
-          "Alt H" = "resize horizontal -50";
-          "Alt J" = "resize vertical 50";
-          "Alt K" = "resize vertical -50";
-          "Alt L" = "resize horizontal 50";
+            "Alt H" = "resize horizontal -50";
+            "Alt J" = "resize vertical 50";
+            "Alt K" = "resize vertical -50";
+            "Alt L" = "resize horizontal 50";
 
-          "None H" = "resize horizontal -100";
-          "None J" = "resize vertical 100";
-          "None K" = "resize vertical -100";
-          "None L" = "resize horizontal 100";
+            "None H" = "resize horizontal -100";
+            "None J" = "resize vertical 100";
+            "None K" = "resize vertical -100";
+            "None L" = "resize horizontal 100";
 
-          "Control H" = "resize horizontal -500";
-          "Control J" = "resize vertical 500";
-          "Control K" = "resize vertical -500";
-          "Control L" = "resize horizontal 500";
+            "Control H" = "resize horizontal -500";
+            "Control J" = "resize vertical 500";
+            "Control K" = "resize vertical -500";
+            "Control L" = "resize horizontal 500";
 
-          "Super K" = "send-layout-cmd rivercarro 'main-location top";
-          "Super L" = "send-layout-cmd rivercarro 'main-location right";
-          "Super J" = "send-layout-cmd rivercarro 'main-location bottom";
-          "Super H" = "send-layout-cmd rivercarro 'main-location left";
-        };
+            "Super K" = "send-layout-cmd rivercarro 'main-location top'";
+            "Super L" = "send-layout-cmd rivercarro 'main-location right'";
+            "Super J" = "send-layout-cmd rivercarro 'main-location bottom'";
+            "Super H" = "send-layout-cmd rivercarro 'main-location left'";
+          };
 
         move = {
           "None Return" = "enter-mode normal";
@@ -183,10 +188,9 @@
         "firefox"
         "vesktop"
 
-        ''"foot tmuxp load -y localhost" ''
+        "'foot tmuxp load -y localhost'"
 
-        # ''"rivertile -view-padding 2 -outer-padding 2" ''
-        ''"rivercarro -outer-gaps 0" ''
+        "'rivercarro -outer-gaps 0'"
       ];
     };
   };

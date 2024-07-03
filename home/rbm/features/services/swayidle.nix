@@ -1,14 +1,17 @@
 {pkgs, ...}: {
   services.swayidle = {
     enable = true;
+    # FIXME: can't unlock, just ignores password
+    # events = [
+    #   {
+    #     event = "before-sleep";
+    #     command = "${pkgs.swaylock}/bin/swaylock";
+    #   }
+    # ];
     timeouts = [
       {
-        timeout = 300;
-        command = "${pkgs.swaylock}/bin/swaylock";
-      }
-      {
         timeout = 600;
-        command = "${pkgs.chayang}/bin/chayang && ${pkgs.systemd}/bin/systemctl suspend";
+        command = "${pkgs.systemd}/bin/systemctl suspend";
       }
     ];
   };

@@ -30,12 +30,13 @@
 
   wayland.windowManager = {
     river.settings.map.normal = {
-      "None Menu" = "spawn '$(rofi -modes combi -show combi -combi-modi 'drun,window,run')'";
+      "None Menu" = "spawn '$(rofi -modes combi -show combi -combi-modi drun,window,run)'";
       "Super Menu" = "spawn '$(rofi -show run)'";
       "Super+Shift A" = "spawn '$(rofi-pulse-select sink)'";
       "Super+Shift B" = "spawn '$(rofi-bluetooth)'";
       "Super+Shift E" = "spawn '$(rofimoji)'";
       "Super+Shift P" = "spawn '$(rofi -show power-menu -modi power-menu:rofi-power-menu)'";
+      "Super+Shift S" = "spawn '$(rofi-screenshot)'";
       "Super+Shift X" = "spawn '$(rofi-rbw)'";
       "Super V" = "spawn '$(rofi -modi clipboard:cliphist-rofi-img -show clipboard -show-icons)'";
     };
