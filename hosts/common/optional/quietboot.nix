@@ -1,6 +1,6 @@
 {pkgs, ...}: {
   console = {
-    earlySetup = true;
+    earlySetup = false;
     font = "ter-u12n";
     packages = with pkgs; [terminus_font];
     useXkbConfig = true;

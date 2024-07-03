@@ -42,11 +42,13 @@
         };
       };
     };
+
     enableRedistributableFirmware = true;
     graphics = {
       enable = true;
       enable32Bit = true;
     };
+
     pulseaudio = {
       enable = false;
       configFile = pkgs.writeText "default.pa" ''
@@ -63,7 +65,7 @@
   hardware = {
     nvidia = {
       modesetting.enable = true;
-      nvidiaSettings = true;
+      nvidiaSettings = false;
       open = false;
       package = config.boot.kernelPackages.nvidiaPackages.stable;
       powerManagement = {
