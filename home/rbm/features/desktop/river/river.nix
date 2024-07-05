@@ -182,9 +182,9 @@
           "vesktop" = "output DP-1";
           "steam" = "float";
           "org.remmina.Remmina" = {
-              "*" = "output DP-1";
-              "*remmina*" = "tags ${toString (pow2 8)}";
-            };
+            "*" = "output DP-1";
+            "*remmina*" = "tags ${toString (pow2 8)}";
+          };
         };
       };
 

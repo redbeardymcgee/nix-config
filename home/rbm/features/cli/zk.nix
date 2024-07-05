@@ -1,4 +1,4 @@
-{ config, ...}: {
+{config, ...}: {
   programs.zk = {
     enable = true;
 
