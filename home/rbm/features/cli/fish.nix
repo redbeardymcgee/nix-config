@@ -4,6 +4,7 @@
 
     functions = {
       fish_greeting = "";
+
       yy = {
         body = ''
           set tmp (mktemp -p $XDG_RUNTIME_DIR yazi-cwd.XXXXXX)
@@ -14,6 +15,34 @@
         '';
         wraps = "yazi";
       };
+
+      mark_cmd_start = {
+        body = ''echo -en "\e]133;C\e\\"'';
+        onEvent = "fish_preexec";
+      };
+
+      mark_cmd_end = {
+        body = ''echo -en "\e]133;D\e\\"'';
+        onEvent = "fish_postexec";
+      };
+
+      mark_prompt_start = {
+        body = ''echo -en "\e]133;A\e\\"'';
+        onEvent = "fish_prompt";
+      };
+
+      update_cwd_osc = {
+        body = ''
+          if status --is-command-substitution || set -q INSIDE_EMACS
+              return
+          end
+          printf \e\]7\;file://%s%s\e\\ $hostname (string escape --style=url $PWD)
+        '';
+        description = ''Notify terminals when $PWD changes'';
+        onVariable = "PWD";
+      };
+
+      shellInitLast = "update_cwd_osc";
     };
 
     plugins = [

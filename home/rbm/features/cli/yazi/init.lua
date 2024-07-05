@@ -67,3 +67,9 @@ require("searchjump"):setup {
 require("yamb"):setup {}
 
 require("full-border"):setup()
+
+require("git-status"):setup{
+    folder_size_ignore = {"/home/rbm","/"},
+    gitstatus_ignore = {"/home/rbm","/"},
+    enable_folder_size = false
+}

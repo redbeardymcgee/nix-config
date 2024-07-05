@@ -19,11 +19,11 @@
 
   programs.fish = {
     functions = {
-      foot_cmd_start = {
+      mark_cmd_start = {
         body = ''echo -en "\e]133;C\e\\"'';
         onEvent = "fish_preexec";
       };
-      foot_cmd_end = {
+      mark_cmd_end = {
         body = ''echo -en "\e]133;D\e\\"'';
         onEvent = "fish_postexec";
       };

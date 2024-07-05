@@ -1,7 +1,6 @@
 {pkgs, ...}: {
   imports = [
     ./firefox.nix
-    # ./xdg-terminal-exec.nix
   ];
 
   gtk.enable = true;
@@ -13,17 +12,11 @@
 
   home = {
     packages = with pkgs; [
-      element-desktop
+      fractal
       nyxt
       pamixer
+      # pw-viz # TODO: doesn't build
       qpwgraph
-      vesktop
     ];
-
-    # pointerCursor = {
-    #   x11.enable = true;
-    #   gtk.enable = true;
-    # };
   };
-
 }

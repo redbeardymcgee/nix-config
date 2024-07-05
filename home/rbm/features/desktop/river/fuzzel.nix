@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+{
   programs.fuzzel = {
     enable = true;
     settings = {
@@ -6,7 +6,7 @@
         font = "FiraCode Nerd Font:size=14";
         fields = "categories,comment,exec,filename,generic,keywords,name";
         show-actions = true;
-        terminal = "${pkgs.foot}/bin/foot";
+        # terminal = "wezterm";
         width = "50";
       };
       colors = {

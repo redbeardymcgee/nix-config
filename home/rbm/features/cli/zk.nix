@@ -1,17 +1,20 @@
-{
-  home.sessionVariables = {ZK_NOTEBOOK_DIR = "~/Documents/Notebook";};
+{ config, ...}: {
   programs.zk = {
     enable = true;
+
     settings = {
       alias = {
         last = "zk edit --limit 1 --sort modified- $@";
         lucky = "zk list --quiet --format full --sort random --limit 1";
         recent = "zk edit --sort created- --created-after 'last two weeks' --interactive";
       };
+
       extra.author = "rbm";
+
       filter = {
         recents = "--sort created- --created-after 'last two weeks'";
       };
+
       format = {
         markdown = {
           link-format = "[[{{filename}}]]";
@@ -19,6 +22,7 @@
           hashtags = true;
         };
       };
+
       lsp = {
         completion = {
           note-detail = "{{filename-stem}}";
@@ -30,6 +34,7 @@
           wiki-title = "hint";
         };
       };
+
       note = {
         default-title = "untitled";
         extension = "md";
@@ -39,7 +44,9 @@
         id-case = "lower";
         template = "default.md";
       };
-      notebook.dir = "~/Documents/Notebook";
+
+      notebook.dir = "${config.home.homeDirectory}/Documents/Notebook";
+
       tool = {
         fzf-preview = "bat -p --color always {-1}";
       };

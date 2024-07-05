@@ -1,14 +1,18 @@
 {pkgs, ...}: {
   imports = [
     ./firefox.nix
+    ./obs-studio.nix
     ./xdg-portal.nix
   ];
 
   home.packages = with pkgs; [
-    cliphist
+    grim
     lswt
-    wayshot
+    satty
+    slurp
+    vesktop
     wl-clipboard
+    wl-screenrec
   ];
 
   home.sessionVariables = {

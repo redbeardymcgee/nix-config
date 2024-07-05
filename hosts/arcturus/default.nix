@@ -10,7 +10,7 @@
     inputs.nixos-hardware.nixosModules.common-pc
     inputs.nixos-hardware.nixosModules.common-pc-ssd
     inputs.nixos-hardware.nixosModules.common-gpu-nvidia
-    inputs.home-manager.nixosModules.home-manager
+    # inputs.home-manager.nixosModules.home-manager
 
     ./hardware-configuration.nix
 
@@ -21,7 +21,7 @@
     ../common/optional/kmscon.nix
     ../common/optional/podman.nix
     ../common/optional/quietboot.nix
-    ../common/optional/steam-hardware.nix
+    ../common/optional/steam.nix
     ../common/optional/systemd-boot.nix
     ../common/optional/systemd-networkd.nix
 
@@ -30,7 +30,21 @@
     ../common/users
   ];
 
-  fileSystems."/boot".options = ["umask=0077"];
+  fileSystems = {
+    "/boot".options = ["umask=0077"];
+
+    "/2tb" = {
+      device = "/dev/disk/by-uuid/0b8b0c5d-8363-43a5-8a3a-a71fa3c7d953";
+      fsType = "ext4";
+      mountPoint = "/mnt/2tb";
+
+      options = [
+        "users"
+        "exec"
+        "nofail"
+      ];
+    };
+  };
 
   hardware = {
     bluetooth = {
@@ -44,9 +58,20 @@
     };
 
     enableRedistributableFirmware = true;
+
     graphics = {
       enable = true;
       enable32Bit = true;
+    };
+
+    opengl = {
+      enable = true;
+      extraPackages = with pkgs; [
+        intel-media-driver
+        vaapiIntel
+        vaapiVdpau
+        libvdpau-va-gl
+      ];
     };
 
     pulseaudio = {
@@ -77,7 +102,7 @@
   };
 
   networking = {
-    domain = "home.local";
+    domain = "home";
     hostName = "arcturus";
   };
 

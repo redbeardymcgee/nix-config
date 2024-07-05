@@ -73,4 +73,16 @@
     autoUpgrade.enable = false;
     stateVersion = "24.05"; # Did you read the comment?
   };
+
+  xdg.terminal-exec = {
+    enable = true;
+
+    settings = {
+      default = [
+        "org.codeberg.dnkl.foot.desktop"
+        "org.wezfurlong.wezterm.desktop"
+        "kitty.desktop"
+      ];
+    };
+  };
 }

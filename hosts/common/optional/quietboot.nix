@@ -1,6 +1,6 @@
 {pkgs, ...}: {
   console = {
-    earlySetup = false;
+    earlySetup = true;
     font = "ter-u12n";
     packages = with pkgs; [terminus_font];
     useXkbConfig = true;
@@ -8,7 +8,7 @@
 
   boot = {
     plymouth = {
-      enable = true;
+      enable = false;
 
       theme = "pixels";
       themePackages = with pkgs; [

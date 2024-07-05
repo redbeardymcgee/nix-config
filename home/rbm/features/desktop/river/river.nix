@@ -7,7 +7,14 @@
   wayland.windowManager.river = {
     enable = true;
 
-    settings = {
+    settings = let
+      pow2 = n:
+        if n == 0
+        then 1
+        else 2 * (pow2 (n - 1));
+
+      allTagsMask = toString ((pow2 32) - 1);
+    in {
       declare-mode = [
         "layout"
         "locked"
@@ -28,11 +35,6 @@
       };
 
       map = with lib.lists; let
-        allTagsMask = toString ((pow2 32) - 1);
-        pow2 = n:
-          if n == 0
-          then 1
-          else 2 * (pow2 (n - 1));
         tagMappings = fold (a: b: a // b) {} (
           forEach (range 1 9) (
             i: let
@@ -174,6 +176,15 @@
       rule-add = {
         "-title" = {
           "Picture-in-Picture" = "float";
+          "*DP-1" = "output DP-1";
+        };
+        "-app-id" = {
+          "vesktop" = "output DP-1";
+          "steam" = "float";
+          "org.remmina.Remmina" = {
+              "*" = "output DP-1";
+              "*remmina*" = "tags ${toString (pow2 8)}";
+            };
         };
       };
 
@@ -181,12 +192,13 @@
       set-repeat = "50 300";
 
       spawn = [
+        ''systemctl --user import-environment ''
         '''way-displays > "$XDG_RUNTIME_DIR/way-displays.$XDG_SEAT.log" 2>&1' ''
         "xdg-user-dirs-update"
 
-        "yambar"
-        "firefox"
-        "vesktop"
+        "'yambar'"
+        "'vesktop'"
+        "'firefox --name firefox.DP-1'"
 
         "'foot tmuxp load -y localhost'"
 

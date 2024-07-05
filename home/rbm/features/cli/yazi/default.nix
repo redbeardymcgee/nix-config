@@ -46,7 +46,7 @@
           on = ["y"];
           run = [
             "yank"
-            ''shell 'printf %s\\n "file://$@"| wl-copy -t text/uri-list' --confirm''
+            ''shell 'printf %s\\n "$@"| wl-copy -t text/uri-list' --confirm''
           ];
           desc = "Copy selected paths and files to clipboard";
         }
@@ -106,12 +106,12 @@
           desc = "Rename a bookmark by fzf";
         }
         {
-          on = ["t"];
+          on = ["<C-t>"];
           run = "plugin hide-preview --sync";
           desc = "Hide or show preview";
         }
         {
-          on = ["T"];
+          on = ["<C-T>"];
           run = "plugin max-preview --sync";
           desc = "Maximize or restore preview";
         }
@@ -163,6 +163,13 @@
           repo = "fg.yazi";
           rev = "f7d41ae71249515763d9ee04ddf4bdc3b0b42f55";
           hash = "sha256-6LpnyXB7mri6aVEfnv6aG2mWlzpvaD8SiMqwUS+jJr0=";
+        };
+
+        git-status = fetchFromGitHub {
+          owner = "DreamMaoMao";
+          repo = "git-status.yazi";
+          rev = "9a1813d96cc818a82d75a2548469990cb4582898";
+          hash = "sha256-G0sJe5z/r0uGwKbTR1Nd/L5IaHJH1i3JkijgySyl1s8=";
         };
 
         glow = fetchFromGitHub {

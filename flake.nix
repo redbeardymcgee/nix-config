@@ -70,12 +70,7 @@
 
     nixosConfigurations = {
       arcturus = lib.nixosSystem {
-        modules = [
-          ./hosts/arcturus
-          # ({pkgs, ...}: {
-          #   environment.systemPackages = [yazi.packages.${pkgs.system}.default];
-          # })
-        ];
+        modules = [./hosts/arcturus];
 
         specialArgs = {inherit inputs outputs;};
       };

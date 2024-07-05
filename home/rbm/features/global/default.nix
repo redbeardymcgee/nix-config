@@ -29,26 +29,31 @@
 
   home = {
     homeDirectory = lib.mkDefault "/home/${config.home.username}";
+
     packages = with pkgs; [
+      fira-code-nerdfont
       gcc
       pavucontrol
       unzip
       xdg-user-dirs
-      # xdg-terminal-emulator
-      # xterm-256color
     ];
+
+    preferXdgDirectories = true;
     stateVersion = lib.mkDefault "24.05";
+
     sessionPath = [
       "$HOME/.local/lib/node_modules/bin"
       "$HOME/.cargo/bin"
       "$HOME/.local/bin"
     ];
+
     sessionVariables = {
       EDITOR = "nvim";
       FLAKE = "$HOME/nix-config";
       NODE_PATH = "$HOME/local/lib/node_modules";
       VISUAL = "nvim";
     };
+
     username = lib.mkDefault "rbm";
   };
 

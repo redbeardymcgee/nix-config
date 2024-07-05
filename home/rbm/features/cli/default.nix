@@ -50,6 +50,7 @@
     python3
     ripdrag
     transmission_4
+    tree-sitter
     yq
   ];
 }
