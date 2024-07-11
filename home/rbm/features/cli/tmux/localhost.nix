@@ -18,8 +18,8 @@
           }
           {
             window_name = "cfg";
-            focus = true;
             start_directory = "~/nix-config";
+            focus = true;
             options = opts;
             panes = [{shell = "~/.nix-profile/bin/nvim .";}];
           }

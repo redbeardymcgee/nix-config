@@ -1,4 +1,5 @@
 {
+  lib,
   inputs,
   pkgs,
   ...
@@ -123,8 +124,23 @@
       ];
     };
 
-    plugins = with pkgs; let
-      plugNames = [
+    plugins = let
+      dreamMaoMaoPluginsNames = [
+        "fg"
+        "git-status"
+        "searchjump"
+      ];
+
+      dreamMaoMaoPluginsSrc = pkgs.fetchgit {
+        url = "https://github.com/redbeardymcgee/yazi-plugins";
+        sparseCheckout = map (p: "${p}.yazi") dreamMaoMaoPluginsNames;
+        rev = "7ef1d2d190f350e5f7dfa27b0c636695d2f02061";
+        hash = "sha256-IENJrplkQz1q+3uLnb7EjPqkCtMd+YcUpwN4QiSjwQM=";
+      };
+
+      dreamMaoMaoPlugins = lib.lists.fold (a: b: {${a} = "${dreamMaoMaoPluginsSrc}/${a}.yazi";} // b) {} dreamMaoMaoPluginsNames;
+
+      officialPluginsNames = [
         "chmod"
         "diff"
         "hide-preview"
@@ -133,111 +149,101 @@
         "smart-filter"
       ];
 
-      plugSrc = fetchgit {
+      officialPluginsSrc = pkgs.fetchgit {
         url = "https://github.com/yazi-rs/plugins.git";
-        sparseCheckout = map (p: "${p}.yazi") plugNames;
+        sparseCheckout = map (p: "${p}.yazi") officialPluginsNames;
         rev = "eaa682df64040813ff72e3f2f2b2f0c7306d0929";
         hash = "sha256-01v1WEHKN1gjZF2rv3IRxem02DRy/M+cs25LxKNKPY4=";
       };
 
-      plugs = lib.lists.fold (a: b: {${a} = "${plugSrc}/${a}.yazi";} // b) {} plugNames;
+      officialPlugins = lib.lists.fold (a: b: {${a} = "${officialPluginsSrc}/${a}.yazi";} // b) {} officialPluginsNames;
     in
-      plugs
-      // {
-        allmytoes = fetchFromGitHub {
-          owner = "Sonico98";
-          repo = "allmytoes.yazi";
-          rev = "e5329138a19615e63bff6a581eb69d1d1eb5d4fe";
-          hash = "sha256-S9O8jgTjdOxf/Zybmgm7nGBkd2Ipt2DtQ+Be2uawyNA=";
-        };
+      with pkgs;
+        officialPlugins
+        // dreamMaoMaoPlugins
+        // {
+          allmytoes = fetchFromGitHub {
+            owner = "Sonico98";
+            repo = "allmytoes.yazi";
+            rev = "e5329138a19615e63bff6a581eb69d1d1eb5d4fe";
+            hash = "sha256-S9O8jgTjdOxf/Zybmgm7nGBkd2Ipt2DtQ+Be2uawyNA=";
+          };
 
-        fast-enter = fetchFromGitHub {
-          owner = "ourongxing";
-          repo = "fast-enter.yazi";
-          rev = "2864c5998d89ad4ff6b17d6f758b7690a69cda47";
-          hash = "sha256-WIgWh1QRGC0IWvFJ1fTBw8c6m6DfxjbCH9WC3zBte1s=";
-        };
+          fast-enter = fetchFromGitHub {
+            owner = "ourongxing";
+            repo = "fast-enter.yazi";
+            rev = "2864c5998d89ad4ff6b17d6f758b7690a69cda47";
+            hash = "sha256-WIgWh1QRGC0IWvFJ1fTBw8c6m6DfxjbCH9WC3zBte1s=";
+          };
 
-        fg = fetchFromGitHub {
-          owner = "DreamMaoMao";
-          repo = "fg.yazi";
-          rev = "f7d41ae71249515763d9ee04ddf4bdc3b0b42f55";
-          hash = "sha256-6LpnyXB7mri6aVEfnv6aG2mWlzpvaD8SiMqwUS+jJr0=";
-        };
+          glow = fetchFromGitHub {
+            owner = "Reledia";
+            repo = "glow.yazi";
+            rev = "536185a4e60ac0adc11d238881e78678fdf084ff";
+            hash = "sha256-NcMbYjek99XgWFlebU+8jv338Vk1hm5+oW5gwH+3ZbI=";
+          };
 
-        git-status = fetchFromGitHub {
-          owner = "DreamMaoMao";
-          repo = "git-status.yazi";
-          rev = "9a1813d96cc818a82d75a2548469990cb4582898";
-          hash = "sha256-G0sJe5z/r0uGwKbTR1Nd/L5IaHJH1i3JkijgySyl1s8=";
-        };
+          hexyl = fetchFromGitHub {
+            owner = "Reledia";
+            repo = "hexyl.yazi";
+            rev = "64daf93a67d75eff871befe52d9013687171ffad";
+            hash = "sha256-B2L3/Q1g0NOO6XEMIMGBC/wItbNgBVpbaMMhiXOYcrI=";
+          };
 
-        glow = fetchFromGitHub {
-          owner = "Reledia";
-          repo = "glow.yazi";
-          rev = "536185a4e60ac0adc11d238881e78678fdf084ff";
-          hash = "sha256-NcMbYjek99XgWFlebU+8jv338Vk1hm5+oW5gwH+3ZbI=";
-        };
+          torrent-preview = fetchFromGitHub {
+            owner = "kirasok";
+            repo = "torrent-preview.yazi";
+            rev = "76970b6f9d6f3031e9cd57c8595a53e9f9f48c18";
+            hash = "sha256-QPdtoCU7CyS7sx1aoGHNHv1NxWMA/SxSuy+2SLDdCeU=";
+          };
 
-        hexyl = fetchFromGitHub {
-          owner = "Reledia";
-          repo = "hexyl.yazi";
-          rev = "64daf93a67d75eff871befe52d9013687171ffad";
-          hash = "sha256-B2L3/Q1g0NOO6XEMIMGBC/wItbNgBVpbaMMhiXOYcrI=";
-        };
+          exifaudio = fetchFromGitHub {
+            owner = "Sonico98";
+            repo = "exifaudio.yazi";
+            rev = "94329ead8b3a6d3faa2d4975930a3d0378980c7a";
+            hash = "sha256-jz6fVtcLHw9lsxFWECbuxE7tEBttE08Fl4oJSTifaEc=";
+          };
 
-        searchjump = fetchFromGitHub {
-          owner = "DreamMaoMao";
-          repo = "searchjump.yazi";
-          rev = "fd94cbe9d603430db950532ad8139710c5dfb167";
-          hash = "sha256-pTYH03OtzRBpjWDZTXdUzUnvfmDSgmN8v3mk+TjD4cI=";
-        };
+          miller = fetchFromGitHub {
+            owner = "Reledia";
+            repo = "miller.yazi";
+            rev = "75f00026a0425009edb6fedcfbe893f3d2ddedf4";
+            hash = "sha256-u8xadj6/s16xXUAWGezYBqnygKaFMnRUsqtjMDr6DZA=";
+          };
 
-        torrent-preview = fetchFromGitHub {
-          owner = "kirasok";
-          repo = "torrent-preview.yazi";
-          rev = "76970b6f9d6f3031e9cd57c8595a53e9f9f48c18";
-          hash = "sha256-QPdtoCU7CyS7sx1aoGHNHv1NxWMA/SxSuy+2SLDdCeU=";
-        };
+          ouch = fetchFromGitHub {
+            owner = "ndtoan96";
+            repo = "ouch.yazi";
+            rev = "694d149be5f96eaa0af68d677c17d11d2017c976";
+            hash = "sha256-J3vR9q4xHjJt56nlfd+c8FrmMVvLO78GiwSNcLkM4OU=";
+          };
 
-        exifaudio = fetchFromGitHub {
-          owner = "Sonico98";
-          repo = "exifaudio.yazi";
-          rev = "94329ead8b3a6d3faa2d4975930a3d0378980c7a";
-          hash = "sha256-jz6fVtcLHw9lsxFWECbuxE7tEBttE08Fl4oJSTifaEc=";
-        };
+          starship = fetchFromGitHub {
+            owner = "Rolv-Apneseth";
+            repo = "starship.yazi";
+            rev = "6197e4cca4caed0121654079151632f6abcdcae9";
+            hash = "sha256-oHoBq7BESjGeKsaBnDt0TXV78ggGCdYndLpcwwQ8Zts=";
+          };
 
-        miller = fetchFromGitHub {
-          owner = "Reledia";
-          repo = "miller.yazi";
-          rev = "75f00026a0425009edb6fedcfbe893f3d2ddedf4";
-          hash = "sha256-u8xadj6/s16xXUAWGezYBqnygKaFMnRUsqtjMDr6DZA=";
+          yamb = fetchFromGitHub {
+            owner = "h-hg";
+            repo = "yamb.yazi";
+            rev = "3636c80f94448347f8047cfbfc1ca6099dcd4d71";
+            hash = "sha256-81rrxjdWlpICQ12EfOcvXpvnWXeWgA5GYBfoHXxBe1g=";
+          };
         };
-
-        ouch = fetchFromGitHub {
-          owner = "ndtoan96";
-          repo = "ouch.yazi";
-          rev = "694d149be5f96eaa0af68d677c17d11d2017c976";
-          hash = "sha256-J3vR9q4xHjJt56nlfd+c8FrmMVvLO78GiwSNcLkM4OU=";
-        };
-
-        starship = fetchFromGitHub {
-          owner = "Rolv-Apneseth";
-          repo = "starship.yazi";
-          rev = "6197e4cca4caed0121654079151632f6abcdcae9";
-          hash = "sha256-oHoBq7BESjGeKsaBnDt0TXV78ggGCdYndLpcwwQ8Zts=";
-        };
-
-        yamb = fetchFromGitHub {
-          owner = "h-hg";
-          repo = "yamb.yazi";
-          rev = "3636c80f94448347f8047cfbfc1ca6099dcd4d71";
-          hash = "sha256-81rrxjdWlpICQ12EfOcvXpvnWXeWgA5GYBfoHXxBe1g=";
-        };
-      };
 
     settings = {
       plugin = {
+        fetchers = [
+          {
+            id = "git-status";
+            name = "*";
+            run = "git-status";
+            prio = "normal";
+          }
+        ];
+
         prepend_preloaders = [
           {
             mime = "image/svg+xml";
@@ -254,6 +260,13 @@
           {
             mime = "image/*";
             run = "allmytoes";
+          }
+        ];
+
+        append_previewers = [
+          {
+            name = "*";
+            run = "hexyl";
           }
         ];
 
@@ -313,13 +326,6 @@
           {
             mime = "application/x-bittorrent";
             run = "torrent-preview";
-          }
-        ];
-
-        append_previewers = [
-          {
-            name = "*";
-            run = "hexyl";
           }
         ];
       };

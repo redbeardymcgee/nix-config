@@ -1,8 +1,10 @@
 {pkgs, ...}: {
   imports = [
+    ./tmux.nix
+
     ./localhost.nix
     ./mcgeedia.nix
-    ./tmux.nix
+    ./yazi-plugins.nix
   ];
 
   home.packages = with pkgs; [

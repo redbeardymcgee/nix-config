@@ -2,7 +2,7 @@ function Header:host()
 	if ya.target_family() ~= "unix" then
 		return ui.Line {}
 	end
-	return ui.Span(ya.user_name() .. " 󰁥 " .. ya.host_name()):fg("blue")
+	return ui.Span(ya.user_name() .. "@" .. ya.host_name() .. ": "):fg("blue")
 end
 
 function Header:render(area)
@@ -71,5 +71,5 @@ require("full-border"):setup()
 require("git-status"):setup{
     folder_size_ignore = {"/home/rbm","/"},
     gitstatus_ignore = {"/home/rbm","/"},
-    enable_folder_size = false
+    enable_folder_size = true
 }

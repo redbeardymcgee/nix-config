@@ -41,12 +41,12 @@
               }
             ];
           }
-          {
-            window_name = "monitor";
-            window_index = 0;
-            options = opts;
-            panes = [{shell = ["~/.nix-profile/bin/btm"];}];
-          }
+          # {
+          #   window_name = "monitor";
+          #   window_index = 0;
+          #   options = opts;
+          #   panes = [{shell = ["~/.nix-profile/bin/btm"];}];
+          # }
         ];
       };
     };
