@@ -3,18 +3,16 @@
 
   nixConfig = {
     extra-subsituters = [
-      "https://nix-community.cachix.org"
       "https://yazi.cachix.org"
     ];
 
     extra-trusted-public-keys = [
-      "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
       "yazi.cachix.org-1:Dcdz63NZKfvUCbDGngQDAZq6kOroIrFoyO064uvLh8k="
     ];
   };
 
   inputs = {
-    catppuccin.url = "github:catppuccin/nix";
+    # catppuccin.url = "github:catppuccin/nix";
 
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -34,8 +32,9 @@
     };
 
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-
     nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-24.05";
+
+    stylix.url = "github:danth/stylix";
 
     yazi.url = "github:sxyazi/yazi";
   };
@@ -77,12 +76,22 @@
     };
 
     homeConfigurations = {
-      rbm = lib.homeManagerConfiguration {
+      "rbm@arcturus" = lib.homeManagerConfiguration {
         extraSpecialArgs = {
           inherit inputs outputs;
         };
         modules = [
           ./home/rbm/arcturus.nix
+        ];
+        pkgs = pkgsFor.x86_64-linux;
+      };
+
+      "rbm@headmaster" = lib.homeManagerConfiguration {
+        extraSpecialArgs = {
+          inherit inputs outputs;
+        };
+        modules = [
+          ./home/rbm/headmaster.nix
         ];
         pkgs = pkgsFor.x86_64-linux;
       };

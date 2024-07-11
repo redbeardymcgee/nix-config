@@ -85,6 +85,40 @@
 
         left = [
           {
+            clock = {
+              time-format = "%H:%M";
+              content = [
+                {
+                  string = {
+                    text = "󰸗";
+                    right-margin = 3;
+                  };
+                }
+                {
+                  string = {
+                    text = "{date}";
+                    right-margin = 5;
+                  };
+                }
+                {
+                  string = {
+                    text = "";
+                    right-margin = 5;
+                  };
+                }
+                {
+                  string = {
+                    text = "{time}";
+                    right-margin = 5;
+                  };
+                }
+              ];
+            };
+          }
+        ];
+
+        center = [
+          {
             river = {
               anchors = [
                 {
@@ -152,40 +186,6 @@
                   };
                 };
               };
-            };
-          }
-        ];
-
-        center = [
-          {
-            clock = {
-              time-format = "%H:%M";
-              content = [
-                {
-                  string = {
-                    text = "󰸗";
-                    right-margin = 3;
-                  };
-                }
-                {
-                  string = {
-                    text = "{date}";
-                    right-margin = 5;
-                  };
-                }
-                {
-                  string = {
-                    text = "";
-                    right-margin = 5;
-                  };
-                }
-                {
-                  string = {
-                    text = "{time}";
-                    right-margin = 5;
-                  };
-                }
-              ];
             };
           }
         ];

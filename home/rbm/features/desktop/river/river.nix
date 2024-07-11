@@ -41,10 +41,10 @@
               tagmask = toString (pow2 (i - 1));
               num = toString i;
             in {
-              "Super ${num}" = "set-focused-tags ${tagmask}";
-              "Super+Shift ${num}" = "set-view-tags ${tagmask}";
-              "Super+Control ${num}" = "toggle-focused-tags ${tagmask}";
-              "Super+Shift+Control ${num}" = "toggle-view-tags ${tagmask}";
+              "None F${num}" = "set-focused-tags ${tagmask}";
+              "Super F${num}" = "set-view-tags ${tagmask}";
+              "Super+Shift F${num}" = "toggle-focused-tags ${tagmask}";
+              "Super+Control F${num}" = "toggle-view-tags ${tagmask}";
             }
           )
         );
@@ -72,7 +72,7 @@
           // swapWinKeys
           // tagMappings
           // {
-            "Super F11" = "enter-mode passthrough";
+            "Super Backspace" = "enter-mode passthrough";
             "Super R" = "enter-mode layout";
             "Super W" = "enter-mode move";
 
@@ -95,8 +95,8 @@
             "Super+Shift Period" = "send-to-output next";
             "Super+Shift Comma" = "send-to-output previous";
 
-            "Super 0" = "set-focused-tags ${allTagsMask}";
-            "Super+Shift 0" = "set-view-tags ${allTagsMask}";
+            "Super F10" = "set-focused-tags ${allTagsMask}";
+            "Super+Shift F10" = "set-view-tags ${allTagsMask}";
           };
 
         locked =
@@ -109,7 +109,7 @@
         passthrough = {
           "None Return" = "enter-mode normal";
           "None Escape" = "enter-mode normal";
-          "Super F11" = "enter-mode normal";
+          "Super Backspace" = "enter-mode normal";
         };
 
         layout =
@@ -174,17 +174,17 @@
       };
 
       rule-add = {
+        "-app-id" = {
+          "xdg-desktop-portal-gtk" = "float";
+          "vesktop" = "output DP-1";
+          "steam*" = "float";
+          "org.remmina.Remmina" = "output DP-1";
+          "org.remmina.Remmin*" = "tags ${toString (pow2 8)}";
+        };
+
         "-title" = {
           "Picture-in-Picture" = "float";
           "*DP-1" = "output DP-1";
-        };
-        "-app-id" = {
-          "vesktop" = "output DP-1";
-          "steam" = "float";
-          "org.remmina.Remmina" = {
-            "*" = "output DP-1";
-            "*remmina*" = "tags ${toString (pow2 8)}";
-          };
         };
       };
 
@@ -192,7 +192,8 @@
       set-repeat = "50 300";
 
       spawn = [
-        ''systemctl --user import-environment ''
+        ''dbus-update-activation-environment --systemd --all''
+        ''systemctl --user import-environment QT_QPA_PLATFORMTHEME WAYLAND_DISPLAY XDG_CURRENT_DESKTOP''
         '''way-displays > "$XDG_RUNTIME_DIR/way-displays.$XDG_SEAT.log" 2>&1' ''
         "xdg-user-dirs-update"
 

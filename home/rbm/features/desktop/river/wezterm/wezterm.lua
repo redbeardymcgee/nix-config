@@ -46,8 +46,8 @@ local utils = require("utils")
 
 config.scrollback_lines = 3500
 
-config.font = wezterm.font("FiraCode Nerd Font")
-config.font_size = 10.0
+-- config.font = wezterm.font("FiraCode Nerd Font")
+-- config.font_size = 10.0
 -- config.harfbuzz_features = {
 -- 	"zero", -- 0
 -- 	"cv17", -- ~
@@ -68,7 +68,7 @@ config.font_size = 10.0
 -- 	"ss07", -- =~ !~
 -- }
 
-config.window_background_opacity = 1
+-- config.window_background_opacity = 1
 config.window_decorations = "NONE"
 -- config.window_frame = {
 -- 	active_titlebar_bg = "#1e1e2e",
@@ -83,7 +83,7 @@ config.enable_tab_bar = false
 -- 	brightness = 0.4,
 -- }
 
-config.color_scheme = "Catppuccin Mocha"
+-- config.color_scheme = "Catppuccin Mocha"
 
 -- local function create_ssh_domain_from_ssh_config(ssh_domains)
 -- 	if ssh_domains == nil then

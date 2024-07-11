@@ -8,7 +8,7 @@
   ];
 
   home.packages = with pkgs; [
-    python311Packages.libtmux
+    # python312Packages.libtmux
     chafa
     ueberzugpp
   ];

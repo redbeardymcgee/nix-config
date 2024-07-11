@@ -8,17 +8,11 @@
 }: {
   imports =
     [
-      inputs.catppuccin.homeManagerModules.catppuccin
+      inputs.stylix.homeManagerModules.stylix
 
       ./nixpkgs.nix
     ]
     ++ (builtins.attrValues outputs.homeManagerModules);
-
-  catppuccin = {
-    enable = true;
-    flavor = "mocha";
-    pointerCursor.enable = true;
-  };
 
   dconf.settings = {
     "org/virt-manager/virt-manager/connections" = {
@@ -58,5 +52,30 @@
   };
 
   news.display = "show";
+
+  stylix = {
+    enable = true;
+    # base16Scheme = "${pkgs.base16-schemes}/share/themes/horizon-terminal-dark.yaml";
+
+    fonts = {
+      monospace = {
+        package = pkgs.fira-code-nerdfont;
+        name = "FiraCode Nerd Font";
+      };
+    };
+
+    image = pkgs.fetchurl {
+      url = "https://w.wallhaven.cc/full/5g/wallhaven-5g8xj7.jpg";
+      hash = "sha256-sVbkNiOUJvq0T3B/l9AOA6J0ro5s0GVBH1P3g+XGUj4=";
+    };
+
+    opacity = {
+      desktop = 0.85;
+      popups = 0.9;
+    };
+
+    polarity = "dark";
+  };
+
   systemd.user.startServices = "sd-switch";
 }
