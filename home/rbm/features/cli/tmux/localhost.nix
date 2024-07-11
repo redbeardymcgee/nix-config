@@ -9,7 +9,7 @@
       enable = true;
 
       source = (pkgs.formats.yaml {}).generate "localhost.yaml" {
-        session_name = "localhost";
+        session_name = "localhost  ";
         windows = [
           {
             window_name = "main";
