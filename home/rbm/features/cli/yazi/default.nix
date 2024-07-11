@@ -237,6 +237,7 @@
       manager = {
         linemode = "size";
       };
+
       plugin = {
         fetchers = [
           {
