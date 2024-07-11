@@ -7,16 +7,16 @@
   };
 
   boot = {
-    plymouth = {
-      enable = false;
-
-      theme = "pixels";
-      themePackages = with pkgs; [
-        (adi1090x-plymouth-themes.override {
-          selected_themes = ["pixels"];
-        })
-      ];
-    };
+    # plymouth = {
+    #   enable = false;
+    #
+    #   theme = "pixels";
+    #   themePackages = with pkgs; [
+    #     (adi1090x-plymouth-themes.override {
+    #       selected_themes = ["pixels"];
+    #     })
+    #   ];
+    # };
 
     loader.timeout = 0;
 

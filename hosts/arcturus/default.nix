@@ -62,10 +62,6 @@
     graphics = {
       enable = true;
       enable32Bit = true;
-    };
-
-    opengl = {
-      enable = true;
       extraPackages = with pkgs; [
         intel-media-driver
         vaapiIntel
@@ -106,5 +102,5 @@
     hostName = "arcturus";
   };
 
-  security.pam.services.swaylock = {};
+  security.pam.services.swaylock.text = "auth include login";
 }
