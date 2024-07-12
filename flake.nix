@@ -12,13 +12,16 @@
   };
 
   inputs = {
-    # catppuccin.url = "github:catppuccin/nix";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-24.05";
 
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    # catppuccin.url = "github:catppuccin/nix";
+    kixvim.url = "github:redbeardymcgee/kixvim";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
 
     nix-gaming = {
@@ -31,11 +34,7 @@
       inputs.nixpkgs.follows = "nixpkgs-stable";
     };
 
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-24.05";
-
     stylix.url = "github:danth/stylix";
-
     yazi.url = "github:sxyazi/yazi";
   };
 

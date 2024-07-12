@@ -70,20 +70,6 @@
       ];
     };
 
-    pulseaudio = {
-      enable = false;
-      configFile = pkgs.writeText "default.pa" ''
-        load-module module-bluetooth-policy
-        load-module module-bluetooth-discover
-      '';
-      extraConfig = ''
-        load-module module-switch-on-connect
-      '';
-      package = pkgs.pulseaudioFull;
-    };
-  };
-
-  hardware = {
     nvidia = {
       modesetting.enable = true;
       nvidiaSettings = false;
@@ -94,6 +80,20 @@
         finegrained = false;
       };
       prime.offload.enable = false;
+    };
+
+    pulseaudio = {
+      enable = false;
+      package = pkgs.pulseaudioFull;
+
+      configFile = pkgs.writeText "default.pa" ''
+        load-module module-bluetooth-policy
+        load-module module-bluetooth-discover
+      '';
+
+      extraConfig = ''
+        load-module module-switch-on-connect
+      '';
     };
   };
 

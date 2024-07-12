@@ -24,30 +24,36 @@
   environment = {
     systemPackages = with pkgs; [
       libnotify
+      # kixvim
     ];
+
     # TODO: KDE only?
     profileRelativeSessionVariables = {
       QT_PLUGIN_PATH = ["/lib/qt-6/plugins"];
     };
+
     pathsToLink = [
       "/share/xdg-desktop-portal"
       "/share/applications"
     ];
   };
 
-  nixpkgs = {
-    overlays = builtins.attrValues outputs.overlays;
-    config = {
-      allowUnfree = true;
-      allowUnfreePredicate = _: true;
-    };
-  };
+  # nixpkgs = {
+  #   overlays = builtins.attrValues outputs.overlays ++ builtins.attrValues inputs.kixvim.overlays;
+  #
+  #   config = {
+  #     allowUnfree = true;
+  #     allowUnfreePredicate = _: true;
+  #   };
+  # };
 
   home-manager = {
     backupFileExtension = "backup";
+
     extraSpecialArgs = {
       inherit inputs outputs;
     };
+
     useGlobalPkgs = true;
     useUserPackages = true;
   };
@@ -55,6 +61,7 @@
   programs = {
     dconf.enable = true;
     fish.enable = true;
+
     nh = {
       enable = true;
       clean = {

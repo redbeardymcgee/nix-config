@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+{inputs, outputs, pkgs, ...}: {
   imports = [
     ./atuin.nix
     ./bash.nix
@@ -29,6 +29,15 @@
     ./zoxide.nix
   ];
 
+  nixpkgs = {
+    overlays = builtins.attrValues outputs.overlays ++ builtins.attrValues inputs.kixvim.overlays;
+
+    config = {
+      allowUnfree = true;
+      allowUnfreePredicate = _: true;
+    };
+  };
+
   home.packages = with pkgs; [
     alejandra
     comma
@@ -42,7 +51,8 @@
     lazydocker
     manix
     miller
-    neovim
+    # neovim
+    kixvim
     nodejs
     ouch
     poppler

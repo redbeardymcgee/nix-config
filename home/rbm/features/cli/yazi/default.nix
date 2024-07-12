@@ -116,11 +116,6 @@
           run = "plugin max-preview --sync";
           desc = "Maximize or restore preview";
         }
-        {
-          on = ["l"];
-          run = "plugin fast-enter --sync";
-          desc = "Enter the subfolder faster, or open the file directly";
-        }
       ];
     };
 
@@ -167,13 +162,6 @@
             repo = "allmytoes.yazi";
             rev = "e5329138a19615e63bff6a581eb69d1d1eb5d4fe";
             hash = "sha256-S9O8jgTjdOxf/Zybmgm7nGBkd2Ipt2DtQ+Be2uawyNA=";
-          };
-
-          fast-enter = fetchFromGitHub {
-            owner = "ourongxing";
-            repo = "fast-enter.yazi";
-            rev = "2864c5998d89ad4ff6b17d6f758b7690a69cda47";
-            hash = "sha256-WIgWh1QRGC0IWvFJ1fTBw8c6m6DfxjbCH9WC3zBte1s=";
           };
 
           glow = fetchFromGitHub {

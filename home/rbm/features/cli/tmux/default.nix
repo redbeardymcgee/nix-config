@@ -4,7 +4,7 @@
 
     ./localhost.nix
     ./mcgeedia.nix
-    ./yazi-plugins.nix
+    ./projects.nix
   ];
 
   home.packages = with pkgs; [
