@@ -8,6 +8,7 @@
     [
       inputs.home-manager.nixosModules.home-manager
       ./locale.nix
+      # ./kernel.nix
       ./nix.nix
       ./qemu.nix
       ./sudo.nix
@@ -24,7 +25,6 @@
   environment = {
     systemPackages = with pkgs; [
       libnotify
-      # kixvim
     ];
 
     # TODO: KDE only?
@@ -38,14 +38,14 @@
     ];
   };
 
-  # nixpkgs = {
-  #   overlays = builtins.attrValues outputs.overlays ++ builtins.attrValues inputs.kixvim.overlays;
-  #
-  #   config = {
-  #     allowUnfree = true;
-  #     allowUnfreePredicate = _: true;
-  #   };
-  # };
+  nixpkgs = {
+    overlays = builtins.attrValues outputs.overlays ++ builtins.attrValues inputs.kixvim.overlays;
+
+    config = {
+      allowUnfree = true;
+      allowUnfreePredicate = _: true;
+    };
+  };
 
   home-manager = {
     backupFileExtension = "backup";
@@ -78,7 +78,7 @@
 
   system = {
     autoUpgrade.enable = false;
-    stateVersion = "24.05"; # Did you read the comment?
+    stateVersion = "24.05";
   };
 
   xdg.terminal-exec = {

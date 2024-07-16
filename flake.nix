@@ -1,8 +1,8 @@
 {
-  description = "Nix flake configuration";
+  description = "rbm flake";
 
   nixConfig = {
-    extra-subsituters = [
+    extra-substituters = [
       "https://yazi.cachix.org"
     ];
 
@@ -20,19 +20,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # catppuccin.url = "github:catppuccin/nix";
     kixvim.url = "github:redbeardymcgee/kixvim";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
-
-    nix-gaming = {
-      url = "github:fufexan/nix-gaming";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    nix-gl = {
-      url = "github:nix-community/nixgl";
-      inputs.nixpkgs.follows = "nixpkgs-stable";
-    };
 
     stylix.url = "github:danth/stylix";
     yazi.url = "github:sxyazi/yazi";
@@ -42,33 +31,21 @@
     self,
     home-manager,
     nixpkgs,
-    systems,
     ...
   } @ inputs: let
     inherit (self) outputs;
     lib = nixpkgs.lib // home-manager.lib;
-    forEachSystem = f: lib.genAttrs (import systems) (system: f pkgsFor.${system});
-    pkgsFor =
-      lib.genAttrs (import systems)
-      (
-        system:
-          import nixpkgs {
-            inherit system;
-            config.allowUnfree = true;
-          }
-      );
   in {
     inherit lib;
     nixosModules = import ./modules/nixos;
     homeManagerModules = import ./modules/home-manager;
     overlays = import ./overlays {inherit inputs outputs;};
 
-    packages = forEachSystem (pkgs: import ./pkgs {inherit pkgs;});
-    formatter = forEachSystem (pkgs: pkgs.alejandra);
-
     nixosConfigurations = {
       arcturus = lib.nixosSystem {
-        modules = [./hosts/arcturus];
+        modules = [
+          ./hosts/arcturus
+        ];
 
         specialArgs = {inherit inputs outputs;};
       };
@@ -82,7 +59,7 @@
         modules = [
           ./home/rbm/arcturus.nix
         ];
-        pkgs = pkgsFor.x86_64-linux;
+        pkgs = nixpkgs.legacyPackages.x86_64-linux;
       };
 
       "rbm@headmaster" = lib.homeManagerConfiguration {
@@ -92,7 +69,7 @@
         modules = [
           ./home/rbm/headmaster.nix
         ];
-        pkgs = pkgsFor.x86_64-linux;
+        pkgs = nixpkgs.legacyPackages.x86_64-linux;
       };
     };
   };

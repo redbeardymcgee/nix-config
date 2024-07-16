@@ -1,4 +1,9 @@
-{inputs, outputs, pkgs, ...}: {
+{
+  inputs,
+  outputs,
+  pkgs,
+  ...
+}: {
   imports = [
     ./atuin.nix
     ./bash.nix
@@ -7,6 +12,13 @@
     ./direnv.nix
     ./eza.nix
     ./fastfetch.nix
+    # TODO: Remove this after https://gitlab.com/Zaney/zaneyos/-/merge_requests/52
+    #       decision.
+    #
+    #       This is only here as a shortcut to test their config
+    #       without having to build a ZaneyOS VM. I'm not sure
+    #       if I even care to keep a fastfetch config of my own.
+    # ./fastfetch
     ./fd.nix
     ./fish.nix
     ./fzf.nix
@@ -18,7 +30,7 @@
     ./less.nix
     ./man.nix
     ./nix-index.nix
-    ./rbw.nix
+    # ./rbw.nix
     ./ripgrep.nix
     ./ssh.nix
     ./starship.nix
@@ -51,8 +63,8 @@
     lazydocker
     manix
     miller
-    # neovim
-    kixvim
+    neovim
+    # kixvim
     nodejs
     ouch
     poppler

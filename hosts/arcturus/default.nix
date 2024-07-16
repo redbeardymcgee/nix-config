@@ -5,14 +5,12 @@
   ...
 }: {
   imports = [
-    inputs.nixos-hardware.nixosModules.common-cpu-intel-kaby-lake
     inputs.nixos-hardware.nixosModules.common-hidpi
     inputs.nixos-hardware.nixosModules.common-pc
     inputs.nixos-hardware.nixosModules.common-pc-ssd
-    inputs.nixos-hardware.nixosModules.common-gpu-nvidia
-    # inputs.home-manager.nixosModules.home-manager
+    # inputs.nixos-hardware.nixosModules.common-gpu-nvidia
 
-    ./hardware-configuration.nix
+    ./hw.nix
 
     ../common/global
 
@@ -31,8 +29,6 @@
   ];
 
   fileSystems = {
-    "/boot".options = ["umask=0077"];
-
     "/2tb" = {
       device = "/dev/disk/by-uuid/0b8b0c5d-8363-43a5-8a3a-a71fa3c7d953";
       fsType = "ext4";
@@ -71,7 +67,7 @@
     };
 
     nvidia = {
-      modesetting.enable = true;
+      # modesetting.enable = true;
       nvidiaSettings = false;
       open = false;
       package = config.boot.kernelPackages.nvidiaPackages.stable;

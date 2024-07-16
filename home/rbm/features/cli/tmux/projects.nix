@@ -9,7 +9,7 @@
       enable = true;
 
       source = (pkgs.formats.yaml {}).generate "projects.yaml" {
-        session_name = "projects  ";
+        session_name = "proj  ";
 
         windows = [
           {

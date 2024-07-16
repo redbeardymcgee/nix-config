@@ -51,6 +51,7 @@
         extraConfig = ''
           set -g @plugin 'sunaku/tmux-navigate'
           set -g @tilish-navigate 'on'
+          set -g @tilish-dmenu 'on'
         '';
       }
       yank

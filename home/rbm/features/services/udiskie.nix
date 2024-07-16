@@ -2,8 +2,8 @@
   services.udiskie = {
     enable = true;
 
-    settings = {
-      terminal = "xdg-terminal-exec";
-    };
+    # settings = {
+    #   terminal = "xdg-terminal-exec";
+    # };
   };
 }

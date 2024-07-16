@@ -60,7 +60,7 @@
           "None XF86AudioPrev" = "spawn 'playerctl previous'";
         };
 
-        swapWinKeys = {
+        winSwapKeys = {
           "Super+Shift H" = "swap left";
           "Super+Shift J" = "swap down";
           "Super+Shift K" = "swap up";
@@ -69,7 +69,7 @@
       in {
         normal =
           mediaKeys
-          // swapWinKeys
+          // winSwapKeys
           // tagMappings
           // {
             "Super Backspace" = "enter-mode passthrough";
@@ -113,7 +113,7 @@
         };
 
         layout =
-          swapWinKeys
+          winSwapKeys
           // {
             "None Return" = "enter-mode normal";
             "None Escape" = "enter-mode normal";
@@ -175,11 +175,17 @@
 
       rule-add = {
         "-app-id" = {
-          "xdg-desktop-portal-gtk" = "float";
-          "vesktop" = "output DP-1";
-          "steam*" = "float";
+          "foot-localhost" = "tags ${toString (pow2 0)}";
+          "foot-projects" = "tags ${toString (pow2 1)}";
+          "foot-mcgeedia" = "tags ${toString (pow2 2)}";
           "org.remmina.Remmina" = "output DP-1";
           "org.remmina.Remmin*" = "tags ${toString (pow2 8)}";
+          "steam*" = "float";
+          "vesktop" = "output DP-1";
+          "wezterm-localhost" = "tags ${toString (pow2 0)}";
+          "wezterm-projects" = "tags ${toString (pow2 1)}";
+          "wezterm-mcgeedia" = "tags ${toString (pow2 2)}";
+          "xdg-desktop-portal-*" = "float";
         };
 
         "-title" = {
@@ -192,17 +198,20 @@
       set-repeat = "50 300";
 
       spawn = [
-        ''dbus-update-activation-environment --systemd --all''
-        ''systemctl --user import-environment QT_QPA_PLATFORMTHEME WAYLAND_DISPLAY XDG_CURRENT_DESKTOP''
+        " 'systemctl --user import-environment QT_QPA_PLATFORMTHEME XDG_SEAT' "
         '''way-displays > "$XDG_RUNTIME_DIR/way-displays.$XDG_SEAT.log" 2>&1' ''
-        "xdg-user-dirs-update"
-
         "'yambar'"
         "'vesktop'"
         "'firefox --name firefox.DP-1'"
-
-        "'foot tmuxp load -y localhost'"
-
+        "${pkgs.writeShellScript "autolaunch-foot" ''
+          for sesh in localhost mcgeedia projects
+          do
+            foot --app-id=foot-$sesh tmuxp load -y $sesh &
+            sleep 1
+          done
+        ''}
+        "
+        # "'wezterm start --class wezterm.localhost -- tmuxp load -y localhost'"
         "'rivercarro -outer-gaps 0'"
       ];
     };

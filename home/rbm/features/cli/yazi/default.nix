@@ -15,7 +15,7 @@
       manager.prepend_keymap = [
         {
           on = ["<C-s>"];
-          run = ''shell "$SHELL" --block --confirm'';
+          run = ''shell "$SHELL" --block --interactive'';
           desc = "Open shell here";
         }
         {
@@ -29,6 +29,11 @@
           desc = "Diff the selected with the hovered file";
         }
         {
+          on = ["c" "C"];
+          run = "plugin ouch --args=zip";
+          desc = "Compress with ouch";
+        }
+        {
           on = ["F"];
           run = "plugin smart-filter";
           desc = "Smart filter";
@@ -40,15 +45,12 @@
         }
         {
           on = ["<C-d>"];
-          run = ''shell 'ripdrag "$@" -x 2>/dev/null &' --confirm'';
+          run = ''shell 'ripdrag "$@" -x 2>/dev/null &' --interactive'';
           desc = "Drag and drop into the hovered directory or CWD";
         }
         {
           on = ["y"];
-          run = [
-            "yank"
-            ''shell 'printf %s\\n "$@"| wl-copy -t text/uri-list' --confirm''
-          ];
+          run = ''shell 'printf %s\\n "$@" | wl-copy -t text/uri-list' --interactive'';
           desc = "Copy selected paths and files to clipboard";
         }
         {
@@ -56,16 +58,21 @@
           run = "plugin searchjump";
           desc = "searchjump mode";
         }
-        {
-          on = ["f" "g"];
-          run = "plugin fg --args='rg'";
-          desc = "find file by content (ripgrep match)";
-        }
-        {
-          on = ["f" "f"];
-          run = "plugin fg --args='fzf'";
-          desc = "find file by file name";
-        }
+        # {
+        #   on = ["f" "g"];
+        #   run = "plugin fg --args='rg'";
+        #   desc = "find file by content (ripgrep match)";
+        # }
+        # {
+        #   on = ["f" "g"];
+        #   run = "plugin fg --args='rg'";
+        #   desc = "find file by content (ripgrep match)";
+        # }
+        # {
+        #   on = ["f" "f"];
+        #   run = "plugin fg --args='fzf'";
+        #   desc = "find file by file name";
+        # }
         {
           on = ["b" "a"];
           run = "plugin yamb --args=save";
@@ -117,20 +124,29 @@
           desc = "Maximize or restore preview";
         }
       ];
+
+      opener = {
+        extract = [
+          {
+            run = ''ouch d -y "$@"'';
+            for = "unix";
+          }
+        ];
+      };
     };
 
     plugins = let
       dreamMaoMaoPluginsNames = [
-        "fg"
-        "git-status"
+        # "fg"
+        # "git-status"
         "searchjump"
       ];
 
       dreamMaoMaoPluginsSrc = pkgs.fetchgit {
         url = "https://github.com/redbeardymcgee/yazi-plugins";
         sparseCheckout = map (p: "${p}.yazi") dreamMaoMaoPluginsNames;
-        rev = "7ef1d2d190f350e5f7dfa27b0c636695d2f02061";
-        hash = "sha256-IENJrplkQz1q+3uLnb7EjPqkCtMd+YcUpwN4QiSjwQM=";
+        rev = "60d393f6b64bb0db1a67dabc21a2aca9228f0fc1";
+        hash = "sha256-tg4PxUo9LNr8LCHh+dyMp6lp437fms+4ZOY7yRKk0TE=";
       };
 
       dreamMaoMaoPlugins = lib.lists.fold (a: b: {${a} = "${dreamMaoMaoPluginsSrc}/${a}.yazi";} // b) {} dreamMaoMaoPluginsNames;
@@ -138,17 +154,17 @@
       officialPluginsNames = [
         "chmod"
         "diff"
-        "hide-preview"
+        # "hide-preview"
         "full-border"
-        "max-preview"
+        # "max-preview"
         "smart-filter"
       ];
 
       officialPluginsSrc = pkgs.fetchgit {
         url = "https://github.com/yazi-rs/plugins.git";
         sparseCheckout = map (p: "${p}.yazi") officialPluginsNames;
-        rev = "eaa682df64040813ff72e3f2f2b2f0c7306d0929";
-        hash = "sha256-01v1WEHKN1gjZF2rv3IRxem02DRy/M+cs25LxKNKPY4=";
+        rev = "3783ea0feb98842c09bd6eb75c06f8ab814050e2";
+        hash = "sha256-rzt4r7zIC9GdYafetOF3oCThbtymmoDHTuZ6H2r/ui4=";
       };
 
       officialPlugins = lib.lists.fold (a: b: {${a} = "${officialPluginsSrc}/${a}.yazi";} // b) {} officialPluginsNames;
@@ -202,15 +218,8 @@
           ouch = fetchFromGitHub {
             owner = "ndtoan96";
             repo = "ouch.yazi";
-            rev = "694d149be5f96eaa0af68d677c17d11d2017c976";
-            hash = "sha256-J3vR9q4xHjJt56nlfd+c8FrmMVvLO78GiwSNcLkM4OU=";
-          };
-
-          starship = fetchFromGitHub {
-            owner = "Rolv-Apneseth";
-            repo = "starship.yazi";
-            rev = "6197e4cca4caed0121654079151632f6abcdcae9";
-            hash = "sha256-oHoBq7BESjGeKsaBnDt0TXV78ggGCdYndLpcwwQ8Zts=";
+            rev = "fe6b0a60ce6b7b9a573b975fe3c0dfc79c0b2ac6";
+            hash = "sha256-Sc0TGzrdyQh61Pkc2nNUlk8jRLjVNaCJdFqZvgQ/Cp8=";
           };
 
           yamb = fetchFromGitHub {
@@ -218,6 +227,13 @@
             repo = "yamb.yazi";
             rev = "3636c80f94448347f8047cfbfc1ca6099dcd4d71";
             hash = "sha256-81rrxjdWlpICQ12EfOcvXpvnWXeWgA5GYBfoHXxBe1g=";
+          };
+
+          yatline = fetchFromGitHub {
+            owner = "imsi32";
+            repo = "yatline.yazi";
+            rev = "d26ffbcb019618c13bfc8d33ca1b6c0a57f27206";
+            hash = "sha256-7IqIE0uZRo6CacxbOc7EJH0umrLt/+HD9TiNlS/IWKc=";
           };
         };
 
@@ -227,14 +243,14 @@
       };
 
       plugin = {
-        fetchers = [
-          {
-            id = "git-status";
-            name = "*";
-            run = "git-status";
-            prio = "normal";
-          }
-        ];
+        # fetchers = [
+        #   {
+        #     id = "git-status";
+        #     name = "*";
+        #     run = "git-status";
+        #     prio = "normal";
+        #   }
+        # ];
 
         prepend_preloaders = [
           {

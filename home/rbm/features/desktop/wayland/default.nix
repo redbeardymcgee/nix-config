@@ -6,11 +6,10 @@
   ];
 
   home.packages = with pkgs; [
-    grim
     lswt
-    satty
-    slurp
-    vesktop
+    (vesktop.override {
+      withSystemVencord = false;
+    })
     wl-clipboard
     wl-screenrec
   ];

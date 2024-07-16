@@ -18,20 +18,20 @@
     #   ];
     # };
 
-    loader.timeout = 0;
+    #loader.timeout = 0;
 
     kernelParams = [
       "boot.shell_on_fail"
       "loglevel=3"
-      "quiet"
-      "rd.systemd.show_status=false"
+      # "quiet"
+      # "rd.systemd.show_status=false"
       "rd.udev.log_level=3"
-      "splash"
+      # "splash"
     ];
 
     consoleLogLevel = 0;
 
-    initrd = {
+    #initrd = {
       # systemd = {
       #   enable = true;
       #
@@ -52,8 +52,8 @@
       #   };
       # };
 
-      kernelModules = ["nvidia"];
-      verbose = false;
-    };
+      # kernelModules = ["nvidia"];
+      #verbose = false;
+    #};
   };
 }

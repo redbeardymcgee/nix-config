@@ -5,12 +5,12 @@
     functions = {
       fish_greeting = "";
 
-      yy = {
+      y = {
         body = ''
           set tmp (mktemp -p $XDG_RUNTIME_DIR yazi-cwd.XXXXXX)
           yazi $argv --cwd-file=$tmp
-          if set cwd (cat -- $tmp); and [ -n "$cwd" ]; and [ "$cwd" != "$PWD" ]
-            cd "$cwd"
+          if set cwd (command cat -- $tmp); and [ -n $cwd ]; and [ $cwd != $PWD ]
+            cd $cwd
           end
         '';
         wraps = "yazi";

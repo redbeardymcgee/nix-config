@@ -8,13 +8,13 @@
     in {
       enable = true;
       source = (pkgs.formats.yaml {}).generate "mcgeedia.yaml" {
-        session_name = "mcgeedia  ";
+        session_name = "server  ";
         shell_command_before = "ssh mcgeedia";
         windows = [
           {
             window_name = "main";
             options = opts;
-            panes = [{shell_command = ["yy"];}];
+            panes = [{shell_command = ["yazi"];}];
           }
           {
             window_name = "cfg";

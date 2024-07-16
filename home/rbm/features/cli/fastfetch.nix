@@ -1,4 +1,13 @@
-{
+let
+  topFormat = "┌────────────────────────────────────────────────────────────┐";
+  bottomFormat = "└────────────────────────────────────────────────────────────┘";
+
+  colorSamples = " {#90}  {#31}  {#32}  {#33}  {#34}  {#35}  {#36}  {#37}  {#38}  {#39}       {#38}  {#37}  {#36}  {#35}  {#34}  {#33}  {#32}  {#31}  {#90}";
+  desktopKeyColor = "blue";
+  hwKeyColor = "green";
+  osKeyColor = "yellow";
+  sepColor = "90";
+in {
   programs.fastfetch = {
     enable = true;
 
@@ -6,18 +15,19 @@
       logo = {
         padding = {
           top = 2;
+          left = 2;
         };
       };
 
       display = {
-        separator = " -> ";
+        separator = " ";
       };
 
       modules = [
         {
           type = "custom";
-          format = "┌────────────────────────────────────────────────────────────┐";
-          outputColor = "90";
+          format = topFormat;
+          outputColor = sepColor;
         }
         {
           type = "title";
@@ -25,131 +35,134 @@
         }
         {
           type = "custom";
-          format = "└────────────────────────────────────────────────────────────┘";
-          outputColor = "90";
+          format = bottomFormat;
+          outputColor = sepColor;
         }
         {
           type = "custom";
-          format = " {#90}  {#31}  {#32}  {#33}  {#34}  {#35}  {#36}  {#37}  {#38}  {#39}       {#38}  {#37}  {#36}  {#35}  {#34}  {#33}  {#32}  {#31}  {#90}";
+          format = colorSamples;
         }
         {
           type = "custom";
-          format = "┌────────────────────────────────────────────────────────────┐";
-          outputColor = "90";
+          format = topFormat;
+          outputColor = sepColor;
         }
         {
           type = "os";
-          key = " OS";
-          keyColor = "yellow";
+          key = " ";
+          keyColor = osKeyColor;
         }
         {
           type = "kernel";
-          key = "│ ├";
-          keyColor = "yellow";
+          key = "│ ├ ";
+          keyColor = osKeyColor;
         }
         {
           type = "packages";
-          key = "│ ├󰏖";
-          keyColor = "yellow";
+          key = "│ ├󰏖 ";
+          keyColor = osKeyColor;
         }
         {
           type = "shell";
-          key = "│ └";
-          keyColor = "yellow";
+          key = "│ └ ";
+          keyColor = osKeyColor;
+        }
+        {
+          type = "custom";
+          format = bottomFormat;
+        }
+        "break"
+        {
+          type = "custom";
+          format = topFormat;
         }
         {
           type = "wm";
-          key = " DE/WM";
-          keyColor = "blue";
+          key = " ";
+          keyColor = desktopKeyColor;
         }
         {
           type = "lm";
-          key = "│ ├󰧨";
-          keyColor = "blue";
+          key = "│ ├󰧨 ";
+          keyColor = desktopKeyColor;
         }
         {
           type = "wmtheme";
-          key = "│ ├󰉼";
-          keyColor = "blue";
+          key = "│ ├󰉼 ";
+          keyColor = desktopKeyColor;
         }
         {
           type = "icons";
-          key = "│ ├󰀻";
-          keyColor = "blue";
+          key = "│ ├󰀻 ";
+          keyColor = desktopKeyColor;
         }
         {
           type = "terminal";
-          key = "│ ├";
-          keyColor = "blue";
+          key = "│ ├ ";
+          keyColor = desktopKeyColor;
         }
         {
           type = "wallpaper";
-          key = "│ └󰸉";
-          keyColor = "blue";
+          key = "│ └󰸉 ";
+          keyColor = desktopKeyColor;
+        }
+        {
+          type = "custom";
+          format = bottomFormat;
+        }
+        "break"
+        {
+          type = "custom";
+          format = topFormat;
         }
         {
           type = "host";
-          key = "󰌢 PC";
-          keyColor = "green";
+          key = "󰌢 ";
+          keyColor = hwKeyColor;
         }
         {
           type = "cpu";
-          key = "│ ├󰻠";
-          keyColor = "green";
+          key = "│ ├󰻠 ";
+          keyColor = hwKeyColor;
         }
         {
           type = "gpu";
-          key = "│ ├󰍛";
-          keyColor = "green";
+          key = "│ ├󰍛 ";
+          keyColor = hwKeyColor;
         }
         {
           type = "disk";
-          key = "│ ├";
-          keyColor = "green";
+          key = "│ ├ ";
+          keyColor = hwKeyColor;
         }
         {
           type = "memory";
-          key = "│ ├󰑭";
-          keyColor = "green";
+          key = "│ ├󰑭 ";
+          keyColor = hwKeyColor;
         }
         {
           type = "swap";
-          key = "│ ├󰓡";
-          keyColor = "green";
-        }
-        {
-          type = "uptime";
-          key = "│ ├󰅐";
-          keyColor = "green";
+          key = "│ ├󰓡 ";
+          keyColor = hwKeyColor;
         }
         {
           type = "display";
-          key = "│ └󰍹";
-          keyColor = "green";
+          key = "│ ├󰍹 ";
+          keyColor = hwKeyColor;
         }
         {
-          type = "sound";
-          key = " SND";
-          keyColor = "cyan";
-        }
-        {
-          type = "player";
-          key = "│ ├󰥠";
-          keyColor = "cyan";
-        }
-        {
-          type = "media";
-          key = "│ └󰝚";
-          keyColor = "cyan";
+          type = "uptime";
+          key = "│ └󰅐 ";
+          keyColor = hwKeyColor;
         }
         {
           type = "custom";
-          format = "└────────────────────────────────────────────────────────────┘";
-          outputColor = "90";
+          format = bottomFormat;
+          outputColor = sepColor;
         }
         {
           type = "custom";
-          format = " {#90}  {#31}  {#32}  {#33}  {#34}  {#35}  {#36}  {#37}  {#38}  {#39}       {#38}  {#37}  {#36}  {#35}  {#34}  {#33}  {#32}  {#31}  {#90}";
+          format = colorSamples;
         }
       ];
     };

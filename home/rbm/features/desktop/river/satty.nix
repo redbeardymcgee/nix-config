@@ -3,6 +3,12 @@
   pkgs,
   ...
 }: {
+  home.packages = with pkgs; [
+    grim
+    satty
+    slurp
+  ];
+
   wayland.windowManager.river.settings.map.normal = {
     "None Print" = ''spawn 'grim -g "$(slurp -o -r -c "#ff0000ff")" - | satty --filename -' '';
   };

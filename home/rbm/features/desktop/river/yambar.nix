@@ -3,9 +3,10 @@
     enable = true;
     settings = with lib.lists; let
       mantle = "181825FF";
+      overlay0 = "6C7086FF";
       red = "F38BA8FF";
       text = "CDD6F4FF";
-      subtext0 = "A6ADC8FF";
+      # subtext0 = "A6ADC8FF";
 
       scratchTags = fold (a: b: a // b) {} (
         forEach (range 1 9) (i: let
@@ -24,37 +25,45 @@
         // {
           "id == 1" = {
             string = {
-              text = "󰽟";
+              text = "󱄄";
             };
           };
+
           "id == 2" = {
+            string = {
+              text = "";
+            };
+          };
+
+          "id == 3" = {
+            string = {
+              text = "󰢹";
+            };
+          };
+
+          "id == 4" = {
+            string = {
+              text = "󰍹";
+            };
+          };
+
+          "id == 5" = {
             string = {
               text = "";
             };
           };
-          "id == 3" = {
+
+          "id == 6" = {
             string = {
               text = "󰮃";
             };
           };
         };
 
-      bg_default = {
-        stack = [
-          {background = {color = mantle;};}
-          {
-            underline = {
-              color = subtext0;
-              size = 4;
-            };
-          }
-        ];
-      };
-
       font_default = "FiraCode Nerd Font:size=12";
     in {
       bar = let
-        river_base = {
+        riverBase = {
           left-margin = 10;
           right-margin = 10;
 
@@ -67,10 +76,6 @@
                 };
               };
             };
-
-          default = {
-            empty = {};
-          };
         };
       in {
         font = font_default;
@@ -90,18 +95,6 @@
               content = [
                 {
                   string = {
-                    text = "󰸗";
-                    right-margin = 3;
-                  };
-                }
-                {
-                  string = {
-                    text = "{date}";
-                    right-margin = 5;
-                  };
-                }
-                {
-                  string = {
                     text = "";
                     right-margin = 5;
                   };
@@ -110,6 +103,30 @@
                   string = {
                     text = "{time}";
                     right-margin = 5;
+                    deco = {
+                      underline = {
+                        size = 2;
+                        color = text;
+                      };
+                    };
+                  };
+                }
+                {
+                  string = {
+                    text = "󰸗";
+                    right-margin = 3;
+                  };
+                }
+                {
+                  string = {
+                    text = "{date}";
+                    right-margin = 5;
+                    deco = {
+                      underline = {
+                        size = 2;
+                        color = text;
+                      };
+                    };
                   };
                 }
               ];
@@ -122,7 +139,7 @@
             river = {
               anchors = [
                 {
-                  base = river_base;
+                  base = riverBase;
                 }
               ];
 
@@ -137,48 +154,43 @@
                   conditions = {
                     "state == focused" = {
                       map =
-                        river_base
-                        // {
-                          deco = bg_default;
-                        };
+                        riverBase;
                     };
 
                     "state == visible && occupied" = {
                       map =
-                        river_base
-                        // {
-                          deco = bg_default;
-                        };
+                        riverBase;
                     };
 
                     "state == visible && ~occupied" = {
-                      map = river_base;
+                      map =
+                        riverBase;
                     };
 
                     "state == invisible && occupied" = {
                       map =
-                        river_base
+                        riverBase
                         // {
                           deco = {
                             underline = {
-                              color = red;
-                              size = 3;
+                              color = overlay0;
+                              size = 1;
                             };
                           };
                         };
                     };
 
                     "state == invisible && ~occupied" = {
-                      empty = {};
+                      map = riverBase;
                     };
 
                     "state == unfocused" = {
-                      map = river_base;
+                      map = riverBase;
                     };
 
                     "state == urgent" = {
                       map =
-                        river_base
+                        riverBase
                         // {
                           deco = {background = {color = red;};};
                         };
@@ -201,15 +213,12 @@
                       max = 8;
                       right-margin = 3;
                     };
+
                     "mounted" = {
                       string = {
                         text = "{label}";
                         max = 8;
                         right-margin = 5;
-                        deco.underline = {
-                          size = 2;
-                          color = subtext0;
-                        };
                       };
                     };
                   };
