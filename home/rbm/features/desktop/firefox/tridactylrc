@@ -1,0 +1,240 @@
+" Sourced originally from:
+" - https://github.com/glacambre/.dotfiles/blob/master/default/.config/tridactyl/tridactylrc
+"
+" Most comments are guesses based on vague familiarity with old vimrc syntax
+
+""""""""""""""""""""
+" New commands
+""""""""""""""""""""
+
+alias tabsort jsb browser.tabs.query({}).then(tabs => tabs.sort((t1, t2) => t1.url.localeCompare(t2.url)).forEach((tab, index) => browser.tabs.move(tab.id, {index})))
+alias tabuniq jsb browser.tabs.query({}).then(tabs => browser.tabs.remove(tabs.filter((tab, index) => tabs.slice(index + 1).find(t => t.url == tab.url)).map(tab => tab.id)))
+alias gitclone jsb -p tri.native.run("git clone --depth=1 '" + JS_ARG + "' /mnt/2tb/repos/" + JS_ARG.split("/").slice(-1))
+
+""""""""""""""""""""
+" General Settings
+""""""""""""""""""""
+
+set configversion 2.0
+set incsearch true
+set smoothscroll true
+set tabopencontaineraware true
+set visualenterauto false
+set completions.Tab.statusstylepretty true
+
+" Sane hinting mode
+" Type more characters to filter hints
+set hintfiltermode vimperator-reflow
+
+" Select hints by numeric chars
+" Left to right priority
+set hintchars 5432167890
+
+" Never steal keyboard focus
+set allowautofocus false
+
+" Words are separated by 1 or more whitespace
+set wordpattern [^\s\/]+
+
+" TODO: Build minimal config from kixvim flake output
+" Use nvim in tmux for editor.
+set editorcmd foot --app-id=tridactyl_editor -- nvim
+
+" Autocmds
+" Disable the mouse globally
+autocmd DocLoad .* no_mouse_mode
+
+" Turn mouse mode on back on for Youtube
+autocmd DocLoad ^http(s?)://www.youtu((\.be)|(be\.com)) mouse_mode
+
+" UI
+guiset gui none
+colorscheme --url https://raw.githubusercontent.com/tridactyl/base16-tridactyl/master/base16-solarized-dark.css base16-solarized-dark
+" colorscheme --url https://github.com/tridactyl/base16-tridactyl/blob/master/base16-shapeshifter.css base16-shapeshifter
+set theme base16-solarized-dark
+
+""""""""""""""""""""
+" Search
+""""""""""""""""""""
+
+" Disable all searchurls
+jsb Object.keys(tri.config.get("searchurls")).reduce((prev, u) => prev.catch(()=>{}).then(_ => tri.excmds.setnull("searchurls." + u)), Promise.resolve())
+
+" Add our own
+set searchurls.amazon https://www.amazon.com/s/ref=nb_sb_noss?field-keywords=%s
+set searchurls.crates https://crates.io/search?q=%s
+set searchurls.ddg https://duckduckgo.com/html?q=%s
+set searchurls.deb https://packages.debian.org/search?keywords=%s&searchon=names&suite=all&section=all
+set searchurls.ebay https://www.ebay.com/sch/i.html?_nkw=%s
+set searchurls.etymonline https://www.etymonline.com/search?q=%s
+set searchurls.fdroid https://search.f-droid.org/?q=%s
+set searchurls.gh https://github.com/search?utf8=%E2%9C%93&q=%s&ref=simplesearch
+set searchurls.goodreads https://www.goodreads.com/search?q=%s
+set searchurls.no https://search.nixos.org/options?channel=unstable&from=0&size=50&sort=relevance&type=packages&query=%s
+set searchurls.nw https://wiki.nixos.org/w/index.php?search=%s&title=Special%3ASearch&wprov=acrw1_-1
+set searchurls.np https://search.nixos.org/packages?channel=unstable&from=0&size=50&sort=relevance&type=packages&query=%s
+set searchurls.hm https://home-manager-options.extranix.com/?query=%s&release=master
+set searchurls.gentoo https://wiki.gentoo.org/index.php?title=Special%3ASearch&profile=default&search=%s&fulltext=Search
+set searchurls.imdb https://www.imdb.com/find?q=%s
+set searchurls.lqwant https://lite.qwant.com/?q=%s
+set searchurls.mdn https://developer.mozilla.org/en-US/search?q=%s&topic=api&topic=js
+set searchurls.npm https://www.npmjs.com/search?q=%s
+set searchurls.map https://www.openstreetmap.org/search?query=%s
+set searchurls.pydoc https://docs.python.org/3/search.html?q=%s
+set searchurls.qwant https://www.qwant.com/?q=%s
+set searchurls.reddit https://old.reddit.com/r/%s
+set searchurls.rustdoc https://doc.rust-lang.org/std/index.html?search=%s
+set searchurls.searx https://searx.me/?q=%s&categories=general&language=en-US
+set searchurls.steam https://store.steampowered.com/search/?term=%s
+set searchurls.thesaurus https://www.powerthesaurus.org/_search?q=%s
+set searchurls.w https://en.wikipedia.org/w/index.php?search=%s&title=Special%3ASearch
+set searchurls.yt https://www.youtube.com/results?search_query=%s
+
+" Set the default to not be Google
+set searchengine lqwant
+
+""""""""""""""""""""
+" Bindings
+""""""""""""""""""""
+
+" Clear annoying search highlighting
+bind ,c clearsearchhighlight
+
+" Edit current tab url
+bind O composite url2args | fillcmdline open
+
+" [[ and ]]
+bind gh followpage prev
+bind gl followpage next
+
+" git clone hints
+bind gc composite js window.location.href | gitclone
+bind ;gc hint -qW gitclone
+
+" Pages navigate horizontally
+bind L forward
+bind H back
+
+" Tabs are vertical
+bind K tabprev
+bind J tabnext
+
+unbind d
+bind x tabclose
+bind X undo tab
+bind <C-X> undo tab
+
+bind U undo window
+
+" Ctrl-F should use the browser's native 'find' functionality.
+unbind <C-f>
+
+" But also support Tridactyl search too.
+bind / fillcmdline find
+bind ? fillcmdline find -?
+bind n findnext 1
+bind N findnext -1
+
+" The default jump of 10 is a bit much.
+bind j scrollline 5
+bind k scrollline -5
+
+" Yank URL
+bind y clipboard yankshort
+bind Y hint -p
+
+" Play videos in `mpv`
+" bind v composite hint -pipe a href | js -p tri.excmds.shellescape(JS_ARG) | exclaim_quiet mpv --ontop --keepaspect-window --profile=protocol.http
+" bind V js -p tri.excmds.shellescape(document.location.href).then(url => tri.native.run(`mpv --ontop --keepaspect-window --profile=protocol.http '${url}'`))
+" bind ;v composite hint -qpipe a href | js -p JS_ARG.map(h => `'${h}'`).join(" ") | ! mpv
+
+" Save/Download
+" bind s fillcmdline saveas
+" bind S saveas
+bind ;s hint -a
+bind ;S hint -s
+
+" Private window
+bind --mode=normal <C-P> winopen -private
+
+" make t open the selection with tabopen
+bind --mode=visual t composite js document.getSelection().toString() | fillcmdline tabopen
+
+" Line editing like `readline`
+
+" TODO: Requires custom firefox build: https://github.com/glacambre/firefox-patches
+" bind --mode=ex     <C-n> ex.next_completion
+" bind --mode=ex     <C-p> ex.prev_completion
+" bind --mode=ex     <C-y> ex.insert_completion
+" bind --mode=ex     <C-e> ex.deselect_completion
+" bind --mode=ex     <Tab> ex.complete
+" Delete only the command
+" bind --mode=ex     <C-g> composite text.beginning_of_line ; text.forward_word ; text.kill_word
+
+bind --mode=ex     <C-a> text.beginning_of_line
+bind --mode=insert <C-a> text.beginning_of_line
+bind --mode=input  <C-a> text.beginning_of_line
+bind --mode=ex     <C-e> text.end_of_line
+bind --mode=insert <C-e> text.end_of_line
+bind --mode=input  <C-e> text.end_of_line
+bind --mode=ex     <C-f> text.forward_word
+bind --mode=insert <C-f> text.forward_word
+bind --mode=input  <C-f> text.forward_word
+bind --mode=ex     <C-k> text.kill_line
+bind --mode=insert <C-k> text.kill_line
+bind --mode=input  <C-k> text.kill_line
+bind --mode=ex     <C-u> text.backward_kill_line
+bind --mode=insert <C-u> text.backward_kill_line
+bind --mode=input  <C-u> text.backward_kill_line
+bind --mode=ex     <C-V> composite getclip selection | text.insert_text
+bind --mode=insert <C-V> composite getclip selection | text.insert_text
+bind --mode=input  <C-V> composite getclip selection | text.insert_text
+
+" TODO: Also requires custom build?
+" bind --mode=ex     <C-w> text.backward_kill_word
+" bind --mode=insert <C-w> text.backward_kill_word
+" bind --mode=input  <C-w> text.backward_kill_word
+
+" Disable <C-q>
+" TODO: Also requires custom build?
+" TODO: Just unbind instead of chirp
+" bind --mode=insert <C-q> js alert("<C-q> is for quitters.")
+" bind --mode=input  <C-q> js alert("<C-q> is for quitters.")
+" bind --mode=normal <C-q> js alert("<C-q> is for quitters.")
+" bind --mode=ex     <C-q> js alert("<C-q> is for quitters.")
+" bind --mode=hint   <C-q> js alert("<C-q> is for quitters.")
+
+unbind yy
+unbind ys
+unbind yc
+unbind ym
+unbind yt
+unbind <SA-ArrowUp><SA-ArrowUp><SA-ArrowDown><SA-ArrowDown><SA-ArrowLeft><SA-ArrowRight><SA-ArrowLeft><SA-ArrowRight>ba
+
+" Comment toggler for Reddit, Hacker News and Lobste.rs
+bind ;c hint -Jc [class*="expand"],[class*="togg"],[class="comment_folder"]
+
+" " Make `gi` on GitHub take you to the search box
+bindurl ^https://github.com gi hint -Vc .AppHeader-searchButton
+bindurl https://github.com/.*/.*/blob f hint -c .blob-num,a
+
+" Git{Hub,Lab} git clone via SSH yank
+bind ;g composite js "git clone " + document.location.href.replace(/https?:\/\//,"git@").replace("/",":").replace(/$/,".git") | clipboard yank
+
+" As above but execute it and open terminal in folder
+bind ;G js let uri = document.location.href.replace(/https?:\/\//,"git@").replace("/",":").replace(/$/,".git"); tri.native.run("cd /mnt/2tb/repos; git clone " + uri + "; cd \"$(basename \"" + uri + "\" .git)\"; foot")
+
+bindurl youtu((\.be)|(be\.com)) f hint -J
+
+" Mailing list thread hints
+bindurl lkml.org/lkml gl js let lis = Array.from(document.querySelectorAll(".threadlist:nth-of-type(1)")[0].querySelectorAll("li")); document.location.href = lis[lis.findIndex(li => li.className.match("origin")) + 1].querySelector("a").href
+bindurl lkml.org/lkml gh js let lis = Array.from(document.querySelectorAll(".threadlist:nth-of-type(1)")[0].querySelectorAll("li")); document.location.href = lis[lis.findIndex(li => li.className.match("origin")) - 1].querySelector("a").href
+
+""""""""""""""""""""
+" URL Redirects
+""""""""""""""""""""
+
+" Switch to old reddit"
+autocmd DocStart ^http(s?)://www.reddit.com js tri.excmds.urlmodify("-t", "www", "old")
+
+" vim: set filetype=tridactyl
