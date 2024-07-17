@@ -5,12 +5,8 @@
   ...
 }: {
   imports = [
-    inputs.nixos-hardware.nixosModules.common-hidpi
-    inputs.nixos-hardware.nixosModules.common-pc
-    inputs.nixos-hardware.nixosModules.common-pc-ssd
-    # inputs.nixos-hardware.nixosModules.common-gpu-nvidia
-
     ./hw.nix
+    ./nvidia.nix
 
     ../common/global
 
@@ -43,6 +39,8 @@
   };
 
   hardware = {
+    enableRedistributableFirmware = true;
+
     bluetooth = {
       enable = true;
       powerOnBoot = true;
@@ -51,31 +49,6 @@
           Experimental = true;
         };
       };
-    };
-
-    enableRedistributableFirmware = true;
-
-    graphics = {
-      enable = true;
-      enable32Bit = true;
-      extraPackages = with pkgs; [
-        intel-media-driver
-        vaapiIntel
-        vaapiVdpau
-        libvdpau-va-gl
-      ];
-    };
-
-    nvidia = {
-      # modesetting.enable = true;
-      nvidiaSettings = false;
-      open = false;
-      package = config.boot.kernelPackages.nvidiaPackages.stable;
-      powerManagement = {
-        enable = false;
-        finegrained = false;
-      };
-      prime.offload.enable = false;
     };
 
     pulseaudio = {
