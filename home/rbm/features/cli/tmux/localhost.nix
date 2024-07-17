@@ -18,7 +18,7 @@
           }
           {
             window_name = "cfg";
-            start_directory = "~/nix-config";
+            start_directory = "/mnt/2tb/nix-config";
             focus = true;
             options = opts;
             panes = [{shell = "~/.nix-profile/bin/nvim .";}];
