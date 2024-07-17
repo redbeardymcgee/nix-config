@@ -89,49 +89,29 @@
         background = mantle;
 
         left = [
-          {
-            clock = {
-              time-format = "%H:%M";
-              content = [
-                {
-                  string = {
-                    text = "";
-                    right-margin = 5;
-                  };
-                }
-                {
-                  string = {
-                    text = "{time}";
-                    right-margin = 5;
-                    deco = {
-                      underline = {
-                        size = 2;
-                        color = text;
-                      };
-                    };
-                  };
-                }
-                {
-                  string = {
-                    text = "󰸗";
-                    right-margin = 3;
-                  };
-                }
-                {
-                  string = {
-                    text = "{date}";
-                    right-margin = 5;
-                    deco = {
-                      underline = {
-                        size = 2;
-                        color = text;
-                      };
-                    };
-                  };
-                }
-              ];
-            };
-          }
+          # {
+          #   removables = {
+          #     content = {
+          #       map = {
+          #         conditions = {
+          #           "~mounted".string = {
+          #             text = "{label}";
+          #             max = 8;
+          #             right-margin = 3;
+          #           };
+          #
+          #           "mounted" = {
+          #             string = {
+          #               text = "{label}";
+          #               max = 8;
+          #               right-margin = 5;
+          #             };
+          #           };
+          #         };
+          #       };
+          #     };
+          #   };
+          # }
         ];
 
         center = [
@@ -154,7 +134,15 @@
                   conditions = {
                     "state == focused" = {
                       map =
-                        riverBase;
+                        riverBase
+                        // {
+                          deco = {
+                            underline = {
+                              color = red;
+                              size = 1;
+                            };
+                          };
+                        };
                     };
 
                     "state == visible && occupied" = {
@@ -181,7 +169,8 @@
                     };
 
                     "state == invisible && ~occupied" = {
-                      map = riverBase;
+                      map =
+                        riverBase;
                     };
 
                     "state == unfocused" = {
@@ -204,26 +193,34 @@
 
         right = [
           {
-            removables = {
-              content = {
-                map = {
-                  conditions = {
-                    "~mounted".string = {
-                      text = "{label}";
-                      max = 8;
-                      right-margin = 3;
-                    };
-
-                    "mounted" = {
-                      string = {
-                        text = "{label}";
-                        max = 8;
-                        right-margin = 5;
-                      };
-                    };
+            clock = {
+              time-format = "%H:%M";
+              content = [
+{
+                  string = {
+                    text = "{date}";
+                    right-margin = 5;
                   };
-                };
-              };
+                }
+                {
+                  string = {
+                    text = "󰸗";
+                    right-margin = 3;
+                  };
+                }
+                {
+                  string = {
+                    text = "{time}";
+                    right-margin = 5;
+                  };
+                }
+                {
+                  string = {
+                    text = "";
+                    right-margin = 5;
+                  };
+                }
+              ];
             };
           }
         ];

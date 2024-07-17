@@ -178,10 +178,10 @@
           "foot-localhost" = "tags ${toString (pow2 0)}";
           "foot-projects" = "tags ${toString (pow2 1)}";
           "foot-mcgeedia" = "tags ${toString (pow2 2)}";
-          "org.remmina.Remmina" = "output DP-1";
+          "org.remmina.Remmina" = "output DP-3";
           "org.remmina.Remmin*" = "tags ${toString (pow2 8)}";
           "steam*" = "float";
-          "vesktop" = "output DP-1";
+          "vesktop" = "output DP-3";
           "wezterm-localhost" = "tags ${toString (pow2 0)}";
           "wezterm-projects" = "tags ${toString (pow2 1)}";
           "wezterm-mcgeedia" = "tags ${toString (pow2 2)}";
@@ -190,7 +190,7 @@
 
         "-title" = {
           "Picture-in-Picture" = "float";
-          "*DP-1" = "output DP-1";
+          "*DP-3" = "output DP-3";
         };
       };
 
@@ -202,7 +202,7 @@
         '''way-displays > "$XDG_RUNTIME_DIR/way-displays.$XDG_SEAT.log" 2>&1' ''
         "'yambar'"
         "'vesktop'"
-        "'firefox --name firefox.DP-1'"
+        "'firefox --name firefox.DP-3'"
         "${pkgs.writeShellScript "autolaunch-foot" ''
           for sesh in localhost mcgeedia projects
           do
