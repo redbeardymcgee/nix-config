@@ -6,40 +6,61 @@
       fish_greeting = "";
 
       y = {
-        body = ''
-          set tmp (mktemp -p $XDG_RUNTIME_DIR yazi-cwd.XXXXXX)
-          yazi $argv --cwd-file=$tmp
-          if set cwd (command cat -- $tmp); and [ -n $cwd ]; and [ $cwd != $PWD ]
-            cd $cwd
-          end
-        '';
+        body =
+          /*
+          fish
+          */
+          ''
+            set tmp (mktemp -p $XDG_RUNTIME_DIR yazi-cwd.XXXXXX)
+            yazi $argv --cwd-file=$tmp
+            if set cwd (command cat -- $tmp); and [ -n $cwd ]; and [ $cwd != $PWD ]
+              cd $cwd
+            end
+          '';
         wraps = "yazi";
       };
 
       mark_cmd_start = {
-        body = ''echo -en "\e]133;C\e\\"'';
         onEvent = "fish_preexec";
+        body =
+          /*
+          fish
+          */
+          ''echo -en "\e]133;C\e\\"'';
       };
 
       mark_cmd_end = {
-        body = ''echo -en "\e]133;D\e\\"'';
         onEvent = "fish_postexec";
+        body =
+          /*
+          fish
+          */
+          ''echo -en "\e]133;D\e\\"'';
       };
 
       mark_prompt_start = {
-        body = ''echo -en "\e]133;A\e\\"'';
         onEvent = "fish_prompt";
+        body =
+          /*
+          fish
+          */
+          ''echo -en "\e]133;A\e\\"'';
       };
 
       update_cwd_osc = {
-        body = ''
-          if status --is-command-substitution || set -q INSIDE_EMACS
-              return
-          end
-          printf \e\]7\;file://%s%s\e\\ $hostname (string escape --style=url $PWD)
-        '';
         description = ''Notify terminals when $PWD changes'';
         onVariable = "PWD";
+
+        body =
+          /*
+          fish
+          */
+          ''
+            if status --is-command-substitution || set -q INSIDE_EMACS
+                return
+            end
+            printf \e\]7\;file://%s%s\e\\ $hostname (string escape --style=url $PWD)
+          '';
       };
 
       shellInitLast = "update_cwd_osc";
@@ -81,9 +102,13 @@
     };
 
     shellAliases = {
-      dps = ''
-        docker ps --format "table {{.ID}}\t{{.Names}}\t{{.Networks}}\t{{.State}}\t{{.CreatedAt}}"
-      '';
+      dps =
+        /*
+        fish
+        */
+        ''
+          docker ps --format "table {{.ID}}\t{{.Names}}\t{{.Networks}}\t{{.State}}\t{{.CreatedAt}}"
+        '';
     };
   };
 
