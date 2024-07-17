@@ -8,7 +8,7 @@
     [
       inputs.home-manager.nixosModules.home-manager
       ./locale.nix
-      # ./kernel.nix
+      ./kernel.nix
       ./nix.nix
       ./qemu.nix
       ./sudo.nix
@@ -19,6 +19,7 @@
       ../services/libinput.nix
       ../services/openssh.nix
       ../services/pipewire.nix
+      ../services/ssd.nix
     ]
     ++ (builtins.attrValues outputs.nixosModules);
 
