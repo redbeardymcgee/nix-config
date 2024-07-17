@@ -5,7 +5,11 @@
   outputs,
   pkgs,
   ...
-}: {
+}: let
+  # nur-no-pkgs = import inputs.nur {
+  #   nurpkgs = import nixpkgs { system = "x86_64-linux"; };
+  # };
+in {
   imports =
     [
       inputs.stylix.homeManagerModules.stylix
@@ -38,13 +42,24 @@
   home = {
     homeDirectory = lib.mkDefault "/home/${config.home.username}";
 
-    packages = with pkgs; [
-      # discord
-      (pkgs.nerdfonts.override {fonts = ["FiraCode"];})
-      gcc
-      pavucontrol
-      unzip
-    ];
+    packages =
+      # let
+      #   # TODO: Get root of flake or pass it down
+      #   replPath = toString ../../../../.;
+      #
+      #   flake-repl = pkgs.writeShellScriptBin "flake-repl" /* fish */
+      #     ''
+      #       source /etc/set-environment
+      #       nix repl "${replPath}/repl.nix" "$@"
+      #     '';
+      # in
+      with pkgs; [
+        (pkgs.nerdfonts.override {fonts = ["FiraCode"];})
+        # flake-repl
+        gcc
+        pavucontrol
+        unzip
+      ];
 
     preferXdgDirectories = true;
     stateVersion = lib.mkDefault "24.05";
@@ -70,11 +85,19 @@
   stylix = {
     enable = true;
     base16Scheme = "${pkgs.base16-schemes}/share/themes/tokyo-night-terminal-storm.yaml";
+    polarity = "dark";
 
     fonts = {
       monospace = {
         package = pkgs.nerdfonts.override {fonts = ["FiraCode"];};
         name = "FiraCode Nerd Font";
+      };
+
+      sizes = {
+        applications = 12;
+        terminal = 14;
+        desktop = 11;
+        popups = 12;
       };
     };
 
@@ -83,7 +106,9 @@
       hash = "sha256-sVbkNiOUJvq0T3B/l9AOA6J0ro5s0GVBH1P3g+XGUj4=";
     };
 
-    polarity = "dark";
+    opacity = {
+      terminal = 0.8;
+    };
   };
 
   systemd.user.startServices = "sd-switch";
