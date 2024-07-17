@@ -12,19 +12,19 @@
   };
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-24.05";
+    nixpkgs.url = github:nixos/nixpkgs/nixos-unstable;
+    nixpkgs-stable.url = github:nixos/nixpkgs/nixos-24.05;
+
+    nur.url = github:nix-community/NUR;
 
     home-manager = {
-      url = "github:nix-community/home-manager";
+      url = github:nix-community/home-manager;
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    kixvim.url = "github:redbeardymcgee/kixvim";
-    nixos-hardware.url = "github:NixOS/nixos-hardware/master";
-
-    stylix.url = "github:danth/stylix";
-    yazi.url = "github:sxyazi/yazi";
+    kixvim.url = github:redbeardymcgee/kixvim;
+    stylix.url = github:danth/stylix;
+    yazi.url = github:sxyazi/yazi;
   };
 
   outputs = {
@@ -37,39 +37,38 @@
     lib = nixpkgs.lib // home-manager.lib;
   in {
     inherit lib;
+
     nixosModules = import ./modules/nixos;
     homeManagerModules = import ./modules/home-manager;
     overlays = import ./overlays {inherit inputs outputs;};
 
     nixosConfigurations = {
       arcturus = lib.nixosSystem {
-        modules = [
-          ./hosts/arcturus
-        ];
+        modules = [./hosts/arcturus];
 
-        specialArgs = {inherit inputs outputs;};
+        specialArgs = {
+          inherit inputs outputs;
+        };
       };
     };
 
     homeConfigurations = {
       "rbm@arcturus" = lib.homeManagerConfiguration {
+        modules = [./home/rbm/arcturus.nix];
+        pkgs = nixpkgs.legacyPackages.x86_64-linux;
+
         extraSpecialArgs = {
           inherit inputs outputs;
         };
-        modules = [
-          ./home/rbm/arcturus.nix
-        ];
-        pkgs = nixpkgs.legacyPackages.x86_64-linux;
       };
 
       "rbm@headmaster" = lib.homeManagerConfiguration {
+        modules = [./home/rbm/headmaster.nix];
+        pkgs = nixpkgs.legacyPackages.x86_64-linux;
+
         extraSpecialArgs = {
           inherit inputs outputs;
         };
-        modules = [
-          ./home/rbm/headmaster.nix
-        ];
-        pkgs = nixpkgs.legacyPackages.x86_64-linux;
       };
     };
   };
