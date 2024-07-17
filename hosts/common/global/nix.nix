@@ -8,24 +8,27 @@
     flakeInputs = lib.filterAttrs (_: lib.isType "flake") inputs;
   in {
     package = pkgs.nixVersions.latest;
-    registry = lib.mapAttrs (_: flake: {inherit flake;}) flakeInputs;
-    nixPath = lib.mapAttrsToList (n: _: "${n}=flake:${n}") flakeInputs;
+    channel.enable = false;
 
-    # channel.enable = false;
+    # nixPath = lib.mapAttrsToList (n: _: "${n}=flake:${n}") flakeInputs;
+    nixPath = let path = toString ./.; in ["repl=${path}/repl.nix" "nixpkgs=${inputs.nixpkgs}"];
+    registry = lib.mapAttrs (_: flake: {inherit flake;}) flakeInputs;
 
     settings = {
       auto-optimise-store = lib.mkDefault true;
+      flake-registry = "";
+      warn-dirty = false;
+
       experimental-features = [
         "ca-derivations"
         "flakes"
         "nix-command"
       ];
-      flake-registry = "";
+
       trusted-users = [
         "root"
         "@wheel"
       ];
-      warn-dirty = false;
     };
   };
 }
