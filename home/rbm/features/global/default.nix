@@ -11,6 +11,7 @@
       inputs.stylix.homeManagerModules.stylix
 
       ./nixpkgs.nix
+      ./xdg-user-dirs.nix
     ]
     ++ (builtins.attrValues outputs.homeManagerModules);
 
