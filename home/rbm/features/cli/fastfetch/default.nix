@@ -1,113 +1,172 @@
-{
+let
+  topFormat = "┌────────────────────────────────────────────────────────────┐";
+  bottomFormat = "└────────────────────────────────────────────────────────────┘";
+
+  colorSamples = " {#90}  {#31}  {#32}  {#33}  {#34}  {#35}  {#36}  {#37}  {#38}  {#39}       {#38}  {#37}  {#36}  {#35}  {#34}  {#33}  {#32}  {#31}  {#90}";
+  desktopKeyColor = "blue";
+  hwKeyColor = "green";
+  osKeyColor = "yellow";
+  sepColor = "90";
+in {
   programs.fastfetch = {
     enable = true;
 
     settings = {
-      display = {
-        color = {
-          keys = "35";
-          output = "90";
+      logo = {
+        source = ./nixos.png;
+        type = "sixel";
+
+        padding = {
+          top = 2;
+          left = 2;
         };
       };
 
-      logo = {
-        source = ./nixos.png;
-        type = "kitty-direct";
-        height = 15;
-        width = 30;
-        padding = {
-          top = 3;
-          left = 3;
-        };
+      display = {
+        separator = " ";
       };
 
       modules = [
-        "break"
         {
           type = "custom";
-          format = "┌──────────────────────Hardware──────────────────────┐";
+          format = topFormat;
+          outputColor = sepColor;
         }
         {
-          type = "cpu";
-          key = "│  ";
-        }
-        {
-          type = "gpu";
-          key = "│ 󰍛 ";
-        }
-        {
-          type = "memory";
-          key = "│ 󰑭 ";
+          type = "title";
+          keyWidth = 10;
         }
         {
           type = "custom";
-          format = "└────────────────────────────────────────────────────┘";
-        }
-        "break"
-        {
-          type = "custom";
-          format = "┌──────────────────────Software──────────────────────┐";
+          format = bottomFormat;
+          outputColor = sepColor;
         }
         {
           type = "custom";
-          format = " OS -> ZaneyOS 2.2";
+          format = colorSamples;
+        }
+        {
+          type = "custom";
+          format = topFormat;
+          outputColor = sepColor;
+        }
+        {
+          type = "os";
+          key = " ";
+          keyColor = osKeyColor;
         }
         {
           type = "kernel";
-          key = "│ ├ ";
+          key = "│ ├ ";
+          keyColor = osKeyColor;
         }
         {
           type = "packages";
           key = "│ ├󰏖 ";
+          keyColor = osKeyColor;
         }
         {
           type = "shell";
-          key = "└ └ ";
+          key = "│ └ ";
+          keyColor = osKeyColor;
+        }
+        {
+          type = "custom";
+          format = bottomFormat;
         }
         "break"
         {
+          type = "custom";
+          format = topFormat;
+        }
+        {
           type = "wm";
-          key = " WM";
+          key = " ";
+          keyColor = desktopKeyColor;
+        }
+        {
+          type = "lm";
+          key = "│ ├󰧨 ";
+          keyColor = desktopKeyColor;
         }
         {
           type = "wmtheme";
           key = "│ ├󰉼 ";
+          keyColor = desktopKeyColor;
+        }
+        {
+          type = "icons";
+          key = "│ ├󰀻 ";
+          keyColor = desktopKeyColor;
         }
         {
           type = "terminal";
-          key = "└ └ ";
+          key = "│ ├ ";
+          keyColor = desktopKeyColor;
+        }
+        {
+          type = "wallpaper";
+          key = "│ └󰸉 ";
+          keyColor = desktopKeyColor;
         }
         {
           type = "custom";
-          format = "└────────────────────────────────────────────────────┘";
+          format = bottomFormat;
         }
         "break"
         {
           type = "custom";
-          format = "┌────────────────────Uptime / Age────────────────────┐";
+          format = topFormat;
         }
         {
-          type = "command";
-          key = "│  ";
-          text =
-            #bash
-            ''
-              birth_install=$(stat -c %W /)
-              current=$(date +%s)
-              delta=$((current - birth_install))
-              delta_days=$((delta / 86400))
-              echo $delta_days days
-            '';
+          type = "host";
+          key = "󰌢 ";
+          keyColor = hwKeyColor;
+        }
+        {
+          type = "cpu";
+          key = "│ ├󰻠 ";
+          keyColor = hwKeyColor;
+        }
+        {
+          type = "gpu";
+          key = "│ ├󰍛 ";
+          keyColor = hwKeyColor;
+        }
+        {
+          type = "disk";
+          key = "│ ├ ";
+          keyColor = hwKeyColor;
+        }
+        {
+          type = "memory";
+          key = "│ ├󰑭 ";
+          keyColor = hwKeyColor;
+        }
+        {
+          type = "swap";
+          key = "│ ├󰓡 ";
+          keyColor = hwKeyColor;
+        }
+        {
+          type = "display";
+          key = "│ ├󰍹 ";
+          keyColor = hwKeyColor;
         }
         {
           type = "uptime";
-          key = "│  ";
+          key = "│ └󰅐 ";
+          keyColor = hwKeyColor;
         }
         {
           type = "custom";
-          format = "└────────────────────────────────────────────────────┘";
+          format = bottomFormat;
+          outputColor = sepColor;
         }
-        "break"
+        {
+          type = "custom";
+          format = colorSamples;
+        }
       ];
     };
   };
