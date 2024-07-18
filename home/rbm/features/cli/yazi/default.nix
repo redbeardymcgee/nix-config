@@ -212,18 +212,18 @@
             hash = "sha256-81rrxjdWlpICQ12EfOcvXpvnWXeWgA5GYBfoHXxBe1g=";
           };
 
-          yatline = fetchFromGitHub {
-            owner = "imsi32";
-            repo = "yatline.yazi";
-            rev = "d26ffbcb019618c13bfc8d33ca1b6c0a57f27206";
-            hash = "sha256-7IqIE0uZRo6CacxbOc7EJH0umrLt/+HD9TiNlS/IWKc=";
+          yaziline = fetchFromGitHub {
+            owner = "llanosrocas";
+            repo = "yaziline.yazi";
+            rev = "2da9b34";
+            hash = "sha256-KnF4SAkZTaN5tzzMP1+yV6ZZmuOEvz3o08nYavVOa3E=";
           };
         };
 
     settings = {
-      manager = {
-        linemode = "size";
-      };
+      # manager = {
+      #   linemode = "size";
+      # };
 
       plugin = {
         # fetchers = [
