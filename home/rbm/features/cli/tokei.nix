@@ -1,5 +1,5 @@
 {pkgs, ...}: {
-  home.packages = [ pkgs.tokei ];
+  home.packages = [pkgs.tokei];
 
   xdg.configFile."tokei/tokei.toml" = {
     enable = true;
