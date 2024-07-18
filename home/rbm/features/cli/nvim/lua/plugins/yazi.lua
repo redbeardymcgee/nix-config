@@ -32,29 +32,16 @@ return {
       },
     },
     opts = {
+      log_level = vim.log.levels.OFF,
       open_for_directories = true,
-      -- an upcoming optional feature. See
-      -- https://github.com/mikavilpas/yazi.nvim/pull/152
+      floating_window_scaling_factor = 0.8,
       use_ya_for_events_reading = true,
+      -- yazi_floating_window_winblend = 95,
 
-      -- an upcoming optional feature. See
-      -- https://github.com/mikavilpas/yazi.nvim/pull/180
       highlight_groups = {
         -- NOTE: this only works if `use_ya_for_events_reading` is enabled, etc.
         hovered_buffer = nil,
       },
-
-      -- the floating window scaling factor. 1 means 100%, 0.9 means 90%, etc.
-      floating_window_scaling_factor = 0.8,
-
-      -- the transparency of the yazi floating window (0-100). See :h winblend
-      yazi_floating_window_winblend = 0,
-
-      -- the log level to use. Off by default, but can be used to diagnose
-      -- issues. You can find the location of the log file by running
-      -- `:checkhealth yazi` in Neovim. Also check out the "reproducing issues"
-      -- section below
-      log_level = vim.log.levels.OFF,
     },
   }
 }
