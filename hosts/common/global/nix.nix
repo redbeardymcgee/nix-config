@@ -7,7 +7,7 @@
   nix = let
     flakeInputs = lib.filterAttrs (_: lib.isType "flake") inputs;
   in {
-    package = pkgs.nixVersions.latest;
+    # package = lib.mkDefault pkgs.nixVersions.latest;
     # TODO: Make sure this works with channel disabled from fresh install
     #       It may be necessary to add something to the registry
     #       ❯ nix run 'nixpkgs#nix-index' --extra-experimental-features 'nix-command flakes'

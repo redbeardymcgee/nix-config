@@ -14,21 +14,26 @@
   inputs = {
     nixpkgs.url = github:nixos/nixpkgs/nixos-unstable;
     nixpkgs-stable.url = github:nixos/nixpkgs/nixos-24.05;
+    kixvim.url = github:redbeardymcgee/kixvim;
+    # nur.url = github:nix-community/NUR;
+    stylix.url = github:danth/stylix;
+    yazi.url = github:sxyazi/yazi;
+
+    lix= {
+      url = "https://git.lix.systems/lix-project/nixos-module/archive/2.90.0.tar.gz";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     home-manager = {
       url = github:nix-community/home-manager;
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    kixvim.url = github:redbeardymcgee/kixvim;
-    # nur.url = github:nix-community/NUR;
-    stylix.url = github:danth/stylix;
-    yazi.url = github:sxyazi/yazi;
   };
 
   outputs = {
     self,
     home-manager,
+    lix,
     nixpkgs,
     stylix,
     ...
@@ -45,9 +50,11 @@
     nixosConfigurations = {
       arcturus = lib.nixosSystem {
         modules = [
-            ./hosts/arcturus
-            stylix.nixosModules.stylix
-          ];
+          ./hosts/arcturus
+
+          lix.nixosModules.default
+          stylix.nixosModules.stylix
+        ];
 
         specialArgs = {
           inherit inputs outputs;

@@ -4,7 +4,7 @@
   ...
 }: {
   nix = {
-    package = lib.mkDefault pkgs.nix;
+    # package = lib.mkDefault pkgs.nix;
     settings = {
       experimental-features = [
         "ca-derivations"
