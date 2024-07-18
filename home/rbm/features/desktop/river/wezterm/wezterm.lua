@@ -26,23 +26,12 @@ config = {
     "ss07", -- =~ !~
   },
 
-  inactive_pane_hsb = {
-    hue = 1.0,
-    saturation = 0.9,
-    brightness = 0.4,
-  },
+  -- inactive_pane_hsb = {
+  --   hue = 1.0,
+  --   saturation = 0.9,
+  --   brightness = 0.4,
+  -- },
 
 }
-
-wezterm.on("update-status", function(window, pane)
-	local meta = pane:get_metadata() or {}
-	local overrides = window:get_config_overrides() or {}
-	if meta.password_input then
-		overrides.color_scheme = "Red Alert"
-	else
-		overrides.color_scheme = nil
-	end
-	window:set_config_overrides(overrides)
-end)
 
 return config
