@@ -87,6 +87,7 @@ set searchurls.rustdoc https://doc.rust-lang.org/std/index.html?search=%s
 set searchurls.searx https://searx.me/?q=%s&categories=general&language=en-US
 set searchurls.steam https://store.steampowered.com/search/?term=%s
 set searchurls.thesaurus https://www.powerthesaurus.org/_search?q=%s
+set searchurls.tmuxp https://tmuxp.git-pull.com/search.html?q=%s&check_keywords=yes&area=default#
 set searchurls.w https://en.wikipedia.org/w/index.php?search=%s&title=Special%3ASearch
 set searchurls.yt https://www.youtube.com/results?search_query=%s
 
