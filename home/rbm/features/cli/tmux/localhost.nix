@@ -17,11 +17,18 @@
             panes = [{shell = "~/.nix-profile/bin/yazi";}];
           }
           {
-            window_name = "cfg";
+            window_name = "flake";
             start_directory = "/mnt/2tb/nix-config";
             focus = true;
+            layout = "7723,174x42,0,0{61x42,0,0,6,112x42,62,0,13}";
             options = opts;
-            panes = [{shell = "~/.nix-profile/bin/nvim .";}];
+            panes = [
+              "blank"
+              {
+                shell = "~/.nix-profile/bin/nvim .";
+                focus = true;
+              }
+            ];
           }
           {
             window_name = "monitor";
