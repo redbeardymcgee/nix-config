@@ -8,11 +8,17 @@
     flakeInputs = lib.filterAttrs (_: lib.isType "flake") inputs;
   in {
     package = pkgs.nixVersions.latest;
+    # TODO: Make sure this works with channel disabled from fresh install
+    #       It may be necessary to add something to the registry
+    #       ❯ nix run 'nixpkgs#nix-index' --extra-experimental-features 'nix-command flakes'
     channel.enable = false;
-
-    # nixPath = lib.mapAttrsToList (n: _: "${n}=flake:${n}") flakeInputs;
-    nixPath = let path = toString ./.; in ["repl=${path}/repl.nix" "nixpkgs=${inputs.nixpkgs}"];
     registry = lib.mapAttrs (_: flake: {inherit flake;}) flakeInputs;
+
+    nixPath = let
+      path = toString ../../../.;
+    in
+      lib.mapAttrsToList (n: _: "${n}=flake:${n}") flakeInputs
+      ++ ["repl=${path}/repl.nix" "nixpkgs=${inputs.nixpkgs}"];
 
     settings = {
       auto-optimise-store = lib.mkDefault true;

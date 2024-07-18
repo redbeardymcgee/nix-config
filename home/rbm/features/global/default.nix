@@ -19,6 +19,9 @@ in {
     ]
     ++ (builtins.attrValues outputs.homeManagerModules);
 
+  news.display = "show";
+  systemd.user.startServices = "sd-switch";
+
   dconf.settings = {
     "org/virt-manager/virt-manager/connections" = {
       autoconnect = ["qemu:///system"];
@@ -40,7 +43,10 @@ in {
   };
 
   home = {
+    stateVersion = lib.mkDefault "24.05";
     homeDirectory = lib.mkDefault "/home/${config.home.username}";
+    username = lib.mkDefault "rbm";
+    preferXdgDirectories = true;
 
     packages =
       # let
@@ -61,9 +67,6 @@ in {
         unzip
       ];
 
-    preferXdgDirectories = true;
-    stateVersion = lib.mkDefault "24.05";
-
     sessionPath = [
       "$HOME/.local/lib/node_modules/bin"
       "$HOME/.cargo/bin"
@@ -76,11 +79,7 @@ in {
       NODE_PATH = "$HOME/local/lib/node_modules";
       VISUAL = "nvim";
     };
-
-    username = lib.mkDefault "rbm";
   };
-
-  news.display = "show";
 
   stylix = {
     enable = true;
@@ -107,9 +106,7 @@ in {
     };
 
     opacity = {
-      terminal = 0.8;
+      terminal = 0.95;
     };
   };
-
-  systemd.user.startServices = "sd-switch";
 }

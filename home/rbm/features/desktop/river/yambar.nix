@@ -196,7 +196,7 @@
             clock = {
               time-format = "%H:%M";
               content = [
-{
+                {
                   string = {
                     text = "{date}";
                     right-margin = 5;
