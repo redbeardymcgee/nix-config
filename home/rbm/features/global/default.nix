@@ -48,13 +48,12 @@ in {
     username = lib.mkDefault "rbm";
     preferXdgDirectories = true;
 
-    packages =
-      with pkgs; [
-        (pkgs.nerdfonts.override {fonts = ["FiraCode"];})
-        gcc
-        pavucontrol
-        unzip
-      ];
+    packages = with pkgs; [
+      (pkgs.nerdfonts.override {fonts = ["FiraCode"];})
+      gcc
+      pavucontrol
+      unzip
+    ];
 
     sessionPath = [
       "$HOME/.local/lib/node_modules/bin"
@@ -77,6 +76,12 @@ in {
     enable = true;
     base16Scheme = "${pkgs.base16-schemes}/share/themes/tokyo-night-terminal-storm.yaml";
     polarity = "dark";
+
+    cursor = {
+      package = pkgs.bibata-cursors;
+      name = "Bibata-Modern-Ice";
+      size = 24;
+    };
 
     fonts = {
       monospace = {

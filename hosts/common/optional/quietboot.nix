@@ -19,14 +19,7 @@
     ];
 
     plymouth = {
-      enable = false;
-
-      theme = "pixels";
-      themePackages = with pkgs; [
-        (adi1090x-plymouth-themes.override {
-          selected_themes = ["pixels"];
-        })
-      ];
+      enable = true;
     };
   };
 }
