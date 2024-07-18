@@ -23,8 +23,9 @@
     ./less.nix
     ./man.nix
     ./nix-index.nix
+    ./nix.nix
     ./nvim.nix
-    # ./rbw.nix
+    ./rbw.nix
     ./ripgrep.nix
     ./ssh.nix
     ./starship.nix
