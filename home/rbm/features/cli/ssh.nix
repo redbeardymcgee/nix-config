@@ -12,11 +12,11 @@
 
       Host github.com
         User git
-        IdentityFile ~/.ssh/arcturus-to-gh
+        IdentityFile ~/.ssh/arcturus-to-github
 
       Host gitlab.com
         User git
-        IdentityFile ~/.ssh/arcturus-to-gh
+        IdentityFile ~/.ssh/arcturus-to-github
 
       Host mcgeedia
         Hostname media.mcgee.network
