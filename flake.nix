@@ -15,14 +15,13 @@
     nixpkgs.url = github:nixos/nixpkgs/nixos-unstable;
     nixpkgs-stable.url = github:nixos/nixpkgs/nixos-24.05;
 
-    nur.url = github:nix-community/NUR;
-
     home-manager = {
       url = github:nix-community/home-manager;
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
     kixvim.url = github:redbeardymcgee/kixvim;
+    # nur.url = github:nix-community/NUR;
     stylix.url = github:danth/stylix;
     yazi.url = github:sxyazi/yazi;
   };

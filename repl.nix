@@ -8,3 +8,4 @@ in
   // nixpkgs
   // nixpkgs.lib
   // flake.nixosConfigurations
+  // flake.homeConfigurations
