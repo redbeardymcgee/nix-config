@@ -38,20 +38,15 @@
           run = "plugin smart-filter";
           desc = "Smart filter";
         }
-        {
-          on = ["p"];
-          run = "plugin smart-paste --sync";
-          desc = "Paste into the hovered directory or CWD";
-        }
+        # {
+        #   on = ["p"];
+        #   run = "plugin smart-paste --sync";
+        #   desc = "Paste into the hovered directory or CWD";
+        # }
         {
           on = ["<C-d>"];
           run = ''shell 'ripdrag "$@" -x 2>/dev/null &' --interactive'';
           desc = "Drag and drop into the hovered directory or CWD";
-        }
-        {
-          on = ["y"];
-          run = ''shell 'printf %s\\n "$@" | wl-copy -t text/uri-list' --interactive'';
-          desc = "Copy selected paths and files to clipboard";
         }
         {
           on = ["g" "s"];
@@ -136,27 +131,10 @@
     };
 
     plugins = let
-      dreamMaoMaoPluginsNames = [
-        # "fg"
-        # "git-status"
-        "searchjump"
-      ];
-
-      dreamMaoMaoPluginsSrc = pkgs.fetchgit {
-        url = "https://github.com/redbeardymcgee/yazi-plugins";
-        sparseCheckout = map (p: "${p}.yazi") dreamMaoMaoPluginsNames;
-        rev = "60d393f6b64bb0db1a67dabc21a2aca9228f0fc1";
-        hash = "sha256-tg4PxUo9LNr8LCHh+dyMp6lp437fms+4ZOY7yRKk0TE=";
-      };
-
-      dreamMaoMaoPlugins = lib.lists.fold (a: b: {${a} = "${dreamMaoMaoPluginsSrc}/${a}.yazi";} // b) {} dreamMaoMaoPluginsNames;
-
       officialPluginsNames = [
         "chmod"
         "diff"
-        # "hide-preview"
         "full-border"
-        # "max-preview"
         "smart-filter"
       ];
 
@@ -171,8 +149,13 @@
     in
       with pkgs;
         officialPlugins
-        // dreamMaoMaoPlugins
         // {
+          searchjump = fetchgit {
+            url = "https://gitee.com/DreamMaoMao/searchjump.yazi";
+            rev = "520f34d4f29460005710da8ffec2da473212841f";
+            hash = "sha256-aZcz63x0c0+ZnA2UrmraLYrH+RG4aF8c9G3LD4owH4c=";
+          };
+
           allmytoes = fetchFromGitHub {
             owner = "Sonico98";
             repo = "allmytoes.yazi";
