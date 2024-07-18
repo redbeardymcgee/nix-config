@@ -19,7 +19,7 @@
     ../common/optional/systemd-boot.nix
     ../common/optional/systemd-networkd.nix
 
-    ../common/services/gammastep.nix
+    # ../common/services/gammastep.nix
     ../common/services/udisks2.nix
 
     ../common/users

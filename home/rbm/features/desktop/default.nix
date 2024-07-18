@@ -1,6 +1,8 @@
 {pkgs, ...}: {
   imports = [
     ./firefox
+
+    ../services/gammastep.nix
   ];
 
   gtk.enable = true;
