@@ -10,16 +10,15 @@
 
     ../common/global
 
-    ../common/optional/systemd-networkd.nix
     ../common/optional/gamemode.nix
     ../common/optional/kmscon.nix
     ../common/optional/podman.nix
     ../common/optional/quietboot.nix
     ../common/optional/steam.nix
+    ../common/optional/stylix.nix
     ../common/optional/systemd-boot.nix
     ../common/optional/systemd-networkd.nix
 
-    # ../common/services/gammastep.nix
     ../common/services/udisks2.nix
 
     ../common/users

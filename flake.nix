@@ -30,6 +30,7 @@
     self,
     home-manager,
     nixpkgs,
+    stylix,
     ...
   } @ inputs: let
     inherit (self) outputs;
@@ -43,7 +44,10 @@
 
     nixosConfigurations = {
       arcturus = lib.nixosSystem {
-        modules = [./hosts/arcturus];
+        modules = [
+            ./hosts/arcturus
+            stylix.nixosModules.stylix
+          ];
 
         specialArgs = {
           inherit inputs outputs;
