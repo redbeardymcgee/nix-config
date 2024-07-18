@@ -49,19 +49,8 @@ in {
     preferXdgDirectories = true;
 
     packages =
-      # let
-      #   # TODO: Get root of flake or pass it down
-      #   replPath = toString ../../../../.;
-      #
-      #   flake-repl = pkgs.writeShellScriptBin "flake-repl" /* fish */
-      #     ''
-      #       source /etc/set-environment
-      #       nix repl "${replPath}/repl.nix" "$@"
-      #     '';
-      # in
       with pkgs; [
         (pkgs.nerdfonts.override {fonts = ["FiraCode"];})
-        # flake-repl
         gcc
         pavucontrol
         unzip
@@ -74,10 +63,13 @@ in {
     ];
 
     sessionVariables = {
-      EDITOR = "nvim";
+      # saves `--flake /path/`
       FLAKE = "/mnt/2tb/nix-config";
-      NODE_PATH = "$HOME/local/lib/node_modules";
+
+      EDITOR = "nvim";
       VISUAL = "nvim";
+
+      NODE_PATH = "$HOME/local/lib/node_modules";
     };
   };
 
@@ -94,9 +86,9 @@ in {
 
       sizes = {
         applications = 12;
-        terminal = 14;
-        desktop = 11;
-        popups = 12;
+        terminal = 10;
+        desktop = 14;
+        popups = 13;
       };
     };
 

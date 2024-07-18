@@ -28,7 +28,7 @@ set hintfiltermode vimperator-reflow
 
 " Select hints by numeric chars
 " Left to right priority
-set hintchars 5432167890
+set hintchars 7890654321
 
 " Never steal keyboard focus
 set allowautofocus false
@@ -42,23 +42,23 @@ set editorcmd foot --app-id=tridactyl_editor -- nvim
 
 " Autocmds
 " Disable the mouse globally
-autocmd DocLoad .* no_mouse_mode
+" autocmd DocLoad .* no_mouse_mode
 
 " Turn mouse mode on back on for Youtube
-autocmd DocLoad ^http(s?)://www.youtu((\.be)|(be\.com)) mouse_mode
+" autocmd DocLoad ^http(s?)://www.youtu((\.be)|(be\.com)) mouse_mode
 
 " UI
 guiset gui none
-colorscheme --url https://raw.githubusercontent.com/tridactyl/base16-tridactyl/master/base16-solarized-dark.css base16-solarized-dark
-" colorscheme --url https://github.com/tridactyl/base16-tridactyl/blob/master/base16-shapeshifter.css base16-shapeshifter
-set theme base16-solarized-dark
+colorscheme --url https://raw.githubusercontent.com/tridactyl/base16-tridactyl/master/base16-summerfruit-dark.css base16-summerfruit-dark
+set theme base16-summerfruit-dark
+
 
 """"""""""""""""""""
 " Search
 """"""""""""""""""""
 
 " Disable all searchurls
-jsb Object.keys(tri.config.get("searchurls")).reduce((prev, u) => prev.catch(()=>{}).then(_ => tri.excmds.setnull("searchurls." + u)), Promise.resolve())
+" jsb Object.keys(tri.config.get("searchurls")).reduce((prev, u) => prev.catch(()=>{}).then(_ => tri.excmds.setnull("searchurls." + u)), Promise.resolve())
 
 " Add our own
 set searchurls.amazon https://www.amazon.com/s/ref=nb_sb_noss?field-keywords=%s
@@ -88,6 +88,7 @@ set searchurls.searx https://searx.me/?q=%s&categories=general&language=en-US
 set searchurls.steam https://store.steampowered.com/search/?term=%s
 set searchurls.thesaurus https://www.powerthesaurus.org/_search?q=%s
 set searchurls.tmuxp https://tmuxp.git-pull.com/search.html?q=%s&check_keywords=yes&area=default#
+set searchurls.op https://openproject.mcgee.network/search?q=%s&work_packages=1&scope=all
 set searchurls.w https://en.wikipedia.org/w/index.php?search=%s&title=Special%3ASearch
 set searchurls.yt https://www.youtube.com/results?search_query=%s
 
@@ -109,6 +110,7 @@ bind gh followpage prev
 bind gl followpage next
 
 " git clone hints
+unbind --mode=normal ;g
 bind gc composite js window.location.href | gitclone
 bind ;gc hint -qW gitclone
 
@@ -169,7 +171,7 @@ bind --mode=visual t composite js document.getSelection().toString() | fillcmdli
 " bind --mode=ex     <C-y> ex.insert_completion
 " bind --mode=ex     <C-e> ex.deselect_completion
 " bind --mode=ex     <Tab> ex.complete
-" Delete only the command
+" Delete only the command; keep body of commandline
 " bind --mode=ex     <C-g> composite text.beginning_of_line ; text.forward_word ; text.kill_word
 
 bind --mode=ex     <C-a> text.beginning_of_line
@@ -199,11 +201,11 @@ bind --mode=input  <C-V> composite getclip selection | text.insert_text
 " Disable <C-q>
 " TODO: Also requires custom build?
 " TODO: Just unbind instead of chirp
-" bind --mode=insert <C-q> js alert("<C-q> is for quitters.")
-" bind --mode=input  <C-q> js alert("<C-q> is for quitters.")
-" bind --mode=normal <C-q> js alert("<C-q> is for quitters.")
-" bind --mode=ex     <C-q> js alert("<C-q> is for quitters.")
-" bind --mode=hint   <C-q> js alert("<C-q> is for quitters.")
+" unbind --mode=insert <C-q>
+" unbind --mode=input  <C-q>
+" unbind --mode=normal <C-q>
+" unbind --mode=ex     <C-q>
+" unbind --mode=hint   <C-q>
 
 unbind yy
 unbind ys
@@ -220,7 +222,7 @@ bindurl ^https://github.com gi hint -Vc .AppHeader-searchButton
 bindurl https://github.com/.*/.*/blob f hint -c .blob-num,a
 
 " Git{Hub,Lab} git clone via SSH yank
-bind ;g composite js "git clone " + document.location.href.replace(/https?:\/\//,"git@").replace("/",":").replace(/$/,".git") | clipboard yank
+bind ;gC composite js "git clone " + document.location.href.replace(/https?:\/\//,"git@").replace("/",":").replace(/$/,".git") | clipboard yank
 
 " As above but execute it and open terminal in folder
 bind ;G js let uri = document.location.href.replace(/https?:\/\//,"git@").replace("/",":").replace(/$/,".git"); tri.native.run("cd /mnt/2tb/repos; git clone " + uri + "; cd \"$(basename \"" + uri + "\" .git)\"; foot")
