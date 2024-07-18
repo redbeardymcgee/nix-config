@@ -30,6 +30,7 @@
     ./starship.nix
     ./tealdeer.nix
     ./tmux
+    ./tokei.nix
     ./yazi
     ./zk.nix
     ./zoxide.nix
@@ -55,7 +56,6 @@
     procs
     python3
     ripdrag
-    scc
     transmission_4
     tree-sitter
     yq
