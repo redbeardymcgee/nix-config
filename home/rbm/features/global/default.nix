@@ -19,6 +19,13 @@ in {
     ]
     ++ (builtins.attrValues outputs.homeManagerModules);
 
+  wayland.windowManager.hyprland = {
+    enable = true;
+    plugins = with inputs.hyprland-plugins.packages.${pkgs.system}; [
+      hyprbars
+    ];
+  };
+
   news.display = "show";
   systemd.user.startServices = "sd-switch";
 
@@ -72,6 +79,7 @@ in {
     };
   };
 
+  stylix.targets.kde.enable = false;
   stylix = {
     enable = true;
     base16Scheme = "${pkgs.base16-schemes}/share/themes/tokyo-night-terminal-storm.yaml";
