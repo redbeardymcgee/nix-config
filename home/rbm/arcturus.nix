@@ -3,8 +3,8 @@
     ./features/global
 
     ./features/cli
-    ./features/desktop
+    # ./features/desktop
     ./features/desktop/river
-    ./features/desktop/wayland
+    # ./features/desktop/wayland
   ];
 }
