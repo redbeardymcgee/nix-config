@@ -7,7 +7,7 @@
 " New commands
 """"""""""""""""""""
 
-alias tabsort jsb browser.tabs.query({}).then(tabs => tabs.sort((t1, t2) => t1.url.localeCompare(t2.url)).forEach((tab, index) => browser.tabs.move(tab.id, {index})))
+" alias tabsort jsb browser.tabs.query({}).then(tabs => tabs.sort((t1, t2) => t1.url.localeCompare(t2.url)).forEach((tab, index) => browser.tabs.move(tab.id, {index})))
 alias tabuniq jsb browser.tabs.query({}).then(tabs => browser.tabs.remove(tabs.filter((tab, index) => tabs.slice(index + 1).find(t => t.url == tab.url)).map(tab => tab.id)))
 alias gitclone jsb -p tri.native.run("git clone --depth=1 '" + JS_ARG + "' /mnt/2tb/repos/" + JS_ARG.split("/").slice(-1))
 
@@ -123,7 +123,7 @@ bind K tabprev
 bind J tabnext
 
 unbind d
-bind x tabclose
+bind x composite tabprev; tabclose #
 bind X undo tab
 bind <C-X> undo tab
 
