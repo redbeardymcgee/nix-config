@@ -26,6 +26,7 @@
   environment = {
     systemPackages = with pkgs; [
       libnotify
+      rsync
     ];
 
     # TODO: KDE only?
