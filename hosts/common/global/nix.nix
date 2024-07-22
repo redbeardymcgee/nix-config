@@ -7,11 +7,12 @@
   nix = let
     flakeInputs = lib.filterAttrs (_: lib.isType "flake") inputs;
   in {
+    # TODO: Switch back to regular nix if `lix` goes sour
     # package = lib.mkDefault pkgs.nixVersions.latest;
-    # TODO: Make sure this works with channel disabled from fresh install
-    #       It may be necessary to add something to the registry
-    #       ❯ nix run 'nixpkgs#nix-index' --extra-experimental-features 'nix-command flakes'
-    channel.enable = false;
+
+    # NOTE: Useful tools like having channels and I like having tools that work
+    #       without switching to my browser for documentation every time
+    channel.enable = true;
     registry = lib.mapAttrs (_: flake: {inherit flake;}) flakeInputs;
 
     nixPath = let
