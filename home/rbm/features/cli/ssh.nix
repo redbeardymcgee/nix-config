@@ -7,9 +7,6 @@
     controlPersist = "10m";
 
     extraConfig = ''
-      Host *
-        User josh
-
       Host github.com
         User git
         IdentityFile ~/.ssh/arcturus-to-github
@@ -22,15 +19,20 @@
         Hostname media.mcgee.network
         IdentityFile ~/.ssh/arcturus-to-mcgeedia
 
+      Host stopgap
+        Hostname 192.168.122.143
+        IdentityFile ~/.ssh/arcturus-to-stopgap
+        ProxyJump rbm@mcgeedia
+
       Host nixedia
         Hostname 10.35.20.142
         IdentityFile ~/.ssh/arcturus-to-nixedia
-        ProxyJump josh@mcgeedia
+        ProxyJump rbm@mcgeedia
 
       Host proxmox
         Hostname 10.35.20.11
         IdentityFile ~/.ssh/arcturus-to-proxmox
-        ProxyJump josh@mcgeedia
+        ProxyJump rbm@mcgeedia
     '';
   };
 
