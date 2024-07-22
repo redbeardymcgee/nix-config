@@ -36,7 +36,7 @@ return {
       open_for_directories = true,
       floating_window_scaling_factor = 0.8,
       use_ya_for_events_reading = true,
-      -- yazi_floating_window_winblend = 95,
+      -- yazi_floating_window_winblend = 75,
 
       highlight_groups = {
         -- NOTE: this only works if `use_ya_for_events_reading` is enabled, etc.
