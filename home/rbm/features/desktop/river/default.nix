@@ -1,5 +1,8 @@
 {
   imports = [
+    ../wayland
+    ../../desktop
+
     # ./eww
     ./fnott.nix
     ./foot.nix
@@ -14,14 +17,13 @@
 
     ../../services/cliphist.nix
     ../../services/easyeffects.nix
+    ../../services/gammastep.nix
     ../../services/lorri.nix
     ../../services/mpris-proxy.nix
     ../../services/playerctld.nix
-    ../../services/remmina.nix
     ../../services/ssh-agent.nix
     ../../services/swayidle.nix
     ../../services/swayosd.nix
     ../../services/udiskie.nix
-    ../../services/wlsunset.nix
   ];
 }

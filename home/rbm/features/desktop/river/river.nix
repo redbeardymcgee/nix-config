@@ -15,6 +15,11 @@
 
       allTagsMask = toString ((pow2 32) - 1);
     in {
+      set-cursor-warp = "on-focus-change";
+      set-repeat = "50 300";
+      default-layout = "rivercarro";
+      focus-follows-cursor = "normal";
+
       declare-mode = [
         "layout"
         "locked"
@@ -22,9 +27,6 @@
         "normal"
         "passthrough"
       ];
-
-      default-layout = "rivercarro";
-      focus-follows-cursor = "normal";
 
       input = {
         pointer-main = {
@@ -107,8 +109,7 @@
           };
 
         passthrough = {
-          "None Return" = "enter-mode normal";
-          "None Escape" = "enter-mode normal";
+          "Super Escape" = "enter-mode normal";
           "Super Backspace" = "enter-mode normal";
         };
 
@@ -175,44 +176,74 @@
 
       rule-add = {
         "-app-id" = {
-          "foot-localhost" = "tags ${toString (pow2 0)}";
-          "foot-projects" = "tags ${toString (pow2 1)}";
-          "foot-mcgeedia" = "tags ${toString (pow2 2)}";
+          # Send to Samsung 1440p
+          "*_ultrawide" = "output DP-3";
+          "vesktop" = "output DP-3";
+
+          # Manage Steam windows carefully
+          "steam" = "float";
+          # Dump main steam app on tag 7
+          "*steam" = "tags ${toString (pow2 6)}";
+          # Put games on tag 6
+          "steam_app*" = "tags ${toString (pow2 5)}";
+
+          # Float some apps
+          "xdg-desktop-portal-*" = "float";
+
+          # Startup terminals
+          "terminal_localhost" = "tags ${toString (pow2 0)}";
+          "terminal_projects" = "tags ${toString (pow2 1)}";
+          "terminal_mcgeedia" = "tags ${toString (pow2 2)}";
+
+          # Hide this on tag 9
           "org.remmina.Remmina" = "output DP-3";
           "org.remmina.Remmin*" = "tags ${toString (pow2 8)}";
-          "steam*" = "float";
-          "vesktop" = "output DP-3";
-          "wezterm-localhost" = "tags ${toString (pow2 0)}";
-          "wezterm-projects" = "tags ${toString (pow2 1)}";
-          "wezterm-mcgeedia" = "tags ${toString (pow2 2)}";
-          "xdg-desktop-portal-*" = "float";
         };
 
         "-title" = {
           "Picture-in-Picture" = "float";
-          "*DP-3" = "output DP-3";
+          "Steam*" = "tags ${toString (pow2 6)}";
         };
       };
 
-      set-cursor-warp = "on-focus-change";
-      set-repeat = "50 300";
-
       spawn = [
+        # Layout manager
+        # TODO: riverguile seems to have more features
+        "'rivercarro -outer-gaps 0'"
+
+        # NOTE: Inner quotes are required
+        #       This is mostly like `sh -c '$spawn_cmd'`
         " 'systemctl --user import-environment QT_QPA_PLATFORMTHEME XDG_SEAT' "
         '''way-displays > "$XDG_RUNTIME_DIR/way-displays.$XDG_SEAT.log" 2>&1' ''
-        "'yambar'"
-        "'vesktop'"
-        "'firefox --name firefox.DP-3'"
-        "${pkgs.writeShellScript "autolaunch-foot" ''
-          for sesh in localhost mcgeedia projects
+        "yambar"
+        "vesktop"
+        "'firefox --name firefox_ultrawide'"
+
+        (let
+          terminal = "wezterm";
+          sessions = lib.strings.concatStringsSep " " [
+            "localhost"
+            "mcgeedia"
+            "projects"
+          ];
+          args = lib.strings.concatStringsSep " " [
+            "start"
+            "--always-new-process"
+            "--"
+            "tmuxp"
+            "load"
+            "-y"
+          ];
+        in "${pkgs.writeShellScript "wayland-terminal-session-launch" ''
+          for sesh in ${sessions}
           do
-            foot --app-id=foot-$sesh tmuxp load -y $sesh &
+            ${terminal} --class terminal_$sesh ${args} $sesh &
+            # wezterm start --always-new-process --class terminal_$sesh -- tmuxp load -y $sesh &
+            # foot --app-id=terminal_$sesh tmuxp load -y $sesh &
             sleep 1
           done
         ''}
-        "
-        # "'wezterm start --class wezterm.localhost -- tmuxp load -y localhost'"
-        "'rivercarro -outer-gaps 0'"
+        ")
       ];
     };
   };
