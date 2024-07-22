@@ -28,25 +28,25 @@
               }
             ];
           }
-          {
-            window_name = "docker";
-            focus = true;
-            options = opts;
-            panes = [
-              {
-                shell_command = [
-                  "cd /opt/containers"
-                  "nvim ."
-                ];
-              }
-            ];
-          }
           # {
-          #   window_name = "monitor";
-          #   window_index = 0;
+          #   window_name = "docker";
+          #   focus = true;
           #   options = opts;
-          #   panes = [{shell = ["~/.nix-profile/bin/btm"];}];
+          #   panes = [
+          #     {
+          #       shell_command = [
+          #         "cd /opt/containers"
+          #         "nvim ."
+          #       ];
+          #     }
+          #   ];
           # }
+          {
+            window_name = "monitor";
+            window_index = 0;
+            options = opts;
+            panes = [{shell = ["~/.nix-profile/bin/btm"];}];
+          }
         ];
       };
     };
