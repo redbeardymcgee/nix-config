@@ -4,131 +4,27 @@
   pkgs,
   ...
 }: {
+  programs.fish.functions = {
+    y = {
+      wraps = "yazi";
+      body =
+        # fish
+        ''
+          set tmp (mktemp -p $XDG_RUNTIME_DIR yazi-cwd.XXXXXX)
+          yazi $argv --cwd-file=$tmp
+          if set cwd (command cat -- $tmp); and [ -n $cwd ]; and [ $cwd != $PWD ]
+            cd $cwd
+          end
+        '';
+    };
+  };
+
   programs.yazi = {
     enable = true;
-
     package = inputs.yazi.packages.${pkgs.system}.default;
     enableFishIntegration = false;
     initLua = ./init.lua;
-
-    keymap = {
-      manager.prepend_keymap = [
-        {
-          on = ["<C-s>"];
-          run = ''shell "$SHELL" --block --interactive'';
-          desc = "Open shell here";
-        }
-        {
-          on = ["c" "m"];
-          run = "plugin chmod";
-          desc = "Chmod on selected files";
-        }
-        {
-          on = ["c" "D"];
-          run = "plugin diff";
-          desc = "Diff the selected with the hovered file";
-        }
-        {
-          on = ["c" "C"];
-          run = "plugin ouch --args=zip";
-          desc = "Compress with ouch";
-        }
-        {
-          on = ["F"];
-          run = "plugin smart-filter";
-          desc = "Smart filter";
-        }
-        # {
-        #   on = ["p"];
-        #   run = "plugin smart-paste --sync";
-        #   desc = "Paste into the hovered directory or CWD";
-        # }
-        {
-          on = ["<C-d>"];
-          run = ''shell 'ripdrag "$@" -x 2>/dev/null &' --interactive'';
-          desc = "Drag and drop into the hovered directory or CWD";
-        }
-        {
-          on = ["g" "s"];
-          run = "plugin searchjump";
-          desc = "searchjump mode";
-        }
-        # {
-        #   on = ["f" "g"];
-        #   run = "plugin fg --args='rg'";
-        #   desc = "find file by content (ripgrep match)";
-        # }
-        # {
-        #   on = ["f" "g"];
-        #   run = "plugin fg --args='rg'";
-        #   desc = "find file by content (ripgrep match)";
-        # }
-        # {
-        #   on = ["f" "f"];
-        #   run = "plugin fg --args='fzf'";
-        #   desc = "find file by file name";
-        # }
-        {
-          on = ["b" "a"];
-          run = "plugin yamb --args=save";
-          desc = "Add bookmark";
-        }
-        {
-          on = ["b" "k"];
-          run = "plugin yamb --args=jump_by_key";
-          desc = "Jump to a bookmark by key";
-        }
-        {
-          on = ["b" "b"];
-          run = "plugin yamb --args=jump_by_fzf";
-          desc = "Jump to a bookmark by fzf";
-        }
-        {
-          on = ["b" "d"];
-          run = "plugin yamb --args=delete_by_key";
-          desc = "Delete a bookmark by key";
-        }
-        {
-          on = ["b" "F"];
-          run = "plugin yamb --args=delete_by_fzf";
-          desc = "Delete a bookmark by fzf";
-        }
-        {
-          on = ["b" "D"];
-          run = "plugin yamb --args=delete_all";
-          desc = "Delete all bookmarks";
-        }
-        {
-          on = ["b" "r"];
-          run = "plugin yamb --args=rename_by_key";
-          desc = "Rename a bookmark by key";
-        }
-        {
-          on = ["b" "R"];
-          run = "plugin yamb --args=rename_by_fzf";
-          desc = "Rename a bookmark by fzf";
-        }
-        {
-          on = ["<C-t>"];
-          run = "plugin hide-preview --sync";
-          desc = "Hide or show preview";
-        }
-        {
-          on = ["<C-T>"];
-          run = "plugin max-preview --sync";
-          desc = "Maximize or restore preview";
-        }
-      ];
-
-      opener = {
-        extract = [
-          {
-            run = ''ouch d -y "$@"'';
-            for = "unix";
-          }
-        ];
-      };
-    };
+    keymap = import ./keymap.nix;
 
     plugins = let
       officialPluginsNames = [
@@ -150,17 +46,57 @@
       with pkgs;
         officialPlugins
         // {
+          # UI
+          starship = fetchFromGitHub {
+            owner = "Rolv-Apneseth";
+            repo = "starship.yazi";
+            rev = "0a141f6dd80a4f9f53af8d52a5802c69f5b4b618";
+            hash = "sha256-OL4kSDa1BuPPg9N8QuMtl+MV/S24qk5R1PbO0jgq2rA=";
+          };
+
+          # yaziline = fetchFromGitHub {
+          #   owner = "llanosrocas";
+          #   repo = "yaziline.yazi";
+          #   rev = "b22e2e8962c6fc8a27f8510a29a186b764577c1a";
+          #   hash = "sha256-kLK4EvECzE43cAVcdHGhKvbJ+pS0jvd2ggW5XTq7jWc=";
+          # };
+          #^ UI
+
+          # Features
+          augment-command = fetchFromGitHub {
+            owner = "hankertrix";
+            repo = "augment-command.yazi";
+            rev = "3268704750711db2c23ae79dc916e4b488dc4a9f";
+            hash = "sha256-7QLdMEUSCJVh9avOa7dboWg8lZs1J3XGcaXdScJ/lyU=";
+          };
+
           searchjump = fetchgit {
             url = "https://gitee.com/DreamMaoMao/searchjump.yazi";
             rev = "520f34d4f29460005710da8ffec2da473212841f";
             hash = "sha256-aZcz63x0c0+ZnA2UrmraLYrH+RG4aF8c9G3LD4owH4c=";
           };
 
+          yamb = fetchFromGitHub {
+            owner = "h-hg";
+            repo = "yamb.yazi";
+            rev = "3636c80f94448347f8047cfbfc1ca6099dcd4d71";
+            hash = "sha256-81rrxjdWlpICQ12EfOcvXpvnWXeWgA5GYBfoHXxBe1g=";
+          };
+          #^ Features
+
+          # Previewers
           allmytoes = fetchFromGitHub {
             owner = "Sonico98";
             repo = "allmytoes.yazi";
             rev = "e5329138a19615e63bff6a581eb69d1d1eb5d4fe";
             hash = "sha256-S9O8jgTjdOxf/Zybmgm7nGBkd2Ipt2DtQ+Be2uawyNA=";
+          };
+
+          exifaudio = fetchFromGitHub {
+            owner = "Sonico98";
+            repo = "exifaudio.yazi";
+            rev = "94329ead8b3a6d3faa2d4975930a3d0378980c7a";
+            hash = "sha256-jz6fVtcLHw9lsxFWECbuxE7tEBttE08Fl4oJSTifaEc=";
           };
 
           glow = fetchFromGitHub {
@@ -177,20 +113,6 @@
             hash = "sha256-B2L3/Q1g0NOO6XEMIMGBC/wItbNgBVpbaMMhiXOYcrI=";
           };
 
-          torrent-preview = fetchFromGitHub {
-            owner = "kirasok";
-            repo = "torrent-preview.yazi";
-            rev = "76970b6f9d6f3031e9cd57c8595a53e9f9f48c18";
-            hash = "sha256-QPdtoCU7CyS7sx1aoGHNHv1NxWMA/SxSuy+2SLDdCeU=";
-          };
-
-          exifaudio = fetchFromGitHub {
-            owner = "Sonico98";
-            repo = "exifaudio.yazi";
-            rev = "94329ead8b3a6d3faa2d4975930a3d0378980c7a";
-            hash = "sha256-jz6fVtcLHw9lsxFWECbuxE7tEBttE08Fl4oJSTifaEc=";
-          };
-
           miller = fetchFromGitHub {
             owner = "Reledia";
             repo = "miller.yazi";
@@ -205,25 +127,19 @@
             hash = "sha256-Sc0TGzrdyQh61Pkc2nNUlk8jRLjVNaCJdFqZvgQ/Cp8=";
           };
 
-          yamb = fetchFromGitHub {
-            owner = "h-hg";
-            repo = "yamb.yazi";
-            rev = "3636c80f94448347f8047cfbfc1ca6099dcd4d71";
-            hash = "sha256-81rrxjdWlpICQ12EfOcvXpvnWXeWgA5GYBfoHXxBe1g=";
+          torrent-preview = fetchFromGitHub {
+            owner = "kirasok";
+            repo = "torrent-preview.yazi";
+            rev = "76970b6f9d6f3031e9cd57c8595a53e9f9f48c18";
+            hash = "sha256-QPdtoCU7CyS7sx1aoGHNHv1NxWMA/SxSuy+2SLDdCeU=";
           };
-
-          yaziline = fetchFromGitHub {
-            owner = "llanosrocas";
-            repo = "yaziline.yazi";
-            rev = "2da9b34";
-            hash = "sha256-KnF4SAkZTaN5tzzMP1+yV6ZZmuOEvz3o08nYavVOa3E=";
-          };
+          #^ Previewers
         };
 
     settings = {
-      # manager = {
-      #   linemode = "size";
-      # };
+      manager = {
+        sort_dir_first = true;
+      };
 
       plugin = {
         # fetchers = [
