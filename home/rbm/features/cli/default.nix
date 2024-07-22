@@ -37,28 +37,37 @@
     ./zoxide.nix
   ];
 
+  # TODO: Review after kixvim is running
   home.packages = with pkgs; [
+    # kixvim
+
+    # nix tools
     alejandra
     comma
-    devenv
+    manix
+
+    # Generally useful
     difftastic
     entr
+    gtrash
+    procs
+    typos
+    yq
+    transmission_4
+
+    # Editor support
+    cargo
+    nodejs
+    python3
+    tree-sitter
+
+    # Yazi deps but generally useful
     exiftool
     glow
-    gtrash
     hexyl
-    lazydocker
-    manix
     miller
-    # kixvim
-    nodejs
     ouch
     poppler
-    procs
-    python3
     ripdrag
-    transmission_4
-    tree-sitter
-    yq
   ];
 }
