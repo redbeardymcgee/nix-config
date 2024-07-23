@@ -37,8 +37,8 @@ set allowautofocus false
 set wordpattern [^\s\/]+
 
 " TODO: Build minimal config from kixvim flake output
-" Use nvim in tmux for editor.
-set editorcmd foot --app-id=tridactyl_editor -- nvim
+" Edit with nvim
+set editorcmd wezterm --always-new-process --class tridactyl_editor -- nvim
 
 " Autocmds
 " Disable the mouse globally
@@ -46,6 +46,11 @@ set editorcmd foot --app-id=tridactyl_editor -- nvim
 
 " Turn mouse mode on back on for Youtube
 " autocmd DocLoad ^http(s?)://www.youtu((\.be)|(be\.com)) mouse_mode
+
+" Disable on mcgeedia
+autocmd DocLoad ^http(s?)://cockpit.mcgee.network mode ignore
+autocmd DocLoad ^http(s?)://media.mcgee.network mode ignore
+autocmd DocLoad ^http(s?)://services.mcgee.network mode ignore
 
 " UI
 guiset gui none
