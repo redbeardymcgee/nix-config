@@ -13,14 +13,15 @@
 
       Host gitlab.com
         User git
-        IdentityFile ~/.ssh/arcturus-to-github
+        IdentityFile ~/.ssh/arcturus-to-gitlab
 
       Host mcgeedia
         Hostname media.mcgee.network
+        Port 9022
         IdentityFile ~/.ssh/arcturus-to-mcgeedia
 
       Host stopgap
-        Hostname 192.168.122.143
+        Hostname 10.35.20.91
         IdentityFile ~/.ssh/arcturus-to-stopgap
         ProxyJump rbm@mcgeedia
 
