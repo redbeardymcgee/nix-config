@@ -4,16 +4,13 @@
     settings = {
       default_session = {
         command =
-          /*
-          sh
-          */
+          # sh
           ''
             ${pkgs.greetd.tuigreet}/bin/tuigreet \
               --asterisks \
               --cmd river \
               --remember \
               --remember-user-session \
-              --theme "border=magenta;text=cyan;prompt=green;time=red;action=blue;button=yellow;container=black;input=red" \
               --time \
               --user-menu \
               --power-shutdown 'sudo systemctl poweroff' \
