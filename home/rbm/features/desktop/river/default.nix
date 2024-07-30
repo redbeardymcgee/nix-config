@@ -9,6 +9,7 @@
     ./river.nix
     ./satty.nix
     ./swaylock.nix
+    # ./tofi.nix
     ./way-displays.nix
     ./wezterm
     ./wofi.nix

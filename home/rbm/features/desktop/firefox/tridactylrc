@@ -38,7 +38,8 @@ set wordpattern [^\s\/]+
 
 " TODO: Build minimal config from kixvim flake output
 " Edit with nvim
-set editorcmd wezterm --always-new-process --class tridactyl_editor -- nvim
+" set editorcmd wezterm --always-new-process --class tridactyl_editor -- nvim
+set editorcmd foot --app-id=tridactyl_editor nvim
 
 " Autocmds
 " Disable the mouse globally

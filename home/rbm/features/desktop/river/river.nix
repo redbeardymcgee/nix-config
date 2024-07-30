@@ -178,8 +178,8 @@
       rule-add = {
         "-app-id" = {
           # Send to Samsung 1440p
-          "*_ultrawide" = "output DP-3";
-          "vesktop" = "output DP-3";
+          "*_ultrawide" = "output DP-1";
+          "vesktop" = "output DP-1";
 
           # Manage Steam windows carefully
           "steam" = "float";
@@ -197,7 +197,7 @@
           "terminal_mcgeedia" = "tags ${toString (pow2 2)}";
 
           # Hide this on tag 9
-          "org.remmina.Remmina" = "output DP-3";
+          "org.remmina.Remmina" = "output DP-1";
           "org.remmina.Remmin*" = "tags ${toString (pow2 8)}";
         };
 
@@ -223,7 +223,8 @@
         "${pkgs.writeShellScript "wayland-terminal-session-launch" ''
           for sesh in localhost mcgeedia projects
           do
-            wezterm start --always-new-process --class terminal_$sesh -- tmuxp load -y $sesh &
+            foot --app-id=terminal_$sesh tmuxp load -y $sesh &
+            # wezterm start --always-new-process --class terminal_$sesh -- tmuxp load -y $sesh &
             sleep 2
           done
         ''}

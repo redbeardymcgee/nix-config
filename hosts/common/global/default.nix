@@ -84,8 +84,8 @@
 
     settings = {
       default = [
-        "org.wezfurlong.wezterm.desktop"
         "org.codeberg.dnkl.foot.desktop"
+        "org.wezfurlong.wezterm.desktop"
         "kitty.desktop"
       ];
     };

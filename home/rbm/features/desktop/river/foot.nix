@@ -9,9 +9,9 @@
     };
   };
 
-  # wayland.windowManager = {
-  #   river.settings.map.normal = {
-  #     "Super Space" = "spawn 'foot --app-id=foot_localhost tmuxp load -y localhost'";
-  #   };
-  # };
+  wayland.windowManager = {
+    river.settings.map.normal = {
+      "Super Space" = "spawn 'foot --app-id=foot_localhost tmuxp load -y localhost'";
+    };
+  };
 }
