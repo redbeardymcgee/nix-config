@@ -17,13 +17,7 @@
 
       Host mcgeedia
         Hostname media.mcgee.network
-        Port 9022
         IdentityFile ~/.ssh/arcturus-to-mcgeedia
-
-      Host stopgap
-        Hostname 10.35.20.91
-        IdentityFile ~/.ssh/arcturus-to-stopgap
-        ProxyJump rbm@mcgeedia
 
       Host nixedia
         Hostname 10.35.20.142
