@@ -9,25 +9,31 @@
       enable = true;
       source = (pkgs.formats.yaml {}).generate "mcgeedia.yaml" {
         session_name = "server  ";
-        shell_command_before = "ssh mcgeedia";
+        # shell_command_before = "ssh mcgeedia";
         windows = [
           {
-            window_name = "main";
+            window_name = "host";
             options = opts;
-            panes = [{shell_command = ["yazi"];}];
+            # panes = [{shell_command = ["yazi"];}];
+            panes = [{shell_command = ["ssh mcgeedia"];}];
           }
           {
-            window_name = "cfg";
+            window_name = "vm";
             options = opts;
-            panes = [
-              {
-                shell_command = [
-                  "cd ~/nix-config"
-                  "nvim ."
-                ];
-              }
-            ];
+            panes = [{shell_command = ["ssh stopgap"];}];
           }
+          # {
+          #   window_name = "cfg";
+          #   options = opts;
+          #   panes = [
+          #     {
+          #       shell_command = [
+          #         "cd ~/nix-config"
+          #         "nvim ."
+          #       ];
+          #     }
+          #   ];
+          # }
           # {
           #   window_name = "docker";
           #   focus = true;
@@ -41,12 +47,12 @@
           #     }
           #   ];
           # }
-          {
-            window_name = "monitor";
-            window_index = 0;
-            options = opts;
-            panes = [{shell = ["~/.nix-profile/bin/btm"];}];
-          }
+          # {
+          #   window_name = "monitor";
+          #   window_index = 0;
+          #   options = opts;
+          #   panes = [{shell = ["~/.nix-profile/bin/btm"];}];
+          # }
         ];
       };
     };

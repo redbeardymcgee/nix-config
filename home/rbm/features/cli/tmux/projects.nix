@@ -13,8 +13,14 @@
 
         windows = [
           {
-            window_name = "yazi-plugins";
-            start_directory = "/mnt/2tb/repos/yazi-plugins";
+            window_name = "bookworm";
+            start_directory = "/mnt/2tb/repos/justaguylinux/bookworm-scripts";
+            options = opts;
+            panes = [{shell_command = ["nvim ."];}];
+          }
+          {
+            window_name = "sway";
+            start_directory = "/mnt/2tb/repos/justaguylinux/sway";
             options = opts;
             panes = [{shell_command = ["nvim ."];}];
           }
