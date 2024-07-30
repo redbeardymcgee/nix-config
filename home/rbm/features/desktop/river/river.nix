@@ -18,7 +18,8 @@
       set-cursor-warp = "on-focus-change";
       set-repeat = "50 300";
       default-layout = "rivercarro";
-      focus-follows-cursor = "normal";
+      # focus-follows-cursor = "normal";
+      hide-cursor.when-typing = "enabled";
 
       declare-mode = [
         "layout"
@@ -219,31 +220,14 @@
         "vesktop"
         "'firefox --name firefox_ultrawide'"
 
-        (let
-          terminal = "wezterm";
-          sessions = lib.strings.concatStringsSep " " [
-            "localhost"
-            "mcgeedia"
-            "projects"
-          ];
-          args = lib.strings.concatStringsSep " " [
-            "start"
-            "--always-new-process"
-            "--"
-            "tmuxp"
-            "load"
-            "-y"
-          ];
-        in "${pkgs.writeShellScript "wayland-terminal-session-launch" ''
-          for sesh in ${sessions}
+        "${pkgs.writeShellScript "wayland-terminal-session-launch" ''
+          for sesh in localhost mcgeedia projects
           do
-            ${terminal} --class terminal_$sesh ${args} $sesh &
-            # wezterm start --always-new-process --class terminal_$sesh -- tmuxp load -y $sesh &
-            # foot --app-id=terminal_$sesh tmuxp load -y $sesh &
-            sleep 1
+            wezterm start --always-new-process --class terminal_$sesh -- tmuxp load -y $sesh &
+            sleep 2
           done
         ''}
-        ")
+        "
       ];
     };
   };
