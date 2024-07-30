@@ -22,10 +22,8 @@
 
     nvidia = {
       package = config.boot.kernelPackages.nvidiaPackages.stable;
-      modesetting.enable = true;
-      nvidiaSettings = false;
       open = false;
-      # prime.offload.enable = false;
+      nvidiaSettings = false;
 
       powerManagement = {
         enable = false;
