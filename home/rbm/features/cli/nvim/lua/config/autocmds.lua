@@ -3,14 +3,14 @@
 -- Add any additional autocmds here
 local uv = vim.loop
 
-vim.api.nvim_create_autocmd("VimEnter", {
-  group = vim.api.nvim_create_augroup("lazyvim_autoupdate", { clear = true }),
-  callback = function()
-    require("lazy").update({
-      show = false,
-    })
-  end,
-})
+-- vim.api.nvim_create_autocmd("VimEnter", {
+--   group = vim.api.nvim_create_augroup("lazyvim_autoupdate", { clear = true }),
+--   callback = function()
+--     require("lazy").update({
+--       show = false,
+--     })
+--   end,
+-- })
 
 vim.api.nvim_create_autocmd("VimEnter", {
   callback = function()
