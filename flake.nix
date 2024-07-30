@@ -48,16 +48,13 @@
     ...
   } @ inputs: let
     inherit (self) outputs;
-    lib = nixpkgs.lib // home-manager.lib;
   in {
-    inherit lib;
-
     nixosModules = import ./modules/nixos;
     homeManagerModules = import ./modules/home-manager;
     overlays = import ./overlays {inherit inputs outputs;};
 
     nixosConfigurations = {
-      arcturus = lib.nixosSystem {
+      arcturus = nixpkgs.lib.nixosSystem {
         modules = [
           ./hosts/arcturus
 
@@ -72,7 +69,7 @@
     };
 
     homeConfigurations = {
-      "rbm@arcturus" = lib.homeManagerConfiguration {
+      "rbm@arcturus" = home-manager.homeManagerConfiguration {
         modules = [
           ./home/rbm/arcturus.nix
 
@@ -85,7 +82,7 @@
         };
       };
 
-      "rbm@headmaster" = lib.homeManagerConfiguration {
+      "rbm@headmaster" = home-manager.homeManagerConfiguration {
         modules = [./home/rbm/headmaster.nix];
         pkgs = nixpkgs.legacyPackages.x86_64-linux;
 
