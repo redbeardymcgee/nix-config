@@ -76,6 +76,8 @@ in {
       VISUAL = "nvim";
 
       NODE_PATH = "$HOME/local/lib/node_modules";
+
+      XDG_DATA_DIRS = "$XDG_DATA_DIRS:/usr/share:/var/lib/flatpak/exports/share:$HOME/.local/share/flatpak/exports/share";
     };
   };
 
