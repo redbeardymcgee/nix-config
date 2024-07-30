@@ -29,11 +29,6 @@
       rsync
     ];
 
-    # TODO: KDE only?
-    profileRelativeSessionVariables = {
-      QT_PLUGIN_PATH = ["/lib/qt-6/plugins"];
-    };
-
     pathsToLink = [
       "/share/xdg-desktop-portal"
       "/share/applications"
@@ -88,8 +83,8 @@
 
     settings = {
       default = [
-        "org.codeberg.dnkl.foot.desktop"
         "org.wezfurlong.wezterm.desktop"
+        "org.codeberg.dnkl.foot.desktop"
         "kitty.desktop"
       ];
     };

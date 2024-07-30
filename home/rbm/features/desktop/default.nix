@@ -14,6 +14,7 @@
 
   home = {
     packages = with pkgs; [
+      flatpak
       fractal
       nyxt
       pamixer
