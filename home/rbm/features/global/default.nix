@@ -19,13 +19,6 @@ in {
     ]
     ++ (builtins.attrValues outputs.homeManagerModules);
 
-  wayland.windowManager.hyprland = {
-    enable = true;
-    plugins = with inputs.hyprland-plugins.packages.${pkgs.system}; [
-      hyprbars
-    ];
-  };
-
   news.display = "show";
   systemd.user.startServices = "sd-switch";
 

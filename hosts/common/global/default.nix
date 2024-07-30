@@ -36,7 +36,8 @@
   };
 
   nixpkgs = {
-    overlays = builtins.attrValues outputs.overlays ++ builtins.attrValues inputs.kixvim.overlays;
+    overlays = builtins.attrValues outputs.overlays;
+    # ++ builtins.attrValues inputs.kixvim.overlays;
 
     config = {
       allowUnfree = true;
