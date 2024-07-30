@@ -14,18 +14,14 @@ in {
     extraGroups = ifExist [
       "audio"
       "docker"
-      "git"
-      "i2c"
+      "gamemode"
       "libvirtd"
-      "lxd"
       "kvm"
       "mysql"
       "network"
-      "networkmanager"
       "podman"
       "video"
       "wheel"
-      "wireshark"
     ];
 
     openssh.authorizedKeys.keys = [
