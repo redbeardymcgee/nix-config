@@ -2,6 +2,7 @@
   imports = [
     ./hw.nix
     ./nvidia.nix
+    ./intel.nix
 
     ../common/global
 
