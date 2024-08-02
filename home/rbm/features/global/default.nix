@@ -1,7 +1,6 @@
 {
   config,
   lib,
-  inputs,
   outputs,
   pkgs,
   ...
@@ -12,8 +11,6 @@
 in {
   imports =
     [
-      inputs.stylix.homeManagerModules.stylix
-
       ./nixpkgs.nix
       ./xdg-user-dirs.nix
     ]
@@ -74,7 +71,6 @@ in {
     };
   };
 
-  stylix.targets.kde.enable = false;
   stylix = {
     enable = true;
     base16Scheme = "${pkgs.base16-schemes}/share/themes/tokyo-night-terminal-storm.yaml";
@@ -108,5 +104,11 @@ in {
     opacity = {
       terminal = 0.95;
     };
+  };
+
+  xdg.desktopEntries."Steam-Nvidia" = {
+    name = "steam-fixed";
+    exec = "steam %U";
+    icon = "steam";
   };
 }
