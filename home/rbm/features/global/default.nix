@@ -106,9 +106,9 @@ in {
     };
   };
 
-  xdg.desktopEntries."Steam-Nvidia" = {
-    name = "steam-fixed";
-    exec = "steam %U";
-    icon = "steam";
-  };
+  # xdg.desktopEntries."Steam-Nvidia" = {
+  #   name = "steam-fixed";
+  #   exec = "steam %U";
+  #   icon = "steam";
+  # };
 }
