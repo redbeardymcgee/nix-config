@@ -47,13 +47,6 @@
         officialPlugins
         // {
           # UI
-          starship = fetchFromGitHub {
-            owner = "Rolv-Apneseth";
-            repo = "starship.yazi";
-            rev = "0a141f6dd80a4f9f53af8d52a5802c69f5b4b618";
-            hash = "sha256-OL4kSDa1BuPPg9N8QuMtl+MV/S24qk5R1PbO0jgq2rA=";
-          };
-
           # yaziline = fetchFromGitHub {
           #   owner = "llanosrocas";
           #   repo = "yaziline.yazi";

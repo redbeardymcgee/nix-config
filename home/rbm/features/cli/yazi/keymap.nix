@@ -201,7 +201,7 @@
 
       {
         on = ["t" "s"];
-        run = ''shell "$SHELL" --confirm'';
+        run = ''shell "$SHELL" --confirm --block'';
         desc = "Open shell here";
       }
 
