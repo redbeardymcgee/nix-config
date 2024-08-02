@@ -14,7 +14,7 @@ in {
     settings = {
       logo = {
         source = ./nixos.png;
-        type = "sixel";
+        type = "kitty";
 
         padding = {
           top = 2;
