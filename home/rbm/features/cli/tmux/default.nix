@@ -10,6 +10,5 @@
   home.packages = with pkgs; [
     python312Packages.libtmux
     chafa
-    ueberzugpp
   ];
 }

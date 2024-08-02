@@ -24,21 +24,21 @@
       set -g @tnotify-prompt-suffixes '◉'
       set -g @tnotify-verbose 'on'
 
-      set -g @plugin 'omerxx/tmux-sessionx'
-      set -g @sessionx-additional-options '--tmux center'
-      set -g @sessionx-tree-mode 'on'
-      set -g @sessionx-zoxide-mode 'on'
+      # set -g @plugin 'omerxx/tmux-sessionx'
+      # set -g @sessionx-additional-options '--tmux center'
+      # set -g @sessionx-tree-mode 'on'
+      # set -g @sessionx-zoxide-mode 'on'
 
-      set -g @plugin 'omerxx/tmux-floax'
-      set -g @floax-bind 'C-/'
-      set -g @floax-bind-menu 'Space'
+      # set -g @plugin 'omerxx/tmux-floax'
+      # set -g @floax-bind '-n C-/'
+      # set -g @floax-bind-menu 'Space'
 
       set -g @plugin 'tmux-plugins/tpm'
       if "test ! -d ~/.config/tmux/plugins/tpm" \
         "run 'git clone https://github.com/tmux-plugins/tpm ~/.config/tmux/plugins/tpm && ~/.config/tmux/plugins/tpm/bin/install_plugins'"
       run '~/.config/tmux/plugins/tpm/tpm'
 
-      bind -n M-C source-file '~/.config/tmux/tmux.conf; display-message "Refreshed config!"'
+      bind -n M-C 'source-file ~/.config/tmux/tmux.conf; display-message "Refreshed config!"'
       bind r respawn-pane
       bind R respawn-window
     '';
