@@ -187,6 +187,9 @@
           "*steam" = "tags ${toString (pow2 6)}";
           # Put games on tag 6
           "steam_app*" = "tags ${toString (pow2 5)}";
+          # Trimps
+          "steam_app_1877960" = "output DP-1";
+          # "SDL Application" = "tags ${toString (pow2 5)}";
 
           # Float some apps
           "xdg-desktop-portal-*" = "float";
@@ -203,7 +206,8 @@
 
         "-title" = {
           "Picture-in-Picture" = "float";
-          "Steam*" = "tags ${toString (pow2 6)}";
+          "Steam" = "tags ${toString (pow2 6)}";
+          "Steam*" = "float";
         };
       };
 
