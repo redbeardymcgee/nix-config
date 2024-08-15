@@ -17,7 +17,7 @@
     ./yambar.nix
 
     ../../services/cliphist.nix
-    # ../../services/easyeffects.nix
+    ../../services/easyeffects.nix
     ../../services/gammastep.nix
     ../../services/lorri.nix
     ../../services/mpris-proxy.nix
