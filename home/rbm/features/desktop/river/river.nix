@@ -23,8 +23,6 @@
         if n == 0
         then 1
         else 2 * (pow2 (n - 1));
-
-      allTagsMask = toString ((pow2 32) - 1);
     in {
       set-cursor-warp = "on-focus-change";
       set-repeat = "50 300";
@@ -48,20 +46,22 @@
         };
       };
 
-      map = with lib.lists; let
-        tagMappings = fold (a: b: a // b) {} (
-          forEach (range 1 9) (
-            i: let
-              tagmask = toString (pow2 (i - 1));
-              num = toString i;
-            in {
-              "None F${num}" = "set-focused-tags ${tagmask}";
-              "Super F${num}" = "set-view-tags ${tagmask}";
-              "Super+Shift F${num}" = "toggle-focused-tags ${tagmask}";
-              "Super+Control F${num}" = "toggle-view-tags ${tagmask}";
-            }
-          )
-        );
+      map = let
+        allTagsMask = toString ((pow2 32) - 1);
+        tagMappings = with lib.lists;
+          fold (a: b: a // b) {} (
+            forEach (range 1 9) (
+              i: let
+                tagmask = toString (pow2 (i - 1));
+                num = toString i;
+              in {
+                "None F${num}" = "set-focused-tags ${tagmask}";
+                "Super F${num}" = "set-view-tags ${tagmask}";
+                "Super+Shift F${num}" = "toggle-focused-tags ${tagmask}";
+                "Super+Control F${num}" = "toggle-view-tags ${tagmask}";
+              }
+            )
+          );
 
         mediaKeys = {
           "None XF86AudioMute" = "spawn 'swayosd-client --output-volume mute-toggle'";
