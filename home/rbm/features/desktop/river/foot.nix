@@ -4,7 +4,7 @@
     settings = {
       mouse.hide-when-typing = "yes";
       key-bindings.pipe-command-output = ''
-        [sh -c 'f=$(mktemp); cat - > $f; footclient bat $f; rm $f'] Control+Shift+g
+        [sh -c 'f=$(mktemp); cat - > $f; foot bat $f; rm $f'] Control+Shift+g
       '';
     };
   };
