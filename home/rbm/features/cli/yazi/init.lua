@@ -18,13 +18,13 @@ require("augment-command"):setup({
     default_item_group_for_prompt = "hovered",
     smart_enter = true,
     smart_paste = true,
-    enter_archives = false,
+    enter_archives = true,
     extract_behaviour = "skip",
     must_have_hovered_item = true,
     skip_single_subdirectory_on_enter = true,
     skip_single_subdirectory_on_leave = true,
     ignore_hidden_items = false,
-    wraparound_file_navigation = false,
+    wraparound_file_navigation = true,
 })
 
 -- require("yaziline"):setup({

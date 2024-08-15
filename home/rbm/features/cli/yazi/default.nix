@@ -10,18 +10,19 @@
       body =
         # fish
         ''
-          set tmp (mktemp -p $XDG_RUNTIME_DIR yazi-cwd.XXXXXX)
-          command yazi $argv --cwd-file=$tmp
-          if set cwd (command cat -- $tmp); and [ -n $cwd ]; and [ $cwd != $PWD ]
-            cd $cwd
+          # TODO: Confirm this runs correctly with whitespace or empty $argv
+          set --local patharg "."
+          if set -q argv
+            set patharg "$argv"
           end
+          builtin cd -- "$(command yazi "$patharg" --cwd-file /dev/stdout)"
         '';
     };
   };
 
   programs.yazi = {
     enable = true;
-    package = inputs.yazi.packages.${pkgs.system}.default;
+    # package = inputs.yazi.packages.${pkgs.system}.default;
     enableFishIntegration = false;
     initLua = ./init.lua;
     keymap = import ./keymap.nix;
@@ -37,11 +38,20 @@
       officialPluginsSrc = pkgs.fetchgit {
         url = "https://github.com/yazi-rs/plugins.git";
         sparseCheckout = map (p: "${p}.yazi") officialPluginsNames;
-        rev = "3783ea0feb98842c09bd6eb75c06f8ab814050e2";
-        hash = "sha256-rzt4r7zIC9GdYafetOF3oCThbtymmoDHTuZ6H2r/ui4=";
+        rev = "2dc65ab07d85c3a63e663eeade1324438dc83942";
+        hash = "sha256-lnEOcM7oXpE++qrRInkHILIrZVlrIco1R3vgS/6y7jk=";
       };
 
-      officialPlugins = lib.lists.fold (a: b: {${a} = "${officialPluginsSrc}/${a}.yazi";} // b) {} officialPluginsNames;
+      officialPlugins =
+        lib.lists.fold (
+          a: b:
+            {
+              ${a} = "${officialPluginsSrc}/${a}.yazi";
+            }
+            // b
+        )
+        {}
+        officialPluginsNames;
     in
       with pkgs;
         officialPlugins
@@ -59,8 +69,8 @@
           augment-command = fetchFromGitHub {
             owner = "hankertrix";
             repo = "augment-command.yazi";
-            rev = "3268704750711db2c23ae79dc916e4b488dc4a9f";
-            hash = "sha256-7QLdMEUSCJVh9avOa7dboWg8lZs1J3XGcaXdScJ/lyU=";
+            rev = "2a1fb5d26162ae80941f3c2ba49c826d752cf289";
+            hash = "sha256-KAoGmgIE7Y6Roexq86j+ZFt9ebnQ/qfvQsSpFX/iyO4=";
           };
 
           searchjump = fetchgit {
@@ -72,14 +82,14 @@
           yamb = fetchFromGitHub {
             owner = "h-hg";
             repo = "yamb.yazi";
-            rev = "3636c80f94448347f8047cfbfc1ca6099dcd4d71";
-            hash = "sha256-81rrxjdWlpICQ12EfOcvXpvnWXeWgA5GYBfoHXxBe1g=";
+            rev = "022e9b0b3c8dcd81706aefe5dff4b80e610a0351";
+            hash = "sha256-TlKv8jmYtorbwWA3yjRVRgx239TBVF3hoyL+zguJqKQ=";
           };
           #^ Features
 
           # Previewers
           allmytoes = fetchFromGitHub {
-            owner = "Sonico98";
+            owner = "sonico98";
             repo = "allmytoes.yazi";
             rev = "e5329138a19615e63bff6a581eb69d1d1eb5d4fe";
             hash = "sha256-S9O8jgTjdOxf/Zybmgm7nGBkd2Ipt2DtQ+Be2uawyNA=";
@@ -93,21 +103,21 @@
           };
 
           glow = fetchFromGitHub {
-            owner = "Reledia";
+            owner = "reledia";
             repo = "glow.yazi";
             rev = "536185a4e60ac0adc11d238881e78678fdf084ff";
             hash = "sha256-NcMbYjek99XgWFlebU+8jv338Vk1hm5+oW5gwH+3ZbI=";
           };
 
           hexyl = fetchFromGitHub {
-            owner = "Reledia";
+            owner = "reledia";
             repo = "hexyl.yazi";
             rev = "64daf93a67d75eff871befe52d9013687171ffad";
             hash = "sha256-B2L3/Q1g0NOO6XEMIMGBC/wItbNgBVpbaMMhiXOYcrI=";
           };
 
           miller = fetchFromGitHub {
-            owner = "Reledia";
+            owner = "reledia";
             repo = "miller.yazi";
             rev = "75f00026a0425009edb6fedcfbe893f3d2ddedf4";
             hash = "sha256-u8xadj6/s16xXUAWGezYBqnygKaFMnRUsqtjMDr6DZA=";
@@ -116,8 +126,8 @@
           ouch = fetchFromGitHub {
             owner = "ndtoan96";
             repo = "ouch.yazi";
-            rev = "fe6b0a60ce6b7b9a573b975fe3c0dfc79c0b2ac6";
-            hash = "sha256-Sc0TGzrdyQh61Pkc2nNUlk8jRLjVNaCJdFqZvgQ/Cp8=";
+            rev = "251da6930ca8b7ee0384810086c3bf644caede3e";
+            hash = "sha256-yLt9aY6hUIOdBI5bMdCs7VYFJGyD3WIkmPxvWKNCskA=";
           };
 
           torrent-preview = fetchFromGitHub {

@@ -201,13 +201,17 @@
 
       {
         on = ["t" "s"];
-        run = ''shell "$SHELL" --confirm --block'';
+        run = ''
+          plugin augment-command --args='shell "$SHELL" --confirm --block'
+        '';
         desc = "Open shell here";
       }
 
       {
         on = ["t" "d"];
-        run = ''shell 'ripdrag "$@" -x 2>/dev/null &' --confirm'';
+        run = ''
+          plugin augment-command --args='shell ripdrag "$@" -x 2>/dev/null &' --confirm
+        '';
         desc = "Drag and drop into the hovered directory or CWD";
       }
 
@@ -231,12 +235,12 @@
     ];
   };
 
-  opener = {
-    extract = [
-      {
-        run = ''ouch d -y "$@"'';
-        for = "unix";
-      }
-    ];
-  };
+  # opener = {
+  #   extract = [
+  #     {
+  #       run = ''ouch d -y "$@"'';
+  #       for = "unix";
+  #     }
+  #   ];
+  # };
 }
