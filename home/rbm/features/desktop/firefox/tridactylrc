@@ -72,10 +72,8 @@ set searchurls.crates https://crates.io/search?q=%s
 set searchurls.ddg https://duckduckgo.com/html?q=%s
 set searchurls.deb https://packages.debian.org/search?keywords=%s&searchon=names&suite=all&section=all
 set searchurls.ebay https://www.ebay.com/sch/i.html?_nkw=%s
-set searchurls.etymonline https://www.etymonline.com/search?q=%s
 set searchurls.fdroid https://search.f-droid.org/?q=%s
 set searchurls.gh https://github.com/search?utf8=%E2%9C%93&q=%s&ref=simplesearch
-set searchurls.goodreads https://www.goodreads.com/search?q=%s
 set searchurls.no https://search.nixos.org/options?channel=unstable&from=0&size=50&sort=relevance&type=packages&query=%s
 set searchurls.nw https://wiki.nixos.org/w/index.php?search=%s&title=Special%3ASearch&wprov=acrw1_-1
 set searchurls.np https://search.nixos.org/packages?channel=unstable&from=0&size=50&sort=relevance&type=packages&query=%s
@@ -92,7 +90,6 @@ set searchurls.reddit https://old.reddit.com/r/%s
 set searchurls.rustdoc https://doc.rust-lang.org/std/index.html?search=%s
 set searchurls.searx https://searx.me/?q=%s&categories=general&language=en-US
 set searchurls.steam https://store.steampowered.com/search/?term=%s
-set searchurls.thesaurus https://www.powerthesaurus.org/_search?q=%s
 set searchurls.tmuxp https://tmuxp.git-pull.com/search.html?q=%s&check_keywords=yes&area=default#
 set searchurls.op https://openproject.mcgee.network/search?q=%s&work_packages=1&scope=all
 set searchurls.w https://en.wikipedia.org/w/index.php?search=%s&title=Special%3ASearch
@@ -130,8 +127,7 @@ bind J tabnext
 
 unbind d
 bind x composite tabprev; tabclose #
-bind X undo tab
-bind <C-X> undo tab
+bind X tabclose
 
 bind U undo window
 
@@ -149,7 +145,7 @@ bind j scrollline 5
 bind k scrollline -5
 
 " Yank URL
-bind y clipboard yankshort
+bind y clipboard yankcanon
 bind Y hint -p
 
 " Play videos in `mpv`
@@ -178,46 +174,45 @@ bind --mode=visual t composite js document.getSelection().toString() | fillcmdli
 " bind --mode=ex     <C-e> ex.deselect_completion
 " bind --mode=ex     <Tab> ex.complete
 " Delete only the command; keep body of commandline
-" bind --mode=ex     <C-g> composite text.beginning_of_line ; text.forward_word ; text.kill_word
-
-bind --mode=ex     <C-a> text.beginning_of_line
-bind --mode=insert <C-a> text.beginning_of_line
-bind --mode=input  <C-a> text.beginning_of_line
-bind --mode=ex     <C-e> text.end_of_line
-bind --mode=insert <C-e> text.end_of_line
-bind --mode=input  <C-e> text.end_of_line
-bind --mode=ex     <C-f> text.forward_word
-bind --mode=insert <C-f> text.forward_word
-bind --mode=input  <C-f> text.forward_word
-bind --mode=ex     <C-k> text.kill_line
-bind --mode=insert <C-k> text.kill_line
-bind --mode=input  <C-k> text.kill_line
-bind --mode=ex     <C-u> text.backward_kill_line
-bind --mode=insert <C-u> text.backward_kill_line
-bind --mode=input  <C-u> text.backward_kill_line
-bind --mode=ex     <C-V> composite getclip selection | text.insert_text
-bind --mode=insert <C-V> composite getclip selection | text.insert_text
-bind --mode=input  <C-V> composite getclip selection | text.insert_text
+" bind --mode=ex     <C-g> composite text.beginning_of_line; text.forward_word; text.kill_word
 
 " TODO: Also requires custom build?
 " bind --mode=ex     <C-w> text.backward_kill_word
 " bind --mode=insert <C-w> text.backward_kill_word
 " bind --mode=input  <C-w> text.backward_kill_word
 
-" Disable <C-q>
 " TODO: Also requires custom build?
-" TODO: Just unbind instead of chirp
+" Disable <C-q>
 " unbind --mode=insert <C-q>
 " unbind --mode=input  <C-q>
 " unbind --mode=normal <C-q>
 " unbind --mode=ex     <C-q>
 " unbind --mode=hint   <C-q>
 
-unbind yy
-unbind ys
-unbind yc
-unbind ym
-unbind yt
+bind --mode=ex     <C-a> text.beginning_of_line
+bind --mode=ex     <C-e> text.end_of_line
+bind --mode=ex     <C-f> text.forward_word
+bind --mode=ex     <C-k> text.kill_line
+bind --mode=ex     <C-u> text.backward_kill_line
+bind --mode=ex     <C-V> composite getclip selection | text.insert_text
+bind --mode=input  <C-a> text.beginning_of_line
+bind --mode=input  <C-e> text.end_of_line
+bind --mode=input  <C-f> text.forward_word
+bind --mode=input  <C-k> text.kill_line
+bind --mode=input  <C-u> text.backward_kill_line
+bind --mode=input  <C-V> composite getclip selection | text.insert_text
+bind --mode=insert <C-a> text.beginning_of_line
+bind --mode=insert <C-e> text.end_of_line
+bind --mode=insert <C-f> text.forward_word
+bind --mode=insert <C-k> text.kill_line
+bind --mode=insert <C-u> text.backward_kill_line
+bind --mode=insert <C-V> composite getclip selection | text.insert_text
+
+" unbind yy
+" unbind ys
+" unbind yc
+" unbind ym
+" unbind yt
 unbind <SA-ArrowUp><SA-ArrowUp><SA-ArrowDown><SA-ArrowDown><SA-ArrowLeft><SA-ArrowRight><SA-ArrowLeft><SA-ArrowRight>ba
 
 " Comment toggler for Reddit, Hacker News and Lobste.rs
