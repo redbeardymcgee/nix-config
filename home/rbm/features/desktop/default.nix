@@ -8,18 +8,22 @@
   gtk.enable = true;
   qt = {
     enable = true;
-    platformTheme.name = "kvantum";
-    style.name = "kvantum";
+    #   platformTheme.name = "kvantum";
+    #   style.name = "kvantum";
   };
 
   home = {
     packages = with pkgs; [
       flatpak
       fractal
-      nyxt
+      jellyfin-media-player
+      # nyxt
       pamixer
       # pw-viz # TODO: doesn't build
+      qbittorrent-enhanced
       qpwgraph
+      remmina
+      vlc
     ];
   };
 }
