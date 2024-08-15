@@ -48,7 +48,6 @@
     procs
     typos
     yq
-    transmission_4
 
     # Editor support
     cargo
@@ -62,6 +61,7 @@
     hexyl
     miller
     ouch
+    p7zip
     poppler
     ripdrag
   ];
