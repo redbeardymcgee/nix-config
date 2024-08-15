@@ -54,10 +54,6 @@
 
     plugins = [
       {
-        name = "grc";
-        src = pkgs.fishPlugins.grc.src;
-      }
-      {
         name = "autopair";
         src = pkgs.fishPlugins.autopair.src;
       }
@@ -147,8 +143,4 @@
       ];
     };
   };
-
-  home.packages = with pkgs; [
-    grc
-  ];
 }

@@ -12,7 +12,6 @@
       };
 
       extraPortals = with pkgs; [
-        # xdg-desktop-portal-luminous
         xdg-desktop-portal-gtk
         xdg-desktop-portal-wlr
         xdg-desktop-portal
