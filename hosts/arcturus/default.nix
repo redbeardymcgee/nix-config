@@ -10,15 +10,21 @@
     ../common/optional/kmscon.nix
     ../common/optional/podman.nix
     ../common/optional/quietboot.nix
-    ../common/optional/steam.nix
+    # ../common/optional/steam.nix
     ../common/optional/stylix.nix
     ../common/optional/systemd-boot.nix
     ../common/optional/systemd-networkd.nix
 
+    ../common/services/keyring.nix
     ../common/services/udisks2.nix
+    ../common/services/jellyfin.nix
+    # ../common/services/transmission.nix
 
     ../common/users
   ];
+
+  security.pam.services.swaylock.text = "auth include login";
+  services.displayManager.sessionPackages = [pkgs.river];
 
   fileSystems = {
     "/2tb" = {
@@ -32,15 +38,6 @@
         "nofail"
       ];
     };
-  };
-
-  boot.binfmt.registrations.appimage = {
-    wrapInterpreterInShell = false;
-    interpreter = "${pkgs.appimage-run}/bin/appimage-run";
-    recognitionType = "magic";
-    offset = 0;
-    mask = ''\xff\xff\xff\xff\x00\x00\x00\x00\xff\xff\xff'';
-    magicOrExtension = ''\x7fELF....AI\x02'';
   };
 
   hardware = {
@@ -75,6 +72,4 @@
     domain = "home";
     hostName = "arcturus";
   };
-
-  security.pam.services.swaylock.text = "auth include login";
 }

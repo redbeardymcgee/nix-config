@@ -45,20 +45,33 @@
     };
   };
 
-  home-manager = {
-    backupFileExtension = "backup";
+  # boot.binfmt.registrations.appimage = {
+  #   wrapInterpreterInShell = false;
+  #   interpreter = "${pkgs.appimage-run}/bin/appimage-run";
+  #   recognitionType = "magic";
+  #   offset = 0;
+  #   mask = ''\xff\xff\xff\xff\x00\x00\x00\x00\xff\xff\xff'';
+  #   magicOrExtension = ''\x7fELF....AI\x02'';
+  # };
 
-    extraSpecialArgs = {
-      inherit inputs outputs;
-    };
-
-    useGlobalPkgs = true;
-    useUserPackages = true;
-  };
+  # home-manager = {
+  #   backupFileExtension = "backup";
+  #
+  #   extraSpecialArgs = {
+  #     inherit inputs outputs;
+  #   };
+  #
+  #   useGlobalPkgs = true;
+  #   useUserPackages = true;
+  # };
 
   programs = {
     dconf.enable = true;
-    fish.enable = true;
+
+    appimage = {
+      enable = true;
+      binfmt = true;
+    };
 
     nh = {
       enable = true;

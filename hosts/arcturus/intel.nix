@@ -1,9 +1,9 @@
 {pkgs, ...}: {
-  hardware.opengl = {
+  hardware.graphics = {
     enable = true;
     extraPackages = with pkgs; [
       vpl-gpu-rt
     ];
   };
-  services.xserver.videoDrivers = [ "modesetting" ];
+  services.xserver.videoDrivers = ["modesetting"];
 }

@@ -8,7 +8,7 @@
     in {
       enable = true;
       source = (pkgs.formats.yaml {}).generate "mcgeedia.yaml" {
-        session_name = "server  ";
+        session_name = "srv  ";
         # shell_command_before = "ssh mcgeedia";
         windows = [
           {
