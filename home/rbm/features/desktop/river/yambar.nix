@@ -6,7 +6,8 @@
       overlay0 = "6C7086FF";
       red = "F38BA8FF";
       text = "CDD6F4FF";
-      # subtext0 = "A6ADC8FF";
+      subtext0 = "A6ADC8FF";
+      font_default = "FiraCode Nerd Font:size=12";
 
       scratchTags = fold (a: b: a // b) {} (
         forEach (range 1 9) (i: let
@@ -49,18 +50,16 @@
 
           "id == 5" = {
             string = {
-              text = "";
+              text = "󰮃";
             };
           };
 
           "id == 6" = {
             string = {
-              text = "󰮃";
+              text = "";
             };
           };
         };
-
-      font_default = "FiraCode Nerd Font:size=12";
     in {
       bar = let
         riverBase = {
@@ -198,25 +197,25 @@
               content = [
                 {
                   string = {
-                    text = "{date}";
-                    right-margin = 5;
-                  };
-                }
-                {
-                  string = {
                     text = "󰸗";
                     right-margin = 3;
                   };
                 }
                 {
                   string = {
-                    text = "{time}";
+                    text = "{date}";
                     right-margin = 5;
                   };
                 }
                 {
                   string = {
                     text = "";
+                    right-margin = 5;
+                  };
+                }
+                {
+                  string = {
+                    text = "{time}";
                     right-margin = 5;
                   };
                 }
