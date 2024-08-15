@@ -1,13 +1,10 @@
 {config, ...}: {
-  boot = {
-    kernelParams = [
-      "nvidia.NVreg_PreserveVideoMemoryAllocations=1"
-    ];
-  };
-
+  boot.kernelParams = ["nvidia.NVreg_PreserveVideoMemoryAllocations=1"];
   services.xserver.videoDrivers = ["nvidia"];
 
   hardware = {
+    nvidia-container-toolkit.enable = true;
+
     graphics = {
       enable = true;
       enable32Bit = true;
@@ -17,11 +14,7 @@
       package = config.boot.kernelPackages.nvidiaPackages.stable;
       open = false;
       nvidiaSettings = true;
-
-      powerManagement = {
-        enable = true;
-        finegrained = false;
-      };
+      powerManagement.enable = true;
     };
   };
 }

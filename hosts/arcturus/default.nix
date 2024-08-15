@@ -7,7 +7,7 @@
     ../common/global
 
     ../common/optional/gamemode.nix
-    ../common/optional/kmscon.nix
+    # ../common/optional/kmscon.nix
     ../common/optional/podman.nix
     ../common/optional/quietboot.nix
     # ../common/optional/steam.nix
@@ -42,6 +42,7 @@
 
   hardware = {
     enableRedistributableFirmware = true;
+    xpadneo.enable = true;
 
     bluetooth = {
       enable = true;
