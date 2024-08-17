@@ -12,6 +12,7 @@
 
     nvidia = {
       package = config.boot.kernelPackages.nvidiaPackages.stable;
+      modesetting.enable = true;
       open = false;
       nvidiaSettings = true;
       powerManagement.enable = true;
