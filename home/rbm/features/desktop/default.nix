@@ -13,7 +13,7 @@
       flatpak
       fractal
       jellyfin-media-player
-      # nyxt
+      moonlight-qt
       pamixer
       # pw-viz # TODO: doesn't build
       qbittorrent-enhanced
