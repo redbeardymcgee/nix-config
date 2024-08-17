@@ -1,46 +1,69 @@
 {pkgs, ...}: {
   xdg.configFile = {
-    "tmuxp/projects.yaml" = let
-      opts = {
-        automatic-rename = false;
-        remain-on-exit = true;
-      };
-    in {
+    "tmuxp/projects.yaml" = {
       enable = true;
 
       source = (pkgs.formats.yaml {}).generate "projects.yaml" {
         session_name = "proj  ";
 
-        windows = [
+        windows = let
+          layout = "7723,174x42,0,0{61x42,0,0,6,112x42,62,0,13}";
+          options = {
+            automatic-rename = false;
+            remain-on-exit = true;
+          };
+        in [
           {
-            window_name = "bookworm";
-            start_directory = "/mnt/2tb/repos/justaguylinux/bookworm-scripts";
-            options = opts;
-            panes = [{shell_command = ["nvim ."];}];
-          }
-          {
-            window_name = "sway";
-            start_directory = "/mnt/2tb/repos/justaguylinux/sway";
-            options = opts;
-            panes = [{shell_command = ["nvim ."];}];
-          }
-          {
-            window_name = "shmux";
-            start_directory = "/mnt/2tb/repos/shmux";
-            options = opts;
-            panes = [{shell_command = ["nvim ."];}];
-          }
-          {
-            window_name = "kixvim";
-            start_directory = "/mnt/2tb/repos/kixvim";
-            options = opts;
-            panes = [{shell_command = ["nvim ."];}];
-          }
-          {
+            inherit layout options;
             window_name = "monitor";
             window_index = 0;
-            options = opts;
-            panes = [{shell = "~/.nix-profile/bin/btm";}];
+            panes = [
+              {shell = "~/.nix-profile/bin/btm";}
+            ];
+          }
+
+          {
+            inherit layout options;
+            window_name = "bookworm";
+            start_directory = "/mnt/2tb/repos/justaguylinux/bookworm-scripts";
+            panes = [
+              "blank"
+              {shell_command = ["nvim ."];}
+            ];
+          }
+
+          {
+            inherit layout options;
+            window_name = "sway";
+            start_directory = "/mnt/2tb/repos/justaguylinux/sway";
+            panes = [
+              "blank"
+              {shell_command = ["nvim ."];}
+            ];
+          }
+
+          {
+            inherit layout options;
+            window_name = "kixvim";
+            start_directory = "/mnt/2tb/repos/kixvim";
+            panes = [
+              "blank"
+              {shell_command = ["nvim ."];}
+            ];
+          }
+
+          {
+            inherit layout options;
+            focus = true;
+            window_name = "bitburner";
+            start_directory = "/mnt/2tb/repos/bitburner-scripts";
+            panes = [
+              {shell_command = ["npm start"];}
+              {
+                focus = true;
+                shell_command = ["nvim ."];
+              }
+            ];
           }
         ];
       };

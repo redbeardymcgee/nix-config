@@ -1,27 +1,35 @@
 {pkgs, ...}: {
   xdg.configFile = {
-    "tmuxp/localhost.yaml" = let
-      opts = {
-        automatic-rename = false;
-        remain-on-exit = true;
-      };
-    in {
+    "tmuxp/localhost.yaml" = {
       enable = true;
 
       source = (pkgs.formats.yaml {}).generate "localhost.yaml" {
         session_name = "home  ";
-        windows = [
+        windows = let
+          layout = "7723,174x42,0,0{61x42,0,0,6,112x42,62,0,13}";
+          options = {
+            automatic-rename = false;
+            remain-on-exit = true;
+          };
+        in [
           {
+            inherit options;
+            window_name = "monitor";
+            window_index = 0;
+            panes = [{shell = "~/.nix-profile/bin/btm";}];
+          }
+
+          {
+            inherit options;
             window_name = "main";
-            options = opts;
             panes = [{shell = "~/.nix-profile/bin/yazi";}];
           }
+
           {
+            inherit layout options;
             window_name = "flake";
             start_directory = "/mnt/2tb/nix-config";
             focus = true;
-            layout = "7723,174x42,0,0{61x42,0,0,6,112x42,62,0,13}";
-            options = opts;
             panes = [
               "blank"
               {
@@ -29,12 +37,6 @@
                 focus = true;
               }
             ];
-          }
-          {
-            window_name = "monitor";
-            window_index = 0;
-            options = opts;
-            panes = [{shell = "~/.nix-profile/bin/btm";}];
           }
         ];
       };
