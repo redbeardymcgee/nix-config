@@ -202,7 +202,14 @@
           "org.remmina.Remmina" = "output DP-1";
           "*org.remmina.Remmina" = "tags ${toString (pow2 8)}";
 
-          "*steam_app" = "tags ${toString (pow2 4)}";
+          "org.qBittorrent.qBittorrent" = "output DVI-D-1";
+          "*org.qBittorrent.qBittorrent" = "tags ${toString (pow2 8)}";
+          "org.qBittorrent.qBittorrent*" = "float";
+
+          "com.moonlight_stream.Moonlight" = "output DVI-D-1";
+          "*com.moonlight_stream.Moonlight" = "tags ${toString (pow2 4)}";
+
+          "*steam_app" = "";
           "steam_app_*" = "output DVI-D-1";
 
           "firefox_incr-*" = "output DP-1";
@@ -227,10 +234,14 @@
 
         "-title" = {
           "Picture-in-Picture" = "float";
-          "Steam" = "tags ${toString (pow2 6)}";
-          "*Steam*" = "float";
+
           "Loop Hero" = "tags ${toString (pow2 4)}";
           "*Loop Hero" = "float";
+
+          "qBittorrent *" = "no-float";
+
+          "Steam" = "tags ${toString (pow2 6)}";
+          "*Steam*" = "float";
         };
       };
 
