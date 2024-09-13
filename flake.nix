@@ -11,37 +11,49 @@
   };
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:NixOS/nixpkgs/517cc0d7351778954829f533645688c855aebcea";
     nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-24.05";
     systems.url = "github:nix-systems/default-linux";
+    home-manager = {
+      url = "github:nix-community/home-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     flake-utils = {
       url = "github:numtide/flake-utils";
       inputs.systems.follows = "systems";
     };
-    lix = {
-      url = "https://git.lix.systems/lix-project/nixos-module/archive/2.90.0.tar.gz";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.flake-utils.follows = "flake-utils";
-    };
+
+    # ags = {
+    #   url = "github:Aylur/ags";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
+
     firefox-addons = {
       url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.flake-utils.follows = "flake-utils";
     };
-    # kixvim.url = "github:redbeardymcgee/kixvim";
-    # nur.url = "github:nix-community/NUR";
+
+    lix = {
+      url = "https://git.lix.systems/lix-project/nixos-module/archive/2.90.0.tar.gz";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.flake-utils.follows = "flake-utils";
+    };
+
+    nixcats = {
+      url = "github:redbeardymcgee/nixcats";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     stylix = {
       url = "github:danth/stylix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
     yazi = {
       url = "github:sxyazi/yazi";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.flake-utils.follows = "flake-utils";
-    };
-    home-manager = {
-      url = "github:nix-community/home-manager";
-      inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
@@ -49,8 +61,8 @@
     self,
     nixpkgs,
     home-manager,
+    ags,
     lix,
-    # nur,
     stylix,
     ...
   } @ inputs: let
@@ -82,6 +94,7 @@
         };
         modules = [
           ./home/rbm/arcturus.nix
+          ags.homeManagerModules.default
           stylix.homeManagerModules.stylix
         ];
       };
