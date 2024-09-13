@@ -194,6 +194,12 @@
       }
 
       {
+        on = ["t" "g"];
+        run = "plugin lazygit";
+        desc = "Lazygit";
+      }
+
+      {
         on = ["t" "p"];
         run = "plugin augment-command --args='pager'";
         desc = "Open '$PAGER' on selected files";

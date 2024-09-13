@@ -10,19 +10,14 @@
       body =
         # fish
         ''
-          # TODO: Confirm this runs correctly with whitespace or empty $argv
-          set --local patharg "."
-          if set -q argv
-            set patharg "$argv"
-          end
-          builtin cd -- "$(command yazi "$patharg" --cwd-file /dev/stdout)"
+          builtin cd -- "$(command yazi $argv --cwd-file /dev/stdout)"
         '';
     };
   };
 
   programs.yazi = {
     enable = true;
-    # package = inputs.yazi.packages.${pkgs.system}.default;
+    package = inputs.yazi.packages.${pkgs.system}.default;
     enableFishIntegration = false;
     initLua = ./init.lua;
     keymap = import ./keymap.nix;
@@ -73,6 +68,13 @@
             hash = "sha256-KAoGmgIE7Y6Roexq86j+ZFt9ebnQ/qfvQsSpFX/iyO4=";
           };
 
+          lazygit = fetchFromGitHub {
+            owner = "Lil-Dank";
+            repo = "lazygit.yazi";
+            rev = "c82794fb410cca36b23b939d32126a6a9705f94d";
+            hash = "sha256-m2zITkjGrUjaPnzHnnlwA6d4ODIpvlBfIO0RZCBfL0E=";
+          };
+
           searchjump = fetchgit {
             url = "https://gitee.com/DreamMaoMao/searchjump.yazi";
             rev = "520f34d4f29460005710da8ffec2da473212841f";
@@ -96,7 +98,7 @@
           };
 
           exifaudio = fetchFromGitHub {
-            owner = "Sonico98";
+            owner = "sonico98";
             repo = "exifaudio.yazi";
             rev = "94329ead8b3a6d3faa2d4975930a3d0378980c7a";
             hash = "sha256-jz6fVtcLHw9lsxFWECbuxE7tEBttE08Fl4oJSTifaEc=";
