@@ -47,7 +47,7 @@
             if status --is-command-substitution || set -q INSIDE_EMACS
                 return
             end
-            printf \e\]7\;file://%s%s\e\\ $hostname (string escape --style=url $PWD)
+            printf \e\]7\;file://%s%s\e\\ "$hostname" "$(string escape --style=url "$PWD")"
           '';
       };
     };
@@ -88,54 +88,6 @@
     in {
       nm = shellPipeline [
         "manix ''"
-        "grep '^# ' "
-        "sed 's/^# \(.*\) (.*/\1/;s/ (.*//;s/^# //' "
-        ''fzf --preview="manix '{}'" ''
-        "xargs manix"
-      ];
-
-      # npkg = shellPipeline [
-      #   "manix '' --source nixpkgs_tree"
-      #   "grep '^# ' "
-      #   "sed 's/^# \(.*\) (.*/\1/;s/ (.*//;s/^# //' "
-      #   ''fzf --preview="manix '{}'" ''
-      #   "xargs manix"
-      # ];
-
-      # npkgd = shellPipeline [
-      #   "manix '' --source nixpkgs_doc"
-      #   "grep '^# ' "
-      #   "sed 's/^# \(.*\) (.*/\1/;s/ (.*//;s/^# //' "
-      #   ''fzf --preview="manix '{}'" ''
-      #   "xargs manix"
-      # ];
-
-      # npkgc = shellPipeline [
-      #   "manix '' --source nixpkgs_comments"
-      #   "grep '^# ' "
-      #   "sed 's/^# \(.*\) (.*/\1/;s/ (.*//;s/^# //' "
-      #   ''fzf --preview="manix '{}'" ''
-      #   "xargs manix"
-      # ];
-
-      nopt = shellPipeline [
-        "manix '' --source nixos_options"
-        "grep '^# ' "
-        "sed 's/^# \(.*\) (.*/\1/;s/ (.*//;s/^# //' "
-        ''fzf --preview="manix '{}'" ''
-        "xargs manix"
-      ];
-
-      ndopt = shellPipeline [
-        "manix '' --source nd_options"
-        "grep '^# ' "
-        "sed 's/^# \(.*\) (.*/\1/;s/ (.*//;s/^# //' "
-        ''fzf --preview="manix '{}'" ''
-        "xargs manix"
-      ];
-
-      hmopt = shellPipeline [
-        "manix '' --source hm_options"
         "grep '^# ' "
         "sed 's/^# \(.*\) (.*/\1/;s/ (.*//;s/^# //' "
         ''fzf --preview="manix '{}'" ''
