@@ -49,6 +49,7 @@
     difftastic
     entr
     gtrash
+    magic-wormhole
     procs
     typos
     yq
