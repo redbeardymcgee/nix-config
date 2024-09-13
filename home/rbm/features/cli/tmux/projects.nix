@@ -28,7 +28,10 @@
             start_directory = "/mnt/2tb/repos/justaguylinux/bookworm-scripts";
             panes = [
               "blank"
-              {shell_command = ["nvim ."];}
+              {
+                focus = true;
+                shell_command = ["redvim ."];
+              }
             ];
           }
 
@@ -38,30 +41,61 @@
             start_directory = "/mnt/2tb/repos/justaguylinux/sway";
             panes = [
               "blank"
-              {shell_command = ["nvim ."];}
+              {
+                focus = true;
+                shell_command = ["redvim ."];
+              }
             ];
           }
 
           {
             inherit layout options;
-            window_name = "kixvim";
-            start_directory = "/mnt/2tb/repos/kixvim";
+            window_name = "nixcats";
+            start_directory = "/mnt/2tb/repos/nixcats";
+            focus = true;
             panes = [
               "blank"
-              {shell_command = ["nvim ."];}
+              {
+                focus = true;
+                shell_command = ["redvim ."];
+              }
             ];
           }
 
           {
             inherit layout options;
-            focus = true;
             window_name = "bitburner";
             start_directory = "/mnt/2tb/repos/bitburner-scripts";
             panes = [
               {shell_command = ["npm start"];}
               {
                 focus = true;
-                shell_command = ["nvim ."];
+                shell_command = ["redvim ."];
+              }
+            ];
+          }
+
+          {
+            inherit layout options;
+            window_name = "ags";
+            start_directory = "~/.config/ags";
+            panes = [
+              "blank"
+              {
+                focus = true;
+                shell_command = ["redvim ."];
+              }
+            ];
+          }
+          {
+            inherit layout options;
+            window_name = "wolf";
+            start_directory = "/mnt/2tb/repos/wolf";
+            panes = [
+              "blank"
+              {
+                focus = true;
+                shell_command = ["redvim ."];
               }
             ];
           }

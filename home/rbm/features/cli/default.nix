@@ -1,4 +1,9 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  inputs,
+  nixcats,
+  ...
+}: {
   imports = [
     ./atuin.nix
     ./bash.nix
@@ -32,9 +37,8 @@
     ./zoxide.nix
   ];
 
-  # TODO: Review after kixvim is running
   home.packages = with pkgs; [
-    # kixvim
+    inputs.nixcats.packages.${system}.nixCats
 
     # nix tools
     alejandra

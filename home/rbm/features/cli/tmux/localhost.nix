@@ -33,7 +33,7 @@
             panes = [
               "blank"
               {
-                shell = "~/.nix-profile/bin/nvim .";
+                shell = "~/.nix-profile/bin/redvim .";
                 focus = true;
               }
             ];

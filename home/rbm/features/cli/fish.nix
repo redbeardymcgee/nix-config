@@ -73,7 +73,7 @@
       snr = "sudo nixos-rebuild --flake .";
       snrs = "sudo nixos-rebuild --flake . switch";
 
-      vim = "nvim";
+      vim = "redvim";
       vi = vim;
       v = vim;
 

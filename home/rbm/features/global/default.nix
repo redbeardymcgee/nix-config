@@ -38,21 +38,21 @@
       "x-scheme-handler/http" = ["firefox.desktop"];
       "x-scheme-handler/https" = ["firefox.desktop"];
       "application/x-qpwgraph-patchbay" = ["org.rncbc.qpwgraph.desktop"];
-      "application/x-shellscript" = ["nvim.desktop"];
-      "text/english" = ["nvim.desktop"];
-      "text/plain" = ["nvim.desktop"];
-      "text/x-c" = ["nvim.desktop"];
-      "text/x-c++" = ["nvim.desktop"];
-      "text/x-c++hdr" = ["nvim.desktop"];
-      "text/x-c++src" = ["nvim.desktop"];
-      "text/x-chdr" = ["nvim.desktop"];
-      "text/x-csrc" = ["nvim.desktop"];
-      "text/x-java" = ["nvim.desktop"];
-      "text/x-makefile" = ["nvim.desktop"];
-      "text/x-moc" = ["nvim.desktop"];
-      "text/x-pascal" = ["nvim.desktop"];
-      "text/x-tcl" = ["nvim.desktop"];
-      "text/x-tex" = ["nvim.desktop"];
+      "application/x-shellscript" = ["redvim.desktop"];
+      "text/english" = ["redvim.desktop"];
+      "text/plain" = ["redvim.desktop"];
+      "text/x-c" = ["redvim.desktop"];
+      "text/x-c++" = ["redvim.desktop"];
+      "text/x-c++hdr" = ["redvim.desktop"];
+      "text/x-c++src" = ["redvim.desktop"];
+      "text/x-chdr" = ["redvim.desktop"];
+      "text/x-csrc" = ["redvim.desktop"];
+      "text/x-java" = ["redvim.desktop"];
+      "text/x-makefile" = ["redvim.desktop"];
+      "text/x-moc" = ["redvim.desktop"];
+      "text/x-pascal" = ["redvim.desktop"];
+      "text/x-tcl" = ["redvim.desktop"];
+      "text/x-tex" = ["redvim.desktop"];
       # "text/csv" = ["firefox.desktop"];
       "x-scheme-handler/matrix" = ["org.gnome.Fractal.desktop"];
       "inode/directory" = ["yazi.desktop"];
@@ -106,8 +106,8 @@
 
     sessionVariables = {
       FLAKE = "/mnt/2tb/nix-config";
-      EDITOR = "nvim";
-      VISUAL = "nvim";
+      EDITOR = "redvim";
+      VISUAL = "redvim";
       NODE_PATH = "$HOME/.local/lib/node_modules";
 
       XDG_DATA_DIRS = "$XDG_DATA_DIRS:/usr/share:/var/lib/flatpak/exports/share:$HOME/.local/share/flatpak/exports/share";

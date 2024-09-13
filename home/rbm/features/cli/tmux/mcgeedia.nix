@@ -4,7 +4,7 @@
       enable = true;
       source = (pkgs.formats.yaml {}).generate "mcgeedia.yaml" {
         session_name = "srv  ";
-        shell_command_before = "ssh mcgeedia";
+        # shell_command_before = "ssh mcgeedia";
         windows = let
           layout = "7723,174x42,0,0{61x42,0,0,6,112x42,62,0,13}";
           options = {
@@ -16,13 +16,27 @@
             inherit options;
             window_name = "monitor";
             window_index = 0;
-            panes = [{shell_command = ["btm"];}];
+            panes = [
+              {
+                shell_command = [
+                  "ssh mcgeedia"
+                  "btm"
+                ];
+              }
+            ];
           }
 
           {
             inherit options;
             window_name = "host";
-            panes = [{shell_command = ["yazi"];}];
+            panes = [
+              {
+                shell_command = [
+                  "ssh mcgeedia"
+                  "yazi"
+                ];
+              }
+            ];
           }
 
           {
@@ -33,6 +47,7 @@
               "blank"
               {
                 shell_command = [
+                  "ssh mcgeedia"
                   "cd /opt/containers"
                   "nvim ."
                 ];

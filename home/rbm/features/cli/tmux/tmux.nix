@@ -1,11 +1,33 @@
 {pkgs, ...}: {
+  home.packages = with pkgs; [
+    python312Packages.libtmux
+  ];
   programs.tmux = {
     enable = true;
-
     baseIndex = 1;
     customPaneNavigationAndResize = true;
     disableConfirmationPrompt = true;
     escapeTime = 0;
+    historyLimit = 10000;
+    keyMode = "vi";
+    mouse = true;
+    prefix = "C-a";
+    terminal = "tmux-256color";
+    tmuxp.enable = true;
+
+    plugins = with pkgs.tmuxPlugins; [
+      copy-toolkit
+      mode-indicator
+      {
+        plugin = tilish;
+        extraConfig = ''
+          set -g @plugin 'sunaku/tmux-navigate'
+          set -g @tilish-navigate 'on'
+          set -g @tilish-dmenu 'on'
+        '';
+      }
+      yank
+    ];
 
     # TODO: fetch plugins directly
     extraConfig = ''
@@ -42,27 +64,5 @@
       bind r respawn-pane
       bind R respawn-window
     '';
-
-    historyLimit = 10000;
-    keyMode = "vi";
-    mouse = true;
-
-    plugins = with pkgs.tmuxPlugins; [
-      copy-toolkit
-      mode-indicator
-      {
-        plugin = tilish;
-        extraConfig = ''
-          set -g @plugin 'sunaku/tmux-navigate'
-          set -g @tilish-navigate 'on'
-          set -g @tilish-dmenu 'on'
-        '';
-      }
-      yank
-    ];
-
-    prefix = "C-a";
-    terminal = "tmux-256color";
-    tmuxp.enable = true;
   };
 }

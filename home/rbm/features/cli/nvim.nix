@@ -1,6 +1,6 @@
 {pkgs, ...}: {
-  home.packages = [
-    pkgs.neovim
+  home.packages = with pkgs; [
+    neovim
   ];
 
   xdg.configFile."nvim" = {
