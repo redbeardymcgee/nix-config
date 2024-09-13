@@ -6,6 +6,7 @@
 
     ../common/global
 
+    ../common/optional/dygma.nix
     ../common/optional/gamemode.nix
     # ../common/optional/kmscon.nix
     ../common/optional/podman.nix

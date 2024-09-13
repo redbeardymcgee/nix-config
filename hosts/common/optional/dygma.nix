@@ -1,3 +1,8 @@
 {pkgs, ...}: {
-  environment.systemPackages = [ pkgs.bazecor ];
+  environment.systemPackages = with pkgs; [
+    bazecor
+    terminal-typeracer
+  ];
+
+  services.udev.packages = [pkgs.bazecor];
 }

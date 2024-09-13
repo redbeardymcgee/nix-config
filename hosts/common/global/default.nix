@@ -15,7 +15,6 @@
       ./systemd-initrd.nix
 
       ../services/greetd.nix
-      ../services/kanata.nix
       ../services/libinput.nix
       ../services/openssh.nix
       ../services/pipewire.nix
