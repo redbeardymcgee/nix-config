@@ -7,10 +7,23 @@
         users = ["rbm"];
         commands = [
           {
-            command = "${pkgs.nixos-rebuild}/bin/nixos-rebuild";
+            command = "${pkgs.systemd}/bin/systemctl suspend";
+            options = ["NOPASSWD"];
+          }
+          {
+            command = "${pkgs.systemd}/bin/reboot";
+            options = ["NOPASSWD"];
+          }
+          {
+            command = "${pkgs.systemd}/bin/poweroff";
+            options = ["NOPASSWD"];
+          }
+          {
+            command = "${pkgs.protonvpn-cli_2}/bin/protonvpn connect --sc";
             options = ["NOPASSWD"];
           }
         ];
+        # groups = ["wheel"];
       }
     ];
   };
