@@ -46,11 +46,17 @@
     manix
 
     # Generally useful
+    bun
+    browsh
     difftastic
+    discordo
+    distrobox
     entr
     gtrash
     magic-wormhole
     procs
+    protonvpn-cli_2
+    sass
     typos
     yq
 
