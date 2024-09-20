@@ -41,7 +41,8 @@
     };
 
     nixcats = {
-      url = "github:redbeardymcgee/nixcats";
+      url = "git+file:/mnt/2tb/repos/nixcats";
+      # url = "github:redbeardymcgee/nixcats";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -52,7 +53,6 @@
 
     yazi = {
       url = "github:sxyazi/yazi";
-      inputs.nixpkgs.follows = "nixpkgs";
       inputs.flake-utils.follows = "flake-utils";
     };
   };
@@ -90,7 +90,7 @@
       "rbm@arcturus" = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
         extraSpecialArgs = {
-          inherit inputs outputs pkgs;
+          inherit inputs outputs;
         };
         modules = [
           ./home/rbm/arcturus.nix
@@ -102,7 +102,7 @@
       "rbm@headmaster" = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
         extraSpecialArgs = {
-          inherit inputs outputs pkgs;
+          inherit inputs outputs;
         };
         modules = [
           ./home/rbm/headmaster.nix
