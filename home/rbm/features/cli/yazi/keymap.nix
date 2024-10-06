@@ -166,6 +166,12 @@
         desc = "Unselect all files and also unyank cut files";
       }
 
+      {
+        on = ["y"];
+        run = [ /* ''shell 'cb copy "$@"' --confirm'' */ "yank"];
+        desc = "Move cursor up";
+      }
+
       # Create & Delete
       {
         on = ["d" "d"];
