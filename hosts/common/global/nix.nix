@@ -1,13 +1,13 @@
 {
   inputs,
   lib,
-  pkgs,
+  # pkgs,
   ...
 }: {
   nix = let
     flakeInputs = lib.filterAttrs (_: lib.isType "flake") inputs;
   in {
-    # TODO: Switch back to regular nix if `lix` goes sour
+    # NOTE: Switch back to regular nix if `lix` goes sour
     # package = lib.mkDefault pkgs.nixVersions.latest;
 
     # NOTE: Useful tools like having channels and I like having tools that work
