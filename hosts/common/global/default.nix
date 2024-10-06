@@ -54,18 +54,8 @@
   #   magicOrExtension = ''\x7fELF....AI\x02'';
   # };
 
-  # home-manager = {
-  #   backupFileExtension = "backup";
-  #
-  #   extraSpecialArgs = {
-  #     inherit inputs outputs;
-  #   };
-  #
-  #   useGlobalPkgs = true;
-  #   useUserPackages = true;
-  # };
-
   programs = {
+    fish.enable = true;
     dconf.enable = true;
 
     appimage = {
