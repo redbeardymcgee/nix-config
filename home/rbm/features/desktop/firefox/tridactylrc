@@ -39,7 +39,7 @@ set wordpattern [^\s\/]+
 " TODO: Build minimal config from kixvim flake output
 " Edit with nvim
 " set editorcmd wezterm --always-new-process --class tridactyl_editor -- nvim
-set editorcmd foot --app-id=tridactyl_editor nvim
+set editorcmd foot --app-id=tridactyl_editor redvim
 
 " Autocmds
 " Disable the mouse globally
@@ -71,19 +71,20 @@ set searchurls.amazon https://www.amazon.com/s/ref=nb_sb_noss?field-keywords=%s
 set searchurls.crates https://crates.io/search?q=%s
 set searchurls.ddg https://duckduckgo.com/html?q=%s
 set searchurls.deb https://packages.debian.org/search?keywords=%s&searchon=names&suite=all&section=all
-set searchurls.ebay https://www.ebay.com/sch/i.html?_nkw=%s
 set searchurls.fdroid https://search.f-droid.org/?q=%s
+set searchurls.flathub https://flathub.org/apps/search?q=%s
 set searchurls.gh https://github.com/search?utf8=%E2%9C%93&q=%s&ref=simplesearch
 set searchurls.no https://search.nixos.org/options?channel=unstable&from=0&size=50&sort=relevance&type=packages&query=%s
+set searchurls.nooogle https://noogle.dev/q?term={}
 set searchurls.nw https://wiki.nixos.org/w/index.php?search=%s&title=Special%3ASearch&wprov=acrw1_-1
 set searchurls.np https://search.nixos.org/packages?channel=unstable&from=0&size=50&sort=relevance&type=packages&query=%s
 set searchurls.hm https://home-manager-options.extranix.com/?query=%s&release=master
 set searchurls.gentoo https://wiki.gentoo.org/index.php?title=Special%3ASearch&profile=default&search=%s&fulltext=Search
 set searchurls.imdb https://www.imdb.com/find?q=%s
-set searchurls.lqwant https://lite.qwant.com/?q=%s
 set searchurls.mdn https://developer.mozilla.org/en-US/search?q=%s&topic=api&topic=js
 set searchurls.npm https://www.npmjs.com/search?q=%s
-set searchurls.map https://www.openstreetmap.org/search?query=%s
+set searchurls.maps https://www.openstreetmap.org/search?query=%s
+set searchurls.protondb https://www.protondb.com/search?q=%s
 set searchurls.pydoc https://docs.python.org/3/search.html?q=%s
 set searchurls.qwant https://www.qwant.com/?q=%s
 set searchurls.reddit https://old.reddit.com/r/%s
@@ -96,7 +97,7 @@ set searchurls.w https://en.wikipedia.org/w/index.php?search=%s&title=Special%3A
 set searchurls.yt https://www.youtube.com/results?search_query=%s
 
 " Set the default to not be Google
-set searchengine lqwant
+set searchengine qwant
 
 """"""""""""""""""""
 " Bindings
