@@ -1,7 +1,6 @@
 {
   pkgs,
   inputs,
-  nixcats,
   ...
 }: {
   imports = [
@@ -48,6 +47,7 @@
     # Generally useful
     bun
     browsh
+    clipboard-jh
     difftastic
     discordo
     distrobox

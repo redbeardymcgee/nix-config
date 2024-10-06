@@ -1,6 +1,10 @@
 {config, ...}: {
-  home.sessionVariables = {
-    ZK_NOTEBOOK_DIR = "$XDG_DOCUMENTS_DIR/Notebook";
+  home.sessionVariables = let
+    docsDir = config.xdg.userDirs.documents;
+  in {
+    ZK_NOTEBOOK_DIR = "${docsDir}/Notebooks/Misc";
+    ALTA_NOTEBOOK_DIR = "${docsDir}/Notebooks/Alta";
+    MCGEEDIA_NOTEBOOK_DIR = "${docsDir}/Notebooks/McGeedia";
   };
 
   programs.zk = {
@@ -19,6 +23,13 @@
         lucky = "zk list lucky";
         recent = "zk edit recents --interactive";
         unlinked-mentions = ''zk list --mentioned-by "$1" --no-linked-by "$1"'';
+
+        alta = ''
+          zk edit recents --interactive --notebook-dir="$ALTA_NOTEBOOK_DIR" --working-dir="$ALTA_NOTEBOOK_DIR"
+        '';
+        mcgeedia = ''
+          zk edit recents --interactive --notebook-dir="$MCGEEDIA_NOTEBOOK_DIR" --working-dir="$MCGEEDIA_NOTEBOOK_DIR"
+        '';
       };
 
       extra.author = "rbm";

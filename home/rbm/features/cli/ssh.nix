@@ -1,4 +1,6 @@
 {
+  services.ssh-agent.enable = true;
+
   programs.ssh = {
     enable = true;
     forwardAgent = true;
@@ -19,17 +21,9 @@
         Hostname media.mcgee.network
         IdentityFile ~/.ssh/arcturus-to-mcgeedia
 
-      Host nixedia
-        Hostname 10.35.20.142
-        IdentityFile ~/.ssh/arcturus-to-nixedia
-        ProxyJump rbm@mcgeedia
-
-      Host proxmox
-        Hostname 10.35.20.11
-        IdentityFile ~/.ssh/arcturus-to-proxmox
-        ProxyJump rbm@mcgeedia
+      Host perseus
+        Hostname 192.168.1.247
+        IdentityFile ~/.ssh/arcturus-to-perseus
     '';
   };
-
-  services.ssh-agent.enable = true;
 }

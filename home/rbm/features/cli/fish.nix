@@ -8,48 +8,48 @@
 
     functions = {
       fish_greeting = "";
-      shellInitLast = "update_cwd_osc";
-
-      mark_cmd_start = {
-        onEvent = "fish_preexec";
-        body =
-          # fish
-          ''
-            echo -en "\e]133;C\e\\"
-          '';
-      };
-
-      mark_cmd_end = {
-        onEvent = "fish_postexec";
-        body =
-          # fish
-          ''
-            echo -en "\e]133;D\e\\"
-          '';
-      };
-
-      mark_prompt_start = {
-        onEvent = "fish_prompt";
-        body =
-          # fish
-          ''
-            echo -en "\e]133;A\e\\"
-          '';
-      };
-
-      update_cwd_osc = {
-        description = "Notify terminals when $PWD changes";
-        onVariable = "PWD";
-
-        body =
-          # fish
-          ''
-            if status --is-command-substitution || set -q INSIDE_EMACS
-                return
-            end
-            printf \e\]7\;file://%s%s\e\\ "$hostname" "$(string escape --style=url "$PWD")"
-          '';
-      };
+      # shellInitLast = "update_cwd_osc";
+      #
+      # mark_cmd_start = {
+      #   onEvent = "fish_preexec";
+      #   body =
+      #     # fish
+      #     ''
+      #       echo -en "\e]133;C\e\\"
+      #     '';
+      # };
+      #
+      # mark_cmd_end = {
+      #   onEvent = "fish_postexec";
+      #   body =
+      #     # fish
+      #     ''
+      #       echo -en "\e]133;D\e\\"
+      #     '';
+      # };
+      #
+      # mark_prompt_start = {
+      #   onEvent = "fish_prompt";
+      #   body =
+      #     # fish
+      #     ''
+      #       echo -en "\e]133;A\e\\"
+      #     '';
+      # };
+      #
+      # update_cwd_osc = {
+      #   description = "Notify terminals when $PWD changes";
+      #   onVariable = "PWD";
+      #
+      #   body =
+      #     # fish
+      #     ''
+      #       if status --is-command-substitution || set -q INSIDE_EMACS
+      #           return
+      #       end
+      #       printf \e\]7\;file://%s%s\e\\ "$hostname" "$(string escape --style=url "$PWD")"
+      #     '';
+      # };
     };
 
     plugins = [
