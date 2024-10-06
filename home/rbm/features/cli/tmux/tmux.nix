@@ -2,6 +2,7 @@
   home.packages = with pkgs; [
     python312Packages.libtmux
   ];
+
   programs.tmux = {
     enable = true;
     baseIndex = 1;
@@ -31,7 +32,7 @@
 
     # TODO: fetch plugins directly
     extraConfig = ''
-      set -g allow-passthrough on
+      set -g allow-passthrough 'on'
       set -g status-position 'top'
 
       set -ga update-environment TERM
