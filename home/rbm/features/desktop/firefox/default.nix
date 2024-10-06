@@ -31,6 +31,7 @@ in {
           dark-mode-website-switcher
           dearrow
           fastforwardteam
+          violentmonkey
           libredirect
           react-devtools
           refined-github
