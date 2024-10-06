@@ -23,7 +23,7 @@
     SCALE = [
       {
         NAME_DESC = "Samsung Electric Company SE790C (DP-3)";
-        SCALE = 1.25;
+        SCALE = 1.50;
       }
     ];
 
