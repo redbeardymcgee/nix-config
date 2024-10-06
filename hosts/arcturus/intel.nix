@@ -9,5 +9,5 @@
       vpl-gpu-rt
     ];
   };
-  services.xserver.videoDrivers = ["modesetting"];
+  # services.xserver.videoDrivers = ["modesetting"];
 }

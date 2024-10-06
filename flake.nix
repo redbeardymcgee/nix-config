@@ -11,7 +11,10 @@
   };
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/517cc0d7351778954829f533645688c855aebcea";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    # nixpkgs.url = "github:NixOS/nixpkgs/517cc0d7351778954829f533645688c855aebcea";
+
+    # nixpkgs.url = "github:NixOS/nixpkgs/fc8e88205b7a0ac3e2f409ccf35ca61a0e5ac9d6";
     nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-24.05";
     systems.url = "github:nix-systems/default-linux";
     home-manager = {
@@ -54,6 +57,13 @@
     yazi = {
       url = "github:sxyazi/yazi";
       inputs.flake-utils.follows = "flake-utils";
+    };
+
+    zen-browser = {
+      # inputs.zen-browser.packages."${system}".default
+      # inputs.zen-browser.packages."${system}".specific
+      url = "github:MarceColl/zen-browser-flake";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
