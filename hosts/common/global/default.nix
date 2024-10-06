@@ -26,6 +26,7 @@
     systemPackages = with pkgs; [
       libnotify
       rsync
+      slack
     ];
 
     pathsToLink = [
