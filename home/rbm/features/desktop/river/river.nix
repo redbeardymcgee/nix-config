@@ -4,12 +4,6 @@
   ...
 }: {
   home.packages = [pkgs.rivercarro];
-  # xdg.desktopEntries."river" = {
-  #   name = "River";
-  #   comment = "A dynamic tiling Wayland compositor";
-  #   exec = "river";
-  #   type = "Application";
-  # };
 
   wayland.windowManager.river = {
     enable = true;
@@ -23,11 +17,13 @@
         if n == 0
         then 1
         else 2 * (pow2 (n - 1));
+      scratchTag = pow2 20;
+      scratchTagString = toString scratchTag;
     in {
       set-cursor-warp = "on-focus-change";
       set-repeat = "50 300";
       default-layout = "rivercarro";
-      # focus-follows-cursor = "normal";
+      focus-follows-cursor = "normal";
       hide-cursor.when-typing = "enabled";
 
       declare-mode = [
@@ -55,10 +51,10 @@
                 tagmask = toString (pow2 (i - 1));
                 num = toString i;
               in {
-                "None F${num}" = "set-focused-tags ${tagmask}";
-                "Super F${num}" = "set-view-tags ${tagmask}";
-                "Super+Shift F${num}" = "toggle-focused-tags ${tagmask}";
-                "Super+Control F${num}" = "toggle-view-tags ${tagmask}";
+                "Super ${num}" = "set-focused-tags ${tagmask}";
+                "Super+Shift ${num}" = "set-view-tags ${tagmask}";
+                "Super+Control ${num}" = "toggle-focused-tags ${tagmask}";
+                "Super+Alt ${num}" = "toggle-view-tags ${tagmask}";
               }
             )
           );
@@ -96,7 +92,11 @@
             "Super F" = "toggle-fullscreen";
             "Super+Shift F" = "toggle-float";
 
-            "Super Return" = "send-layout-cmd rivercarro 'main-location-cycle left,down,right,up,monocle'";
+            "Super Return" = "toggle-focused-tags ${scratchTagString}";
+            "Super+Shift Return" = "set-view-tags ${scratchTagString}";
+            "Super S" = "spawn 'kitty --app-id notesterm tmuxp load notes'";
+            "Super+Shift S" = "spawn 'kitty --app-id scratchterm'";
+
             "Super Z" = "zoom";
 
             "Super H" = "focus-view left";
@@ -104,13 +104,11 @@
             "Super K" = "focus-view up";
             "Super L" = "focus-view right";
 
-            "Super Period" = "focus-output next";
-            "Super Comma" = "focus-output previous";
-            "Super+Shift Period" = "send-to-output next";
-            "Super+Shift Comma" = "send-to-output previous";
+            "Super Tab" = "focus-output next";
+            "Super+Shift Tab" = "send-to-output next";
 
-            "Super F10" = "set-focused-tags ${allTagsMask}";
-            "Super+Shift F10" = "set-view-tags ${allTagsMask}";
+            "Super 0" = "set-focused-tags ${allTagsMask}";
+            "Super+Shift 0" = "set-view-tags ${allTagsMask}";
           };
 
         locked =
@@ -188,48 +186,56 @@
 
       rule-add = {
         "-app-id" = {
-          "xdg-desktop-portal-*" = "float";
-          "Xdg-desktop-portal-*" = "float";
+          # "firefox_ultrawide" = "output DP-1";
+          # "*firefox_ultrawide" = "tags ${toString (pow2 0)}";
+
+          "zen-alpha" = "output DP-1";
+          "*zen-alpha" = "tags ${toString (pow2 0)}";
+
+          "thunderbird" = "output DP-1";
+          "*thunderbird" = "tags ${toString (pow2 4)}";
+
+          "ch.proton.bridge-gui" = "output DP-1";
+          "*ch.proton.bridge-gui" = "tags ${toString (pow2 4)}";
+
+          "Vivaldi-stable" = "output DP-1";
+          "*Vivaldi-stable" = "tags ${toString (pow2 4)}";
+
+          "Slack" = "output DP-1";
+          "*Slack" = "tags ${toString (pow2 4)}";
+
           "terminal_*" = "output DVI-D-1";
           "terminal_localhost" = "tags ${toString (pow2 0)}";
           "terminal_projects" = "tags ${toString (pow2 1)}";
           "terminal_mcgeedia" = "tags ${toString (pow2 2)}";
-          "firefox_ultrawide" = "output DP-1";
-          "*firefox_ultrawide" = "tags ${toString (pow2 0)}";
+          "terminal_perseus" = "tags ${toString (pow2 3)}";
+          "terminal_notes" = "tags ${toString (pow2 4)}";
+          "terminal_work" = "tags ${toString (pow2 5)}";
+
+          "scratchterm" = "tags ${scratchTagString}";
+          "*scratchterm" = "float";
+
+          "notesterm" = "tags ${scratchTagString}";
+          "*notesterm" = "float";
+
           "vesktop" = "output DP-1";
           "*vesktop" = "tags ${toString (pow2 0)}";
+
+          "xdg-desktop-portal-*" = "float";
+          "Xdg-desktop-portal-*" = "float";
 
           "org.remmina.Remmina" = "output DP-1";
           "*org.remmina.Remmina" = "tags ${toString (pow2 8)}";
 
-          "org.qBittorrent.qBittorrent" = "output DVI-D-1";
-          "*org.qBittorrent.qBittorrent" = "tags ${toString (pow2 8)}";
-          "org.qBittorrent.qBittorrent*" = "float";
+          "org.qbittorrent.qBittorrent" = "output DVI-D-1";
+          "*org.qbittorrent.qBittorrent" = "tags ${toString (pow2 8)}";
 
           "com.moonlight_stream.Moonlight" = "output DVI-D-1";
           "*com.moonlight_stream.Moonlight" = "tags ${toString (pow2 4)}";
 
-          "*steam_app" = "";
+          "steam" = "float";
+          "*steam_app_*" = "tags ${toString (pow2 4)}";
           "steam_app_*" = "output DVI-D-1";
-
-          "firefox_incr-*" = "output DP-1";
-          "firefox_incr-ngsc " = "tags ${toString (pow2 7)}"; # NGSC
-          "firefox_incr-evolve " = "tags ${toString (pow2 7)}"; # Evolve
-
-          "cs2" = "tags ${toString (pow2 4)}"; # Counter-Strike 2
-
-          "steam_app_1877960" = "output DVI-D-1"; # Trimps
-          "*steam_app_1877960" = "tags ${toString (pow2 7)}";
-
-          "steam_app_610080" = "output DP-1"; # Realm Grinder
-          "*steam_app_610080" = "tags ${toString (pow2 7)}";
-
-          "steam_app_1147690" = "output DP-1"; # NGU
-          "steam_app_1147690*" = "float";
-          "*steam_app_1147690" = "tags ${toString (pow2 6)}";
-
-          "steam_app_2373630" = "output DVI-D-1"; # Moonring
-          "*steam_app_2373630" = "tags ${toString (pow2 4)}";
         };
 
         "-title" = {
@@ -242,6 +248,8 @@
 
           "Steam" = "tags ${toString (pow2 6)}";
           "*Steam*" = "float";
+
+          "Vivaldi Settings:*" = "float";
         };
       };
 
@@ -249,25 +257,34 @@
         # NOTE: Inner quotes are required
         #       This is mostly like `sh -c '$spawn_cmd'`
 
+        # TODO: Convert to systemd user units
 
         # TODO: riverguile seems to have more features
         "'rivercarro -outer-gaps 0'"
-
         '''way-displays > "$XDG_RUNTIME_DIR/way-displays.$XDG_SEAT.log" 2>&1' ''
+        "wpaperd"
         "yambar"
         "vesktop"
-        "'firefox --name firefox_ultrawide'"
-        # FIXME: Firefox refuses to launch new instances of the same profile
-        # "'firefox --new-instance --name firefox_incr-ngsc https://ngsc.freddecgames.com/'"
+        # "'firefox --name firefox_ultrawide'"
+        "protonmail-bridge-gui"
+        "thunderbird"
+        "flatpak --user run io.github.zen_browser.zen"
+        "qbittorrent"
 
-        "${pkgs.writeShellScript "wayland-terminal-session-launch" ''
-          for sesh in localhost mcgeedia projects
+        "${pkgs.writeShellScript "wayland-session-autostart-terminals" ''
+          for sesh in localhost mcgeedia projects notes perseus work
           do
             # wezterm start --always-new-process --class terminal_$sesh -- tmuxp load -y $sesh &
-            foot --app-id=terminal_$sesh tmuxp load -y $sesh & sleep 1
+            kitty --app-id terminal_$sesh tmuxp load -y $sesh &
+            sleep 1
           done
-        ''}
-        "
+        ''}"
+
+        "${pkgs.writeShellScript "wayland-session-autostart-work" ''
+          flatpak --user run com.vivaldi.Vivaldi &
+          sleep 1
+          slack
+        ''}"
       ];
     };
   };
