@@ -15,6 +15,7 @@
     ../common/optional/stylix.nix
     ../common/optional/systemd-boot.nix
     ../common/optional/systemd-networkd.nix
+    ../common/optional/wireshark.nix
 
     ../common/services/keyring.nix
     ../common/services/udisks2.nix
