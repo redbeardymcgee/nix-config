@@ -174,7 +174,7 @@
 
       # Create & Delete
       {
-        on = ["d" "d"];
+        on = ["d"];
         run = "plugin augment-command --args='remove'";
         desc = "Move the files to the trash";
       }
