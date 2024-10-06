@@ -4,13 +4,7 @@
   outputs,
   pkgs,
   ...
-}:
-# let
-#   nur-no-pkgs = import inputs.nur {
-#     nurpkgs = import nixpkgs { system = "x86_64-linux"; };
-#   };
-# in
-{
+}: {
   imports =
     [
       ./nixpkgs.nix
@@ -109,14 +103,13 @@
       EDITOR = "redvim";
       VISUAL = "redvim";
       NODE_PATH = "$HOME/.local/lib/node_modules";
-
       XDG_DATA_DIRS = "$XDG_DATA_DIRS:/usr/share:/var/lib/flatpak/exports/share:$HOME/.local/share/flatpak/exports/share";
     };
   };
 
   stylix = {
     enable = true;
-    base16Scheme = "${pkgs.base16-schemes}/share/themes/tokyo-night-terminal-storm.yaml";
+    base16Scheme = "${pkgs.base16-schemes}/share/themes/horizon-terminal-dark.yaml";
     polarity = "dark";
 
     cursor = {
@@ -132,10 +125,10 @@
       };
 
       sizes = {
-        applications = 12;
-        terminal = 10;
+        applications = 13;
+        terminal = 11;
         desktop = 14;
-        popups = 13;
+        popups = 14;
       };
     };
 
