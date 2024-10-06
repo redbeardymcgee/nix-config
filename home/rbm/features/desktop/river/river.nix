@@ -15,7 +15,7 @@
     enable = true;
     systemd = {
       enable = true;
-      variables = ["-all"];
+      variables = ["--all"];
     };
 
     settings = let
@@ -249,8 +249,6 @@
         # NOTE: Inner quotes are required
         #       This is mostly like `sh -c '$spawn_cmd'`
 
-        # FIXME: This shouldn't be necessary because of systemd.variables = ["-all"];
-        "'dbus-update-activation-environment --all --systemd'"
 
         # TODO: riverguile seems to have more features
         "'rivercarro -outer-gaps 0'"
