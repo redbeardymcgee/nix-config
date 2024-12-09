@@ -6,7 +6,7 @@
       source = (pkgs.formats.yaml {}).generate "localhost.yaml" {
         session_name = "home  ";
         windows = let
-          layout = "7723,174x42,0,0{61x42,0,0,6,112x42,62,0,13}";
+          layout = "fd95,212x55,0,0{105x55,0,0,38,106x55,106,0,39}";
           options = {
             automatic-rename = false;
             remain-on-exit = true;
@@ -21,7 +21,7 @@
 
           {
             inherit options;
-            window_name = "main";
+            window_name = "host";
             panes = [{shell = "~/.nix-profile/bin/yazi";}];
           }
 
@@ -31,11 +31,11 @@
             start_directory = "/mnt/2tb/nix-config";
             focus = true;
             panes = [
-              "blank"
               {
                 shell = "~/.nix-profile/bin/redvim .";
                 focus = true;
               }
+              "blank"
             ];
           }
         ];

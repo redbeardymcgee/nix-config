@@ -7,7 +7,8 @@
         session_name = "proj  ";
 
         windows = let
-          layout = "7723,174x42,0,0{61x42,0,0,6,112x42,62,0,13}";
+          # layout = "7723,174x42,0,0{61x42,0,0,6,112x42,62,0,13}";
+          layout = "fd95,212x55,0,0{105x55,0,0,38,106x55,106,0,39}";
           options = {
             automatic-rename = false;
             remain-on-exit = true;
@@ -15,6 +16,7 @@
         in [
           {
             inherit layout options;
+            # inherit options;
             window_name = "monitor";
             window_index = 0;
             panes = [
@@ -24,79 +26,85 @@
 
           {
             inherit layout options;
+            # inherit options;
             window_name = "bookworm";
             start_directory = "/mnt/2tb/repos/justaguylinux/bookworm-scripts";
             panes = [
-              "blank"
               {
                 focus = true;
                 shell_command = ["redvim ."];
               }
+              "blank"
             ];
           }
 
           {
             inherit layout options;
+            # inherit options;
             window_name = "sway";
             start_directory = "/mnt/2tb/repos/justaguylinux/sway";
             panes = [
-              "blank"
               {
                 focus = true;
                 shell_command = ["redvim ."];
               }
+              "blank"
             ];
           }
 
           {
             inherit layout options;
+            # inherit options;
             window_name = "nixcats";
             start_directory = "/mnt/2tb/repos/nixcats";
             focus = true;
             panes = [
-              "blank"
               {
                 focus = true;
                 shell_command = ["redvim ."];
               }
+              "blank"
             ];
           }
 
           {
             inherit layout options;
+            # inherit options;
             window_name = "bitburner";
             start_directory = "/mnt/2tb/repos/bitburner-scripts";
             panes = [
-              {shell_command = ["npm start"];}
               {
                 focus = true;
                 shell_command = ["redvim ."];
               }
+              {shell_command = ["npm start"];}
             ];
           }
 
           {
             inherit layout options;
+            # inherit options;
             window_name = "ags";
             start_directory = "~/.config/ags";
             panes = [
-              "blank"
               {
                 focus = true;
                 shell_command = ["redvim ."];
               }
+              "blank"
             ];
           }
           {
             inherit layout options;
+            # inherit options;
             window_name = "wolf";
             start_directory = "/mnt/2tb/repos/wolf";
             panes = [
-              "blank"
               {
                 focus = true;
                 shell_command = ["redvim ."];
               }
+              "blank"
             ];
           }
         ];
