@@ -5,7 +5,7 @@
 
   wayland.windowManager = {
     river.settings.map.normal = {
-      "Super+Alt L" = "spawn 'wlogout'";
+      "Super+Alt L" = "spawn 'wlogout -s'";
     };
   };
 }

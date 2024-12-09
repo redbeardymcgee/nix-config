@@ -92,17 +92,18 @@
             "Super F" = "toggle-fullscreen";
             "Super+Shift F" = "toggle-float";
 
-            "Super Return" = "toggle-focused-tags ${scratchTagString}";
-            "Super+Shift Return" = "set-view-tags ${scratchTagString}";
-            "Super S" = "spawn 'kitty --app-id notesterm tmuxp load notes'";
-            "Super+Shift S" = "spawn 'kitty --app-id scratchterm'";
+            "Super S" = "toggle-focused-tags ${scratchTagString}";
+            "Super+Shift S" = "set-view-tags ${scratchTagString}";
 
-            "Super Z" = "zoom";
+            "Super Return" = "spawn 'kitty --app-id scratchterm'";
+            "Super N" = "spawn 'kitty --app-id notesterm tmuxp load -y notes'";
 
             "Super H" = "focus-view left";
             "Super J" = "focus-view down";
             "Super K" = "focus-view up";
             "Super L" = "focus-view right";
+
+            "Super Z" = "zoom";
 
             "Super Tab" = "focus-output next";
             "Super+Shift Tab" = "send-to-output next";
@@ -184,33 +185,45 @@
         };
       };
 
-      rule-add = {
+      rule-add = let
+        hd = "output DVI-D-1";
+        wide = "output DP-1";
+      in {
         "-app-id" = {
           # "firefox_ultrawide" = "output DP-1";
           # "*firefox_ultrawide" = "tags ${toString (pow2 0)}";
 
-          "zen-alpha" = "output DP-1";
-          "*zen-alpha" = "tags ${toString (pow2 0)}";
+          # "zen-alpha" = wide;
+          # "*zen-alpha" = "tags ${toString (pow2 0)}";
 
-          "thunderbird" = "output DP-1";
-          "*thunderbird" = "tags ${toString (pow2 4)}";
+          # "qutebrowser_ultrawide" = wide;
+          # "*qutebrowser_ultrawide" = "tags ${toString (pow2 0)}";
 
-          "ch.proton.bridge-gui" = "output DP-1";
-          "*ch.proton.bridge-gui" = "tags ${toString (pow2 4)}";
+          # "thunderbird" = wide;
+          # "*thunderbird" = "tags ${toString (pow2 5)}";
 
-          "Vivaldi-stable" = "output DP-1";
+          "org.mozilla.Thunderbird" = wide;
+          "*org.mozilla.Thunderbird" = "tags ${toString (pow2 5)}";
+
+          "ch.proton.bridge-gui" = wide;
+          "*ch.proton.bridge-gui" = "tags ${toString (pow2 5)}";
+
+          "Vivaldi-stable" = wide;
           "*Vivaldi-stable" = "tags ${toString (pow2 4)}";
 
-          "Slack" = "output DP-1";
+          "Slack" = wide;
           "*Slack" = "tags ${toString (pow2 4)}";
 
-          "terminal_*" = "output DVI-D-1";
+          "terminal_*" = hd;
           "terminal_localhost" = "tags ${toString (pow2 0)}";
-          "terminal_projects" = "tags ${toString (pow2 1)}";
-          "terminal_mcgeedia" = "tags ${toString (pow2 2)}";
-          "terminal_perseus" = "tags ${toString (pow2 3)}";
-          "terminal_notes" = "tags ${toString (pow2 4)}";
+          "terminal_notes" = "tags ${toString (pow2 1)}";
+          "terminal_perseus" = "tags ${toString (pow2 2)}";
+          "terminal_mcgeedia" = "tags ${toString (pow2 3)}";
+          "terminal_projects" = "tags ${toString (pow2 4)}";
           "terminal_work" = "tags ${toString (pow2 5)}";
+
+          "ringcentral-embeddable-voice-app" = wide;
+          "*ringcentral-embeddable-voice-app" = "tags ${toString (pow2 5)}";
 
           "scratchterm" = "tags ${scratchTagString}";
           "*scratchterm" = "float";
@@ -218,24 +231,26 @@
           "notesterm" = "tags ${scratchTagString}";
           "*notesterm" = "float";
 
-          "vesktop" = "output DP-1";
-          "*vesktop" = "tags ${toString (pow2 0)}";
+          "floating_editor" = "float";
+
+          "vesktop" = wide;
+          "*vesktop" = "tags ${toString (pow2 1)}";
+
+          "org.gnome.Fractal" = wide;
+          "*org.gnome.Fractal" = "tags ${toString (pow2 1)}";
 
           "xdg-desktop-portal-*" = "float";
           "Xdg-desktop-portal-*" = "float";
 
-          "org.remmina.Remmina" = "output DP-1";
+          "org.remmina.Remmina" = wide;
           "*org.remmina.Remmina" = "tags ${toString (pow2 8)}";
 
-          "org.qbittorrent.qBittorrent" = "output DVI-D-1";
+          "org.qbittorrent.qBittorrent" = hd;
           "*org.qbittorrent.qBittorrent" = "tags ${toString (pow2 8)}";
 
-          "com.moonlight_stream.Moonlight" = "output DVI-D-1";
-          "*com.moonlight_stream.Moonlight" = "tags ${toString (pow2 4)}";
-
+          "steam_app_*" = hd;
           "steam" = "float";
-          "*steam_app_*" = "tags ${toString (pow2 4)}";
-          "steam_app_*" = "output DVI-D-1";
+          # "*steam_app_*" = "tags ${toString (pow2 5)}";
         };
 
         "-title" = {
@@ -260,31 +275,29 @@
         # TODO: Convert to systemd user units
 
         # TODO: riverguile seems to have more features
-        "'rivercarro -outer-gaps 0'"
-        '''way-displays > "$XDG_RUNTIME_DIR/way-displays.$XDG_SEAT.log" 2>&1' ''
+        "'rivercarro -outer-gaps 0 -per-tag'"
+        '''way-displays > "$XDG_RUNTIME_DIR/way-displays.$XDG_VTNR.log" 2>&1' ''
         "wpaperd"
         "yambar"
         "vesktop"
         # "'firefox --name firefox_ultrawide'"
         "protonmail-bridge-gui"
-        "thunderbird"
-        "flatpak --user run io.github.zen_browser.zen"
-        "qbittorrent"
+        "'flatpak run org.mozilla.Thunderbird'"
+        # "'flatpak run io.github.zen_browser.zen'"
+        # "qbittorrent"
+        # "'qutebrowser --desktop-file-name qutebrowser_ultrawide'"
+        "qutebrowser"
+        "~/Downloads/appimages/RingCentral.Embeddable-0.4.1.AppImage"
 
-        "${pkgs.writeShellScript "wayland-session-autostart-terminals" ''
-          for sesh in localhost mcgeedia projects notes perseus work
-          do
-            # wezterm start --always-new-process --class terminal_$sesh -- tmuxp load -y $sesh &
-            kitty --app-id terminal_$sesh tmuxp load -y $sesh &
-            sleep 1
-          done
-        ''}"
+        "'kitty --app-id terminal_localhost tmuxp load -y localhost'"
+        "'kitty --app-id terminal_notes tmuxp load -y notes'"
+        "'kitty --app-id terminal_perseus tmuxp load -y perseus'"
+        "'kitty --app-id terminal_mcgeedia tmuxp load -y mcgeedia'"
+        "'kitty --app-id terminal_projects tmuxp load -y projects'"
+        "'kitty --app-id terminal_work tmuxp load -y work'"
 
-        "${pkgs.writeShellScript "wayland-session-autostart-work" ''
-          flatpak --user run com.vivaldi.Vivaldi &
-          sleep 1
-          slack
-        ''}"
+        "'flatpak run com.vivaldi.Vivaldi'"
+        "slack"
       ];
     };
   };
