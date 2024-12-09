@@ -1,7 +1,10 @@
 {
   programs.kitty = {
     enable = true;
-    font.name = "FiraCode Nerd Font";
+    font = {
+      name = "FiraCode Nerd Font";
+      size = 11;
+    };
 
     settings = {
       font_features = "FiraCodeNerdFontMono-Regular +zero";
@@ -15,7 +18,7 @@
 
   wayland.windowManager = {
     river.settings.map.normal = {
-      "Super Space" = "spawn 'kitty --app-id terminal_home tmuxp load -y localhost'";
+      "Super Space" = "spawn 'kitty --app-id terminal_localhost tmuxp load -y localhost'";
     };
   };
 }
