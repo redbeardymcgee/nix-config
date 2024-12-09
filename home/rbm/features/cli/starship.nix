@@ -14,7 +14,7 @@
 
       custom.yazi = {
         description = "Indicate when the shell was launched by `yazi`";
-        symbol = " ";
+        symbol = "🦆 ";
         when = ''test -n "$YAZI_LEVEL"'';
       };
 

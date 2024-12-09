@@ -6,7 +6,9 @@
     forwardAgent = true;
     addKeysToAgent = "yes";
     compression = true;
-    controlPersist = "10m";
+    # controlMaster = "yes";
+    controlPersist = "yes";
+    controlPath = "\${XDG_RUNTIME_DIR}/%u@%L-to-%r@%h";
 
     extraConfig = ''
       Host github.com
@@ -22,8 +24,14 @@
         IdentityFile ~/.ssh/arcturus-to-mcgeedia
 
       Host perseus
-        Hostname 192.168.1.247
+        Hostname 192.168.1.150
         IdentityFile ~/.ssh/arcturus-to-perseus
+
+      Host mythicdnor
+        Hostname mythicdnor.ddns.net
+        Port 61222
+        User foundry
+        IdentityFile ~/.ssh/arcturus-to-mythicdnor
     '';
   };
 }
