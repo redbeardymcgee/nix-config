@@ -1,6 +1,6 @@
 {...}: {
   services.fnott = {
-    enable = true;
+    enable = false;
     settings = {
       main = {
         dpi-aware = "yes";
@@ -20,9 +20,9 @@
 
   wayland.windowManager = {
     river.settings.map.normal = {
-      "Super N" = "spawn 'fnottctl dismiss'";
-      "Super+Alt N" = "spawn 'fnottctl dismiss all'";
-      "Super+Shift N" = "spawn 'fnottctl actions'";
+      "Super D" = "spawn 'fnottctl dismiss'";
+      "Super+Shift D" = "spawn 'fnottctl dismiss all'";
+      "Super+Alt D" = "spawn 'fnottctl actions'";
     };
   };
 }
