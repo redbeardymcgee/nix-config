@@ -33,8 +33,8 @@
       officialPluginsSrc = pkgs.fetchgit {
         url = "https://github.com/yazi-rs/plugins.git";
         sparseCheckout = map (p: "${p}.yazi") officialPluginsNames;
-        rev = "2dc65ab07d85c3a63e663eeade1324438dc83942";
-        hash = "sha256-lnEOcM7oXpE++qrRInkHILIrZVlrIco1R3vgS/6y7jk=";
+        rev = "ec97f8847feeb0307d240e7dc0f11d2d41ebd99d";
+        hash = "sha256-U2mxevqEuix3UYI6q2cPqxXFKf9ruXzeRpgUhhjNVsY=";
       };
 
       officialPlugins =
@@ -51,94 +51,66 @@
       with pkgs;
         officialPlugins
         // {
-          # UI
-          # yaziline = fetchFromGitHub {
-          #   owner = "llanosrocas";
-          #   repo = "yaziline.yazi";
-          #   rev = "b22e2e8962c6fc8a27f8510a29a186b764577c1a";
-          #   hash = "sha256-kLK4EvECzE43cAVcdHGhKvbJ+pS0jvd2ggW5XTq7jWc=";
-          # };
-          #^ UI
-
-          # Features
           augment-command = fetchFromGitHub {
             owner = "hankertrix";
             repo = "augment-command.yazi";
-            rev = "2a1fb5d26162ae80941f3c2ba49c826d752cf289";
-            hash = "sha256-KAoGmgIE7Y6Roexq86j+ZFt9ebnQ/qfvQsSpFX/iyO4=";
+            rev = "011489a2a881742c88aed235972031f7d8e572d0";
+            hash = "sha256-cLqUp9V/a8agUPKONFEorMCYLzqmnKgtPAG9njRZi4Y=";
           };
-
-          lazygit = fetchFromGitHub {
-            owner = "Lil-Dank";
-            repo = "lazygit.yazi";
-            rev = "c82794fb410cca36b23b939d32126a6a9705f94d";
-            hash = "sha256-m2zITkjGrUjaPnzHnnlwA6d4ODIpvlBfIO0RZCBfL0E=";
-          };
-
-          searchjump = fetchgit {
-            url = "https://gitee.com/DreamMaoMao/searchjump.yazi";
-            rev = "520f34d4f29460005710da8ffec2da473212841f";
-            hash = "sha256-aZcz63x0c0+ZnA2UrmraLYrH+RG4aF8c9G3LD4owH4c=";
-          };
-
-          yamb = fetchFromGitHub {
-            owner = "h-hg";
-            repo = "yamb.yazi";
-            rev = "022e9b0b3c8dcd81706aefe5dff4b80e610a0351";
-            hash = "sha256-TlKv8jmYtorbwWA3yjRVRgx239TBVF3hoyL+zguJqKQ=";
-          };
-          #^ Features
-
-          # Previewers
           allmytoes = fetchFromGitHub {
             owner = "sonico98";
             repo = "allmytoes.yazi";
             rev = "e5329138a19615e63bff6a581eb69d1d1eb5d4fe";
             hash = "sha256-S9O8jgTjdOxf/Zybmgm7nGBkd2Ipt2DtQ+Be2uawyNA=";
           };
-
           exifaudio = fetchFromGitHub {
             owner = "sonico98";
             repo = "exifaudio.yazi";
-            rev = "94329ead8b3a6d3faa2d4975930a3d0378980c7a";
-            hash = "sha256-jz6fVtcLHw9lsxFWECbuxE7tEBttE08Fl4oJSTifaEc=";
+            rev = "855ff055c11fb8f268b4c006a8bd59dd9bcf17a7";
+            hash = "sha256-8f1iG9RTLrso4S9mHYcm3dLKWXd/WyRzZn6KNckmiCc=";
           };
-
           glow = fetchFromGitHub {
             owner = "reledia";
             repo = "glow.yazi";
-            rev = "536185a4e60ac0adc11d238881e78678fdf084ff";
-            hash = "sha256-NcMbYjek99XgWFlebU+8jv338Vk1hm5+oW5gwH+3ZbI=";
+            rev = "c2ed51ed8c4ba965b793adab5868a307ab375c8a";
+            hash = "sha256-hY390F6/bkQ6qN2FZEn0k+j+XfaERJiAo/E3xXYRB70=";
           };
-
           hexyl = fetchFromGitHub {
             owner = "reledia";
             repo = "hexyl.yazi";
-            rev = "64daf93a67d75eff871befe52d9013687171ffad";
-            hash = "sha256-B2L3/Q1g0NOO6XEMIMGBC/wItbNgBVpbaMMhiXOYcrI=";
+            rev = "39d3d4e23ad7cec8888f648ddf55af4386950ce7";
+            hash = "sha256-nsnnL3GluKk/p1dQZTZ/RwQPlAmTBu9mQzHz1g7K0Ww=";
           };
-
           miller = fetchFromGitHub {
             owner = "reledia";
             repo = "miller.yazi";
-            rev = "75f00026a0425009edb6fedcfbe893f3d2ddedf4";
-            hash = "sha256-u8xadj6/s16xXUAWGezYBqnygKaFMnRUsqtjMDr6DZA=";
+            rev = "40e02654725a9902b689114537626207cbf23436";
+            hash = "sha256-GXZZ/vI52rSw573hoMmspnuzFoBXDLcA0fqjF76CdnY=";
           };
-
           ouch = fetchFromGitHub {
             owner = "ndtoan96";
             repo = "ouch.yazi";
-            rev = "251da6930ca8b7ee0384810086c3bf644caede3e";
-            hash = "sha256-yLt9aY6hUIOdBI5bMdCs7VYFJGyD3WIkmPxvWKNCskA=";
+            rev = "db1488358941a2bc9918fa91c304d6724a0bb608";
+            hash = "sha256-fEfsHEddL7bg4z85UDppspVGlfUJIa7g11BwjHbufrE=";
           };
-
           torrent-preview = fetchFromGitHub {
             owner = "kirasok";
             repo = "torrent-preview.yazi";
             rev = "76970b6f9d6f3031e9cd57c8595a53e9f9f48c18";
             hash = "sha256-QPdtoCU7CyS7sx1aoGHNHv1NxWMA/SxSuy+2SLDdCeU=";
           };
-          #^ Previewers
+          yamb = fetchFromGitHub {
+            owner = "h-hg";
+            repo = "yamb.yazi";
+            rev = "0598b8defc21ac7231e584115c3aa330f0310db4";
+            hash = "sha256-Mw+CUyy8sN76NJNy+Xt0HwH6tD/gxqNvyIYKqpWUKMs=";
+          };
+          lazygit = fetchFromGitHub {
+            owner = "Lil-Dank";
+            repo = "lazygit.yazi";
+            rev = "c82794fb410cca36b23b939d32126a6a9705f94d";
+            hash = "sha256-m2zITkjGrUjaPnzHnnlwA6d4ODIpvlBfIO0RZCBfL0E=";
+          };
         };
 
     settings = {
