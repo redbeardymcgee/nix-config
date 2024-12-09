@@ -24,6 +24,7 @@
     ./nix-index.nix
     ./nix.nix
     ./nvim.nix
+    ./posting.nix
     ./rbw.nix
     ./ripgrep.nix
     ./ssh.nix
@@ -38,6 +39,7 @@
 
   home.packages = with pkgs; [
     inputs.nixcats.packages.${system}.nixCats
+    inputs.posting.packages.${system}.default
 
     # nix tools
     alejandra
@@ -48,6 +50,7 @@
     bun
     browsh
     clipboard-jh
+    csview
     difftastic
     discordo
     distrobox
