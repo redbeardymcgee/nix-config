@@ -5,65 +5,50 @@
     extra-substituters = [
       "https://yazi.cachix.org"
     ];
+
     extra-trusted-public-keys = [
       "yazi.cachix.org-1:Dcdz63NZKfvUCbDGngQDAZq6kOroIrFoyO064uvLh8k="
     ];
   };
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-    # nixpkgs.url = "github:NixOS/nixpkgs/517cc0d7351778954829f533645688c855aebcea";
-
-    # nixpkgs.url = "github:NixOS/nixpkgs/fc8e88205b7a0ac3e2f409ccf35ca61a0e5ac9d6";
-    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-24.05";
+    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-24.11";
+    nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
     systems.url = "github:nix-systems/default-linux";
+
     home-manager = {
-      url = "github:nix-community/home-manager";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    flake-utils = {
-      url = "github:numtide/flake-utils";
-      inputs.systems.follows = "systems";
+      url = "github:nix-community/home-manager/release-24.11";
     };
 
     # ags = {
     #   url = "github:Aylur/ags";
-    #   inputs.nixpkgs.follows = "nixpkgs";
+    #   inputs.nixpkgs.follows = "nixpkgs-stable";
     # };
 
     firefox-addons = {
       url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.flake-utils.follows = "flake-utils";
+      # inputs.nixpkgs.follows = "nixpkgs-stable";
     };
 
     lix = {
       url = "https://git.lix.systems/lix-project/nixos-module/archive/2.90.0.tar.gz";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.flake-utils.follows = "flake-utils";
     };
 
     nixcats = {
       url = "git+file:/mnt/2tb/repos/nixcats";
       # url = "github:redbeardymcgee/nixcats";
-      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    posting = {
+      url = "github:justdeeevin/posting/flake";
     };
 
     stylix = {
-      url = "github:danth/stylix";
-      inputs.nixpkgs.follows = "nixpkgs";
+      url = "github:danth/stylix/release-24.11";
     };
 
     yazi = {
       url = "github:sxyazi/yazi";
-      inputs.flake-utils.follows = "flake-utils";
-    };
-
-    zen-browser = {
-      # inputs.zen-browser.packages."${system}".default
-      # inputs.zen-browser.packages."${system}".specific
-      url = "github:MarceColl/zen-browser-flake";
-      inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
@@ -73,6 +58,7 @@
     home-manager,
     ags,
     lix,
+    posting,
     stylix,
     ...
   } @ inputs: let
@@ -106,6 +92,7 @@
           ./home/rbm/arcturus.nix
           ags.homeManagerModules.default
           stylix.homeManagerModules.stylix
+          posting.modules.homeManager.default
         ];
       };
 
