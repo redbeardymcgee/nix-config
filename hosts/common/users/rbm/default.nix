@@ -11,11 +11,13 @@ in {
     hashedPassword = "$6$eiZ2Cxt3CKj4cZ21$VS4lcMg21wOc1XTmf42eQK993hhqA2SVh/cAKKJCUkJCdglgrFJwU1.XL4cKVd1MQpyMe3oJoUKPIuGO2RU.l/";
     shell = pkgs.bash;
     extraGroups = ifExist [
+      "adbusers"
       "audio"
       "dialout"
       "docker"
       "gamemode"
       "libvirtd"
+      "input"
       "kvm"
       "mysql"
       "network"

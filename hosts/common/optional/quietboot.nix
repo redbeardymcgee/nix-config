@@ -12,14 +12,14 @@
     kernelParams = [
       "boot.shell_on_fail"
       "loglevel=3"
-      "quiet"
+      # "quiet"
       "rd.systemd.show_status=false"
       "rd.udev.log_level=3"
-      "splash"
+      # "splash"
     ];
 
     plymouth = {
-      enable = true;
+      # enable = true;
     };
   };
 }

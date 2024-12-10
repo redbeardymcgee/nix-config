@@ -6,6 +6,7 @@
 
     ../common/global
 
+    ../common/optional/adb.nix
     ../common/optional/dygma.nix
     ../common/optional/gamemode.nix
     ../common/optional/kmscon.nix
@@ -22,6 +23,7 @@
     ../common/services/jellyfin.nix
     ../common/services/polkit.nix
     # ../common/services/protonmail.nix
+    ../common/services/sunshine.nix
     # ../common/services/wormhole.nix
 
     ../common/users
