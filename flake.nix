@@ -15,48 +15,27 @@
     nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-24.11";
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
     systems.url = "github:nix-systems/default-linux";
+    home-manager.url = "github:nix-community/home-manager/release-24.11";
+    lix.url = "https://git.lix.systems/lix-project/nixos-module/archive/2.91.1-2.tar.gz";
 
-    home-manager = {
-      url = "github:nix-community/home-manager/release-24.11";
-    };
+    firefox-addons.url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
+    ghostty.url = "github:ghostty-org/ghostty";
+    nixcats.url = "git+file:/mnt/2tb/repos/nixcats";
+    # nixcats.url = "github:redbeardymcgee/nixcats";
+    posting.url = "github:justdeeevin/posting/flake";
+    stylix.url = "github:danth/stylix/release-24.11";
+    yazi.url = "github:sxyazi/yazi";
 
     # ags = {
     #   url = "github:Aylur/ags";
-    #   inputs.nixpkgs.follows = "nixpkgs-stable";
     # };
-
-    firefox-addons = {
-      url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
-      # inputs.nixpkgs.follows = "nixpkgs-stable";
-    };
-
-    lix = {
-      url = "https://git.lix.systems/lix-project/nixos-module/archive/2.90.0.tar.gz";
-    };
-
-    nixcats = {
-      url = "git+file:/mnt/2tb/repos/nixcats";
-      # url = "github:redbeardymcgee/nixcats";
-    };
-
-    posting = {
-      url = "github:justdeeevin/posting/flake";
-    };
-
-    stylix = {
-      url = "github:danth/stylix/release-24.11";
-    };
-
-    yazi = {
-      url = "github:sxyazi/yazi";
-    };
   };
 
   outputs = {
     self,
     nixpkgs,
     home-manager,
-    ags,
+    # ags,
     lix,
     posting,
     stylix,
@@ -90,9 +69,10 @@
         };
         modules = [
           ./home/rbm/arcturus.nix
-          ags.homeManagerModules.default
+          # ags.homeManagerModules.default
           stylix.homeManagerModules.stylix
           posting.modules.homeManager.default
+          # {home.packages = [ghostty.packages.x86_64-linux.default];}
         ];
       };
 

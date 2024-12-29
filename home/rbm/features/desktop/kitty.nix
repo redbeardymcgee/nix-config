@@ -18,7 +18,7 @@
 
   wayland.windowManager = {
     river.settings.map.normal = {
-      "Super Space" = "spawn 'kitty --app-id terminal_localhost tmuxp load -y localhost'";
+      # "Super Space" = "spawn 'kitty --app-id terminal_localhost tmuxp load -y localhost'";
     };
   };
 }

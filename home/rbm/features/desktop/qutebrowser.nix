@@ -42,7 +42,16 @@
         highdpi = true;
         # workarounds.disable_hangouts_extension = true;
       };
-      editor.command = ["kitty" "--app-id" "floating_editor" "redvim" "+call cursor({line}, {column})" "{file}"];
+      # editor.command = ["kitty" "--app-id" "floating_editor" "redvim" "+call cursor({line}, {column})" "{file}"];
+      editor.command = [
+        "ghostty"
+        "--class"
+        "ghostty.floating_editor"
+        "-e"
+        "redvim"
+        "+call cursor({line}, {column})"
+        "{file}"
+      ];
       fonts = {
         default_family = lib.mkForce "FiraCode Nerd Font";
         web.size.minimum = 14;
