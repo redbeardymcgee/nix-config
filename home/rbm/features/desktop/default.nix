@@ -8,6 +8,7 @@
     ./kitty.nix
     ./thunderbird.nix
     ./qutebrowser.nix
+    ./ghostty.nix
 
     ../services/gammastep.nix
   ];
@@ -37,7 +38,6 @@
         spotify
         # slack # TODO: allowUnfree isn't working
         vlc
-      ]
-      ++ [inputs.ghostty.packages.x86_64-linux.default];
+      ];
   };
 }
