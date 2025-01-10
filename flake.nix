@@ -25,17 +25,12 @@
     posting.url = "github:justdeeevin/posting/flake";
     stylix.url = "github:danth/stylix/release-24.11";
     yazi.url = "github:sxyazi/yazi";
-
-    # ags = {
-    #   url = "github:Aylur/ags";
-    # };
   };
 
   outputs = {
     self,
     nixpkgs,
     home-manager,
-    # ags,
     lix,
     posting,
     stylix,
@@ -69,7 +64,6 @@
         };
         modules = [
           ./home/rbm/arcturus.nix
-          # ags.homeManagerModules.default
           stylix.homeManagerModules.stylix
           posting.modules.homeManager.default
           # {home.packages = [ghostty.packages.x86_64-linux.default];}

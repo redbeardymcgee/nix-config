@@ -1,6 +1,5 @@
 {pkgs, ...}: {
   imports = [
-    # ./ags
     ./firefox.nix
     ./obs-studio.nix
     ./wpaperd.nix
