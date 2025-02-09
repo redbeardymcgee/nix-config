@@ -204,13 +204,13 @@
           # "*thunderbird" = "tags ${toString (pow2 5)}";
 
           "org.mozilla.Thunderbird" = wide;
-          "*org.mozilla.Thunderbird" = "tags ${toString (pow2 5)}";
+          "*org.mozilla.Thunderbird" = "tags ${toString (pow2 4)}";
 
-          "ch.proton.bridge-gui" = wide;
-          "*ch.proton.bridge-gui" = "tags ${toString (pow2 5)}";
+          # "ch.proton.bridge-gui" = wide;
+          # "*ch.proton.bridge-gui" = "tags ${toString (pow2 5)}";
 
-          "Vivaldi-stable" = wide;
-          "*Vivaldi-stable" = "tags ${toString (pow2 4)}";
+          "Vivaldi-flatpak" = hd;
+          "*Vivaldi-flatpak" = "tags ${toString (pow2 4)}";
 
           "Slack" = wide;
           "*Slack" = "tags ${toString (pow2 4)}";
@@ -223,15 +223,15 @@
           "terminal_projects" = "tags ${toString (pow2 4)}";
           "terminal_work" = "tags ${toString (pow2 5)}";
 
-          "ghostty.terminal" = hd;
+          "ghostty.*" = hd;
           "ghostty.localhost" = "tags ${toString (pow2 0)}";
           "ghostty.notes" = "tags ${toString (pow2 1)}";
           "ghostty.perseus" = "tags ${toString (pow2 2)}";
           "ghostty.mcgeedia" = "tags ${toString (pow2 3)}";
-          "ghostty.projects" = "tags ${toString (pow2 4)}";
-          "ghostty.work" = "tags ${toString (pow2 5)}";
+          "ghostty.work" = "tags ${toString (pow2 4)}";
+          "ghostty.projects" = "tags ${toString (pow2 7)}";
 
-          "ringcentral-embeddable-voice-app" = wide;
+          "ringcentral-embeddable-voice-app" = hd;
           "*ringcentral-embeddable-voice-app" = "tags ${toString (pow2 5)}";
 
           "scratchterm" = "tags ${scratchTagString}";
@@ -291,7 +291,6 @@
         "'rivercarro -outer-gaps 0 -per-tag'"
         '''way-displays > "$XDG_RUNTIME_DIR/way-displays.$XDG_VTNR.log" 2>&1' ''
         "wpaperd"
-        "yambar"
         "vesktop"
         # "'firefox --name firefox_ultrawide'"
         # "protonmail-bridge-gui"
@@ -309,12 +308,12 @@
         # "'kitty --app-id terminal_projects tmuxp load -y projects'"
         # "'kitty --app-id terminal_work tmuxp load -y work'"
 
-        ''ghostty --class=ghostty.localhost -e 'tmuxp load -y localhost' ''
-        ''ghostty --class=ghostty.notes -e 'tmuxp load -y notes' ''
-        ''ghostty --class=ghostty.perseus -e 'tmuxp load -y perseus' ''
-        ''ghostty --class=ghostty.mcgeedia -e 'tmuxp load -y mcgeedia' ''
-        ''ghostty --class=ghostty.projects -e 'tmuxp load -y projects' ''
-        ''ghostty --class=ghostty.work -e 'tmuxp load -y work' ''
+        '''ghostty --class=ghostty.localhost -e "tmuxp load -y localhost"' ''
+        '''ghostty --class=ghostty.notes -e "tmuxp load -y notes"' ''
+        '''ghostty --class=ghostty.perseus -e "tmuxp load -y perseus"' ''
+        '''ghostty --class=ghostty.mcgeedia -e "tmuxp load -y mcgeedia"' ''
+        '''ghostty --class=ghostty.projects -e "tmuxp load -y projects"' ''
+        '''ghostty --class=ghostty.work -e "tmuxp load -y work" ' ''
 
         "'flatpak run com.vivaldi.Vivaldi'"
         "slack"
