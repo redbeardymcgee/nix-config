@@ -32,6 +32,16 @@
         Port 61222
         User foundry
         IdentityFile ~/.ssh/arcturus-to-mythicdnor
+
+      Host alta-git
+        Hostname github.com
+        User git
+        IdentityFile ~/.ssh/arcturus-to-alta@github
+
+      Host fedora
+        Hostname 192.168.1.55
+        IdentityFile ~/.ssh/arcturus-to-fedora@perseus
+
     '';
   };
 }

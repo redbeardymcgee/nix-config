@@ -1,6 +1,10 @@
 {pkgs, ...}: {
   programs.git = {
     enable = true;
+    package = pkgs.gitAndTools.gitFull;
+    lfs.enable = true;
+    userName = "redbeardymcgee";
+    userEmail = "redbeardymcgee@gmail.com";
     aliases = {
       co = "checkout";
       dlog = "log -p --ext-diff";
@@ -35,8 +39,5 @@
       "*.swp"
       "*.bak"
     ];
-    package = pkgs.gitAndTools.gitFull;
-    userName = "redbeardymcgee";
-    userEmail = "redbeardymcgee@gmail.com";
   };
 }
