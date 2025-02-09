@@ -7,6 +7,7 @@
     ./atuin.nix
     ./bash.nix
     ./bat.nix
+    ./browsh.nix
     ./bottom.nix
     ./direnv.nix
     ./eza.nix
@@ -48,7 +49,6 @@
 
     # Generally useful
     bun
-    browsh
     clipboard-jh
     csview
     difftastic
