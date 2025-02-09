@@ -9,7 +9,7 @@
       default_session = {
         user = "greeter";
         command = let
-          args = [
+          args = lib.concatStringsSep " " [
             "--asterisks"
             "--cmd"
             "river"
@@ -25,7 +25,7 @@
           ];
         in
           # sh
-          ''${pkgs.greetd.tuigreet}/bin/tuigreet ${lib.concatStringsSep " " args}'';
+          ''${pkgs.greetd.tuigreet}/bin/tuigreet  ${args}}'';
       };
     };
   };
