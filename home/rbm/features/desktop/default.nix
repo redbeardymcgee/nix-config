@@ -19,6 +19,7 @@
   home = {
     packages = with pkgs;
       [
+        angryipscanner
         chromium # TODO: allowUnfree isn't working
         flatpak
         fractal
@@ -34,7 +35,7 @@
         qpwgraph
         remmina
         streamcontroller
-        signal-desktop
+        # signal-desktop
         spotify
         # slack # TODO: allowUnfree isn't working
         vlc
