@@ -14,7 +14,6 @@
       ./sudo.nix
       ./systemd-initrd.nix
 
-      ../services/greetd.nix
       ../services/libinput.nix
       ../services/openssh.nix
       ../services/pipewire.nix
@@ -25,6 +24,7 @@
   environment = {
     systemPackages = with pkgs; [
       libnotify
+      netscanner
       rsync
       slack
     ];
@@ -37,22 +37,12 @@
 
   nixpkgs = {
     overlays = builtins.attrValues outputs.overlays;
-    # ++ builtins.attrValues inputs.kixvim.overlays;
 
     config = {
       allowUnfree = true;
       allowUnfreePredicate = _: true;
     };
   };
-
-  # boot.binfmt.registrations.appimage = {
-  #   wrapInterpreterInShell = false;
-  #   interpreter = "${pkgs.appimage-run}/bin/appimage-run";
-  #   recognitionType = "magic";
-  #   offset = 0;
-  #   mask = ''\xff\xff\xff\xff\x00\x00\x00\x00\xff\xff\xff'';
-  #   magicOrExtension = ''\x7fELF....AI\x02'';
-  # };
 
   programs = {
     fish.enable = true;
@@ -87,9 +77,10 @@
 
     settings = {
       default = [
+        "com.mitchellh.ghostty.desktop"
+        "kitty.desktop"
         "org.codeberg.dnkl.foot.desktop"
         "org.wezfurlong.wezterm.desktop"
-        "kitty.desktop"
       ];
     };
   };
