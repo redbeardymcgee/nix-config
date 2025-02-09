@@ -47,8 +47,13 @@
             focus = true;
             panes = [
               {
+                focus = true;
                 start_directory = "$XDG_DOCUMENTS_DIR/Notebooks/Perseus";
-                shell = "~/.nix-profile/bin/redvim .";
+                # shell = "~/.nix-profile/bin/redvim .";
+                shell_command = [
+                  "nix develop -f shell.nix"
+                  "redvim ."
+                ];
               }
 
               {
