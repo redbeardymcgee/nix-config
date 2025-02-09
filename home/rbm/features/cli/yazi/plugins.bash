@@ -18,8 +18,8 @@ links=(
 )
 
 for link in "${links[@]}"; do
-  drv=$(nurl "$link")
+  expr=$(, nurl "$link")
   name=${link##*/}
   name=${name%\.yazi}
-  printf '%s = %s;\n' "$name" "$drv"
+  printf '%s = %s;\n' "$name" "$expr"
 done

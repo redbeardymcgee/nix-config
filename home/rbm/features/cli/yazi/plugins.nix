@@ -13,7 +13,7 @@
   officialPluginsSrc = pkgs.fetchFromGitHub {
     owner = "yazi-rs";
     repo = "plugins";
-    rev = "38418ddc9247de206645ed284c804b5e179452a1";
+    rev = "600614a9dc59a12a63721738498c5541c7923873";
     hash = "sha256-cdPeIhtTzSYhJZ3v3Xlq8J3cOmR7ZiOGl5q48Qgthyk=";
   };
 
@@ -25,31 +25,32 @@ in
       augment-command = fetchFromGitHub {
         owner = "hankertrix";
         repo = "augment-command.yazi";
-        rev = "fe145acca9ef83be3756444d37ff7fa764eaab59"; hash = "sha256-Bwi2KMvsoYajzzBsGgY8jDr9QPEP9vZXSNWf0ZZyd+Y=";
+        rev = "6a367dbdfc4c2f1247ed516f5f3db31345f6865d";
+        hash = "sha256-Jp/isfUNDM08EdZCKgZKNFwkPubzQSUdQYt/u5hx77E=";
       };
       allmytoes = fetchFromGitHub {
         owner = "sonico98";
         repo = "allmytoes.yazi";
-        rev = "e5329138a19615e63bff6a581eb69d1d1eb5d4fe";
-        hash = "sha256-S9O8jgTjdOxf/Zybmgm7nGBkd2Ipt2DtQ+Be2uawyNA=";
+        rev = "a9870513d935680c2d59da7d59b3f91660e2729d";
+        hash = "sha256-ZV7WB5ylYzmC98ORP2Cb5aO6l6vwGEnYsZhHGSPQdIQ=";
       };
       exifaudio = fetchFromGitHub {
         owner = "sonico98";
         repo = "exifaudio.yazi";
-        rev = "855ff055c11fb8f268b4c006a8bd59dd9bcf17a7";
-        hash = "sha256-8f1iG9RTLrso4S9mHYcm3dLKWXd/WyRzZn6KNckmiCc=";
+        rev = "d7946141c87a23dcc6fb3b2730a287faf3154593";
+        hash = "sha256-nXBxPG6PVi5vstvVMn8dtnelfCa329CTIOCdXruOxT4=";
       };
       glow = fetchFromGitHub {
         owner = "reledia";
         repo = "glow.yazi";
-        rev = "388e847dca6497cf5903f26ca3b87485b2de4680";
-        hash = "sha256-fKJ5ld5xc6HsM/h5j73GABB5i3nmcwWCs+QSdDPA9cU=";
+        rev = "5ce76dc92ddd0dcef36e76c0986919fda3db3cf5";
+        hash = "sha256-UljcrXXO5DZbufRfavBkiNV3IGUNct31RxCujRzC9D4=";
       };
       hexyl = fetchFromGitHub {
         owner = "reledia";
         repo = "hexyl.yazi";
-        rev = "ccc0a4a959bea14dbe8f2b243793aacd697e34e2";
-        hash = "sha256-9rPJcgMYtSY5lYnFQp3bAhaOBdNUkBaN1uMrjen6Z8g=";
+        rev = "39d3d4e23ad7cec8888f648ddf55af4386950ce7";
+        hash = "sha256-nsnnL3GluKk/p1dQZTZ/RwQPlAmTBu9mQzHz1g7K0Ww=";
       };
       miller = fetchFromGitHub {
         owner = "reledia";
@@ -60,20 +61,20 @@ in
       ouch = fetchFromGitHub {
         owner = "ndtoan96";
         repo = "ouch.yazi";
-        rev = "db1488358941a2bc9918fa91c304d6724a0bb608";
-        hash = "sha256-fEfsHEddL7bg4z85UDppspVGlfUJIa7g11BwjHbufrE=";
+        rev = "b8698865a0b1c7c1b65b91bcadf18441498768e6";
+        hash = "sha256-eRjdcBJY5RHbbggnMHkcIXUF8Sj2nhD/o7+K3vD3hHY=";
       };
       torrent-preview = fetchFromGitHub {
         owner = "kirasok";
         repo = "torrent-preview.yazi";
-        rev = "76970b6f9d6f3031e9cd57c8595a53e9f9f48c18";
-        hash = "sha256-QPdtoCU7CyS7sx1aoGHNHv1NxWMA/SxSuy+2SLDdCeU=";
+        rev = "c9e67df81cb62759bd84a2fad5a0d9b6713bd595";
+        hash = "sha256-GKUQaZtywigV6NAd6pjYRYl4UsUKeJHaBTLpMG7xxME=";
       };
       yamb = fetchFromGitHub {
         owner = "h-hg";
         repo = "yamb.yazi";
-        rev = "0598b8defc21ac7231e584115c3aa330f0310db4";
-        hash = "sha256-Mw+CUyy8sN76NJNy+Xt0HwH6tD/gxqNvyIYKqpWUKMs=";
+        rev = "108347b0392fc819af04506dd0405fb744dfca68";
+        hash = "sha256-/BU/jVWgLK7JmPQpCHXhPCH+LrLy7RIYyIX0TYbTpuk=";
       };
       lazygit = fetchFromGitHub {
         owner = "Lil-Dank";
