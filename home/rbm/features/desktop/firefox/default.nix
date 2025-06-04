@@ -26,7 +26,6 @@ in {
           addy_io
           auto-tab-discard
           blocktube
-          # chatgptbox # seems broken with tridactyl
           consent-o-matic
           dark-mode-website-switcher
           dearrow

@@ -24,31 +24,37 @@
             ];
           }
 
-          {
-            inherit layout options;
-            # inherit options;
-            window_name = "bookworm";
-            start_directory = "/mnt/2tb/repos/justaguylinux/bookworm-scripts";
-            panes = [
-              {
-                focus = true;
-                shell_command = ["redvim ."];
-              }
-              "blank"
-            ];
-          }
+          # {
+          #   inherit layout options;
+          #   # inherit options;
+          #   window_name = "bookworm";
+          #   start_directory = "/mnt/2tb/repos/justaguylinux/bookworm-scripts";
+          #   panes = [
+          #     {
+          #       focus = true;
+          #       shell_command = ["redvim ."];
+          #     }
+          #     "blank"
+          #   ];
+          # }
 
           {
             inherit layout options;
             # inherit options;
-            window_name = "sway";
-            start_directory = "/mnt/2tb/repos/justaguylinux/sway";
+            window_name = "poddox";
+            start_directory = "/mnt/2tb/repos/redbeardymcgee/poddox";
             panes = [
               {
                 focus = true;
-                shell_command = ["redvim ."];
+                shell_command = [
+                  "redvim ."
+                ];
               }
-              "blank"
+              {
+                shell_command = [
+                  "npm start"
+                ];
+              }
             ];
           }
 

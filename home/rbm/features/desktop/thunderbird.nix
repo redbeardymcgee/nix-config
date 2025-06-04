@@ -1,5 +1,5 @@
 {pkgs, ...}: {
-  home.packages = [pkgs.protonmail-bridge-gui];
+  # home.packages = [pkgs.protonmail-bridge-gui];
   programs.thunderbird = {
     enable = false;
 

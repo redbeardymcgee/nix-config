@@ -26,7 +26,6 @@
     ../common/services/udisks2.nix
     ../common/services/jellyfin.nix
     ../common/services/polkit.nix
-    # ../common/services/protonmail.nix
     # ../common/services/sunshine.nix
     # ../common/services/wormhole.nix
 

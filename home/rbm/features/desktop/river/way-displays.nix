@@ -10,19 +10,19 @@
         MAX = true;
       }
       {
-        NAME_DESC = "Samsung Electric Company SE790C (DP-3)";
+        NAME_DESC = "Samsung Electric Company SE790C (DP-1)";
         MAX = true;
       }
     ];
 
     ORDER = [
-      "'DP-3'"
-      "'DVI-D-1'"
+      "DP-1"
+      "DVI-D-1"
     ];
 
     SCALE = [
       {
-        NAME_DESC = "Samsung Electric Company SE790C (DP-3)";
+        NAME_DESC = "Samsung Electric Company SE790C (DP-1)";
         SCALE = 1.50;
       }
     ];

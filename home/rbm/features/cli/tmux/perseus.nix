@@ -27,7 +27,6 @@
 
           {
             inherit layout options;
-            # inherit options;
             window_name = "host";
             panes = [
               {
@@ -42,14 +41,12 @@
 
           {
             inherit layout options;
-            # inherit options;
-            window_name = "notes";
+            window_name = "src";
             focus = true;
             panes = [
               {
                 focus = true;
-                start_directory = "$XDG_DOCUMENTS_DIR/Notebooks/Perseus";
-                # shell = "~/.nix-profile/bin/redvim .";
+                start_directory = "/mnt/2tb/repos/perseus";
                 shell_command = [
                   "nix develop -f shell.nix"
                   "redvim ."
@@ -59,6 +56,20 @@
               {
                 focus = true;
                 shell_command = ["ssh perseus"];
+              }
+            ];
+          }
+          {
+            inherit options;
+            window_name = "dox";
+            focus = true;
+            panes = [
+              {
+                focus = true;
+                start_directory = "/mnt/2tb/repos/redbeardymcgee/poddox";
+                shell_command = [
+                  "redvim ."
+                ];
               }
             ];
           }

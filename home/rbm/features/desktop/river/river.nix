@@ -95,9 +95,9 @@
             "Super S" = "toggle-focused-tags ${scratchTagString}";
             "Super+Shift S" = "set-view-tags ${scratchTagString}";
 
-            "Super Space" = ''spawn 'ghostty --class=ghostty.localhost -e "tmuxp load -y localhost"' '';
-            "Super Return" = "spawn 'ghostty --class=ghostty.scratchterm'";
-            "Super N" = ''spawn 'ghostty --class=ghostty.notesterm -e "tmuxp load -y notes"' '';
+            "Super Space" = ''spawn 'ghostty --class=ghostty.localhost -e tmuxp load -y localhost' '';
+            "Super Return" = ''spawn 'ghostty --class=ghostty.scratchterm' '';
+            "Super N" = ''spawn 'ghostty --class=ghostty.notesterm -e tmuxp load -y notes' '';
 
             "Super H" = "focus-view left";
             "Super J" = "focus-view down";
@@ -197,8 +197,8 @@
           # "zen-alpha" = wide;
           # "*zen-alpha" = "tags ${toString (pow2 0)}";
 
-          # "qutebrowser_ultrawide" = wide;
-          # "*qutebrowser_ultrawide" = "tags ${toString (pow2 0)}";
+          "qutebrowser_ultrawide" = wide;
+          "*qutebrowser_ultrawide" = "tags ${toString (pow2 0)}";
 
           # "thunderbird" = wide;
           # "*thunderbird" = "tags ${toString (pow2 5)}";
@@ -215,27 +215,31 @@
           "Slack" = wide;
           "*Slack" = "tags ${toString (pow2 4)}";
 
-          "terminal_*" = hd;
-          "terminal_localhost" = "tags ${toString (pow2 0)}";
-          "terminal_notes" = "tags ${toString (pow2 1)}";
-          "terminal_perseus" = "tags ${toString (pow2 2)}";
-          "terminal_mcgeedia" = "tags ${toString (pow2 3)}";
-          "terminal_projects" = "tags ${toString (pow2 4)}";
-          "terminal_work" = "tags ${toString (pow2 5)}";
+          # "terminal_*" = hd;
+          # "terminal_localhost" = "tags ${toString (pow2 0)}";
+          # "terminal_notes" = "tags ${toString (pow2 1)}";
+          # "terminal_perseus" = "tags ${toString (pow2 2)}";
+          # "terminal_mcgeedia" = "tags ${toString (pow2 3)}";
+          # "terminal_projects" = "tags ${toString (pow2 4)}";
+          # "terminal_work" = "tags ${toString (pow2 5)}";
 
-          "ghostty.*" = hd;
+          # "scratchterm" = "tags ${scratchTagString}";
+          # "*scratchterm" = "float";
+
+          # "ghostty.*" = hd;
           "ghostty.localhost" = "tags ${toString (pow2 0)}";
+          "ghostty.localhost*" = hd;
           "ghostty.notes" = "tags ${toString (pow2 1)}";
+          "ghostty.notes*" = hd;
           "ghostty.perseus" = "tags ${toString (pow2 2)}";
+          "ghostty.perseus*" = hd;
           "ghostty.mcgeedia" = "tags ${toString (pow2 3)}";
-          "ghostty.work" = "tags ${toString (pow2 4)}";
+          "ghostty.mcgeedia*" = hd;
           "ghostty.projects" = "tags ${toString (pow2 7)}";
+          "ghostty.projects*" = hd;
 
           "ringcentral-embeddable-voice-app" = hd;
           "*ringcentral-embeddable-voice-app" = "tags ${toString (pow2 5)}";
-
-          "scratchterm" = "tags ${scratchTagString}";
-          "*scratchterm" = "float";
 
           "ghostty.notesterm" = "tags ${scratchTagString}";
           "ghostty.scratchterm" = "tags ${scratchTagString}";
@@ -261,21 +265,18 @@
           "org.qbittorrent.qBittorrent" = hd;
           "*org.qbittorrent.qBittorrent" = "tags ${toString (pow2 8)}";
 
-          "steam_app_*" = hd;
-          "steam" = "float";
+          # "steam_app_*" = hd;
+          # "steam" = "float";
           # "*steam_app_*" = "tags ${toString (pow2 5)}";
         };
 
         "-title" = {
           "Picture-in-Picture" = "float";
 
-          "Loop Hero" = "tags ${toString (pow2 4)}";
-          "*Loop Hero" = "float";
-
           "qBittorrent *" = "no-float";
 
-          "Steam" = "tags ${toString (pow2 6)}";
-          "*Steam*" = "float";
+          # "Steam" = "tags ${toString (pow2 6)}";
+          # "*Steam*" = "float";
 
           "Vivaldi Settings:*" = "float";
         };
@@ -288,34 +289,26 @@
         # TODO: Convert to systemd user units
 
         # TODO: riverguile seems to have more features
-        "'rivercarro -outer-gaps 0 -per-tag'"
+        '''rivercarro -outer-gaps 0 -per-tag' ''
         '''way-displays > "$XDG_RUNTIME_DIR/way-displays.$XDG_VTNR.log" 2>&1' ''
         "wpaperd"
         "vesktop"
         # "'firefox --name firefox_ultrawide'"
-        # "protonmail-bridge-gui"
-        "'flatpak run org.mozilla.Thunderbird'"
-        "'flatpak run io.github.zen_browser.zen'"
+        '''flatpak run org.mozilla.Thunderbird' ''
+        '''flatpak run app.zen_browser.zen' ''
         "qbittorrent"
-        # "'qutebrowser --desktop-file-name qutebrowser_ultrawide'"
-        "qutebrowser"
-        "~/Downloads/appimages/RingCentral.Embeddable-0.4.1.AppImage"
+        '''qutebrowser --desktop-file-name qutebrowser_ultrawide' ''
+        # "qutebrowser"
+        ''~/Downloads/Software/appimages/RingCentral.Embeddable-0.4.1.AppImage''
 
-        # "'kitty --app-id terminal_localhost tmuxp load -y localhost'"
-        # "'kitty --app-id terminal_notes tmuxp load -y notes'"
-        # "'kitty --app-id terminal_perseus tmuxp load -y perseus'"
-        # "'kitty --app-id terminal_mcgeedia tmuxp load -y mcgeedia'"
-        # "'kitty --app-id terminal_projects tmuxp load -y projects'"
-        # "'kitty --app-id terminal_work tmuxp load -y work'"
+        '''ghostty --class=ghostty.localhost -e tmuxp load -y localhost' ''
+        '''ghostty --class=ghostty.notes -e tmuxp load -y notes' ''
+        '''ghostty --class=ghostty.perseus -e tmuxp load -y perseus' ''
+        '''ghostty --class=ghostty.mcgeedia -e tmuxp load -y mcgeedia' ''
+        '''ghostty --class=ghostty.projects -e tmuxp load -y projects' ''
+        # '''ghostty --class=ghostty.work -e tmuxp load -y work' ''
 
-        '''ghostty --class=ghostty.localhost -e "tmuxp load -y localhost"' ''
-        '''ghostty --class=ghostty.notes -e "tmuxp load -y notes"' ''
-        '''ghostty --class=ghostty.perseus -e "tmuxp load -y perseus"' ''
-        '''ghostty --class=ghostty.mcgeedia -e "tmuxp load -y mcgeedia"' ''
-        '''ghostty --class=ghostty.projects -e "tmuxp load -y projects"' ''
-        '''ghostty --class=ghostty.work -e "tmuxp load -y work" ' ''
-
-        "'flatpak run com.vivaldi.Vivaldi'"
+        '''flatpak run com.vivaldi.Vivaldi' ''
         "slack"
       ];
     };

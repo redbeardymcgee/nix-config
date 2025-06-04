@@ -4,7 +4,8 @@
   ...
 }: {
   imports = [
-    ./firefox
+    # ./firefox
+    ./chromium.nix
     ./kitty.nix
     ./thunderbird.nix
     ./qutebrowser.nix
@@ -20,7 +21,7 @@
     packages = with pkgs;
       [
         angryipscanner
-        chromium # TODO: allowUnfree isn't working
+        chatterino2
         flatpak
         fractal
         # google-chrome # TODO: allowUnfree isn't working
@@ -30,6 +31,7 @@
         mpv
         # openshot-qt # nix run github:nixos/nixpkgs/nixos-24.05#openshot-qt
         pamixer
+        protonvpn-gui
         # pw-viz # TODO: doesn't build
         qbittorrent
         qpwgraph

@@ -42,6 +42,17 @@
         Hostname 192.168.1.55
         IdentityFile ~/.ssh/arcturus-to-fedora@perseus
 
+      Host forgejo
+        Hostname git.mcgee.red
+        User git
+        Port 60022
+        IdentityFile ~/.ssh/arcturus-to-forgejo
+
+      Host git.mcgee.red
+        User git
+        Port 60022
+        IdentityFile ~/.ssh/arcturus-to-forgejo
+
     '';
   };
 }

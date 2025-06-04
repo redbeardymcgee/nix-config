@@ -12,7 +12,6 @@
     ./wezterm
     ./wofi.nix
     ./wlogout.nix
-    # ./yambar.nix
 
     ../../services/cliphist.nix
     ../../services/easyeffects.nix

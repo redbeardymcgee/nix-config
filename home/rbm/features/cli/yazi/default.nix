@@ -33,8 +33,8 @@
       officialPluginsSrc = pkgs.fetchgit {
         url = "https://github.com/yazi-rs/plugins.git";
         sparseCheckout = map (p: "${p}.yazi") officialPluginsNames;
-        rev = "d9fb21595a1b14d28370e1f9eb9bca8593757548";
-        hash = "sha256-YeRZ9goa2xQO0hGtAXgyQPsOZWVPVYTF9WRdvb8zPY4=";
+        rev = "02d18be03812415097e83c6a912924560e4cec6d";
+        hash = "sha256-FM2kb+Lw4TYAG32mExV9TBc4MrB1zF3Fcdwt11GQjc0=";
       };
 
       officialPlugins =
@@ -54,8 +54,8 @@
           augment-command = fetchFromGitHub {
             owner = "hankertrix";
             repo = "augment-command.yazi";
-            rev = "e1b956470a1ba17f23e3cefdd06e817d42e7aa30";
-            hash = "sha256-vBsIZmpitFHQ1hK95Um9UyCX4YXrZ1PzPQSH8h7kAW0=";
+            rev = "7c20850de190afcc1b73dfbe0a2b481fbc65d5ad";
+            hash = "sha256-aVb95MSX1kYqtNBebKfgGkHobw8knrpHHL6NeCkLPk4=";
           };
           allmytoes = fetchFromGitHub {
             owner = "sonico98";

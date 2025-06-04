@@ -4,6 +4,7 @@
   ...
 }: {
   imports = [
+    # ./aerc.nix
     ./atuin.nix
     ./bash.nix
     ./bat.nix

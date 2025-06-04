@@ -14,16 +14,41 @@
   inputs = {
     nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-24.11";
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
+    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-25.05";
+    # nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
+    # nixpkgs.url = "github:nixos/nixpkgs/nixos-25.05";
+    # nixpkgs.url = "github:nixos/nixpkgs/nixos-25.05";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     systems.url = "github:nix-systems/default-linux";
     home-manager.url = "github:nix-community/home-manager/release-24.11";
     lix.url = "https://git.lix.systems/lix-project/nixos-module/archive/2.91.1-2.tar.gz";
 
+    home-manager = {
+      url = "github:nix-community/home-manager/release-25.05";
+      inputs.nixpkgs.follows = "nixpkgs-stable";
+    };
+    # home-manager.url = "github:nix-community/home-manager/release-24.11";
+    # home-manager-unstable.url = "github:nix-community/home-manager";
+    lix = {
+      url = "https://git.lix.systems/lix-project/nixos-module/archive/2.93.0.tar.gz";
+      inputs.nixpkgs.follows = "nixpkgs-stable";
+    };
+    # home-manager.url = "github:nix-community/home-manager/release-25.05";
+    # home-manager.url = "github:nix-community/home-manager/release-24.11";
+    # home-manager-unstable.url = "github:nix-community/home-manager";
+    home-manager.url = "github:nix-community/home-manager";
+    lix = {
+      url = "https://git.lix.systems/lix-project/nixos-module/archive/2.93.0.tar.gz";
+    };
     firefox-addons.url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
     ghostty.url = "github:ghostty-org/ghostty";
     nixcats.url = "git+file:/mnt/2tb/repos/nixcats";
     # nixcats.url = "github:redbeardymcgee/nixcats";
     posting.url = "github:justdeeevin/posting/flake";
     stylix.url = "github:danth/stylix/release-24.11";
+    stylix.url = "github:danth/stylix/release-25.05";
+    stylix.url = "github:danth/stylix";
+    # stylix.url = "github:danth/stylix/release-25.05";
     yazi.url = "github:sxyazi/yazi";
   };
 
@@ -67,6 +92,10 @@
           stylix.homeManagerModules.stylix
           posting.modules.homeManager.default
           # {home.packages = [ghostty.packages.x86_64-linux.default];}
+          # stylix.homeModules.stylix
+          # posting.modules.homeManager.default
+          stylix.homeModules.stylix
+          posting.modules.homeManager.default
         ];
       };
 
