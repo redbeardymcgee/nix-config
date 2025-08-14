@@ -35,6 +35,8 @@
     ];
   };
 
+  fonts.fontDir.enable = true;
+
   nixpkgs = {
     overlays = builtins.attrValues outputs.overlays;
 

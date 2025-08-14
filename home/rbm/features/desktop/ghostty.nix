@@ -1,19 +1,12 @@
 {
-  inputs,
-  pkgs,
-  ...
-}: {
-  home.packages = [
-    inputs.ghostty.packages.x86_64-linux.default
-  ];
-
-  xdg.configFile."ghostty/config" = {
+  programs.ghostty = {
     enable = true;
 
-    source = pkgs.writeText "ghostty-config" ''
-    font-family = FiraCode Nerd Font
-    window-decoration = false
-    gtk-titlebar = false
-  '';
+    enableFishIntegration = true;
+    settings = {
+      # font-family = "FiraCode Nerd Font Mono";
+      window-decoration = false;
+      gtk-titlebar = false;
+    };
   };
 }

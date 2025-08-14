@@ -53,7 +53,7 @@
         "{file}"
       ];
       fonts = {
-        default_family = lib.mkForce "FiraCode Nerd Font";
+        # default_family = "FiraCode Nerd Font";
         web.size.minimum = 14;
       };
       hints.mode = "number";

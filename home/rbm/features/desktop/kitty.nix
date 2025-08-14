@@ -1,13 +1,13 @@
 {
   programs.kitty = {
     enable = true;
-    font = {
-      name = "FiraCode Nerd Font";
-      size = 11;
-    };
+    # font = {
+      # name = "FiraCode Nerd Font";
+      # size = 11;
+    # };
 
     settings = {
-      font_features = "FiraCodeNerdFontMono-Regular +zero";
+      # font_features = "FiraCodeNerdFont-Regular +zero";
       wayland_enable_ime = "no";
       enable_audio_bell = "no";
       initial_window_width = "150c";

@@ -59,7 +59,7 @@
     gtrash
     magic-wormhole
     procs
-    protonvpn-cli_2
+    protonvpn-cli
     sass
     typos
     yq

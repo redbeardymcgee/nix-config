@@ -187,35 +187,41 @@
       };
 
       rule-add = let
-        hd = "output DVI-D-1";
-        wide = "output DP-1";
+        benq = "BNQ BenQ XL2420Z 41E09757SL0";
+        samsung = "Samsung Electric Company SE790C Unknown";
       in {
         "-app-id" = {
-          # "firefox_ultrawide" = "output DP-1";
-          # "*firefox_ultrawide" = "tags ${toString (pow2 0)}";
+          # "firefox_ultrasamsung" = "output DP-1";
+          # "*firefox_ultrasamsung" = "tags ${toString (pow2 0)}";
 
-          # "zen-alpha" = wide;
-          # "*zen-alpha" = "tags ${toString (pow2 0)}";
+          "zen" = samsung;
+          "*zen" = "tags ${toString (pow2 1)}";
 
-          "qutebrowser_ultrawide" = wide;
+          "qutebrowser_ultrawide" = samsung;
           "*qutebrowser_ultrawide" = "tags ${toString (pow2 0)}";
 
-          # "thunderbird" = wide;
+          # "thunderbird" = samsung;
           # "*thunderbird" = "tags ${toString (pow2 5)}";
 
-          "org.mozilla.Thunderbird" = wide;
+          "org.mozilla.Thunderbird" = samsung;
           "*org.mozilla.Thunderbird" = "tags ${toString (pow2 4)}";
 
-          # "ch.proton.bridge-gui" = wide;
+          # "ch.proton.bridge-gui" = samsung;
           # "*ch.proton.bridge-gui" = "tags ${toString (pow2 5)}";
 
-          "Vivaldi-flatpak" = hd;
+          "Vivaldi-flatpak" = benq;
           "*Vivaldi-flatpak" = "tags ${toString (pow2 4)}";
 
-          "Slack" = wide;
+          "Slack" = samsung;
           "*Slack" = "tags ${toString (pow2 4)}";
 
-          # "terminal_*" = hd;
+          "*com.moonlight_stream.Moonlight" = "tags ${toString (pow2 6)}";
+          "com.moonlight_stream.Moonlight" = benq;
+
+          "Nextcloud Talk" = samsung;
+          "*Nextcloud Talk" = "tags ${toString (pow2 2)}";
+
+          # "terminal_*" = benq;
           # "terminal_localhost" = "tags ${toString (pow2 0)}";
           # "terminal_notes" = "tags ${toString (pow2 1)}";
           # "terminal_perseus" = "tags ${toString (pow2 2)}";
@@ -226,19 +232,19 @@
           # "scratchterm" = "tags ${scratchTagString}";
           # "*scratchterm" = "float";
 
-          # "ghostty.*" = hd;
+          # "ghostty.*" = benq;
           "ghostty.localhost" = "tags ${toString (pow2 0)}";
-          "ghostty.localhost*" = hd;
+          "ghostty.localhost*" = benq;
           "ghostty.notes" = "tags ${toString (pow2 1)}";
-          "ghostty.notes*" = hd;
+          "ghostty.notes*" = benq;
           "ghostty.perseus" = "tags ${toString (pow2 2)}";
-          "ghostty.perseus*" = hd;
+          "ghostty.perseus*" = benq;
           "ghostty.mcgeedia" = "tags ${toString (pow2 3)}";
-          "ghostty.mcgeedia*" = hd;
+          "ghostty.mcgeedia*" = benq;
           "ghostty.projects" = "tags ${toString (pow2 7)}";
-          "ghostty.projects*" = hd;
+          "ghostty.projects*" = benq;
 
-          "ringcentral-embeddable-voice-app" = hd;
+          "ringcentral-embeddable-voice-app" = benq;
           "*ringcentral-embeddable-voice-app" = "tags ${toString (pow2 5)}";
 
           "ghostty.notesterm" = "tags ${scratchTagString}";
@@ -250,24 +256,23 @@
           "floating_editor" = "float";
           "ghostty.floating_editor" = "float";
 
-          "vesktop" = wide;
+          "vesktop" = samsung;
           "*vesktop" = "tags ${toString (pow2 1)}";
 
-          "org.gnome.Fractal" = wide;
+          "org.gnome.Fractal" = samsung;
           "*org.gnome.Fractal" = "tags ${toString (pow2 1)}";
+
+          "Signal" = samsung;
+          "*Signal" = "tags ${toString (pow2 2)}";
 
           "xdg-desktop-portal-*" = "float";
           "Xdg-desktop-portal-*" = "float";
 
-          "org.remmina.Remmina" = wide;
+          "org.remmina.Remmina" = samsung;
           "*org.remmina.Remmina" = "tags ${toString (pow2 8)}";
 
-          "org.qbittorrent.qBittorrent" = hd;
+          "org.qbittorrent.qBittorrent" = samsung;
           "*org.qbittorrent.qBittorrent" = "tags ${toString (pow2 8)}";
-
-          # "steam_app_*" = hd;
-          # "steam" = "float";
-          # "*steam_app_*" = "tags ${toString (pow2 5)}";
         };
 
         "-title" = {
@@ -275,21 +280,19 @@
 
           "qBittorrent *" = "no-float";
 
-          # "Steam" = "tags ${toString (pow2 6)}";
-          # "*Steam*" = "float";
-
           "Vivaldi Settings:*" = "float";
         };
       };
 
       spawn = [
-        # NOTE: Inner quotes are required
-        #       This is mostly like `sh -c '$spawn_cmd'`
+        ## NOTE: Inner quotes are required
+        ##       This is mostly like `sh -c '$spawn_cmd'`
 
-        # TODO: Convert to systemd user units
+        ## TODO: Convert to systemd user units
 
-        # TODO: riverguile seems to have more features
-        '''rivercarro -outer-gaps 0 -per-tag' ''
+        ## TODO: riverguile seems to have more features
+        '''rivercarro -outer-gaps 0 -per-tag -main-location right' ''
+        ## TODO: These both have a real service/config in hm 25.05
         '''way-displays > "$XDG_RUNTIME_DIR/way-displays.$XDG_VTNR.log" 2>&1' ''
         "wpaperd"
         "vesktop"
@@ -297,7 +300,7 @@
         '''flatpak run org.mozilla.Thunderbird' ''
         '''flatpak run app.zen_browser.zen' ''
         "qbittorrent"
-        '''qutebrowser --desktop-file-name qutebrowser_ultrawide' ''
+        # '''qutebrowser --desktop-file-name qutebrowser_ultrawide' ''
         # "qutebrowser"
         ''~/Downloads/Software/appimages/RingCentral.Embeddable-0.4.1.AppImage''
 

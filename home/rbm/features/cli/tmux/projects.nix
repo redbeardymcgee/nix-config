@@ -16,7 +16,6 @@
         in [
           {
             inherit layout options;
-            # inherit options;
             window_name = "monitor";
             window_index = 0;
             panes = [
@@ -26,7 +25,6 @@
 
           # {
           #   inherit layout options;
-          #   # inherit options;
           #   window_name = "bookworm";
           #   start_directory = "/mnt/2tb/repos/justaguylinux/bookworm-scripts";
           #   panes = [
@@ -40,7 +38,6 @@
 
           {
             inherit layout options;
-            # inherit options;
             window_name = "poddox";
             start_directory = "/mnt/2tb/repos/redbeardymcgee/poddox";
             panes = [
@@ -50,17 +47,16 @@
                   "redvim ."
                 ];
               }
-              {
-                shell_command = [
-                  "npm start"
-                ];
-              }
+              # {
+              #   shell_command = [
+              #     "npm start"
+              #   ];
+              # }
             ];
           }
 
           {
             inherit layout options;
-            # inherit options;
             window_name = "nixcats";
             start_directory = "/mnt/2tb/repos/nixcats";
             focus = true;
@@ -75,7 +71,6 @@
 
           {
             inherit layout options;
-            # inherit options;
             window_name = "bitburner";
             start_directory = "/mnt/2tb/repos/bitburner-scripts";
             panes = [
@@ -89,7 +84,6 @@
 
           {
             inherit layout options;
-            # inherit options;
             window_name = "ags";
             start_directory = "~/.config/ags";
             panes = [
@@ -98,11 +92,11 @@
                 shell_command = ["redvim ."];
               }
               "blank"
+
             ];
           }
           {
             inherit layout options;
-            # inherit options;
             window_name = "wolf";
             start_directory = "/mnt/2tb/repos/wolf";
             panes = [

@@ -11,11 +11,15 @@
     };
 
     fonts = {
+      # emoji = {
+      #   package = pkgs.noto-fonts-color-emoji;
+      #   name = "Noto Color Emoji";
+      # };
       monospace = {
-        package = pkgs.nerd-fonts.fira-code;
-        name = "FiraCode Nerd Font";
+        # package = pkgs.nerd-fonts.fira-code;
+        package = pkgs.nerdfonts.override {fonts=["FiraCode"];};
+        name = "FiraCode Nerd Font Mono";
       };
-
       sizes = {
         applications = 13;
         terminal = 11;

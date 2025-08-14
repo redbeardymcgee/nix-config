@@ -24,7 +24,7 @@
         IdentityFile ~/.ssh/arcturus-to-mcgeedia
 
       Host perseus
-        Hostname 192.168.1.150
+        Hostname 203.0.113.250
         IdentityFile ~/.ssh/arcturus-to-perseus
 
       Host mythicdnor
@@ -52,7 +52,6 @@
         User git
         Port 60022
         IdentityFile ~/.ssh/arcturus-to-forgejo
-
     '';
   };
 }

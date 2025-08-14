@@ -9,66 +9,66 @@
     ];
   };
 
-  manager = {
+  mgr = {
     prepend_keymap = [
       # Nav
       {
         on = ["j"];
-        run = "plugin augment-command --args='arrow 1'";
+        run = "plugin augment-command -- arrow 1";
         desc = "Move cursor up";
       }
 
       {
         on = ["k"];
-        run = "plugin augment-command --args='arrow -1'";
+        run = "plugin augment-command -- arrow -1";
         desc = "Move cursor up";
       }
 
       {
         on = ["J"];
-        run = "plugin augment-command --args='parent-arrow 1'";
+        run = "plugin augment-command -- parent_arrow 1";
         desc = "Move cursor up in parent directory";
       }
 
       {
         on = ["K"];
-        run = "plugin augment-command --args='parent-arrow -1'";
+        run = "plugin augment-command -- parent_arrow -1";
         desc = "Move cursor down in parent directory";
       }
 
       {
         on = ["l"];
-        run = "plugin augment-command --args='enter'";
+        run = "plugin augment-command -- enter";
         desc = "Enter a directory and skip directories with only a single subdirectory";
       }
 
       {
         on = ["L"];
-        run = "plugin augment-command --args='enter --no-skip'";
+        run = "plugin augment-command -- enter --no-skip";
         desc = "Enter the child directory or open the file";
       }
 
       {
         on = ["<Enter>"];
-        run = "plugin augment-command --args='enter'";
+        run = "plugin augment-command -- enter";
         desc = "Enter a directory and skip directories with only a single subdirectory";
       }
 
       {
         on = ["<S-Enter>"];
-        run = "plugin augment-command --args='enter --no-skip'";
+        run = "plugin augment-command -- enter --no-skip";
         desc = "Enter the child directory or open the file";
       }
 
       {
         on = ["h"];
-        run = "plugin augment-command --args='leave'";
+        run = "plugin augment-command -- leave";
         desc = "Leave a directory and skip directories with only a single subdirectory";
       }
 
       {
         on = ["H"];
-        run = "plugin augment-command --args='leave --no-skip'";
+        run = "plugin augment-command -- leave --no-skip";
         desc = "Go back to the parent directory";
       }
 
@@ -125,38 +125,38 @@
       # Rename
       {
         on = ["r" "r"];
-        run = "plugin augment-command --args='rename --cursor=before_ext'";
+        run = "plugin augment-command -- rename --cursor=before_ext";
         desc = "Rename a file or directory";
       }
 
       {
         on = ["r" "R"];
-        run = "plugin augment-command --args='rename --empty=all'";
+        run = "plugin augment-command -- rename --empty=all";
         desc = "Rename file and remove the whole file name";
       }
 
       {
         on = ["r" "i"];
-        run = "plugin augment-command --args='rename --cursor=start'";
+        run = "plugin augment-command -- rename --cursor=start";
         desc = "Rename file at the start of the file name";
       }
 
       {
         on = ["r" "a"];
-        run = "plugin augment-command --args='rename --cursor=end'";
+        run = "plugin augment-command -- rename --cursor=end";
         desc = "Rename file with the cursor at the end of the file name";
       }
 
       # Yank & Paste
       {
         on = ["p"];
-        run = "plugin augment-command --args='paste'";
+        run = "plugin augment-command -- paste";
         desc = "Paste the files";
       }
 
       {
         on = ["P"];
-        run = "plugin augment-command --args='paste --force'";
+        run = "plugin augment-command -- paste --force";
         desc = "Paste the files (overwrite if the destination exists)";
       }
 
@@ -169,33 +169,33 @@
       {
         on = ["y"];
         run = [ /* ''shell 'cb copy "$@"' --confirm'' */ "yank"];
-        desc = "Move cursor up";
+        desc = "Yank file";
       }
 
       # Create & Delete
       {
         on = ["d"];
-        run = "plugin augment-command --args='remove'";
+        run = "plugin augment-command -- remove";
         desc = "Move the files to the trash";
       }
 
       # Open
       {
         on = ["o"];
-        run = "plugin augment-command --args='open'";
+        run = "plugin augment-command -- open";
         desc = "Open selected files interactively";
       }
 
       {
         on = ["O"];
-        run = "plugin augment-command --args='open --interactive'";
+        run = "plugin augment-command -- open --interactive";
         desc = "Open selected files interactively";
       }
 
       # Tools
       {
         on = ["t" "e"];
-        run = "plugin augment-command --args='editor'";
+        run = "plugin augment-command -- editor";
         desc = "Open '$EDITOR' on selected files";
       }
 
@@ -207,14 +207,14 @@
 
       {
         on = ["t" "p"];
-        run = "plugin augment-command --args='pager'";
+        run = "plugin augment-command -- pager";
         desc = "Open '$PAGER' on selected files";
       }
 
       {
         on = ["t" "s"];
         run = ''
-          plugin augment-command --args='shell "$SHELL" --confirm --block'
+          plugin augment-command -- shell "$SHELL" --confirm --block
         '';
         desc = "Open shell here";
       }
@@ -222,7 +222,7 @@
       {
         on = ["t" "d"];
         run = ''
-          plugin augment-command --args='shell ripdrag "$@" -x 2>/dev/null &' --confirm
+          plugin augment-command -- shell ripdrag "$@" -x 2>/dev/null & --confirm
         '';
         desc = "Drag and drop into the hovered directory or CWD";
       }
@@ -247,12 +247,12 @@
     ];
   };
 
-  # opener = {
-  #   extract = [
-  #     {
-  #       run = ''ouch d -y "$@"'';
-  #       for = "unix";
-  #     }
-  #   ];
-  # };
+  opener = {
+    extract = [
+      {
+        run = ''ouch d -y "$@"'';
+        for = "unix";
+      }
+    ];
+  };
 }

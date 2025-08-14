@@ -5,6 +5,7 @@
 
     ./fnott.nix
     ./foot.nix
+    # ./gradia.nix
     ./river.nix
     ./satty.nix
     ./swaylock.nix

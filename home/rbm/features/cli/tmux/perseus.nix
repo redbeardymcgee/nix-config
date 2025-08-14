@@ -62,7 +62,6 @@
           {
             inherit options;
             window_name = "dox";
-            focus = true;
             panes = [
               {
                 focus = true;

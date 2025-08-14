@@ -3,8 +3,8 @@
     enable = true;
 
     extensions = [
-      "nngceckbapebfimnlniiiahkandclblb" # Bitwarden
-      "cjpalhdlnbpafiamejdnhcphjbkeiagm" # ublock origin
+      { id = "nngceckbapebfimnlniiiahkandclblb"; } # Bitwarden
+      { id = "cjpalhdlnbpafiamejdnhcphjbkeiagm";  }# ublock origin
       # "ammjkodgmmoknidbanneddgankgfejfh" # 7TV
     ];
   };

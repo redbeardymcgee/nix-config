@@ -5,10 +5,10 @@
 }: {
   imports = [
     # ./firefox
-    ./chromium.nix
+    # ./chromium.nix
     ./kitty.nix
     ./thunderbird.nix
-    ./qutebrowser.nix
+    # ./qutebrowser.nix
     ./ghostty.nix
 
     ../services/gammastep.nix
@@ -20,6 +20,7 @@
   home = {
     packages = with pkgs;
       [
+        affine # does not add to PATH
         angryipscanner
         chatterino2
         flatpak

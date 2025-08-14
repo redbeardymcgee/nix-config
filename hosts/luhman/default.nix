@@ -1,7 +1,6 @@
 {pkgs, ...}: {
   imports = [
     ./hw.nix
-    ./nvidia.nix
     ./intel.nix
 
     ../common/global
@@ -31,12 +30,6 @@
 
     ../common/users
   ];
-
-  # security.pam.services.swaylock = {
-  #   enable = true;
-  #   text = "auth include login";
-  # };
-  services.displayManager.sessionPackages = [pkgs.river];
 
   fileSystems = {
     "/2tb" = {
@@ -82,6 +75,6 @@
   };
   networking = {
     domain = "home";
-    hostName = "arcturus";
+    hostName = "luhman";
   };
 }

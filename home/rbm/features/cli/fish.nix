@@ -60,7 +60,6 @@
     ];
 
     shellAbbrs = rec {
-      gp = "gtrash put";
       rm = "gtrash put";
 
       nhb = "nh home build";
