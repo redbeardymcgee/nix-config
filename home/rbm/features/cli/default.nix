@@ -45,7 +45,7 @@
 
     # nix tools
     alejandra
-    comma
+    # comma
     manix
 
     # Generally useful

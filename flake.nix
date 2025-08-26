@@ -28,12 +28,14 @@
     posting.url = "github:justdeeevin/posting/flake";
     stylix.url = "github:danth/stylix/release-24.11";
     yazi.url = "github:sxyazi/yazi";
+    nix-index-database.url = "github:nix-community/nix-index-database";
   };
 
   outputs = {
     self,
     nixpkgs,
     nixos-hardware,
+    nix-index-database,
     home-manager,
     lix,
     posting,
@@ -79,6 +81,7 @@
         };
         modules = [
           ./home/rbm/arcturus.nix
+          nix-index-database.homeModules.nix-index
           # stylix.homeModules.stylix
           stylix.homeManagerModules.stylix
           posting.modules.homeManager.default
