@@ -209,9 +209,6 @@
           # "ch.proton.bridge-gui" = samsung;
           # "*ch.proton.bridge-gui" = "tags ${toString (pow2 5)}";
 
-          "Vivaldi-flatpak" = benq;
-          "*Vivaldi-flatpak" = "tags ${toString (pow2 4)}";
-
           "Slack" = samsung;
           "*Slack" = "tags ${toString (pow2 4)}";
 
@@ -243,9 +240,6 @@
           "ghostty.mcgeedia*" = benq;
           "ghostty.projects" = "tags ${toString (pow2 7)}";
           "ghostty.projects*" = benq;
-
-          "ringcentral-embeddable-voice-app" = benq;
-          "*ringcentral-embeddable-voice-app" = "tags ${toString (pow2 5)}";
 
           "ghostty.notesterm" = "tags ${scratchTagString}";
           "ghostty.scratchterm" = "tags ${scratchTagString}";
@@ -279,8 +273,6 @@
           "Picture-in-Picture" = "float";
 
           "qBittorrent *" = "no-float";
-
-          "Vivaldi Settings:*" = "float";
         };
       };
 
@@ -302,7 +294,6 @@
         "qbittorrent"
         # '''qutebrowser --desktop-file-name qutebrowser_ultrawide' ''
         # "qutebrowser"
-        ''~/Downloads/Software/appimages/RingCentral.Embeddable-0.4.1.AppImage''
 
         '''ghostty --class=ghostty.localhost -e tmuxp load -y localhost' ''
         '''ghostty --class=ghostty.notes -e tmuxp load -y notes' ''
@@ -311,7 +302,6 @@
         '''ghostty --class=ghostty.projects -e tmuxp load -y projects' ''
         # '''ghostty --class=ghostty.work -e tmuxp load -y work' ''
 
-        '''flatpak run com.vivaldi.Vivaldi' ''
         "slack"
       ];
     };
