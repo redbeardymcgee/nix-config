@@ -18,7 +18,7 @@
   programs.yazi = {
     enable = true;
     package = inputs.yazi.packages.${pkgs.system}.default;
-    enableFishIntegration = false;
+    enableFishIntegration = true;
     initLua = ./init.lua;
     keymap = import ./keymap.nix;
 
