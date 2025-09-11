@@ -254,7 +254,7 @@
           "*vesktop" = "tags ${toString (pow2 1)}";
 
           "org.gnome.Fractal" = samsung;
-          "*org.gnome.Fractal" = "tags ${toString (pow2 1)}";
+          "*org.gnome.Fractal" = "tags ${toString (pow2 2)}";
 
           "Signal" = samsung;
           "*Signal" = "tags ${toString (pow2 2)}";
