@@ -24,7 +24,7 @@
     ./less.nix
     ./man.nix
     ./nix-index.nix
-    ./nix.nix
+    # ./nix.nix
     ./nvim.nix
     ./posting.nix
     ./rbw.nix
