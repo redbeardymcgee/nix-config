@@ -44,6 +44,10 @@
   } @ inputs: let
     inherit (self) outputs;
     pkgs = nixpkgs.legacyPackages.x86_64-linux;
+    commonModules = [
+      lix.nixosModules.default
+      stylix.nixosModules.stylix
+    ];
   in {
     nixosModules = import ./modules/nixos;
     homeManagerModules = import ./modules/home-manager;
@@ -54,38 +58,43 @@
         specialArgs = {
           inherit inputs outputs;
         };
-        modules = [
-          ./hosts/arcturus
-          lix.nixosModules.default
-          stylix.nixosModules.stylix
-        ];
+        modules =
+          commonModules
+          ++ [
+            ./hosts/arcturus
+          ];
       };
-      # luhman = nixpkgs.lib.nixosSystem {
-      #   specialArgs = {
-      #     inherit inputs outputs;
-      #   };
-      #   modules = [
-      #     ./hosts/luhman
-      #     lix.nixosModules.default
-      #     stylix.nixosModules.stylix
-      #     nixos-hardware.nixosModules.framework-12-13th-gen-intel
-      #   ];
-      # };
+      luhman = nixpkgs.lib.nixosSystem {
+        specialArgs = {
+          inherit inputs outputs;
+        };
+        modules =
+          commonModules
+          ++ [
+            ./hosts/luhman
+            nixos-hardware.nixosModules.framework-12-13th-gen-intel
+          ];
+      };
     };
 
-    homeConfigurations = {
+    homeConfigurations = let
+      commonModules = [
+        nix-index-database.homeModules.nix-index
+        # stylix.homeModules.stylix
+        stylix.homeManagerModules.stylix
+        posting.modules.homeManager.default
+      ];
+    in {
       "rbm@arcturus" = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
         extraSpecialArgs = {
           inherit inputs outputs;
         };
-        modules = [
-          ./home/rbm/arcturus.nix
-          nix-index-database.homeModules.nix-index
-          # stylix.homeModules.stylix
-          stylix.homeManagerModules.stylix
-          posting.modules.homeManager.default
-        ];
+        modules =
+          commonModules
+          ++ [
+            ./home/rbm/arcturus.nix
+          ];
       };
 
       "rbm@luhman" = home-manager.lib.homeManagerConfiguration {
@@ -93,22 +102,11 @@
         extraSpecialArgs = {
           inherit inputs outputs;
         };
-        modules = [
-          ./home/rbm/luhman.nix
-          # stylix.homeModules.stylix
-          stylix.homeManagerModules.stylix
-          posting.modules.homeManager.default
-        ];
-      };
-
-      "rbm@headmaster" = home-manager.lib.homeManagerConfiguration {
-        inherit pkgs;
-        extraSpecialArgs = {
-          inherit inputs outputs;
-        };
-        modules = [
-          ./home/rbm/headmaster.nix
-        ];
+        modules =
+          commonModules
+          ++ [
+            ./home/rbm/luhman.nix
+          ];
       };
     };
   };
