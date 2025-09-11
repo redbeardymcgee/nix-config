@@ -12,7 +12,6 @@
       ./stylix.nix
       ./xdg-mimeapps.nix
       ./xdg-user-dirs.nix
-
     ]
     ++ (builtins.attrValues outputs.homeManagerModules);
 
