@@ -16,8 +16,7 @@
 
       gpu = {
         apply_gpu_optimisations = "accept-responsibility";
-        gpu_device = 2;
-        nv_powermizer_mode = 1;
+        gpu_device = 0;
       };
 
       cpu = {

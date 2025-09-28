@@ -3,15 +3,17 @@
   pkgs,
   ...
 }: {
-  programs.java.enable = true;
+  # programs.gamescope = {
+  #   enable = true;
+  #   capSysNice = true;
+  # };
 
-  programs.gamescope = {
+  programs.gamemode = {
     enable = true;
-    capSysNice = true;
   };
 
   programs.steam = {
-    enable = false;
+    enable = true;
     # package = pkgs.steam.overrideAttrs (old: {
     #   postInstall =
     #     old.postInstall
@@ -20,8 +22,8 @@
     #     '';
     # });
     package = pkgs.steam.override {
-      extraPkgs = pkgs:
-        with pkgs; [
+      extraPkgs = pkgs':
+        with pkgs'; [
           dxvk
           gamemode
           harfbuzz
@@ -38,19 +40,18 @@
           libkrb5
           keyutils
         ];
-      # withJava = true;
-      # extraLibraries = pkgs: [pkgs.gperftools];
+      # extraLibraries = pkgs': [pkgs'.gperftools];
       # Automatically enable gamemode whenever Steam is running
       extraProfile = ''
         export LD_LIBRARY_PATH="${lib.getLib (pkgs.gamemode)}/lib:$LD_LIBRARY_PATH"
       '';
     };
-    protontricks.enable = true;
+    # protontricks.enable = true;
     extest.enable = true;
     localNetworkGameTransfers.openFirewall = true;
-    remotePlay.openFirewall = true;
-    gamescopeSession = {
-      enable = true;
-    };
+    # remotePlay.openFirewall = true;
+    # gamescopeSession = {
+    #   enable = true;
+    # };
   };
 }
