@@ -45,7 +45,7 @@ in {
       };
       FirefoxHome = {
         Locked = true;
-        Search = false;
+        Search = true;
         TopSites = false;
         SponsoredTopSites = false;
         Highlights = false;
@@ -141,20 +141,18 @@ in {
             fastforwardteam
             firemonkey
             image-search-options
-            # libredirect
+            libredirect
             linkwarden
             multi-account-containers
             passbolt
             pronoundb
             protondb-for-steam
-            purpleadblock
             react-devtools
             refined-github
             seventv
             skip-redirect
             sponsorblock
             # tridactyl
-            # twitch-auto-points
             ublock-origin
           ];
         };
@@ -209,7 +207,7 @@ in {
               definedAliases = ["@nw" "@nixwiki"];
               urls = [
                 {
-                  template = "https://wiki.nixos.org/w/index.php?search={searchTerms}";
+                  template = "https://wiki.nixos.org/w/index.php";
                   params = [
                     {
                       name = "search";
@@ -245,9 +243,9 @@ in {
         settings = {
           # "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
 
-          "browser.startup.page" = 3;
+          "browser.startup.page" = 3; # Restore previous session
 
-          "extensions.autoDisableScopes" = 0;
+          "extensions.autoDisableScopes" = 0; # Auto-enable extensions
           "extensions.update.autoUpdateDefault" = false;
           "extensions.update.enabled" = false;
 
@@ -255,7 +253,7 @@ in {
           "sidebar.verticalTabs" = true;
           "sidebar.verticalTabs.dragToPinPromo.dismissed" = true;
           "sidebar.visibility" = "always-show";
-          "sidebar.position_start" = false;
+          "sidebar.position_start" = false; # Sidebar position right
           "sidebar.notification.badge.aichat" = false;
           "sidebar.new-sidebar.has-used" = true;
         };
