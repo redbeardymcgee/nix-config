@@ -12,21 +12,22 @@
   };
 
   inputs = {
-    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-25.05";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-25.05";
     # nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.11";
+    # nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.11";
     systems.url = "github:nix-systems/default-linux";
-    nixos-hardware.url = "github:NixOS/nixos-hardware/master";
-    home-manager.url = "github:nix-community/home-manager/release-24.11";
-    lix = {
-      url = "https://git.lix.systems/lix-project/nixos-module/archive/2.93.0.tar.gz";
-    };
+    nixos-hardware.url = "github:NixOS/nixos-hardware";
+    # home-manager.url = "github:nix-community/home-manager/release-24.11";
+    home-manager.url = "github:nix-community/home-manager/release-25.05";
+    # home-manager.url = "github:nix-community/home-manager";
+    # lix.url = "https://git.lix.systems/lix-project/nixos-module/archive/2.93.0.tar.gz";
     firefox-addons.url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
     # ghostty.url = "github:ghostty-org/ghostty";
-    nixcats.url = "git+file:/mnt/2tb/repos/nixcats";
-    # nixcats.url = "github:redbeardymcgee/nixcats";
+    # nixcats.url = "git+file:/mnt/2tb/repos/nixcats";
+    nixcats.url = "github:redbeardymcgee/nixcats";
     posting.url = "github:justdeeevin/posting/flake";
-    stylix.url = "github:danth/stylix/release-24.11";
+    stylix.url = "github:danth/stylix/release-25.05";
+    # stylix.url = "github:danth/stylix";
     yazi.url = "github:sxyazi/yazi";
     nix-index-database.url = "github:nix-community/nix-index-database";
   };
@@ -37,7 +38,7 @@
     nixos-hardware,
     nix-index-database,
     home-manager,
-    lix,
+    # lix,
     posting,
     stylix,
     ...
@@ -45,7 +46,7 @@
     inherit (self) outputs;
     pkgs = nixpkgs.legacyPackages.x86_64-linux;
     commonModules = [
-      lix.nixosModules.default
+      # lix.nixosModules.default
       stylix.nixosModules.stylix
     ];
   in {
@@ -75,13 +76,24 @@
             nixos-hardware.nixosModules.framework-12-13th-gen-intel
           ];
       };
+      toliman = nixpkgs.lib.nixosSystem {
+        specialArgs = {
+          inherit inputs outputs;
+        };
+        modules =
+          commonModules
+          ++ [
+            ./hosts/toliman
+            nixos-hardware.nixosModules.framework-desktop-amd-ai-max-300-series
+          ];
+      };
     };
 
     homeConfigurations = let
       commonModules = [
         nix-index-database.homeModules.nix-index
-        # stylix.homeModules.stylix
-        stylix.homeManagerModules.stylix
+        stylix.homeModules.stylix
+        # stylix.homeManagerModules.stylix
         posting.modules.homeManager.default
       ];
     in {
@@ -106,6 +118,17 @@
           commonModules
           ++ [
             ./home/rbm/luhman.nix
+          ];
+      };
+      "rbm@toliman" = home-manager.lib.homeManagerConfiguration {
+        inherit pkgs;
+        extraSpecialArgs = {
+          inherit inputs outputs;
+        };
+        modules =
+          commonModules
+          ++ [
+            ./home/rbm/toliman.nix
           ];
       };
     };

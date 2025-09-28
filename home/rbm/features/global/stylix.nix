@@ -16,8 +16,8 @@
       #   name = "Noto Color Emoji";
       # };
       monospace = {
-        # package = pkgs.nerd-fonts.fira-code;
-        package = pkgs.nerdfonts.override {fonts=["FiraCode"];};
+        package = pkgs.nerd-fonts.fira-code;
+        # package = pkgs.nerdfonts.override {fonts=["FiraCode"];};
         name = "FiraCode Nerd Font Mono";
       };
       sizes = {

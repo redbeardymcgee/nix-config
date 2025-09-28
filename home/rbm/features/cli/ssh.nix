@@ -33,25 +33,16 @@
         User foundry
         IdentityFile ~/.ssh/arcturus-to-mythicdnor
 
-      Host alta-git
-        Hostname github.com
-        User git
-        IdentityFile ~/.ssh/arcturus-to-alta@github
-
-      Host fedora
-        Hostname 192.168.1.55
-        IdentityFile ~/.ssh/arcturus-to-fedora@perseus
-
       Host forgejo
         Hostname git.mcgee.red
         User git
         Port 60022
-        IdentityFile ~/.ssh/arcturus-to-forgejo
+        IdentityFile ~/.ssh/toliman-to-forgejo
 
       Host git.mcgee.red
         User git
         Port 60022
-        IdentityFile ~/.ssh/arcturus-to-forgejo
+        IdentityFile ~/.ssh/toliman-to-forgejo
     '';
   };
 }

@@ -285,24 +285,24 @@
         ## TODO: riverguile seems to have more features
         '''rivercarro -outer-gaps 0 -per-tag -main-location right' ''
         ## TODO: These both have a real service/config in hm 25.05
-        '''way-displays > "$XDG_RUNTIME_DIR/way-displays.$XDG_VTNR.log" 2>&1' ''
+        # '''way-displays > "$XDG_RUNTIME_DIR/way-displays.$XDG_VTNR.log" 2>&1' ''
         "wpaperd"
         "vesktop"
         # "'firefox --name firefox_ultrawide'"
-        '''flatpak run org.mozilla.Thunderbird' ''
-        '''flatpak run app.zen_browser.zen' ''
-        "qbittorrent"
+        # '''flatpak run org.mozilla.Thunderbird' ''
+        # '''flatpak run app.zen_browser.zen' ''
+        # "qbittorrent"
         # '''qutebrowser --desktop-file-name qutebrowser_ultrawide' ''
         # "qutebrowser"
 
-        '''ghostty --class=ghostty.localhost -e tmuxp load -y localhost' ''
-        '''ghostty --class=ghostty.notes -e tmuxp load -y notes' ''
-        '''ghostty --class=ghostty.perseus -e tmuxp load -y perseus' ''
-        '''ghostty --class=ghostty.mcgeedia -e tmuxp load -y mcgeedia' ''
-        '''ghostty --class=ghostty.projects -e tmuxp load -y projects' ''
+        # '''ghostty --class=ghostty.localhost -e tmuxp load -y localhost' ''
+        # '''ghostty --class=ghostty.notes -e tmuxp load -y notes' ''
+        # '''ghostty --class=ghostty.perseus -e tmuxp load -y perseus' ''
+        # '''ghostty --class=ghostty.mcgeedia -e tmuxp load -y mcgeedia' ''
+        # '''ghostty --class=ghostty.projects -e tmuxp load -y projects' ''
         # '''ghostty --class=ghostty.work -e tmuxp load -y work' ''
-
-        "slack"
+        "ghostty"
+        # "slack"
       ];
     };
   };

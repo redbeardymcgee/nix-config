@@ -31,7 +31,8 @@
     networks = {
       "10-lan" = {
         linkConfig.RequiredForOnline = "routable";
-        matchConfig.Name = "enp0s31f6";
+        # matchConfig.Name = "enp0s31f6";
+        matchConfig.Name = "enp191s0";
         networkConfig = {
           DHCP = "yes";
           IPv6AcceptRA = true;

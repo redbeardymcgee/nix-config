@@ -4,7 +4,7 @@
   ...
 }: {
   imports = [
-    # ./firefox
+    ./firefox
     # ./chromium.nix
     ./kitty.nix
     ./thunderbird.nix
@@ -28,6 +28,7 @@
         # google-chrome # TODO: allowUnfree isn't working
         jellyfin-media-player
         # kdePackages.kstatusnotifieritem
+        ladybird
         moonlight-qt
         mpv
         # openshot-qt # nix run github:nixos/nixpkgs/nixos-24.05#openshot-qt

@@ -10,6 +10,7 @@
     ./bat.nix
     ./browsh.nix
     ./bottom.nix
+    ./comma.nix
     ./direnv.nix
     ./eza.nix
     ./fastfetch

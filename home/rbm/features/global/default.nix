@@ -32,8 +32,8 @@
     preferXdgDirectories = true;
 
     packages = with pkgs; [
-      # pkgs.nerd-fonts.fira-code
-      nerdfonts
+      nerd-fonts.fira-code
+      # nerdfonts
       gcc
       pwvucontrol
       unzip
@@ -46,7 +46,7 @@
     ];
 
     sessionVariables = {
-      NH_FLAKE = "/mnt/2tb/nix-config";
+      NH_FLAKE = "/home/rbm/nix-config";
       EDITOR = "redvim";
       VISUAL = "redvim";
       NODE_PATH = "$HOME/.local/lib/node_modules";

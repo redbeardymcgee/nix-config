@@ -1,14 +1,14 @@
 {
   inputs,
   lib,
-  # pkgs,
+  pkgs,
   ...
 }: {
   nix = let
     flakeInputs = lib.filterAttrs (_: lib.isType "flake") inputs;
   in {
     # NOTE: Switch back to regular nix if `lix` goes sour
-    # package = lib.mkDefault pkgs.nixVersions.latest;
+    package = lib.mkDefault pkgs.nixVersions.latest;
 
     # NOTE: Useful tools like having channels and I like having tools that work
     #       without switching to my browser for documentation every time

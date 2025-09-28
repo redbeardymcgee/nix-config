@@ -1,45 +1,40 @@
-{pkgs, ...}: {
-  # services.way-displays = let
-  # programs.way-displays = let
-  #   benq = "BNQ BenQ XL2420Z 41E09757SL0";
-  #   samsung = "Samsung Electric Company SE790C";
-  # in {
-  home.packages = [pkgs.way-displays];
+{
+  services.way-displays = {
+    enable = true;
+    settings = let
+      asus = "ASUSTek COMPUTER INC VG27AQ3A T6LMAV005817";
+      samsung = "Samsung Electric Company SE790C";
+    in {
+      MODE = [
+        {
+          NAME_DESC = asus;
+          MAX = true;
+        }
+        {
+          NAME_DESC = samsung;
+          MAX = true;
+        }
+      ];
 
-  xdg.configFile."way-displays/cfg.yaml".source = let
-    benq = "BNQ BenQ XL2420Z 41E09757SL0";
-    samsung = "Samsung Electric Company SE790C";
-  in
-    (pkgs.formats.yaml {}).generate "cfg.yaml" {
-      enable = true;
-      settings = {
-        MODE = [
-          {
-            NAME_DESC = benq;
-            MAX = true;
-          }
-          {
-            NAME_DESC = samsung;
-            MAX = true;
-          }
-        ];
+      ORDER = [
+        samsung
+        asus
+      ];
 
-        ORDER = [
-          samsung
-          benq
-        ];
+      SCALE = [
+        {
+          NAME_DESC = samsung;
+          SCALE = 1.50;
+        }
+        {
+          NAME_DESC = asus;
+          SCALE = 1.50;
+        }
+      ];
 
-        SCALE = [
-          {
-            NAME_DESC = samsung;
-            SCALE = 1.50;
-          }
-        ];
-
-        VRR_OFF = [
-          samsung
-          benq
-        ];
-      };
+      VRR_OFF = [
+        samsung
+      ];
     };
+  };
 }
