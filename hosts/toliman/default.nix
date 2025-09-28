@@ -51,7 +51,7 @@
 
   hardware = {
     enableRedistributableFirmware = true;
-    xpadneo.enable = true;
+    xone.enable = true;
 
     bluetooth = {
       enable = true;
@@ -62,24 +62,24 @@
         };
       };
     };
-    };
-    services.pulseaudio = {
-    # pulseaudio = {
-      enable = false;
-      package = pkgs.pulseaudioFull;
+  };
 
-      configFile = pkgs.writeText "default.pa" ''
-        load-module module-bluetooth-policy
-        load-module module-bluetooth-discover
-      '';
-
-      extraConfig = ''
-        load-module module-switch-on-connect
-      '';
-    };
-  # };
   networking = {
     domain = "home";
     hostName = "toliman";
+  };
+
+  services.pulseaudio = {
+    enable = false;
+    package = pkgs.pulseaudioFull;
+
+    configFile = pkgs.writeText "default.pa" ''
+      load-module module-bluetooth-policy
+      load-module module-bluetooth-discover
+    '';
+
+    extraConfig = ''
+      load-module module-switch-on-connect
+    '';
   };
 }
