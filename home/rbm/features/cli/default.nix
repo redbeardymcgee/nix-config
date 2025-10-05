@@ -66,13 +66,14 @@
     yq
 
     # Editor support
-    cargo
-    nodejs
-    python3
-    tree-sitter
+    # cargo
+    # nodejs
+    # python3
+    # tree-sitter
 
     # Yazi deps but generally useful
     exiftool
+    file
     glow
     hexyl
     miller
