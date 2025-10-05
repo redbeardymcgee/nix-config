@@ -33,8 +33,8 @@
       officialPluginsSrc = pkgs.fetchgit {
         url = "https://github.com/yazi-rs/plugins.git";
         sparseCheckout = map (p: "${p}.yazi") officialPluginsNames;
-        rev = "aeca767ec27bfbea66873d667a729791de18f364";
-        hash = "sha256-+BL7ALt8UmJNDP0wVWBHumxss7JvjG5wgiorVbFHn8w=";
+        rev = "d1c8baab86100afb708694d22b13901b9f9baf00";
+        hash = "sha256-tPoZE1M/LCNQS07VRJBJUHgU8RCRa8eeN3h3IK04l2w=";
       };
 
       officialPlugins =
@@ -54,20 +54,20 @@
           augment-command = fetchFromGitHub {
             owner = "hankertrix";
             repo = "augment-command.yazi";
-            rev = "a03a23713aecaa25c58e830eead34461f1d66853";
-            hash = "sha256-Zyd4Q003rT4mfFUqt6dzykUYTGeUc++q7qT0D7GKoFA=";
+            rev = "120406f79b6a5bf4db6120dd99c1106008ada5cf";
+            hash = "sha256-t9X7cNrMR3fFqiM13COQbBDHYr8UKgxW708V6ndZVgY=";
           };
           allmytoes = fetchFromGitHub {
             owner = "sonico98";
             repo = "allmytoes.yazi";
-            rev = "dd7895d833dc062785506b171305d7f6940ada65";
-            hash = "sha256-T1Zx+K/0qHD5iAOhV2mG7amjNLLFzjLxuAx192FCLEk=";
+            rev = "e9697528fa446521927a7e039e3d4a01a85eb20f";
+            hash = "sha256-LekO13LU18lfuIuY7AgGnjLfRZw16Ap/tBEkQQYKp8g=";
           };
           exifaudio = fetchFromGitHub {
             owner = "sonico98";
             repo = "exifaudio.yazi";
-            rev = "e766cd273246612fe71fc18d2126619a41273c32";
-            hash = "sha256-aniuY14pXcoaW6YkUwt7hTl9mWjl5HoOPhHkuY4ooAw=";
+            rev = "4506f9d5032e714c0689be09d566dd877b9d464e";
+            hash = "sha256-RWCqWBpbmU3sh/A+LBJPXL/AY292blKb/zZXGvIA5/o=";
           };
           glow = fetchFromGitHub {
             owner = "reledia";
@@ -90,14 +90,14 @@
           ouch = fetchFromGitHub {
             owner = "ndtoan96";
             repo = "ouch.yazi";
-            rev = "1ee69a56da3c4b90ec8716dd9dd6b82e7a944614";
-            hash = "sha256-4KZeDkMXlhUV0Zh+VGBtz9kFPGOWCexYVuKUSCN463o=";
+            rev = "0742fffea5229271164016bf96fb599d861972db";
+            hash = "sha256-C0wG8NQ+zjAMfd+J39Uvs3K4U6e3Qpo1yLPm2xcsAaI=";
           };
           torrent-preview = fetchFromGitHub {
             owner = "kirasok";
             repo = "torrent-preview.yazi";
-            rev = "4ca5996a8264457cbefff8e430acfca4900a0453";
-            hash = "sha256-vaeOdNa56wwzBV6DgJjprRlrAcz2yGUYsOveTJKFv6M=";
+            rev = "f46528243c458de3ffce38c44607d5a0cde67559";
+            hash = "sha256-VhJvNRKHxVla4v2JJeSnP0MOMBFSm4k7gfqjrHOMVlo=";
           };
           yamb = fetchFromGitHub {
             owner = "h-hg";
@@ -108,8 +108,8 @@
           lazygit = fetchFromGitHub {
             owner = "Lil-Dank";
             repo = "lazygit.yazi";
-            rev = "7a08a0988c2b7481d3f267f3bdc58080e6047e7d";
-            hash = "sha256-OJJPgpSaUHYz8a9opVLCds+VZsK1B6T+pSRJyVgYNy8=";
+            rev = "8f37dc5795f165021098b17d797c7b8f510aeca9";
+            hash = "sha256-rR7SMTtQYrvQjhkzulDaNH/LAA77UnXkcZ50WwBX2Uw=";
           };
         };
 
