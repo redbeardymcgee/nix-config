@@ -187,8 +187,8 @@
       };
 
       rule-add = let
-        benq = "BNQ BenQ XL2420Z 41E09757SL0";
-        samsung = "Samsung Electric Company SE790C Unknown";
+        asus = "output ASUSTek COMPUTER INC VG27AQ3A T6LMAV005817";
+        samsung = "output Samsung Electric Company SE790C Unknown";
       in {
         "-app-id" = {
           # "firefox_ultrasamsung" = "output DP-1";
@@ -200,11 +200,11 @@
           "qutebrowser_ultrawide" = samsung;
           "*qutebrowser_ultrawide" = "tags ${toString (pow2 0)}";
 
-          # "thunderbird" = samsung;
-          # "*thunderbird" = "tags ${toString (pow2 5)}";
+          "thunderbird" = samsung;
+          "*thunderbird" = "tags ${toString (pow2 4)}";
 
-          "org.mozilla.Thunderbird" = samsung;
-          "*org.mozilla.Thunderbird" = "tags ${toString (pow2 4)}";
+          # "org.mozilla.Thunderbird" = samsung;
+          # "*org.mozilla.Thunderbird" = "tags ${toString (pow2 4)}";
 
           # "ch.proton.bridge-gui" = samsung;
           # "*ch.proton.bridge-gui" = "tags ${toString (pow2 5)}";
@@ -213,12 +213,12 @@
           "*Slack" = "tags ${toString (pow2 4)}";
 
           "*com.moonlight_stream.Moonlight" = "tags ${toString (pow2 6)}";
-          "com.moonlight_stream.Moonlight" = benq;
+          "com.moonlight_stream.Moonlight" = asus;
 
           "Nextcloud Talk" = samsung;
           "*Nextcloud Talk" = "tags ${toString (pow2 2)}";
 
-          # "terminal_*" = benq;
+          # "terminal_*" = asus;
           # "terminal_localhost" = "tags ${toString (pow2 0)}";
           # "terminal_notes" = "tags ${toString (pow2 1)}";
           # "terminal_perseus" = "tags ${toString (pow2 2)}";
@@ -229,17 +229,17 @@
           # "scratchterm" = "tags ${scratchTagString}";
           # "*scratchterm" = "float";
 
-          # "ghostty.*" = benq;
+          # "ghostty.*" = asus;
           "ghostty.localhost" = "tags ${toString (pow2 0)}";
-          "ghostty.localhost*" = benq;
+          "ghostty.localhost*" = asus;
           "ghostty.notes" = "tags ${toString (pow2 1)}";
-          "ghostty.notes*" = benq;
+          "ghostty.notes*" = asus;
           "ghostty.perseus" = "tags ${toString (pow2 2)}";
-          "ghostty.perseus*" = benq;
+          "ghostty.perseus*" = asus;
           "ghostty.mcgeedia" = "tags ${toString (pow2 3)}";
-          "ghostty.mcgeedia*" = benq;
+          "ghostty.mcgeedia*" = asus;
           "ghostty.projects" = "tags ${toString (pow2 7)}";
-          "ghostty.projects*" = benq;
+          "ghostty.projects*" = asus;
 
           "ghostty.notesterm" = "tags ${scratchTagString}";
           "ghostty.scratchterm" = "tags ${scratchTagString}";
@@ -301,7 +301,6 @@
         # '''ghostty --class=ghostty.mcgeedia -e tmuxp load -y mcgeedia' ''
         # '''ghostty --class=ghostty.projects -e tmuxp load -y projects' ''
         # '''ghostty --class=ghostty.work -e tmuxp load -y work' ''
-        "ghostty"
         # "slack"
       ];
     };
