@@ -39,7 +39,7 @@
         qpwgraph
         remmina
         streamcontroller
-        # signal-desktop
+        signal-desktop
         spotify
         # slack # TODO: allowUnfree isn't working
         vlc
