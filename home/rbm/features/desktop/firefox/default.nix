@@ -80,6 +80,14 @@
             private_browsing = true;
           };
 
+          "container-workspaces@mike.lloyd"= {
+            # Container Workspaces
+            default_area = "navbar";
+            install_url = "https://addons.mozilla.org/firefox/downloads/latest/container-workspaces@mike.lloyd/latest.xpi";
+            installation_mode = "force_installed";
+            private_browsing = true;
+          };
+
           "deArrow@ajay.app" = {
             # DeArrow
             default_area = "menupanel";
@@ -93,7 +101,7 @@
             default_area = "menupanel";
             install_url = "https://addons.mozilla.org/firefox/downloads/latest/firefox-addon@pronoundb.org/latest.xpi";
             installation_mode = "force_installed";
-            private_browsing = true;
+            private_browsing = false;
           };
 
           "FirefoxColor@mozilla.com" = {
@@ -109,7 +117,7 @@
             default_area = "navbar";
             install_url = "https://addons.mozilla.org/firefox/downloads/latest/firemonkey@eros.man/latest.xpi";
             installation_mode = "force_installed";
-            private_browsing = true;
+            private_browsing = false;
           };
 
           "gdpr@cavi.au.dk" = {
@@ -133,15 +141,15 @@
             default_area = "menupanel";
             install_url = "https://addons.mozilla.org/firefox/downloads/latest/jordanlinkwarden@gmail.com/latest.xpi";
             installation_mode = "force_installed";
-            private_browsing = true;
+            private_browsing = false;
           };
 
           "moz-addon-prod@7tv.app" = {
             # SevenTV
             default_area = "menupanel";
-            install_url = "https://addons.mozilla.org/firefox/downloads/latest/moz-addon-prod@7tv.app/latest.xpi";
+            install_url = "https://extension.7tv.gg/v3.0.9/ext.xpi";
             installation_mode = "force_installed";
-            private_browsing = true;
+            private_browsing = false;
           };
 
           "passbolt@passbolt.com" = {
@@ -168,13 +176,13 @@
             private_browsing = true;
           };
 
-          "workspaces@fm-sys" = {
-            # Workspaces
-            default_area = "navbar";
-            install_url = "https://addons.mozilla.org/firefox/downloads/latest/workspaces@fm-sys/latest.xpi";
-            installation_mode = "force_installed";
-            private_browsing = true;
-          };
+          # "workspaces@fm-sys" = {
+          #   # Workspaces
+          #   default_area = "navbar";
+          #   install_url = "https://addons.mozilla.org/firefox/downloads/latest/workspaces@fm-sys/latest.xpi";
+          #   installation_mode = "force_installed";
+          #   private_browsing = true;
+          # };
 
           "{1be309c5-3e4f-4b99-927d-bb500eb4fa88}" = {
             # Augmented Steam
@@ -229,7 +237,7 @@
             default_area = "menupanel";
             install_url = "https://addons.mozilla.org/firefox/downloads/latest/{30280527-c46c-4e03-bb16-2e3ed94fa57c}/latest.xpi";
             installation_mode = "force_installed";
-            private_browsing = true;
+            private_browsing = false;
           };
 
           "{a4c4eda4-fb84-4a84-b4a1-f7c1cbf2a1ad}" = {
@@ -250,7 +258,7 @@
 
           "7esoorv3@alefvanoon.anonaddy.me" = {
             # LibRedirect
-            default_area = "navbar";
+            default_area = "menupanel";
             install_url = "https://addons.mozilla.org/firefox/downloads/latest/7esoorv3@alefvanoon.anonaddy.me/latest.xpi";
             installation_mode = "force_installed";
             private_browsing = true;
@@ -261,7 +269,7 @@
             default_area = "menupanel";
             install_url = "https://addons.mozilla.org/firefox/downloads/latest/@react-devtools/latest.xpi";
             installation_mode = "force_installed";
-            private_browsing = true;
+            private_browsing = false;
           };
 
           "@testpilot-containers" = {
@@ -269,7 +277,7 @@
             default_area = "menupanel";
             install_url = "https://addons.mozilla.org/firefox/downloads/latest/@testpilot-containers/latest.xpi";
             installation_mode = "force_installed";
-            private_browsing = true;
+            private_browsing = false;
           };
         };
       };
@@ -299,7 +307,7 @@
         containers = {
           default = {
             id = 0;
-            name = "Default";
+            name = "General";
             color = "toolbar";
             icon = "circle";
           };
@@ -341,7 +349,7 @@
           engines = {
             searxng = {
               name = "SearxNG";
-              iconMapObj."16" = "https://searxng.mcgee.red/favicon.png";
+              icon = "https://searxng.mcgee.red/favicon.png";
               definedAliases = ["@searxng" "@mcgee"];
 
               urls = [
@@ -359,11 +367,32 @@
 
             nixPackages = {
               name = "Nix Packages";
-              icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
+              icon = "https://nixos.org/favicon.png";
               definedAliases = ["@np" "@nixpkgs"];
               urls = [
                 {
                   template = "https://search.nixos.org/packages";
+                  params = [
+                    {
+                      name = "type";
+                      value = "packages";
+                    }
+                    {
+                      name = "query";
+                      value = "{searchTerms}";
+                    }
+                  ];
+                }
+              ];
+            };
+
+            nixOptions = {
+              name = "Nix Options";
+              icon = "https://nixos.org/favicon.png";
+              definedAliases = ["@no" "@nixopts"];
+              urls = [
+                {
+                  template = "https://search.nixos.org/options";
                   params = [
                     {
                       name = "type";
@@ -398,6 +427,7 @@
             homeManager = {
               name = "Home Manager Options";
               definedAliases = ["@hm" "@homemanager"];
+              icon = "https://home-manager-options.extranix.com/images/favicon.png";
               urls = [
                 {
                   template = "https://home-manager-options.extranix.com/";
@@ -418,8 +448,6 @@
         };
 
         settings = {
-          # "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
-
           "browser.startup.page" = 3; # Restore previous session
 
           "browser.download.useDownloadDir" = false; # Ask for download location
