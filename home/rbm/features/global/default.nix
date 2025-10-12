@@ -33,7 +33,6 @@
 
     packages = with pkgs; [
       nerd-fonts.fira-code
-      # nerdfonts
       gcc
       pwvucontrol
       unzip
@@ -46,11 +45,11 @@
     ];
 
     sessionVariables = {
-      NH_FLAKE = "/home/rbm/nix-config";
+      NH_FLAKE = "${config.home.homeDirectory}/src/redbeardymcgee/nix-config";
       EDITOR = "redvim";
       VISUAL = "redvim";
-      NODE_PATH = "$HOME/.local/lib/node_modules";
-      XDG_DATA_DIRS = "$XDG_DATA_DIRS:/usr/share:/var/lib/flatpak/exports/share:$HOME/.local/share/flatpak/exports/share";
+      NODE_PATH = "${config.home.homeDirectory}/.local/lib/node_modules";
+      XDG_DATA_DIRS = "$XDG_DATA_DIRS:/usr/share:/var/lib/flatpak/exports/share:${config.home.homeDirectory}/.local/share/flatpak/exports/share";
     };
   };
 }
