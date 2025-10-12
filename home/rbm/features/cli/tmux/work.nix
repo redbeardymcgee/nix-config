@@ -1,7 +1,7 @@
 {pkgs, ...}: {
   xdg.configFile = {
     "tmuxp/work.yaml" = {
-      enable = true;
+      enable = false;
 
       source = (pkgs.formats.yaml {}).generate "work.yaml" {
         session_name = "work 󱚾";

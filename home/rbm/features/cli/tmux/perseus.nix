@@ -5,39 +5,25 @@
       source = (pkgs.formats.yaml {}).generate "perseus.yaml" {
         session_name = "srv  ";
         windows = let
-          # layout = "7723,174x42,0,0{61x42,0,0,6,112x42,62,0,13}";
           layout = "fd95,212x55,0,0{105x55,0,0,38,106x55,106,0,39}";
           options = {
             automatic-rename = false;
             remain-on-exit = true;
           };
         in [
-          {
-            inherit options;
-            window_name = "monitor";
-            window_index = 0;
-            panes = [
-              {
-                shell_command = [
-                  "ssh perseus"
-                ];
-              }
-            ];
-          }
-
-          {
-            inherit layout options;
-            window_name = "host";
-            panes = [
-              {
-                shell_command = ["ssh perseus"];
-              }
-
-              {
-                shell_command = ["ssh perseus"];
-              }
-            ];
-          }
+          # {
+          #   inherit layout options;
+          #   window_name = "host";
+          #   panes = [
+          #     {
+          #       shell_command = ["ssh perseus tmux attach"];
+          #     }
+          #
+          #     {
+          #       shell_command = ["ssh perseus"];
+          #     }
+          #   ];
+          # }
 
           {
             inherit layout options;
@@ -46,32 +32,33 @@
             panes = [
               {
                 focus = true;
-                start_directory = "/mnt/2tb/repos/perseus";
+                start_directory = "~/src/redbeardymcgee/podbox";
                 shell_command = [
                   "nix develop -f shell.nix"
+                  "sleep 1"
                   "redvim ."
                 ];
               }
 
               {
                 focus = true;
-                shell_command = ["ssh perseus"];
+                shell_command = ["ssh -t perseus tmux attach"];
               }
             ];
           }
-          {
-            inherit options;
-            window_name = "dox";
-            panes = [
-              {
-                focus = true;
-                start_directory = "/mnt/2tb/repos/redbeardymcgee/poddox";
-                shell_command = [
-                  "redvim ."
-                ];
-              }
-            ];
-          }
+          # {
+          #   inherit options;
+          #   window_name = "dox";
+          #   panes = [
+          #     {
+          #       focus = true;
+          #       start_directory = "~/src/repos/redbeardymcgee/poddox";
+          #       shell_command = [
+          #         "redvim ."
+          #       ];
+          #     }
+          #   ];
+          # }
         ];
       };
     };

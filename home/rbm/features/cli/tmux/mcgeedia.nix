@@ -46,11 +46,14 @@
             panes = [
               {
                 start_directory = "$XDG_DOCUMENTS_DIR/Notebooks/McGeedia";
-                focus = true;
-                shell = "~/.nix-profile/bin/redvim .";
+                shell_command = [
+                  "sleep 1"
+                  "redvim ."
+                ];
               }
 
               {
+                focus = true;
                 shell_command = ["ssh mcgeedia"];
               }
             ];
@@ -72,6 +75,7 @@
               {
                 shell_command = [
                   "ssh mcgeedia"
+                  "cd /opt/containers"
                 ];
               }
             ];

@@ -28,11 +28,14 @@
           {
             inherit layout options;
             window_name = "flake";
-            start_directory = "/mnt/2tb/nix-config";
+            start_directory = "~/src/redbeardymcgee/nix-config";
             focus = true;
             panes = [
               {
-                shell = "~/.nix-profile/bin/redvim .";
+                shell_command = [
+                  "sleep 1"
+                  "redvim ."
+                ];
                 focus = true;
               }
               "blank"
