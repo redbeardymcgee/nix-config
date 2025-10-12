@@ -13,25 +13,25 @@
     extraConfig = ''
       Host github.com
         User git
-        IdentityFile ~/.ssh/arcturus-to-github
+        IdentityFile ~/.ssh/toliman-to-github
 
       Host gitlab.com
         User git
-        IdentityFile ~/.ssh/arcturus-to-gitlab
+        IdentityFile ~/.ssh/toliman-to-gitlab
 
       Host mcgeedia
         Hostname media.mcgee.network
-        IdentityFile ~/.ssh/arcturus-to-mcgeedia
+        IdentityFile ~/.ssh/toliman-to-mcgeedia
 
       Host perseus
         Hostname 203.0.113.250
-        IdentityFile ~/.ssh/arcturus-to-perseus
+        IdentityFile ~/.ssh/toliman-to-perseus
 
       Host mythicdnor
         Hostname mythicdnor.ddns.net
         Port 61222
         User foundry
-        IdentityFile ~/.ssh/arcturus-to-mythicdnor
+        IdentityFile ~/.ssh/toliman-to-mythicdnor
 
       Host forgejo
         Hostname git.mcgee.red
