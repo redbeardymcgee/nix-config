@@ -187,68 +187,44 @@
       };
 
       rule-add = let
-        asus = "output ASUSTek COMPUTER INC VG27AQ3A T6LMAV005817";
-        samsung = "output Samsung Electric Company SE790C Unknown";
+        asus = "output 'ASUSTek COMPUTER INC VG27AQ3A T6LMAV005817'";
+        samsung = "output 'Samsung Electric Company SE790C Unknown'";
       in {
         "-app-id" = {
-          # "firefox_ultrasamsung" = "output DP-1";
-          # "*firefox_ultrasamsung" = "tags ${toString (pow2 0)}";
-
-          "zen" = samsung;
-          "*zen" = "tags ${toString (pow2 1)}";
-
-          "qutebrowser_ultrawide" = samsung;
-          "*qutebrowser_ultrawide" = "tags ${toString (pow2 0)}";
+          "firefox" = samsung;
+          "*firefox" = "tags ${toString (pow2 1)}";
 
           "thunderbird" = samsung;
           "*thunderbird" = "tags ${toString (pow2 4)}";
 
-          # "org.mozilla.Thunderbird" = samsung;
-          # "*org.mozilla.Thunderbird" = "tags ${toString (pow2 4)}";
-
-          # "ch.proton.bridge-gui" = samsung;
-          # "*ch.proton.bridge-gui" = "tags ${toString (pow2 5)}";
-
           "Slack" = samsung;
-          "*Slack" = "tags ${toString (pow2 4)}";
+          "*Slack" = "tags ${toString (pow2 2)}";
 
-          "*com.moonlight_stream.Moonlight" = "tags ${toString (pow2 6)}";
+          "signal" = samsung;
+          "*signal" = "tags ${toString (pow2 2)}";
+
           "com.moonlight_stream.Moonlight" = asus;
+          "*com.moonlight_stream.Moonlight" = "tags ${toString (pow2 7)}";
+
+          "steam" = asus;
+          "*steam" = "tags ${toString (pow2 8)}";
 
           "Nextcloud Talk" = samsung;
           "*Nextcloud Talk" = "tags ${toString (pow2 2)}";
 
-          # "terminal_*" = asus;
-          # "terminal_localhost" = "tags ${toString (pow2 0)}";
-          # "terminal_notes" = "tags ${toString (pow2 1)}";
-          # "terminal_perseus" = "tags ${toString (pow2 2)}";
-          # "terminal_mcgeedia" = "tags ${toString (pow2 3)}";
-          # "terminal_projects" = "tags ${toString (pow2 4)}";
-          # "terminal_work" = "tags ${toString (pow2 5)}";
+          "ghostty.localhost*" = "tags ${toString (pow2 0)}";
+          "ghostty.localhost" = asus;
+          "ghostty.notes*" = "tags ${toString (pow2 1)}";
+          "ghostty.notes" = asus;
+          "ghostty.perseus*" = "tags ${toString (pow2 2)}";
+          "ghostty.perseus" = asus;
+          "ghostty.mcgeedia*" = "tags ${toString (pow2 3)}";
+          "ghostty.mcgeedia" = asus;
+          "ghostty.projects*" = "tags ${toString (pow2 4)}";
+          "ghostty.projects" = asus;
 
-          # "scratchterm" = "tags ${scratchTagString}";
-          # "*scratchterm" = "float";
-
-          # "ghostty.*" = asus;
-          "ghostty.localhost" = "tags ${toString (pow2 0)}";
-          "ghostty.localhost*" = asus;
-          "ghostty.notes" = "tags ${toString (pow2 1)}";
-          "ghostty.notes*" = asus;
-          "ghostty.perseus" = "tags ${toString (pow2 2)}";
-          "ghostty.perseus*" = asus;
-          "ghostty.mcgeedia" = "tags ${toString (pow2 3)}";
-          "ghostty.mcgeedia*" = asus;
-          "ghostty.projects" = "tags ${toString (pow2 7)}";
-          "ghostty.projects*" = asus;
-
-          "ghostty.notesterm" = "tags ${scratchTagString}";
-          "ghostty.scratchterm" = "tags ${scratchTagString}";
-
-          "notesterm" = "tags ${scratchTagString}";
-          "*notesterm" = "float";
-
-          "floating_editor" = "float";
-          "ghostty.floating_editor" = "float";
+          "ghostty.scratchterm" = "float";
+          "ghostty.notesterm" = "float";
 
           "vesktop" = samsung;
           "*vesktop" = "tags ${toString (pow2 1)}";
@@ -283,25 +259,23 @@
         ## TODO: Convert to systemd user units
 
         ## TODO: riverguile seems to have more features
-        '''rivercarro -outer-gaps 0 -per-tag -main-location right' ''
-        ## TODO: These both have a real service/config in hm 25.05
-        # '''way-displays > "$XDG_RUNTIME_DIR/way-displays.$XDG_VTNR.log" 2>&1' ''
-        "wpaperd"
+        ''"rivercarro -outer-gaps 0 -per-tag -main-location right"''
+
         "vesktop"
-        # "'firefox --name firefox_ultrawide'"
-        # '''flatpak run org.mozilla.Thunderbird' ''
-        # '''flatpak run app.zen_browser.zen' ''
-        # "qbittorrent"
-        # '''qutebrowser --desktop-file-name qutebrowser_ultrawide' ''
+        "slack"
+        "signal-desktop"
+        "nextcloud-talk-desktop"
+
+        "firefox"
+
+        "qbittorrent"
         # "qutebrowser"
 
-        # '''ghostty --class=ghostty.localhost -e tmuxp load -y localhost' ''
-        # '''ghostty --class=ghostty.notes -e tmuxp load -y notes' ''
-        # '''ghostty --class=ghostty.perseus -e tmuxp load -y perseus' ''
-        # '''ghostty --class=ghostty.mcgeedia -e tmuxp load -y mcgeedia' ''
-        # '''ghostty --class=ghostty.projects -e tmuxp load -y projects' ''
-        # '''ghostty --class=ghostty.work -e tmuxp load -y work' ''
-        # "slack"
+        ''"ghostty --class=ghostty.localhost -e tmuxp load -y localhost"''
+        ''"ghostty --class=ghostty.notes -e tmuxp load -y notes"''
+        ''"ghostty --class=ghostty.perseus -e tmuxp load -y perseus"''
+        ''"ghostty --class=ghostty.mcgeedia -e tmuxp load -y mcgeedia"''
+        ''"ghostty --class=ghostty.projects -e tmuxp load -y projects"''
       ];
     };
   };
