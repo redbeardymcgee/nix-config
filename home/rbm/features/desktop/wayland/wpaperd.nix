@@ -1,6 +1,5 @@
 {pkgs, ...}: {
   services.wpaperd = {
-  # programs.wpaperd = {
     enable = true;
     settings.default.path = pkgs.fetchurl {
       url = "https://w.wallhaven.cc/full/qz/wallhaven-qzelxl.jpg";
