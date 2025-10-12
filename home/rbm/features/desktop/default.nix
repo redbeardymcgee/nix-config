@@ -6,10 +6,11 @@
   imports = [
     ./firefox
     # ./chromium.nix
+    ./ghostty.nix
     ./kitty.nix
+    ./protonvpn.nix
     ./thunderbird.nix
     # ./qutebrowser.nix
-    ./ghostty.nix
 
     ../services/gammastep.nix
   ];
@@ -31,9 +32,9 @@
         ladybird
         moonlight-qt
         mpv
+        nextcloud-talk-desktop
         # openshot-qt # nix run github:nixos/nixpkgs/nixos-24.05#openshot-qt
         pamixer
-        protonvpn-gui
         # pw-viz # TODO: doesn't build
         qbittorrent
         qpwgraph
@@ -41,7 +42,7 @@
         streamcontroller
         signal-desktop
         spotify
-        # slack # TODO: allowUnfree isn't working
+        slack # TODO: allowUnfree isn't working
         vlc
       ];
   };
