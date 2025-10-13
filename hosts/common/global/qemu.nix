@@ -3,6 +3,8 @@
     OVMF
     qemu_kvm
     qemu-utils
+    quickemu
+    quickgui
   ];
 
   programs = {
@@ -16,5 +18,6 @@
     libvirtd = {
       enable = true;
     };
+    spiceUSBRedirection.enable = true;
   };
 }
