@@ -26,7 +26,6 @@
       libnotify
       netscanner
       rsync
-      slack
     ];
 
     pathsToLink = [
