@@ -39,6 +39,7 @@
     nix-index-database,
     home-manager,
     # lix,
+    otter-launcher,
     posting,
     stylix,
     ...
@@ -94,6 +95,7 @@
         nix-index-database.homeModules.nix-index
         stylix.homeModules.stylix
         # stylix.homeManagerModules.stylix
+        otter-launcher.homeModules.default
         posting.modules.homeManager.default
       ];
     in {
