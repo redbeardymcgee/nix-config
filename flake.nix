@@ -29,7 +29,9 @@
     stylix.url = "github:danth/stylix/release-25.05";
     # stylix.url = "github:danth/stylix";
     yazi.url = "github:sxyazi/yazi";
+    fsel.url = "github:Mjoyufull/fsel";
     nix-index-database.url = "github:nix-community/nix-index-database";
+    otter-launcher.url = "github:kuokuo123/otter-launcher";
   };
 
   outputs = {
