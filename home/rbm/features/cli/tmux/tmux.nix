@@ -9,6 +9,7 @@
     customPaneNavigationAndResize = true;
     disableConfirmationPrompt = true;
     escapeTime = 0;
+    focusEvents = true;
     historyLimit = 10000;
     keyMode = "vi";
     mouse = true;

@@ -22,24 +22,25 @@
             ];
           }
 
-          # {
-          #   inherit layout options;
-          #   window_name = "poddox";
-          #   start_directory = "/mnt/2tb/repos/redbeardymcgee/poddox";
-          #   panes = [
-          #     {
-          #       focus = true;
-          #       shell_command = [
-          #         "redvim ."
-          #       ];
-          #     }
-          #     # {
-          #     #   shell_command = [
-          #     #     "npm start"
-          #     #   ];
-          #     # }
-          #   ];
-          # }
+          {
+            inherit layout options;
+            window_name = "poddox";
+            start_directory = "/mnt/2tb/repos/podbox-docs";
+            panes = [
+              {
+                focus = true;
+                shell_command = [
+                  "redvim ."
+                ];
+              }
+              {
+                shell_command = [
+                  "npx --yes @astrojs/upgrade"
+                  "npm run dev"
+                ];
+              }
+            ];
+          }
 
           {
             inherit layout options;
