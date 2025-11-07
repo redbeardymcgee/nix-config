@@ -8,23 +8,6 @@
   #   capSysNice = true;
   # };
 
-  nixpkgs.config = {
-    allowUnfreePredicate = pkg:
-      builtins.elem (lib.getName pkg) [
-        "steam"
-        "steam-unwrapped"
-        "7zz"
-        # "nexusmods-app-unfree"
-      ];
-  };
-
-  environment.systemPackages = [
-    # (pkgs.nexusmods-app.override {
-    #   _7zz = pkgs._7zz-rar;
-    # })
-    pkgs.nexusmods-app-unfree
-  ];
-
   programs.gamemode = {
     enable = true;
   };
