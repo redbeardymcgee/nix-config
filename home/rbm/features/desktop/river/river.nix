@@ -197,9 +197,6 @@
           "thunderbird" = samsung;
           "*thunderbird" = "tags ${toString (pow2 4)}";
 
-          "Slack" = samsung;
-          "*Slack" = "tags ${toString (pow2 2)}";
-
           "signal" = samsung;
           "*signal" = "tags ${toString (pow2 2)}";
 
@@ -209,19 +206,27 @@
           "steam" = asus;
           "*steam" = "tags ${toString (pow2 8)}";
 
-          "Nextcloud Talk" = samsung;
-          "*Nextcloud Talk" = "tags ${toString (pow2 2)}";
+          ## FIXME:
+          ## Manually tested every variant of quotes, nothing works
+          ## "Nextcloud Talk" = samsung;
+          ## Spaces in the app-id may break rules entirely
+          ## Using bad globs instead, could try globbing the space
+          "Nextcloud*" = samsung;
+          "*Talk" = "tags ${toString (pow2 2)}";
 
-          "ghostty.localhost*" = "tags ${toString (pow2 0)}";
+          "ghostty.chat" = samsung;
+          "ghostty.chat*" = "tags ${toString (pow2 2)}";
+
           "ghostty.localhost" = asus;
-          "ghostty.notes*" = "tags ${toString (pow2 1)}";
+          "ghostty.localhost*" = "tags ${toString (pow2 0)}";
           "ghostty.notes" = asus;
-          "ghostty.perseus*" = "tags ${toString (pow2 2)}";
+          "ghostty.notes*" = "tags ${toString (pow2 1)}";
           "ghostty.perseus" = asus;
-          "ghostty.mcgeedia*" = "tags ${toString (pow2 3)}";
+          "ghostty.perseus*" = "tags ${toString (pow2 2)}";
           "ghostty.mcgeedia" = asus;
-          "ghostty.projects*" = "tags ${toString (pow2 4)}";
+          "ghostty.mcgeedia*" = "tags ${toString (pow2 3)}";
           "ghostty.projects" = asus;
+          "ghostty.projects*" = "tags ${toString (pow2 4)}";
 
           "ghostty.scratchterm" = "float";
           "ghostty.notesterm" = "float";
@@ -229,17 +234,11 @@
           "vesktop" = samsung;
           "*vesktop" = "tags ${toString (pow2 1)}";
 
-          "org.gnome.Fractal" = samsung;
-          "*org.gnome.Fractal" = "tags ${toString (pow2 2)}";
-
-          "Signal" = samsung;
-          "*Signal" = "tags ${toString (pow2 2)}";
+          # "org.gnome.Fractal" = samsung;
+          # "*org.gnome.Fractal" = "tags ${toString (pow2 2)}";
 
           "xdg-desktop-portal-*" = "float";
           "Xdg-desktop-portal-*" = "float";
-
-          "org.remmina.Remmina" = samsung;
-          "*org.remmina.Remmina" = "tags ${toString (pow2 8)}";
 
           "org.qbittorrent.qBittorrent" = samsung;
           "*org.qbittorrent.qBittorrent" = "tags ${toString (pow2 8)}";
@@ -247,8 +246,6 @@
 
         "-title" = {
           "Picture-in-Picture" = "float";
-
-          "qBittorrent *" = "no-float";
         };
       };
 
@@ -262,14 +259,19 @@
         ''"rivercarro -outer-gaps 0 -per-tag -main-location right"''
 
         "vesktop"
-        "slack"
-        "signal-desktop"
-        "nextcloud-talk-desktop"
-
         "firefox"
+
+        # "signal-desktop"
+        "nextcloud-talk-desktop"
+        # "fractal"
+        ''"ghostty --class=ghostty.chat -e tmuxp load -y chat"''
+
+        "thunderbird"
 
         "qbittorrent"
         # "qutebrowser"
+
+        "steam"
 
         ''"ghostty --class=ghostty.localhost -e tmuxp load -y localhost"''
         ''"ghostty --class=ghostty.notes -e tmuxp load -y notes"''
