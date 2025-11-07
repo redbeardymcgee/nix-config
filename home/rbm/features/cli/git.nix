@@ -4,7 +4,7 @@
     package = pkgs.gitAndTools.gitFull;
     lfs.enable = true;
     userName = "redbeardymcgee";
-    userEmail = "redbeardymcgee@gmail.com";
+    userEmail = "redbeardymcgee@proton.me";
     aliases = {
       co = "checkout";
       dlog = "log -p --ext-diff";
