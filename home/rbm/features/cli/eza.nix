@@ -6,6 +6,7 @@
     extraOptions = [
       "--all"
       "--smart-group"
+      "--group-directories-first"
     ];
   };
 }
