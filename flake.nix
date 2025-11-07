@@ -13,51 +13,45 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-25.05";
-    # nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-    # nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.11";
     systems.url = "github:nix-systems/default-linux";
     nixos-hardware.url = "github:NixOS/nixos-hardware";
-    # home-manager.url = "github:nix-community/home-manager/release-24.11";
     home-manager.url = "github:nix-community/home-manager/release-25.05";
-    # home-manager.url = "github:nix-community/home-manager";
-    # lix.url = "https://git.lix.systems/lix-project/nixos-module/archive/2.93.0.tar.gz";
-    firefox-addons.url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
-    # ghostty.url = "github:ghostty-org/ghostty";
-    # nixcats.url = "git+file:/mnt/2tb/repos/nixcats";
-    nixcats.url = "github:redbeardymcgee/nixcats";
-    posting.url = "github:justdeeevin/posting/flake";
-    stylix.url = "github:danth/stylix/release-25.05";
-    # stylix.url = "github:danth/stylix";
-    yazi.url = "github:sxyazi/yazi";
+
     fsel.url = "github:Mjoyufull/fsel";
     nix-index-database.url = "github:nix-community/nix-index-database";
+    nixcats.url = "git+file:///home/rbm/src/redbeardymcgee/nixcats";
     otter-launcher.url = "github:kuokuo123/otter-launcher";
+    posting.url = "github:justdeeevin/posting/flake";
+    sops-nix.url = "github:Mic92/sops-nix";
+    stylix.url = "github:danth/stylix/release-25.05";
+    yazi.url = "github:sxyazi/yazi";
   };
 
   outputs = {
     self,
     nixpkgs,
     nixos-hardware,
-    nix-index-database,
     home-manager,
-    # lix,
+    nix-index-database,
     otter-launcher,
     posting,
+    sops-nix,
     stylix,
     ...
   } @ inputs: let
     inherit (self) outputs;
-    pkgs = nixpkgs.legacyPackages.x86_64-linux;
-    commonModules = [
-      # lix.nixosModules.default
-      stylix.nixosModules.stylix
-    ];
+    system = "x86_64-linux";
   in {
     nixosModules = import ./modules/nixos;
     homeManagerModules = import ./modules/home-manager;
     overlays = import ./overlays {inherit inputs outputs;};
 
-    nixosConfigurations = {
+    nixosConfigurations = let
+      commonModules = [
+        stylix.nixosModules.stylix
+        sops-nix.nixosModules.default
+      ];
+    in {
       arcturus = nixpkgs.lib.nixosSystem {
         specialArgs = {
           inherit inputs outputs;
@@ -93,12 +87,15 @@
     };
 
     homeConfigurations = let
+      pkgs = import nixpkgs {
+        inherit system;
+      };
       commonModules = [
         nix-index-database.homeModules.nix-index
-        stylix.homeModules.stylix
-        # stylix.homeManagerModules.stylix
         otter-launcher.homeModules.default
         posting.modules.homeManager.default
+        sops-nix.homeModules.default
+        stylix.homeModules.stylix
       ];
     in {
       "rbm@arcturus" = home-manager.lib.homeManagerConfiguration {
