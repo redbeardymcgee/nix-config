@@ -1,6 +1,11 @@
 {pkgs, ...}: {
   programs.firefox = {
     enable = true;
+
+    nativeMessagingHosts = [
+      pkgs.tridactyl-native
+    ];
+
     package = pkgs.wrapFirefox pkgs.firefox-unwrapped {
       extraPolicies = {
         AutofillAddressEnabled = false;
@@ -19,7 +24,7 @@
           Locked = true;
         };
         EnableTrackingProtection = {
-          Value = true;
+          Value = false;
           Locked = true;
           Category = "strict";
           Cryptomining = true;
@@ -49,7 +54,7 @@
         Homepage = {
           Locked = true;
           Startpage = "previous-session";
-          URL = "https://searxng.mcgee.red";
+          URL = "https://search.mcgee.red";
         };
         HttpsOnlyMode = "force_enabled";
         NewTabPage = false;
@@ -76,15 +81,23 @@
             # Dark Mode Website Switcher
             default_area = "menupanel";
             install_url = "https://addons.mozilla.org/firefox/downloads/latest/dark-mode-website-switcher@rugk.github.io/latest.xpi";
-            installation_mode = "force_installed";
+            installation_mode = "normal_installed";
             private_browsing = true;
           };
 
-          "container-workspaces@mike.lloyd"= {
+          "{08f0f80f-2b26-4809-9267-287a5bdda2da}" = {
+            # Tube Archivist Companion
+            default_area = "menupanel";
+            install_url = "https://addons.mozilla.org/firefox/downloads/latest/{08f0f80f-2b26-4809-9267-287a5bdda2da}/latest.xpi";
+            installation_mode = "normal_installed";
+            private_browsing = false;
+          };
+
+          "container-workspaces@mike.lloyd" = {
             # Container Workspaces
             default_area = "navbar";
             install_url = "https://addons.mozilla.org/firefox/downloads/latest/container-workspaces@mike.lloyd/latest.xpi";
-            installation_mode = "force_installed";
+            installation_mode = "normal_installed";
             private_browsing = true;
           };
 
@@ -92,7 +105,7 @@
             # DeArrow
             default_area = "menupanel";
             install_url = "https://addons.mozilla.org/firefox/downloads/latest/deArrow@ajay.app/latest.xpi";
-            installation_mode = "force_installed";
+            installation_mode = "normal_installed";
             private_browsing = true;
           };
 
@@ -100,7 +113,7 @@
             # Pronoundb
             default_area = "menupanel";
             install_url = "https://addons.mozilla.org/firefox/downloads/latest/firefox-addon@pronoundb.org/latest.xpi";
-            installation_mode = "force_installed";
+            installation_mode = "normal_installed";
             private_browsing = false;
           };
 
@@ -108,7 +121,7 @@
             # Firefox Color
             default_area = "menupanel";
             install_url = "https://addons.mozilla.org/firefox/downloads/latest/FirefoxColor@mozilla.com/latest.xpi";
-            installation_mode = "force_installed";
+            installation_mode = "normal_installed";
             private_browsing = true;
           };
 
@@ -116,7 +129,7 @@
             # Firemonkey
             default_area = "navbar";
             install_url = "https://addons.mozilla.org/firefox/downloads/latest/firemonkey@eros.man/latest.xpi";
-            installation_mode = "force_installed";
+            installation_mode = "normal_installed";
             private_browsing = false;
           };
 
@@ -124,7 +137,7 @@
             # Consent-o-Matic
             default_area = "menupanel";
             install_url = "https://addons.mozilla.org/firefox/downloads/latest/gdpr@cavi.au.dk/latest.xpi";
-            installation_mode = "force_installed";
+            installation_mode = "normal_installed";
             private_browsing = true;
           };
 
@@ -132,7 +145,7 @@
             # Click and Read
             default_area = "menupanel";
             install_url = "https://addons.mozilla.org/firefox/downloads/latest/nist.users@gmail.com/latest.xpi";
-            installation_mode = "force_installed";
+            installation_mode = "normal_installed";
             private_browsing = true;
           };
 
@@ -140,7 +153,7 @@
             # Linkwarden
             default_area = "menupanel";
             install_url = "https://addons.mozilla.org/firefox/downloads/latest/jordanlinkwarden@gmail.com/latest.xpi";
-            installation_mode = "force_installed";
+            installation_mode = "normal_installed";
             private_browsing = false;
           };
 
@@ -148,7 +161,7 @@
             # SevenTV
             default_area = "menupanel";
             install_url = "https://extension.7tv.gg/v3.0.9/ext.xpi";
-            installation_mode = "force_installed";
+            installation_mode = "normal_installed";
             private_browsing = false;
           };
 
@@ -156,7 +169,7 @@
             # Passbolt
             default_area = "menupanel";
             install_url = "https://addons.mozilla.org/firefox/downloads/latest/assbolt@passbolt.com/latest.xpi";
-            installation_mode = "force_installed";
+            installation_mode = "normal_installed";
             private_browsing = true;
           };
 
@@ -164,7 +177,7 @@
             # Skip Redirect
             default_area = "menupanel";
             install_url = "https://addons.mozilla.org/firefox/downloads/latest/skipredirect@sblask/latest.xpi";
-            installation_mode = "force_installed";
+            installation_mode = "normal_installed";
             private_browsing = true;
           };
 
@@ -172,23 +185,15 @@
             # SponsorBlock
             default_area = "menupanel";
             install_url = "https://addons.mozilla.org/firefox/downloads/latest/sponsorBlocker@ajay.app/latest.xpi";
-            installation_mode = "force_installed";
+            installation_mode = "normal_installed";
             private_browsing = true;
           };
-
-          # "workspaces@fm-sys" = {
-          #   # Workspaces
-          #   default_area = "navbar";
-          #   install_url = "https://addons.mozilla.org/firefox/downloads/latest/workspaces@fm-sys/latest.xpi";
-          #   installation_mode = "force_installed";
-          #   private_browsing = true;
-          # };
 
           "{1be309c5-3e4f-4b99-927d-bb500eb4fa88}" = {
             # Augmented Steam
             default_area = "menupanel";
             install_url = "https://addons.mozilla.org/firefox/downloads/latest/{1be309c5-3e4f-4b99-927d-bb500eb4fa88}/latest.xpi";
-            installation_mode = "force_installed";
+            installation_mode = "normal_installed";
             private_browsing = true;
           };
 
@@ -196,7 +201,7 @@
             # Image Search Options
             default_area = "menupanel";
             install_url = "https://addons.mozilla.org/firefox/downloads/latest/{4a313247-8330-4a81-948e-b79936516f78}/latest.xpi";
-            installation_mode = "force_installed";
+            installation_mode = "normal_installed";
             private_browsing = true;
           };
 
@@ -204,7 +209,7 @@
             # Censor Tracker
             default_area = "menupanel";
             install_url = "https://addons.mozilla.org/firefox/downloads/latest/{5d0d1f87-5991-42d3-98c3-54878ead1ed1}/latest.xpi";
-            installation_mode = "force_installed";
+            installation_mode = "normal_installed";
             private_browsing = true;
           };
 
@@ -212,7 +217,7 @@
             # BlockTube
             default_area = "menupanel";
             install_url = "https://addons.mozilla.org/firefox/downloads/latest/{58204f8b-01c2-4bbc-98f8-9a90458fd9ef}/latest.xpi";
-            installation_mode = "force_installed";
+            installation_mode = "normal_installed";
             private_browsing = true;
           };
 
@@ -220,7 +225,7 @@
             # ClearURLs
             default_area = "menupanel";
             install_url = "https://addons.mozilla.org/firefox/downloads/latest/{74145f27-f039-47ce-a470-a662b129930a}/latest.xpi";
-            installation_mode = "force_installed";
+            installation_mode = "normal_installed";
             private_browsing = true;
           };
 
@@ -228,7 +233,7 @@
             # Bitwarden
             default_area = "menupanel";
             install_url = "https://addons.mozilla.org/firefox/downloads/latest/{446900e4-71c2-419f-a6a7-df9c091e268b}/latest.xpi";
-            installation_mode = "force_installed";
+            installation_mode = "normal_installed";
             private_browsing = true;
           };
 
@@ -236,7 +241,7 @@
             # ProtonDB
             default_area = "menupanel";
             install_url = "https://addons.mozilla.org/firefox/downloads/latest/{30280527-c46c-4e03-bb16-2e3ed94fa57c}/latest.xpi";
-            installation_mode = "force_installed";
+            installation_mode = "normal_installed";
             private_browsing = false;
           };
 
@@ -244,15 +249,23 @@
             # Refined Github
             default_area = "menupanel";
             install_url = "https://addons.mozilla.org/firefox/downloads/latest/{a4c4eda4-fb84-4a84-b4a1-f7c1cbf2a1ad}/latest.xpi";
-            installation_mode = "force_installed";
+            installation_mode = "normal_installed";
             private_browsing = true;
           };
 
-          "uBlock0@raymondhill.net" = {
-            # uBlock Origin
+          # "uBlock0@raymondhill.net" = {
+          #   # uBlock Origin
+          #   default_area = "navbar";
+          #   install_url = "https://addons.mozilla.org/firefox/downloads/latest/uBlock0@raymondhill.net/latest.xpi";
+          #   installation_mode = "normal_installed";
+          #   private_browsing = true;
+          # };
+
+          "adnauseam@rednoise.org" = {
+            # AdNauseam
             default_area = "navbar";
-            install_url = "https://addons.mozilla.org/firefox/downloads/latest/uBlock0@raymondhill.net/latest.xpi";
-            installation_mode = "force_installed";
+            install_url = "https://addons.mozilla.org/firefox/downloads/latest/adnauseam@rednoise.org/latest.xpi";
+            installation_mode = "normal_installed";
             private_browsing = true;
           };
 
@@ -260,7 +273,7 @@
             # LibRedirect
             default_area = "menupanel";
             install_url = "https://addons.mozilla.org/firefox/downloads/latest/7esoorv3@alefvanoon.anonaddy.me/latest.xpi";
-            installation_mode = "force_installed";
+            installation_mode = "normal_installed";
             private_browsing = true;
           };
 
@@ -268,7 +281,7 @@
             # React Devtools
             default_area = "menupanel";
             install_url = "https://addons.mozilla.org/firefox/downloads/latest/@react-devtools/latest.xpi";
-            installation_mode = "force_installed";
+            installation_mode = "normal_installed";
             private_browsing = false;
           };
 
@@ -276,22 +289,22 @@
             # Multi-account Containers
             default_area = "menupanel";
             install_url = "https://addons.mozilla.org/firefox/downloads/latest/@testpilot-containers/latest.xpi";
-            installation_mode = "force_installed";
+            installation_mode = "normal_installed";
             private_browsing = false;
+          };
+
+          "tridactyl.vim@cmcaine.co.uk" = {
+            # Tridactyl
+            # FIXME: Doesn't even download?
+            default_area = "menupanel";
+            # install_url = "https://tridactyl.cmcaine.co.uk/betas/tridactyl-latest.xpi";
+            install_url = "https://addons.mozilla.org/firefox/downloads/latest/tridactyl.vim@cmcaine.co.uk/latest.xpi";
+            installation_mode = "normal_installed";
+            private_browsing = true;
           };
         };
       };
     };
-
-    # package = pkgs.firefox.override {
-    #   nativeMessagingHosts = [
-    #     pkgs.tridactyl-native
-    #   ];
-    # };
-
-    # nativeMessagingHosts = [
-    #   pkgs.tridactyl-native
-    # ];
 
     profiles = {
       Default = {
@@ -308,7 +321,9 @@
           default = {
             id = 0;
             name = "General";
+            # "blue" | "turquoise" | "green" | "yellow" | "orange" | "red" | "pink" | "purple" | "toolbar"
             color = "toolbar";
+            # "briefcase" | "cart" | "circle" | "dollar" | "fence" | "fingerprint" | "gift" | "vacation" | "food" | "fruit" | "pet" | "tree" | "chill"
             icon = "circle";
           };
 
@@ -339,6 +354,13 @@
             color = "turquoise";
             icon = "fence";
           };
+
+          google = {
+            id = 5;
+            name = "Google";
+            color = "yellow";
+            icon = "fingerprint";
+          };
         };
 
         search = {
@@ -349,12 +371,12 @@
           engines = {
             searxng = {
               name = "SearxNG";
-              icon = "https://searxng.mcgee.red/favicon.png";
+              iconMapObj."16" = "https://search.mcgee.red/favicon.png";
               definedAliases = ["@searxng" "@mcgee"];
 
               urls = [
                 {
-                  template = "https://searxng.mcgee.red/search";
+                  template = "https://search.mcgee.red/search";
                   params = [
                     {
                       name = "q";
@@ -365,9 +387,27 @@
               ];
             };
 
+            nixlang = {
+              name = "Nix Language";
+              iconMapObj."16" = "https://wiki.nixos.org/favicon.ico";
+              definedAliases = ["@nixlang" "@nl"];
+
+              urls = [
+                {
+                  template = "https://nix.dev/manual/nix/2.28/introduction.html";
+                  params = [
+                    {
+                      name = "search";
+                      value = "{searchTerms}";
+                    }
+                  ];
+                }
+              ];
+            };
+
             nixPackages = {
               name = "Nix Packages";
-              icon = "https://nixos.org/favicon.png";
+              iconMapObj."16" = "https://wiki.nixos.org/favicon.ico";
               definedAliases = ["@np" "@nixpkgs"];
               urls = [
                 {
@@ -386,9 +426,31 @@
               ];
             };
 
+            nixpkgsGithub = {
+              name = "nixpkgs Github";
+              iconMapObj."16" = "https://wiki.nixos.org/favicon.ico";
+              definedAliases = ["@npg" "@nixpkgsgithub"];
+
+              urls = [
+                {
+                  template = "https://github.com/search";
+                  params = [
+                    {
+                      name = "q";
+                      value = "repo%3ANixOS%2Fnixpkgs%20{searchTerms}";
+                    }
+                    {
+                      name = "type";
+                      value = "code";
+                    }
+                  ];
+                }
+              ];
+            };
+
             nixOptions = {
               name = "Nix Options";
-              icon = "https://nixos.org/favicon.png";
+              iconMapObj."16" = "https://wiki.nixos.org/favicon.ico";
               definedAliases = ["@no" "@nixopts"];
               urls = [
                 {
@@ -472,7 +534,8 @@
     MOZ_USE_XINPUT2 = "1";
   };
 
-  # xdg.configFile."tridactyl/tridactylrc".source = ./tridactylrc;
+  xdg.configFile."tridactyl/tridactylrc".source = ./tridactylrc;
+
   stylix.targets.firefox = {
     # colorTheme.enable = true;
     profileNames = ["rbm"];
