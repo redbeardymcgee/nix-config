@@ -25,6 +25,7 @@
 
       Host perseus
         Hostname 203.0.113.250
+        port 2222
         IdentityFile ~/.ssh/toliman-to-perseus
 
       Host mythicdnor
@@ -36,12 +37,10 @@
       Host forgejo
         Hostname git.mcgee.red
         User git
-        Port 60022
         IdentityFile ~/.ssh/toliman-to-forgejo
 
       Host git.mcgee.red
         User git
-        Port 60022
         IdentityFile ~/.ssh/toliman-to-forgejo
     '';
   };
