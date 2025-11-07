@@ -8,25 +8,27 @@
     ./atuin.nix
     ./bash.nix
     ./bat.nix
-    ./browsh.nix
     ./bottom.nix
+    ./browsh.nix
     ./comma.nix
     ./direnv.nix
     ./eza.nix
     ./fastfetch
     ./fd.nix
     ./fish.nix
+    ./fsel.nix
     ./fzf.nix
     ./git.nix
     ./go.nix
+    ./gurk.nix
     ./htop.nix
+    ./iamb.nix
     ./jq.nix
     ./lazygit.nix
     ./less.nix
     ./man.nix
     ./nix-index.nix
-    # ./nix.nix
-    ./nvim.nix
+    ./otter-launcher.nix
     ./posting.nix
     ./rbw.nix
     ./ripgrep.nix
@@ -41,7 +43,7 @@
   ];
 
   home.packages = with pkgs; [
-    inputs.nixcats.packages.${system}.nixCats
+    inputs.nixcats.packages.${system}.redvim
     inputs.posting.packages.${system}.default
 
     # nix tools
@@ -53,6 +55,7 @@
     bun
     clipboard-jh
     csview
+    csvlens
     difftastic
     discordo
     distrobox
@@ -63,6 +66,7 @@
     protonvpn-cli
     sass
     typos
+    xan
     yq
 
     # Editor support

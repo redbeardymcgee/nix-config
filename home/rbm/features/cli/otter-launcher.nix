@@ -1,10 +1,15 @@
-{config, ...}: {
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}: {
   programs.otter-launcher = {
     enable = true;
 
     settings = {
       general = {
-        default_module = "app";
+        default_module = "run";
         empty_module = "app";
         exec_cmd = "sh -c";
         vi_mode = true;
@@ -19,39 +24,45 @@
       };
 
       # ANSI color codes are allowed. However, \x1b should be replaced with \u001B, because the rust toml crate cannot read \x as an escaped character
-      interface = {
-        header = ''
-          \u001B[34;1m$USER@$(printf $HOSTNAME)\u001B[0m     \u001B[31m\u001B[0m $(mpstat | awk 'FNR ==4 {print $4}')
-        '';
-        header_cmd =
+      interface = let
+        ansi = lib.getExe pkgs.ansi;
+        mpstat = "${lib.getBin pkgs.sysstat}/bin/mpstat";
+        blue = "\e[34m";
+      in {
+        header =
           # bash
           ''
-            printf "\n"
-            fastfetch \
-                --structure colors:break:title:os:shell:kernel:uptime \
-                --logo-print-remaining false \
-                --logo-height 8 \
-                --logo-padding-left 3 \
-                --sixel ${config.xdg.configHome}/otter-launcher/images/images_squ/archlinux_chan.jpg
+            ${blue}$USER$(${ansi} "yellow")@$(${ansi} green)$(printf $HOSTNAME)$(${ansi} reset)     $(${ansi} red) $(${mpstat} | awk 'FNR ==4 {print $4}')
           '';
+        # header_cmd =
+        #   # bash
+        #   ''
+        #     printf "\n"
+        #     fastfetch \
+        #         --structure colors:break:title:os:shell:kernel:uptime \
+        #         --logo-print-remaining false \
+        #         --logo-height 8 \
+        #         --logo-padding-left 3 \
+        #         --sixel ${config.xdg.configHome}/otter-launcher/images/images_squ/archlinux_chan.jpg
+        #   '';
         header_cmd_trimmed_lines = 0;
         place_holder = "type & search";
         suggestion_mode = "list";
-        separator = "                  \u001B[90mmodules ────────────────";
+        # separator = "                  \u001B[90mmodules ────────────────";
         footer = "";
         suggestion_lines = 3;
         list_prefix = " ";
-        selection_prefix = "\u001B[31;1m▌ ";
+        # selection_prefix = "\u001B[31;1m▌ ";
         prefix_padding = 3;
-        default_module_message = "  \u001B[33mLaunch\u001B[0m apps";
+        # default_module_message = "  \u001B[33mLaunch\u001B[0m apps";
         empty_module_message = "";
         customized_list_order = false;
         indicator_with_arg_module = "";
         indicator_no_arg_module = "";
-        prefix_color = "\u001B[33m";
-        description_color = "\u001B[39m";
-        place_holder_color = "\u001B[30m";
-        hint_color = "\u001B[30m";
+        # prefix_color = "\u001B[33m";
+        # description_color = "\u001B[39m";
+        # place_holder_color = "\u001B[30m";
+        # hint_color = "\u001B[30m";
         move_interface_right = 16;
         move_interface_down = 1;
       };
@@ -85,9 +96,7 @@
           prefix = "app";
           cmd =
             # bash
-            ''
-              fsel -vv -d -r -ss "{}"
-            '';
+            ''fsel -vv -d -r -ss "{}"'';
           with_argument = true;
         }
         {
@@ -95,9 +104,7 @@
           prefix = "run";
           cmd =
             # bash
-            ''
-              fsel -vv -d -r -p "{}"
-            '';
+            ''fsel -vv -d -r -p "{}"'';
           with_argument = true;
         }
         {
