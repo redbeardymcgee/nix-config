@@ -1,4 +1,8 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  lib,
+  ...
+}: {
   imports = [
     ./hw.nix
 
@@ -8,6 +12,7 @@
     ../common/optional/dygma.nix
     # ../common/optional/gamemode.nix
     # ../common/optional/kmscon.nix
+    ../common/optional/nixpkgs.nix
     ../common/optional/podman.nix
     ../common/optional/protonvpn.nix
     ../common/optional/qmk.nix
@@ -34,6 +39,7 @@
   #   enable = true;
   #   text = "auth include login";
   # };
+
   ## TODO: `river-classic` is 0.3.x branch in 25.11
   # services.displayManager.sessionPackages = [pkgs.river-classic];
   services.displayManager.sessionPackages = [pkgs.river];
