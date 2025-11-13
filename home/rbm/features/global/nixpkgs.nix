@@ -30,12 +30,15 @@ in {
   nixpkgs = {
     overlays =
       builtins.attrValues outputs.overlays;
-    # ++ nur.overlay
-    # ++ builtins.attrValues inputs.kixvim.overlays;
 
     config = {
-      allowUnfree = true;
-      allowUnfreePredicate = _: true;
+      allowUnfreePredicate = pkg:
+        builtins.elem (lib.getName pkg) [
+          # "davinci-resolve"
+          "grayjay"
+        ];
+      permittedInsecurePackages = [
+      ];
     };
   };
 }

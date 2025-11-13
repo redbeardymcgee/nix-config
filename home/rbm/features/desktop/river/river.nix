@@ -227,9 +227,12 @@
           "ghostty.mcgeedia*" = "tags ${toString (pow2 3)}";
           "ghostty.projects" = asus;
           "ghostty.projects*" = "tags ${toString (pow2 4)}";
+          "ghostty.leetcode" = asus;
+          "ghostty.leetcode*" = "tags ${toString (pow2 5)}";
 
           "ghostty.scratchterm" = "float";
           "ghostty.notesterm" = "float";
+          "ghostty.fsel" = "float";
 
           "vesktop" = samsung;
           "*vesktop" = "tags ${toString (pow2 1)}";
@@ -278,6 +281,7 @@
         ''"ghostty --class=ghostty.perseus -e tmuxp load -y perseus"''
         ''"ghostty --class=ghostty.mcgeedia -e tmuxp load -y mcgeedia"''
         ''"ghostty --class=ghostty.projects -e tmuxp load -y projects"''
+        ''"ghostty --class=ghostty.leetcode -e tmuxp load -y leetcode"''
       ];
     };
   };

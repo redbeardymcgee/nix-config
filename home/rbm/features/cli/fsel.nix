@@ -14,4 +14,8 @@ in {
       terminal_launcher = "ghostty -e";
     };
   };
+
+  # wayland.windowManager.river.settings.map.normal = {
+  #   "None Menu" = "spawn 'ghostty --class=ghostty.fsel -e fsel'";
+  # };
 }

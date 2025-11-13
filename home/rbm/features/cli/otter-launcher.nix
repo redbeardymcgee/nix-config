@@ -27,24 +27,23 @@
       interface = let
         ansi = lib.getExe pkgs.ansi;
         mpstat = "${lib.getBin pkgs.sysstat}/bin/mpstat";
-        blue = "\e[34m";
+        blue = ''\e[34m'';
       in {
-        header =
+        # header =
+        #   # bash
+        #   "${blue}$USER$(${ansi} yellow)@$(${ansi} green)$(printf $HOSTNAME)$(${ansi} reset)     $(${ansi} red) $(${mpstat} | awk 'FNR ==4 {print $4}')";
+        header_cmd =
           # bash
           ''
-            ${blue}$USER$(${ansi} "yellow")@$(${ansi} green)$(printf $HOSTNAME)$(${ansi} reset)     $(${ansi} red) $(${mpstat} | awk 'FNR ==4 {print $4}')
+            fastfetch \
+                --structure colors:break:title:os:shell:kernel:uptime
+                # --logo-print-remaining false \
+                # --logo-height 8 \
+                # --logo-padding-left 3 \
+                # --sixel ${config.xdg.configHome}/otter-launcher/images/images_squ/archlinux_chan.jpg
+
+                printf '\n'
           '';
-        # header_cmd =
-        #   # bash
-        #   ''
-        #     printf "\n"
-        #     fastfetch \
-        #         --structure colors:break:title:os:shell:kernel:uptime \
-        #         --logo-print-remaining false \
-        #         --logo-height 8 \
-        #         --logo-padding-left 3 \
-        #         --sixel ${config.xdg.configHome}/otter-launcher/images/images_squ/archlinux_chan.jpg
-        #   '';
         header_cmd_trimmed_lines = 0;
         place_holder = "type & search";
         suggestion_mode = "list";

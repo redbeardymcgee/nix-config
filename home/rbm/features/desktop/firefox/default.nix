@@ -1,4 +1,9 @@
-{pkgs, ...}: {
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}: {
   programs.firefox = {
     enable = true;
 
@@ -127,19 +132,29 @@
 
           "firemonkey@eros.man" = {
             # Firemonkey
-            default_area = "navbar";
+            default_area = "menupanel";
             install_url = "https://addons.mozilla.org/firefox/downloads/latest/firemonkey@eros.man/latest.xpi";
             installation_mode = "normal_installed";
             private_browsing = false;
           };
 
-          "gdpr@cavi.au.dk" = {
-            # Consent-o-Matic
+          "firenvim@lacamb.re" = {
+            # Firemonkey
             default_area = "menupanel";
-            install_url = "https://addons.mozilla.org/firefox/downloads/latest/gdpr@cavi.au.dk/latest.xpi";
+            install_url = "https://addons.mozilla.org/firefox/downloads/latest/firenvim@lacamb.re/latest.xpi";
             installation_mode = "normal_installed";
-            private_browsing = true;
+            private_browsing = false;
           };
+
+          # TODO: Confirm this is true
+          # NOTE: Replaced by `settings."cookiebanners.service.mode"`
+          # "gdpr@cavi.au.dk" = {
+          #   # Consent-o-Matic
+          #   default_area = "menupanel";
+          #   install_url = "https://addons.mozilla.org/firefox/downloads/latest/gdpr@cavi.au.dk/latest.xpi";
+          #   installation_mode = "normal_installed";
+          #   private_browsing = true;
+          # };
 
           "nist.users@gmail.com" = {
             # Click and Read
@@ -253,6 +268,7 @@
             private_browsing = true;
           };
 
+          # NOTE: Replaced by AdNauseam, which uses uBlock Origin
           # "uBlock0@raymondhill.net" = {
           #   # uBlock Origin
           #   default_area = "navbar";
@@ -295,7 +311,6 @@
 
           "tridactyl.vim@cmcaine.co.uk" = {
             # Tridactyl
-            # FIXME: Doesn't even download?
             default_area = "menupanel";
             # install_url = "https://tridactyl.cmcaine.co.uk/betas/tridactyl-latest.xpi";
             install_url = "https://addons.mozilla.org/firefox/downloads/latest/tridactyl.vim@cmcaine.co.uk/latest.xpi";
@@ -511,12 +526,38 @@
 
         settings = {
           "browser.startup.page" = 3; # Restore previous session
-
           "browser.download.useDownloadDir" = false; # Ask for download location
+
+          # turn off google safebrowsing
+          "browser.safebrowsing.downloads.remote.block_dangerous" = false;
+          "browser.safebrowsing.downloads.remote.block_dangerous_host" = false;
+          "browser.safebrowsing.downloads.remote.block_potentially_unwanted" =
+            false;
+          "browser.safebrowsing.downloads.remote.block_uncommon" = false;
+          "browser.safebrowsing.downloads.remote.url" = false;
+          "browser.safebrowsing.downloads.remote.enabled" = false;
+          "browser.safebrowsing.downloads.enabled" = false;
+
+          "cookiebanners.service.mode" = 2;
+          "cookiebanners.service.mode.privateBrowsing" = 1;
 
           "extensions.autoDisableScopes" = 0; # Auto-enable extensions
           "extensions.update.autoUpdateDefault" = false;
           "extensions.update.enabled" = false;
+          "extensions.content_web_accessible.enabled" = true;
+          "extensions.webextensions.remote" = true; # If extensions break, try `false`
+
+          # allow plugins on all pages
+          "extensions.webextensions.restrictedDomains" = "";
+          "extensions.webextensions.restrictedDomains.enabled" = false;
+          # "privacy.resistFingerprinting.block_mozAddonManager" = true;
+
+          # Enable stylix fonts
+          # FIXME: These are applied in `about:config` but not in Settings
+          # Possible that these fonts are not availabe to the firefox runtime
+          "font.name.serif.x-western" = "${config.stylix.fonts.serif.name}";
+          "font.name.sans-serif.x-western" = "${config.stylix.fonts.sansSerif.name}";
+          "font.name.monospace.x-western" = "${config.stylix.fonts.monospace.name}";
 
           "sidebar.revamp" = true;
           "sidebar.verticalTabs" = true;
@@ -525,6 +566,12 @@
           "sidebar.position_start" = false; # Sidebar position right
           "sidebar.notification.badge.aichat" = false;
           "sidebar.new-sidebar.has-used" = true;
+
+          # Use neovim to view source
+          # FIXME: Doesn't handle spaces in filenames
+          "view_source.editor.external" = false;
+          "view_source.editor.path" = "${lib.getExe pkgs.ghostty}";
+          "view_source.editor.args" = "-e nvim";
         };
       };
     };

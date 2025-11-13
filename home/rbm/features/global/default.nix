@@ -9,6 +9,7 @@
     [
       ./gtk.nix
       ./nixpkgs.nix
+      ./sops.nix
       ./stylix.nix
       ./xdg-mimeapps.nix
       ./xdg-user-dirs.nix
@@ -33,6 +34,9 @@
 
     packages = with pkgs; [
       nerd-fonts.fira-code
+      nerd-fonts.inconsolata-lgc
+      nerd-fonts.iosevka-term-slab
+      dejavu_fonts
       gcc
       pwvucontrol
       unzip

@@ -3,6 +3,7 @@
     ./tmux.nix
 
     ./chat.nix
+    ./leet.nix
     ./localhost.nix
     ./mcgeedia.nix
     ./notes.nix

@@ -22,17 +22,20 @@
     nixcats.url = "git+file:///home/rbm/src/redbeardymcgee/nixcats";
     otter-launcher.url = "github:kuokuo123/otter-launcher";
     posting.url = "github:justdeeevin/posting/flake";
-    sops-nix.url = "github:Mic92/sops-nix";
+    sops-nix = {
+      url = "github:Mic92/sops-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     stylix.url = "github:danth/stylix/release-25.05";
     yazi.url = "github:sxyazi/yazi";
   };
 
   outputs = {
     self,
-    nixpkgs,
-    nixos-hardware,
     home-manager,
     nix-index-database,
+    nixos-hardware,
+    nixpkgs,
     otter-launcher,
     posting,
     sops-nix,

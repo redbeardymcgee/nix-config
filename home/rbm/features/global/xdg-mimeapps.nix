@@ -41,7 +41,7 @@ xdg.mimeApps = {
       "x-scheme-handler/https" = ["firefox.desktop"];
       # "x-scheme-handler/http" = ["firefox.desktop"];
       # "x-scheme-handler/https" = ["firefox.desktop"];
-      "x-scheme-handler/matrix" = ["org.gnome.Fractal.desktop"];
+      # "x-scheme-handler/matrix" = ["org.gnome.Fractal.desktop"];
     };
   };
 }

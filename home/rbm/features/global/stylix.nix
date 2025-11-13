@@ -11,14 +11,21 @@
     };
 
     fonts = {
-      # emoji = {
-      #   package = pkgs.noto-fonts-color-emoji;
-      #   name = "Noto Color Emoji";
-      # };
+      emoji = {
+        package = pkgs.noto-fonts-color-emoji;
+        name = "Noto Color Emoji";
+      };
       monospace = {
         package = pkgs.nerd-fonts.fira-code;
-        # package = pkgs.nerdfonts.override {fonts=["FiraCode"];};
         name = "FiraCode Nerd Font Mono";
+      };
+      serif = {
+        package = pkgs.nerd-fonts.iosevka-term-slab;
+        name = "IosevkaTermSlab Nerd Font";
+      };
+      sansSerif = {
+        package = pkgs.nerd-fonts.inconsolata-lgc;
+        name = "Inconsolata Nerd Font";
       };
       sizes = {
         applications = 13;

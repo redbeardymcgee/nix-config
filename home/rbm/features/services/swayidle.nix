@@ -1,6 +1,6 @@
 {pkgs, ...}: {
   services.swayidle = {
-    enable = true;
+    enable = false;
     # FIXME: can't unlock, just ignores password
     # events = [
     #   {

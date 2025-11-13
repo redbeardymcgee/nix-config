@@ -3,6 +3,7 @@
     enable = true;
 
     settings = {
+      default_profile = "rbm";
       profiles.rbm = {
         user_id = "@redbeardy_mcgee:matrix.org";
       };
@@ -10,6 +11,7 @@
         style = "restore";
       };
       settings = {
+        default_room = "#podman:matrix.org";
         image_preview = {
           protocol = {
             type = "kitty";

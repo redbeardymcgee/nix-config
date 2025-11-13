@@ -2,6 +2,7 @@
   environment.systemPackages = with pkgs; [
     dive
     podman-tui
+    podlet
   ];
 
   virtualisation = {

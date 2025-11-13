@@ -5,9 +5,9 @@
 
     ./fnott.nix
     ./foot.nix
-    # ./gradia.nix
+    ./gradia.nix
     ./river.nix
-    ./satty.nix
+    # ./satty.nix
     ./swaylock.nix
     ./way-displays.nix
     ./wezterm

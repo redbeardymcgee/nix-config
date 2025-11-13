@@ -151,55 +151,55 @@
       #   hash = "sha256-6s5OS3AzzF/CkYRV3Eblw3CQ+nXhwdHcCZMlyx0XCPU=";
       # })
 
-      (pkgs.writeText "yt-adzoom.js" ''
-        // ==UserScript==
-        // @name Skip YouTube ads
-        // @description Skips the ads in YouTube videos
-        // @run-at document-start
-        // @include *.youtube.com/*
-        // ==/UserScript==
+      # (pkgs.writeText "yt-adzoom.js" ''
+      #   // ==UserScript==
+      #   // @name Skip YouTube ads
+      #   // @description Skips the ads in YouTube videos
+      #   // @run-at document-start
+      #   // @include *.youtube.com/*
+      #   // ==/UserScript==
+      #
+      #   document.addEventListener('load', () => {
+      #       const btn = document.querySelector('.videoAdUiSkipButton,.ytp-ad-skip-button-modern')
+      #       if (btn) {
+      #           btn.click()
+      #       }
+      #       const ad = [...document.querySelectorAll('.ad-showing')][0];
+      #       if (ad) {
+      #           document.querySelector('video').currentTime = 9999999999;
+      #       }
+      #   }, true);
+      # '')
 
-        document.addEventListener('load', () => {
-            const btn = document.querySelector('.videoAdUiSkipButton,.ytp-ad-skip-button-modern')
-            if (btn) {
-                btn.click()
-            }
-            const ad = [...document.querySelectorAll('.ad-showing')][0];
-            if (ad) {
-                document.querySelector('video').currentTime = 9999999999;
-            }
-        }, true);
-      '')
+      # (pkgs.fetchurl {
+      #   url = "https://codeberg.org/ltGuillaume/yt2invidio/raw/master/yt2invidio.user.js";
+      #   sha256 = "sha256-j90cJQESIiAVN2qKd2D097WkvVeB4I8NbTePwNW387Q=";
+      # })
 
-      (pkgs.fetchurl {
-        url = "https://codeberg.org/ltGuillaume/yt2invidio/raw/master/yt2invidio.user.js";
-        sha256 = "sha256-j90cJQESIiAVN2qKd2D097WkvVeB4I8NbTePwNW387Q=";
-      })
+      # (pkgs.fetchurl {
+      #   url = "https://raw.githubusercontent.com/gardenshade/mam-plus/master/release/mam-plus.user.js";
+      #   sha256 = "sha256-/vtRui3YA/gFHnoAoCgvPmw1zDVfLGi9WJPFSCNUjQs=";
+      # })
 
-      (pkgs.fetchurl {
-        url = "https://raw.githubusercontent.com/gardenshade/mam-plus/master/release/mam-plus.user.js";
-        sha256 = "sha256-Jj5OTGpcicLGib7ftyzovcHi+yOldHYKQNEB6zGuqkE=";
-      })
+      # (pkgs.fetchurl {
+      #   url = "https://update.greasyfork.org/scripts/417852/MAM%20Site%20Store%20Fix.user.js";
+      #   sha256 = "sha256-Lm4qc066fPS0MMO7C5OkJyd+wz3amRx7dDRWndMS5nc=";
+      # })
 
-      (pkgs.fetchurl {
-        url = "https://update.greasyfork.org/scripts/417852/MAM%20Site%20Store%20Fix.user.js";
-        sha256 = "sha256-Lm4qc066fPS0MMO7C5OkJyd+wz3amRx7dDRWndMS5nc=";
-      })
+      # (pkgs.fetchurl {
+      #   url = "https://update.greasyfork.org/scripts/451080/MAM%20Total%20Torrents.user.js";
+      #   sha256 = "sha256-vBaNnyD6hTecGrmqK4ekU4iOyv0dy+bC9rRSChtect4=";
+      # })
 
-      (pkgs.fetchurl {
-        url = "https://update.greasyfork.org/scripts/451080/MAM%20Total%20Torrents.user.js";
-        sha256 = "sha256-vBaNnyD6hTecGrmqK4ekU4iOyv0dy+bC9rRSChtect4=";
-      })
+      # (pkgs.fetchurl {
+      #   url = "https://update.greasyfork.org/scripts/485525/Remove%20Seeding.user.js";
+      #   sha256 = "sha256-nbtcx6sQnc4ynpEGabvTo3NjiGVQB9J0wbf+Nv2CzMQ=";
+      # })
 
-      (pkgs.fetchurl {
-        url = "https://update.greasyfork.org/scripts/485525/Remove%20Seeding.user.js";
-        sha256 = "sha256-nbtcx6sQnc4ynpEGabvTo3NjiGVQB9J0wbf+Nv2CzMQ=";
-      })
-
-      (pkgs.fetchurl {
-        url = "https://github.com/tophf/mpiv/raw/master/script.user.js";
-        sha256 = "sha256-+RNwuynSR3Wo7snLWVHvgDkORP8iqLDa9nuYZaGsF8Q=";
-      })
+      # (pkgs.fetchurl {
+      #   url = "https://github.com/tophf/mpiv/raw/master/script.user.js";
+      #   sha256 = "sha256-+RNwuynSR3Wo7snLWVHvgDkORP8iqLDa9nuYZaGsF8Q=";
+      # })
     ];
   };
 }

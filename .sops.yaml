@@ -1,0 +1,7 @@
+keys:
+  - &rbm age1nam5qm7kmlgwr9jzt3djvk72vmz0mk2e9c6u8waxg542lep7cayqgqqkfy
+creation_rules:
+  - path_regex: secrets/[^/]+\.(yaml|json|env|ini)$
+    key_groups:
+      - age:
+        - *rbm

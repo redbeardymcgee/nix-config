@@ -11,20 +11,6 @@
             remain-on-exit = true;
           };
         in [
-          # {
-          #   inherit layout options;
-          #   window_name = "host";
-          #   panes = [
-          #     {
-          #       shell_command = ["ssh perseus tmux attach"];
-          #     }
-          #
-          #     {
-          #       shell_command = ["ssh perseus"];
-          #     }
-          #   ];
-          # }
-
           {
             inherit layout options;
             window_name = "src";
@@ -34,7 +20,6 @@
                 focus = true;
                 start_directory = "~/src/redbeardymcgee/podbox";
                 shell_command = [
-                  "nix develop -f shell.nix"
                   "sleep 1"
                   "redvim ."
                 ];
@@ -46,19 +31,26 @@
               }
             ];
           }
-          # {
-          #   inherit options;
-          #   window_name = "dox";
-          #   panes = [
-          #     {
-          #       focus = true;
-          #       start_directory = "~/src/repos/redbeardymcgee/poddox";
-          #       shell_command = [
-          #         "redvim ."
-          #       ];
-          #     }
-          #   ];
-          # }
+          {
+            inherit options;
+            window_name = "dox";
+            panes = [
+              {
+                focus = true;
+                start_directory = "~/src/repos/redbeardymcgee/podbox-docs";
+                shell_command = [
+                  "redvim ."
+                ];
+              }
+              # {
+              #   start_directory = "~/src/repos/redbeardymcgee/podbox-docs";
+              #   shell_command = [
+              #     "npx @astrojs/upgrade"
+              #     "npm run dev"
+              #   ];
+              # }
+            ];
+          }
         ];
       };
     };

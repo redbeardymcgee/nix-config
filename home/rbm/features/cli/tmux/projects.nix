@@ -15,35 +15,6 @@
         in [
           {
             inherit layout options;
-            window_name = "monitor";
-            window_index = 0;
-            panes = [
-              {shell = "~/.nix-profile/bin/btm";}
-            ];
-          }
-
-          {
-            inherit layout options;
-            window_name = "poddox";
-            start_directory = "/mnt/2tb/repos/podbox-docs";
-            panes = [
-              {
-                focus = true;
-                shell_command = [
-                  "redvim ."
-                ];
-              }
-              {
-                shell_command = [
-                  "npx --yes @astrojs/upgrade"
-                  "npm run dev"
-                ];
-              }
-            ];
-          }
-
-          {
-            inherit layout options;
             window_name = "nixcats";
             start_directory = "~/src/redbeardymcgee/nixcats";
             focus = true;
@@ -51,11 +22,9 @@
               {
                 focus = true;
                 shell_command = [
-                  "sleep 1"
                   "redvim ."
                 ];
               }
-              "blank"
             ];
           }
 
@@ -67,7 +36,6 @@
               {
                 focus = true;
                 shell_command = [
-                  "sleep 1"
                   "redvim ."
                 ];
               }
@@ -78,22 +46,6 @@
               }
             ];
           }
-
-          # {
-          #   inherit layout options;
-          #   window_name = "ags";
-          #   start_directory = "~/.config/ags";
-          #   panes = [
-          #     {
-          #       focus = true;
-          #       shell_command = [
-          #         "sleep 1"
-          #         "redvim ."
-          #       ];
-          #     }
-          #     "blank"
-          #   ];
-          # }
         ];
       };
     };
