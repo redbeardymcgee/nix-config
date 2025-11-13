@@ -1,15 +1,14 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  inputs,
+  ...
+}: {
   home.packages = with pkgs; [
-    neovim
+    inputs.nixcats.packages.${system}.redvim
   ];
 
-  xdg.configFile."nvim" = {
-    enable = true;
-    recursive = true;
-    source = ./nvim;
-  };
-
-  programs.neovim = {
-    enable = false;
+  home.sessionVariables = {
+    MANPAGER = "nvim +Man!";
+    MANROFFOPT = "-c";
   };
 }

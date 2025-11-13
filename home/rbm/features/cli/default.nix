@@ -28,6 +28,7 @@
     ./less.nix
     ./man.nix
     ./nix-index.nix
+    ./nvim.nix
     ./otter-launcher.nix
     ./posting.nix
     ./rbw.nix
@@ -43,7 +44,6 @@
   ];
 
   home.packages = with pkgs; [
-    inputs.nixcats.packages.${system}.redvim
     inputs.posting.packages.${system}.default
 
     # nix tools
