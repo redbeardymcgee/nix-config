@@ -13,6 +13,7 @@
     "None Print" = ''spawn 'grim -g "$(slurp -o -r -c "#ff0000ff")" - | satty --filename -' '';
   };
 
+  # TODO: 25.11 should have a module available
   xdg.configFile."satty/config.toml" = {
     enable = true;
     source = (pkgs.formats.toml {}).generate "config.toml" {
