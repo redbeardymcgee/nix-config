@@ -93,7 +93,7 @@ bind n findnext 1
 bind N findnext -1
 
 " Clear annoying search highlighting
-bind ,<Space> nohlsearch
+bind <Escape> composite mode normal ; hidecmdline; nohlsearch
 
 " The default jump of 10 is a bit much.
 bind j scrollline 5
