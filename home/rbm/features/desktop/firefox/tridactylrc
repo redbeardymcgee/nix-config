@@ -24,6 +24,7 @@ set wordpattern [^\s\/]+
 
 " Edit with nvim
 " TODO: Build minimal config from nixcats
+" NOTE: Using Firenvim now instead
 " set editorcmd wezterm --always-new-process --class tridactyl_editor -- nvim
 " set editorcmd foot --app-id=tridactyl_editor redvim
 
@@ -48,37 +49,32 @@ set theme base16-summerfruit-dark
 " Search
 """"""""""""""""""""
 
+" Disable all searchurls
+jsb Object.keys(tri.config.get("searchurls")).reduce((prev, u) => prev.catch(()=>{}).then(_ => tri.excmds.setnull("searchurls." + u)), Promise.resolve())
+
 " Add our own
-" set searchurls.amazon https://www.amazon.com/s/ref=nb_sb_noss?field-keywords=%s
-" set searchurls.crates https://crates.io/search?q=%s
-" set searchurls.ddg https://duckduckgo.com/html?q=%s
-" set searchurls.deb https://packages.debian.org/search?keywords=%s&searchon=names&suite=all&section=all
-" set searchurls.fdroid https://search.f-droid.org/?q=%s
-" set searchurls.flathub https://flathub.org/apps/search?q=%s
-" set searchurls.gh https://github.com/search?utf8=%E2%9C%93&q=%s&ref=simplesearch
-" set searchurls.no https://search.nixos.org/options?channel=unstable&from=0&size=50&sort=relevance&type=packages&query=%s
-" set searchurls.nooogle https://noogle.dev/q?term={}
-" set searchurls.nw https://wiki.nixos.org/w/index.php?search=%s&title=Special%3ASearch&wprov=acrw1_-1
-" set searchurls.np https://search.nixos.org/packages?channel=unstable&from=0&size=50&sort=relevance&type=packages&query=%s
-" set searchurls.hm https://home-manager-options.extranix.com/?query=%s&release=master
-" set searchurls.gentoo https://wiki.gentoo.org/index.php?title=Special%3ASearch&profile=default&search=%s&fulltext=Search
-" set searchurls.imdb https://www.imdb.com/find?q=%s
-" set searchurls.mdn https://developer.mozilla.org/en-US/search?q=%s&topic=api&topic=js
-" set searchurls.npm https://www.npmjs.com/search?q=%s
-" set searchurls.maps https://www.openstreetmap.org/search?query=%s
-" set searchurls.protondb https://www.protondb.com/search?q=%s
-" set searchurls.pydoc https://docs.python.org/3/search.html?q=%s
-" set searchurls.qwant https://www.qwant.com/?q=%s
-" set searchurls.reddit https://old.reddit.com/r/%s
-" set searchurls.rustdoc https://doc.rust-lang.org/std/index.html?search=%s
-" set searchurls.searx https://searxng.mcgee.red/?q=%s&categories=general&language=en-US
-" set searchurls.steam https://store.steampowered.com/search/?term=%s
-" set searchurls.tmuxp https://tmuxp.git-pull.com/search.html?q=%s&check_keywords=yes&area=default#
-" set searchurls.w https://en.wikipedia.org/w/index.php?search=%s&title=Special%3ASearch
-" set searchurls.yt https://www.youtube.com/results?search_query=%s
+set searchurls.crates https://crates.io/search?q=%s
+set searchurls.flathub https://flathub.org/apps/search?q=%s
+set searchurls.gh https//github.com/search?utf8=✓&q=%s
+set searchurls.no https://search.nixos.org/options?channel=25.05&from=0&size=50&sort=relevance&type=packages&query=%s
+set searchurls.nl https://noogle.dev/q?term=%s
+set searchurls.nw https://wiki.nixos.org/w/index.php?search=%s
+set searchurls.np https://search.nixos.org/packages?channel=25.05&from=0&size=50&sort=relevance&type=packages&query=%s
+set searchurls.hm https://home-manager-options.extranix.com/?query=%s&release=release-25.05
+set searchurls.mdn https://developer.mozilla.org/en-US/search?q=%s&topic=api&topic=js
+set searchurls.npm https://www.npmjs.com/search?q=%s
+set searchurls.maps https://www.openstreetmap.org/search?query=%s
+set searchurls.protondb https://www.protondb.com/search?q=%s
+set searchurls.python https://docs.python.org/3/search.html?q=%s
+set searchurls.rustdoc https://doc.rust-lang.org/std/index.html?search=%s
+set searchurls.searx https://search.mcgee.red/?q=%s&categories=general&language=en-US
+set searchurls.steam https://store.steampowered.com/search/?term=%s
+set searchurls.tmuxp https://tmuxp.git-pull.com/search.html?q=%s&check_keywords=yes&area=default#
+set searchurls.w https://en.wikipedia.org/w/index.php?search=%s&title=Special%3ASearch
+set searchurls.yt https://www.youtube.com/results?search_query=%s
 
 " Set the default to not be Google
-" set searchengine qwant
+set searchengine searx
 
 """"""""""""""""""""
 " Bindings
