@@ -29,9 +29,9 @@
           Locked = true;
         };
         EnableTrackingProtection = {
-          Value = false;
+          Value = true;
           Locked = true;
-          Category = "strict";
+          Category = "standard";
           Cryptomining = true;
           EmailTracking = true;
           Fingerprinting = true;
@@ -220,13 +220,13 @@
             private_browsing = true;
           };
 
-          "{5d0d1f87-5991-42d3-98c3-54878ead1ed1}" = {
-            # Censor Tracker
-            default_area = "menupanel";
-            install_url = "https://addons.mozilla.org/firefox/downloads/latest/{5d0d1f87-5991-42d3-98c3-54878ead1ed1}/latest.xpi";
-            installation_mode = "normal_installed";
-            private_browsing = true;
-          };
+          # "{5d0d1f87-5991-42d3-98c3-54878ead1ed1}" = {
+          #   # Censor Tracker
+          #   default_area = "menupanel";
+          #   install_url = "https://addons.mozilla.org/firefox/downloads/latest/{5d0d1f87-5991-42d3-98c3-54878ead1ed1}/latest.xpi";
+          #   installation_mode = "normal_installed";
+          #   private_browsing = true;
+          # };
 
           "{58204f8b-01c2-4bbc-98f8-9a90458fd9ef}" = {
             # BlockTube
@@ -550,7 +550,7 @@
           # allow plugins on all pages
           "extensions.webextensions.restrictedDomains" = "";
           "extensions.webextensions.restrictedDomains.enabled" = false;
-          # "privacy.resistFingerprinting.block_mozAddonManager" = true;
+          "privacy.resistFingerprinting.block_mozAddonManager" = true;
 
           # Enable stylix fonts
           # FIXME: These are applied in `about:config` but not in Settings
