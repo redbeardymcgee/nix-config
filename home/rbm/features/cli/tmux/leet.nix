@@ -27,6 +27,20 @@
               }
             ];
           }
+          {
+            inherit layout options;
+            window_name = "advent of code";
+            start_directory = "~/src/redbeardymcgee/aoc";
+            focus = true;
+            panes = [
+              {
+                focus = true;
+                shell_command = [
+                  "redvim"
+                ];
+              }
+            ];
+          }
         ];
       };
     };
