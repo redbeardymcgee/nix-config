@@ -235,7 +235,7 @@
           "ghostty.fsel" = "float";
 
           "vesktop" = samsung;
-          "*vesktop" = "tags ${toString (pow2 1)}";
+          "*vesktop" = "tags ${toString (pow2 2)}";
 
           # "org.gnome.Fractal" = samsung;
           # "*org.gnome.Fractal" = "tags ${toString (pow2 2)}";
