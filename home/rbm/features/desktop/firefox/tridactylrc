@@ -87,10 +87,12 @@ set theme base16-summerfruit-dark
 bind U undo window
 
 " Tridactyl search
-bind / fillcmdline find
-bind ? fillcmdline find -?
-bind n findnext 1
-bind N findnext -1
+ bind / fillcmdline find
+ bind ? fillcmdline find --reverse
+ bind n findnext --search-from-view
+ bind N findnext --search-from-view --reverse
+ bind gn findselect
+ bind gN composite findnext --search-from-view --reverse; findselect
 
 " Clear annoying search highlighting
 bind <Escape> composite mode normal ; hidecmdline; nohlsearch
