@@ -241,11 +241,11 @@
         "nixpkgs": "nixpkgs_2"
       },
       "locked": {
-        "lastModified": 1761760184,
-        "narHash": "sha256-Qt0dXNNjQiOr2yVm8HlJfUvZx1OVOXaLX4C8kEuEKbg=",
+        "lastModified": 1762940307,
+        "narHash": "sha256-HxnhdFDu9cIPs4/t8MN2A+tHJdZMiDImzeotv49ixqY=",
         "owner": "Mjoyufull",
         "repo": "fsel",
-        "rev": "27228bc6ec9082843f46109967dbb1d1caa0cc8f",
+        "rev": "106d9dfe773f39c8f31b92246ccd92a1fef82a44",
         "type": "github"
       },
       "original": {
@@ -375,20 +375,20 @@
         "plugins-neotab": "plugins-neotab",
         "plugins-tiny-glimmer-nvim": "plugins-tiny-glimmer-nvim",
         "plugins-tmux-navigate": "plugins-tmux-navigate",
-        "plugins-toggleterm-manager": "plugins-toggleterm-manager"
+        "plugins-toggleterm-manager-nvim": "plugins-toggleterm-manager-nvim"
       },
       "locked": {
-        "lastModified": 1763140356,
-        "narHash": "sha256-ikJ3qZ1nx0stlDOb8SFRmCJPDa2/RY/OrJok8jKou7A=",
-        "ref": "refs/heads/main",
-        "rev": "176b761ccd0057f863a371c90802bddadac69073",
-        "revCount": 225,
-        "type": "git",
-        "url": "file:///home/rbm/src/redbeardymcgee/nixcats"
+        "lastModified": 1763159215,
+        "narHash": "sha256-/yitUApS/pKAEjR7POkRGjZ3NbNjGyXpC7SH2U7sOAI=",
+        "owner": "redbeardymcgee",
+        "repo": "nixcats",
+        "rev": "401485a26a178fa83cf09a7c8dfff1d402917081",
+        "type": "github"
       },
       "original": {
-        "type": "git",
-        "url": "file:///home/rbm/src/redbeardymcgee/nixcats"
+        "owner": "redbeardymcgee",
+        "repo": "nixcats",
+        "type": "github"
       }
     },
     "nixos-hardware": {
@@ -527,11 +527,11 @@
     },
     "nixpkgs_5": {
       "locked": {
-        "lastModified": 1762286042,
-        "narHash": "sha256-OD5HsZ+sN7VvNucbrjiCz7CHF5zf9gP51YVJvPwYIH8=",
+        "lastModified": 1762943920,
+        "narHash": "sha256-ITeH8GBpQTw9457ICZBddQEBjlXMmilML067q0e6vqY=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "12c1f0253aa9a54fdf8ec8aecaafada64a111e24",
+        "rev": "91c9a64ce2a84e648d0cf9671274bb9c2fb9ba60",
         "type": "github"
       },
       "original": {
@@ -543,11 +543,11 @@
     },
     "nixpkgs_6": {
       "locked": {
-        "lastModified": 1762756533,
-        "narHash": "sha256-HiRDeUOD1VLklHeOmaKDzf+8Hb7vSWPVFcWwaTrpm+U=",
+        "lastModified": 1763049705,
+        "narHash": "sha256-A5LS0AJZ1yDPTa2fHxufZN++n8MCmtgrJDtxFxrH4S8=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "c2448301fb856e351aab33e64c33a3fc8bcf637d",
+        "rev": "3acb677ea67d4c6218f33de0db0955f116b7588c",
         "type": "github"
       },
       "original": {
@@ -639,11 +639,11 @@
         "systems": "systems_2"
       },
       "locked": {
-        "lastModified": 1762865818,
-        "narHash": "sha256-k7f3CrKnSz0zP/RdGbA541KXM76JfDOF7MGQ6+tS20A=",
+        "lastModified": 1762924563,
+        "narHash": "sha256-Ay9m21MbIzNgC53ndMcL8IkRTX35fyRXq5X8ACK0mqc=",
         "owner": "kuokuo123",
         "repo": "otter-launcher",
-        "rev": "bc6a59510306ddc595e4df37bbae131b80690372",
+        "rev": "30d5dc7cda8cb2eec399e47d0a48f16ebdb4283a",
         "type": "github"
       },
       "original": {
@@ -780,7 +780,7 @@
         "type": "github"
       }
     },
-    "plugins-toggleterm-manager": {
+    "plugins-toggleterm-manager-nvim": {
       "flake": false,
       "locked": {
         "lastModified": 1701400122,
@@ -878,11 +878,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1762812535,
+        "lastModified": 1763069729,
         "narHash": "sha256-A91a+K0Q9wfdPLwL06e/kbHeAWSzPYy2EGdTDsyfb+s=",
         "owner": "Mic92",
         "repo": "sops-nix",
-        "rev": "d75e4f89e58fdda39e4809f8c52013caa22483b7",
+        "rev": "a2bcd1c25c1d29e22756ccae094032ab4ada2268",
         "type": "github"
       },
       "original": {
@@ -1132,11 +1132,11 @@
         "rust-overlay": "rust-overlay"
       },
       "locked": {
-        "lastModified": 1762423262,
-        "narHash": "sha256-ZHR59slCf9URpJiO3rj9Ffs5H62//BQ3n7XfutXntDU=",
+        "lastModified": 1762922473,
+        "narHash": "sha256-9MALQ4iflEIhBXsNDSrirkQhAACNE28zRGQnWV+j4eQ=",
         "owner": "sxyazi",
         "repo": "yazi",
-        "rev": "4b56e7323530224a99442d408f9e44038399b2e3",
+        "rev": "577065cbd05a282a1d6f923c89cdf74d5af2f3e9",
         "type": "github"
       },
       "original": {
