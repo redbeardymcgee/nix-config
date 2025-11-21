@@ -39,11 +39,6 @@
                   "redvim ."
                 ];
               }
-              {
-                shell_command = [
-                  "npm run dev"
-                ];
-              }
             ];
           }
         ];
