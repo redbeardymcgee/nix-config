@@ -17,12 +17,12 @@
 
   home.packages = with pkgs; [
     eject
+    fzf
     mediainfo
     imagemagick
     ouch
     trash-cli
     udisks
-    # util-linux
   ];
 
   programs.yazi = {
@@ -56,8 +56,8 @@
       officialPluginsSrc = pkgs.fetchgit {
         url = "https://github.com/yazi-rs/plugins.git";
         sparseCheckout = map (p: "${p}.yazi") officialPluginsNames;
-        rev = "d1c8baab86100afb708694d22b13901b9f9baf00";
-        hash = "sha256-tPoZE1M/LCNQS07VRJBJUHgU8RCRa8eeN3h3IK04l2w=";
+        rev = "2301ff803a033cd16d16e62697474d6cb9a94711";
+        hash = "sha256-89Y3v/fAaZA1Im4OR6KwwbK1N7THsmU90JYpxfWsD1A=";
       };
 
       officialPlugins =
@@ -76,10 +76,10 @@
         augment-command = "${inputs.augment-command-yazi}";
         bunny = "${inputs.bunny-yazi}";
         cd-git-root = "${inputs.cd-git-root-yazi}";
-        folder-rules = ./plugins/folder-rules.yazi;
         mediainfo = "${inputs.mediainfo-yazi}";
         duckdb = "${inputs.duckdb-yazi}";
         ouch = "${inputs.ouch-yazi}";
+        pref-by-location = "${inputs.pref-by-location-yazi}";
         recycle-bin = "${inputs.recycle-bin-yazi}";
         restore = "${inputs.restore-yazi}";
         wl-clipboard = "${inputs.wl-clipboard-yazi}";
