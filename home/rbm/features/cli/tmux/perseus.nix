@@ -37,18 +37,11 @@
             panes = [
               {
                 focus = true;
-                start_directory = "~/src/repos/redbeardymcgee/podbox-docs";
+                start_directory = "~/src/redbeardymcgee/podbox-docs";
                 shell_command = [
                   "redvim ."
                 ];
               }
-              # {
-              #   start_directory = "~/src/repos/redbeardymcgee/podbox-docs";
-              #   shell_command = [
-              #     "npx @astrojs/upgrade"
-              #     "npm run dev"
-              #   ];
-              # }
             ];
           }
         ];
