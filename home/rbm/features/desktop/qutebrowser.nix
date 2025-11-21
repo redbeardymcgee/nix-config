@@ -8,9 +8,9 @@
     keyutils
   ];
 
-  home.sessionVariables = {
-    QT_SCALE_FACTOR = 1.5;
-  };
+  # home.sessionVariables = {
+  #   QT_SCALE_FACTOR = 1.5;
+  # };
 
   programs.qutebrowser = {
     enable = true;
@@ -42,7 +42,6 @@
         highdpi = true;
         # workarounds.disable_hangouts_extension = true;
       };
-      # editor.command = ["kitty" "--app-id" "floating_editor" "redvim" "+call cursor({line}, {column})" "{file}"];
       editor.command = [
         "ghostty"
         "--class"
@@ -54,9 +53,12 @@
       ];
       fonts = {
         # default_family = "FiraCode Nerd Font";
-        web.size.minimum = 14;
+        web.size.minimum = 12;
       };
-      hints.mode = "number";
+      hints = {
+        auto_follow_timeout = 500;
+        mode = "number";
+      };
       keyhint.delay = 300;
       new_instance_open_target = "window";
       scrolling.smooth = true;
@@ -65,9 +67,9 @@
       tabs.show = "never";
       url = {
         start_pages = [
-          "https://mcgee.red"
+          "https://search.mcgee.red"
         ];
-        default_page = "https://mcgee.red";
+        default_page = "https://search.mcgee.red";
       };
       window.hide_decoration = true;
     };
@@ -112,7 +114,7 @@
     };
 
     searchEngines = {
-      DEFAULT = "https://www.qwant.com/?q={}";
+      DEFAULT = "https://search.mcgee.red/?q={}&categories=general&language=en-US";
 
       amazon = "https://www.amazon.com/s/?field-keywords={}";
       crates = "https://crates.io/search?q={}";
@@ -144,38 +146,6 @@
     };
 
     greasemonkey = [
-      # (pkgs.fetchFromGitHub {
-      #   owner = "iamfugui";
-      #   repo = "youtube-adb";
-      #   rev = "dc0eaad136e8db36ebe6b9aca71045af00b606dd";
-      #   hash = "sha256-6s5OS3AzzF/CkYRV3Eblw3CQ+nXhwdHcCZMlyx0XCPU=";
-      # })
-
-      # (pkgs.writeText "yt-adzoom.js" ''
-      #   // ==UserScript==
-      #   // @name Skip YouTube ads
-      #   // @description Skips the ads in YouTube videos
-      #   // @run-at document-start
-      #   // @include *.youtube.com/*
-      #   // ==/UserScript==
-      #
-      #   document.addEventListener('load', () => {
-      #       const btn = document.querySelector('.videoAdUiSkipButton,.ytp-ad-skip-button-modern')
-      #       if (btn) {
-      #           btn.click()
-      #       }
-      #       const ad = [...document.querySelectorAll('.ad-showing')][0];
-      #       if (ad) {
-      #           document.querySelector('video').currentTime = 9999999999;
-      #       }
-      #   }, true);
-      # '')
-
-      # (pkgs.fetchurl {
-      #   url = "https://codeberg.org/ltGuillaume/yt2invidio/raw/master/yt2invidio.user.js";
-      #   sha256 = "sha256-j90cJQESIiAVN2qKd2D097WkvVeB4I8NbTePwNW387Q=";
-      # })
-
       # (pkgs.fetchurl {
       #   url = "https://raw.githubusercontent.com/gardenshade/mam-plus/master/release/mam-plus.user.js";
       #   sha256 = "sha256-/vtRui3YA/gFHnoAoCgvPmw1zDVfLGi9WJPFSCNUjQs=";
