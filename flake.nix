@@ -58,6 +58,10 @@
       url = "github:ndtoan96/ouch.yazi";
       flake = false;
     };
+    pref-by-location-yazi = {
+      url = "github:boydaihungst/pref-by-location.yazi";
+      flake = false;
+    };
     restore-yazi = {
       url = "github:boydaihungst/restore.yazi";
       flake = false;
