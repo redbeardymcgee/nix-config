@@ -11,7 +11,104 @@
 
   mgr = {
     prepend_keymap = [
-      # Nav
+      {
+        on = "M";
+        run = "plugin mount";
+      }
+
+      {
+        on = "<C-h>";
+        run = "plugin duckdb -1";
+        desc = "Scroll one column to the left";
+      }
+
+      {
+        on = "<C-l>";
+        run = "plugin duckdb +1";
+        desc = "Scroll one column to the right";
+      }
+
+      {
+        on = ["g" "r"];
+        run = "plugin cd-git-root";
+        desc = "Navigate to git root";
+      }
+
+      {
+        on = ";";
+        run = "plugin bunny";
+        desc = "Hop to bookmarks";
+      }
+
+      {
+        on = ["d" "u"];
+        run = "plugin restore";
+        desc = "Restore last deleted files";
+      }
+      {
+        on = ["d" "U"];
+        run = "plugin restore -- --interactive";
+        desc = "Restore last deleted files interactively";
+      }
+
+      {
+        on = ["R" "b"];
+        run = "plugin recycle-bin";
+        desc = "Open Recycle Bin menu";
+      }
+
+      {
+        on = "<C-y>";
+        run = "plugin wl-clipboard";
+        desc = "Yank file to clipboard";
+      }
+
+      {
+        on = ["y"];
+        run = [
+          ''shell -- for path in "$@"; do echo "file://$path"; done | wl-copy -t text/uri-list''
+          "yank"
+        ];
+        desc = "Yank file";
+      }
+
+      {
+        on = ["t" "s"];
+        for = "unix";
+        run = ''shell "$SHELL" --block'';
+        desc = "Open $SHELL here";
+      }
+
+      {
+        on = ["t" "m"];
+        run = "plugin chmod";
+        desc = "Chmod on selected files";
+      }
+
+      {
+        on = ["t" "d"];
+        run = "plugin diff";
+        desc = "Diff the selected with the hovered file";
+      }
+
+      {
+        on = ["t" "c"];
+        run = "plugin ouch 7z";
+        desc = "Compress with ouch";
+      }
+
+      {
+        on = "+";
+        run = "plugin zoom 1";
+        desc = "Zoom in hovered file";
+      }
+
+      {
+        on = "-";
+        run = "plugin zoom -1";
+        desc = "Zoom out hovered file";
+      }
+
       {
         on = ["j"];
         run = "plugin augment-command -- arrow 1";
@@ -79,48 +176,7 @@
         desc = "Smart filter";
       }
 
-      {
-        on = ["f" "s"];
-        run = "plugin searchjump";
-        desc = "Jump by label";
-      }
-
-      # {
-      #   on = ["f" "g"];
-      #   run = "plugin fg --args='rg'";
-      #   desc = "Find file by grep";
-      # }
-
-      # {
-      #   on = ["f" "f"];
-      #   run = "plugin fg --args='fzf'";
-      #   desc = "Find file by name";
-      # }
-
       # Bookmarks
-      {
-        on = ["b" "a"];
-        run = "plugin yamb --args=save";
-        desc = "Add bookmark";
-      }
-
-      {
-        on = ["b" "b"];
-        run = "plugin yamb --args=jump_by_fzf";
-        desc = "Jump to a bookmark by fzf";
-      }
-
-      {
-        on = ["b" "d"];
-        run = "plugin yamb --args=delete_by_fzf";
-        desc = "Delete a bookmark by fzf";
-      }
-
-      {
-        on = ["b" "r"];
-        run = "plugin yamb --args=rename_by_fzf";
-        desc = "Rename a bookmark by fzf";
-      }
 
       # Rename
       {
@@ -166,12 +222,6 @@
         desc = "Unselect all files and also unyank cut files";
       }
 
-      {
-        on = ["y"];
-        run = [ /* ''shell 'cb copy "$@"' --confirm'' */ "yank"];
-        desc = "Yank file";
-      }
-
       # Create & Delete
       {
         on = ["d"];
@@ -200,23 +250,9 @@
       }
 
       {
-        on = ["t" "g"];
-        run = "plugin lazygit";
-        desc = "Lazygit";
-      }
-
-      {
         on = ["t" "p"];
         run = "plugin augment-command -- pager";
         desc = "Open '$PAGER' on selected files";
-      }
-
-      {
-        on = ["t" "s"];
-        run = ''
-          plugin augment-command -- shell "$SHELL" --confirm --block
-        '';
-        desc = "Open shell here";
       }
 
       {
@@ -226,24 +262,6 @@
         '';
         desc = "Drag and drop into the hovered directory or CWD";
       }
-
-      {
-        on = ["t" "m"];
-        run = "plugin chmod";
-        desc = "Chmod on selected files";
-      }
-
-      {
-        on = ["t" "d"];
-        run = "plugin diff";
-        desc = "Diff the selected with the hovered file";
-      }
-
-      {
-        on = ["t" "c"];
-        run = "plugin ouch --args=zip";
-        desc = "Compress with ouch";
-      }
     ];
   };
 
@@ -251,6 +269,7 @@
     extract = [
       {
         run = ''ouch d -y "$@"'';
+        desc = "Extract here with ouch";
         for = "unix";
       }
     ];

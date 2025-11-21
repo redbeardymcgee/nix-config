@@ -15,6 +15,16 @@
     };
   };
 
+  home.packages = with pkgs; [
+    eject
+    mediainfo
+    imagemagick
+    ouch
+    trash-cli
+    udisks
+    # util-linux
+  ];
+
   programs.yazi = {
     enable = true;
     package = inputs.yazi.packages.${pkgs.system}.default;
@@ -27,7 +37,20 @@
         "chmod"
         "diff"
         "full-border"
+        # "git"
+        # "jump-to-char"
+        # "lsar"
+        # "mactag" # NOTE: MacOS only
+        # "mime-ext"
+        "mount"
+        # "no-status"
+        # "piper"
+        # "smart-enter"
         "smart-filter"
+        # "smart-paste"
+        # "toggle-pane" # TODO: This is worth adding
+        # "vcs-files"
+        "zoom"
       ];
 
       officialPluginsSrc = pkgs.fetchgit {
@@ -48,106 +71,114 @@
         {}
         officialPluginsNames;
     in
-      with pkgs;
-        officialPlugins
-        // {
-          augment-command = fetchFromGitHub {
-            owner = "hankertrix";
-            repo = "augment-command.yazi";
-            rev = "120406f79b6a5bf4db6120dd99c1106008ada5cf";
-            hash = "sha256-t9X7cNrMR3fFqiM13COQbBDHYr8UKgxW708V6ndZVgY=";
-          };
-          allmytoes = fetchFromGitHub {
-            owner = "sonico98";
-            repo = "allmytoes.yazi";
-            rev = "e9697528fa446521927a7e039e3d4a01a85eb20f";
-            hash = "sha256-LekO13LU18lfuIuY7AgGnjLfRZw16Ap/tBEkQQYKp8g=";
-          };
-          exifaudio = fetchFromGitHub {
-            owner = "sonico98";
-            repo = "exifaudio.yazi";
-            rev = "4506f9d5032e714c0689be09d566dd877b9d464e";
-            hash = "sha256-RWCqWBpbmU3sh/A+LBJPXL/AY292blKb/zZXGvIA5/o=";
-          };
-          glow = fetchFromGitHub {
-            owner = "reledia";
-            repo = "glow.yazi";
-            rev = "bd3eaa58c065eaf216a8d22d64c62d8e0e9277e9";
-            hash = "sha256-mzW/ut/LTEriZiWF8YMRXG9hZ70OOC0irl5xObTNO40=";
-          };
-          hexyl = fetchFromGitHub {
-            owner = "reledia";
-            repo = "hexyl.yazi";
-            rev = "016a09bcc249dd3ce06267d54cc039e73de9c647";
-            hash = "sha256-ly/cLKl2y3npoT2nX8ioGOFcRXI4UXbD9Es/5veUhOU=";
-          };
-          miller = fetchFromGitHub {
-            owner = "reledia";
-            repo = "miller.yazi";
-            rev = "0a3d1316e38132ae9a6b91fbd69bab295cbbf2fe";
-            hash = "sha256-pZpx7V5ud5JhEkgkfVBSuM0CFIIUXZZ+pOX0xVlHf+0=";
-          };
-          ouch = fetchFromGitHub {
-            owner = "ndtoan96";
-            repo = "ouch.yazi";
-            rev = "0742fffea5229271164016bf96fb599d861972db";
-            hash = "sha256-C0wG8NQ+zjAMfd+J39Uvs3K4U6e3Qpo1yLPm2xcsAaI=";
-          };
-          torrent-preview = fetchFromGitHub {
-            owner = "kirasok";
-            repo = "torrent-preview.yazi";
-            rev = "f46528243c458de3ffce38c44607d5a0cde67559";
-            hash = "sha256-VhJvNRKHxVla4v2JJeSnP0MOMBFSm4k7gfqjrHOMVlo=";
-          };
-          yamb = fetchFromGitHub {
-            owner = "h-hg";
-            repo = "yamb.yazi";
-            rev = "22af0033be18eead7b04c2768767d38ccfbaa05b";
-            hash = "sha256-NMxZ8/7HQgs+BsZeH4nEglWsRH2ibAzq7hRSyrtFDTA=";
-          };
-          lazygit = fetchFromGitHub {
-            owner = "Lil-Dank";
-            repo = "lazygit.yazi";
-            rev = "8f37dc5795f165021098b17d797c7b8f510aeca9";
-            hash = "sha256-rR7SMTtQYrvQjhkzulDaNH/LAA77UnXkcZ50WwBX2Uw=";
-          };
-        };
+      officialPlugins
+      // {
+        augment-command = "${inputs.augment-command-yazi}";
+        bunny = "${inputs.bunny-yazi}";
+        cd-git-root = "${inputs.cd-git-root-yazi}";
+        folder-rules = ./plugins/folder-rules.yazi;
+        mediainfo = "${inputs.mediainfo-yazi}";
+        duckdb = "${inputs.duckdb-yazi}";
+        ouch = "${inputs.ouch-yazi}";
+        recycle-bin = "${inputs.recycle-bin-yazi}";
+        restore = "${inputs.restore-yazi}";
+        wl-clipboard = "${inputs.wl-clipboard-yazi}";
+      };
 
     settings = {
       mgr = {
+        ratio = [1 2 5];
+        scrolloff = 10;
         sort_dir_first = true;
       };
 
-      plugin = {
-        # fetchers = [
-        #   {
-        #     id = "git-status";
-        #     name = "*";
-        #     run = "git-status";
-        #     prio = "normal";
-        #   }
-        # ];
+      tasks = {
+        image_alloc = 1073741824;
+      };
 
+      plugin = {
         prepend_preloaders = [
           {
-            mime = "image/svg+xml";
-            run = "magick";
+            mime = "{audio,video,image}/*";
+            run = "mediainfo";
           }
           {
-            mime = "image/heic";
-            run = "magick";
+            mime = "application/subrip";
+            run = "mediainfo";
           }
           {
-            mime = "image/jxl";
-            run = "magick";
+            mime = "application/postscript";
+            run = "mediainfo";
           }
           {
-            mime = "image/*";
-            run = "allmytoes";
+            name = "*.csv";
+            run = "duckdb";
+            multi = false;
+          }
+          {
+            name = "*.tsv";
+            run = "duckdb";
+            multi = false;
+          }
+          {
+            name = "*.json";
+            run = "duckdb";
+            multi = false;
+          }
+          {
+            name = "*.parquet";
+            run = "duckdb";
+            multi = false;
+          }
+          {
+            name = "*.xlsx";
+            run = "duckdb";
+            multi = false;
           }
         ];
 
         prepend_previewers = [
+          {
+            name = "*.csv";
+            run = "duckdb";
+          }
+          {
+            name = "*.tsv";
+            run = "duckdb";
+          }
+          {
+            name = "*.json";
+            run = "duckdb";
+          }
+          {
+            name = "*.parquet";
+            run = "duckdb";
+          }
+          {
+            name = "*.xlsx";
+            run = "duckdb";
+          }
+          {
+            name = "*.db";
+            run = "duckdb";
+          }
+          {
+            name = "*.duckdb";
+            run = "duckdb";
+          }
+
+          {
+            mime = "{audio,video,image}/*";
+            run = "mediainfo";
+          }
+          {
+            mime = "application/subrip";
+            run = "mediainfo";
+          }
+          {
+            mime = "application/postscript";
+            run = "mediainfo";
+          }
           {
             mime = "application/*zip";
             run = "ouch";
@@ -169,47 +200,28 @@
             run = "ouch";
           }
           {
+            mime = "application/vnd.rar";
+            run = "ouch";
+          }
+          {
             mime = "application/x-xz";
             run = "ouch";
           }
           {
-            mime = "image/svg+xml";
-            run = "magick";
+            mime = "application/xz";
+            run = "ouch";
           }
           {
-            mime = "image/heic";
-            run = "magick";
+            mime = "application/x-zstd";
+            run = "ouch";
           }
           {
-            mime = "image/jxl";
-            run = "magick";
+            mime = "application/zstd";
+            run = "ouch";
           }
           {
-            mime = "image/*";
-            run = "allmytoes";
-          }
-          {
-            mime = "*.md";
-            run = "glow";
-          }
-          {
-            mime = "text/csv";
-            run = "miller";
-          }
-          {
-            mime = "audio/*";
-            run = "exifaudio";
-          }
-          {
-            mime = "application/x-bittorrent";
-            run = "torrent-preview";
-          }
-        ];
-
-        append_previewers = [
-          {
-            name = "*";
-            run = "hexyl";
+            mime = "application/java-archive";
+            run = "ouch";
           }
         ];
       };
