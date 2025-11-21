@@ -31,7 +31,6 @@ config = {
   --   saturation = 0.9,
   --   brightness = 0.4,
   -- },
-
 }
 
 return config
