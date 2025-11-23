@@ -13,7 +13,7 @@
     podman = {
       enable = true;
       dockerCompat = true;
-      dockerSocket.enable = true;
+      dockerSocket.enable = false;
       defaultNetwork.settings.dns_enabled = true;
     };
   };
