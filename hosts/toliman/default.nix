@@ -23,6 +23,7 @@
     ../common/optional/systemd-networkd.nix
     ../common/optional/wireshark.nix
     ../common/optional/firewall.nix
+    ../common/optional/razer.nix
 
     ../common/services/regreet.nix
     ../common/services/keyring.nix

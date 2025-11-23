@@ -21,6 +21,7 @@ in {
       "kvm"
       "mysql"
       "network"
+      # "openrazer" # hardware.openrazer.users
       "podman"
       "video"
       "wheel"
