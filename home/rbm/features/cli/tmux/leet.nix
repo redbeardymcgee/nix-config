@@ -35,9 +35,7 @@
             panes = [
               {
                 focus = true;
-                shell_command = [
-                  "redvim"
-                ];
+                shell = "~/.nix-profile/bin/redvim";
               }
             ];
           }

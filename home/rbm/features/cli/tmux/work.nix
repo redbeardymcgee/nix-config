@@ -28,7 +28,7 @@
             focus = true;
             panes = [
               {
-                shell = "~/.nix-profile/bin/redvim .";
+                shell = "~/.nix-profile/bin/redvim";
                 focus = true;
               }
               "blank"

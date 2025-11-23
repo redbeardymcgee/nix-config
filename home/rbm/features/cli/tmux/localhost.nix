@@ -20,25 +20,15 @@
           }
 
           {
-            inherit options;
-            window_name = "host";
-            panes = [{shell = "~/.nix-profile/bin/yazi";}];
-          }
-
-          {
             inherit layout options;
             window_name = "flake";
             start_directory = "~/src/redbeardymcgee/nix-config";
             focus = true;
             panes = [
               {
-                shell_command = [
-                  "sleep 1"
-                  "redvim ."
-                ];
                 focus = true;
+                shell = "~/.nix-profile/bin/redvim";
               }
-              "blank"
             ];
           }
         ];

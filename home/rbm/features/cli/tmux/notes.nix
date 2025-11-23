@@ -13,13 +13,6 @@
           };
         in [
           {
-            inherit options;
-            window_name = "monitor";
-            window_index = 0;
-            panes = [{shell = "~/.nix-profile/bin/btm";}];
-          }
-
-          {
             inherit layout options;
             window_name = "misc";
             start_directory = "$XDG_DOCUMENTS_DIR/Notebooks/Misc";
@@ -27,12 +20,8 @@
             panes = [
               {
                 focus = true;
-                shell_command = [
-                  "sleep 1"
-                  "redvim ."
-                ];
+                shell = "~/.nix-profile/bin/redvim";
               }
-              "blank"
             ];
           }
         ];

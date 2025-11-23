@@ -19,10 +19,7 @@
               {
                 focus = true;
                 start_directory = "~/src/redbeardymcgee/podbox";
-                shell_command = [
-                  "sleep 1"
-                  "redvim ."
-                ];
+                shell = "~/.nix-profile/bin/redvim";
               }
 
               {
@@ -38,9 +35,7 @@
               {
                 focus = true;
                 start_directory = "~/src/redbeardymcgee/podbox-docs";
-                shell_command = [
-                  "redvim ."
-                ];
+                shell = "~/.nix-profile/bin/redvim";
               }
             ];
           }

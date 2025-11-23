@@ -40,29 +40,19 @@
 
           {
             inherit layout options;
-            # inherit options;
             window_name = "notes";
-            focus = true;
             panes = [
               {
                 start_directory = "$XDG_DOCUMENTS_DIR/Notebooks/McGeedia";
-                shell_command = [
-                  "sleep 1"
-                  "redvim ."
-                ];
-              }
-
-              {
-                focus = true;
-                shell_command = ["ssh mcgeedia"];
+                shell = "~/.nix-profile/bin/redvim";
               }
             ];
           }
 
           {
             inherit options layout;
-            # inherit options;
             window_name = "docker";
+            focus = true;
             panes = [
               {
                 shell_command = [
@@ -73,6 +63,7 @@
               }
 
               {
+                focus = true;
                 shell_command = [
                   "ssh mcgeedia"
                   "cd /opt/containers"
