@@ -34,7 +34,7 @@ in {
     config = {
       allowUnfreePredicate = pkg:
         builtins.elem (lib.getName pkg) [
-          # "davinci-resolve"
+          "davinci-resolve"
           "grayjay"
         ];
       permittedInsecurePackages = [

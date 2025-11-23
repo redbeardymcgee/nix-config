@@ -4,6 +4,7 @@
   ...
 }: {
   imports = [
+    ./davinci.nix
     ./firefox
     ./ghostty.nix
     ./kitty.nix
@@ -21,7 +22,6 @@
     packages = with pkgs; [
       # affine
       chatterino2
-      # davinci-resolve
       # fractal
       grayjay
       jellyfin-media-player

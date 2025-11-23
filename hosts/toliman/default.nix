@@ -5,6 +5,7 @@
 }: {
   imports = [
     ./hw.nix
+    ./davinci.nix
 
     ../common/global
 
