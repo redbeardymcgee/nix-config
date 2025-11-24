@@ -9,6 +9,6 @@
       "ath3k"
     ];
 
-    kernelPackages = pkgs.linuxKernel.packages.linux_6_12;
+    kernelPackages = pkgs.linuxKernel.packages.linux_xanmod_latest;
   };
 }
