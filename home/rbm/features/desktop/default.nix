@@ -4,7 +4,7 @@
   ...
 }: {
   imports = [
-    ./davinci.nix
+    # ./davinci.nix
     ./firefox
     ./ghostty.nix
     ./kitty.nix
