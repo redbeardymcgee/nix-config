@@ -13,7 +13,7 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-25.11";
-    systems.url = "github:nix-systems/default-linux";
+    # systems.url = "github:nix-systems/default-linux";
     nixos-hardware.url = "github:NixOS/nixos-hardware";
     home-manager.url = "github:nix-community/home-manager/release-25.11";
 
@@ -89,7 +89,6 @@
     ...
   } @ inputs: let
     inherit (self) outputs;
-    system = "x86_64-linux";
   in {
     nixosModules = import ./modules/nixos;
     homeManagerModules = import ./modules/home-manager;
@@ -136,9 +135,6 @@
     };
 
     homeConfigurations = let
-      pkgs = import nixpkgs {
-        inherit system;
-      };
       commonModules = [
         nix-index-database.homeModules.nix-index
         otter-launcher.homeModules.default
@@ -148,7 +144,7 @@
       ];
     in {
       "rbm@arcturus" = home-manager.lib.homeManagerConfiguration {
-        inherit pkgs;
+        pkgs = nixpkgs.legacyPackages.x86_64_linux;
         extraSpecialArgs = {
           inherit inputs outputs;
         };
@@ -160,7 +156,7 @@
       };
 
       "rbm@luhman" = home-manager.lib.homeManagerConfiguration {
-        inherit pkgs;
+        pkgs = nixpkgs.legacyPackages.x86_64-linux;
         extraSpecialArgs = {
           inherit inputs outputs;
         };
@@ -171,7 +167,7 @@
           ];
       };
       "rbm@toliman" = home-manager.lib.homeManagerConfiguration {
-        inherit pkgs;
+        pkgs = nixpkgs.legacyPackages.x86_64-linux;
         extraSpecialArgs = {
           inherit inputs outputs;
         };

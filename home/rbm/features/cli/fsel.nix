@@ -3,7 +3,7 @@
   pkgs,
   ...
 }: let
-  fsel = inputs.fsel.packages.${pkgs.system}.default;
+  fsel = inputs.fsel.packages.${pkgs.stdenv.hostPlatform.system}.default;
 in {
   home.packages = [fsel];
 

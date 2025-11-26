@@ -45,7 +45,7 @@
   ];
 
   home.packages = with pkgs; [
-    inputs.posting.packages.${system}.default
+    inputs.posting.packages.${pkgs.stdenv.hostPlatform.system}.default
 
     # nix tools
     alejandra

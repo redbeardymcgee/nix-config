@@ -4,7 +4,7 @@
   ...
 }: {
   home.packages = with pkgs; [
-    inputs.nixcats.packages.${system}.redvim
+    inputs.nixcats.packages.${pkgs.stdenv.hostPlatform.system}.redvim
   ];
 
   home.sessionVariables = {
