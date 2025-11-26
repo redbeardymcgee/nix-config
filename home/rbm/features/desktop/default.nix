@@ -10,6 +10,7 @@
     ./kitty.nix
     ./protonvpn.nix
     ./qutebrowser.nix
+    ./streamlink.nix
     ./thunderbird.nix
 
     ../services/gammastep.nix
@@ -21,7 +22,6 @@
   home = {
     packages = with pkgs; [
       # affine
-      chatterino2
       # fractal
       grayjay
       jellyfin-media-player
