@@ -21,11 +21,11 @@
       };
       serif = {
         package = pkgs.nerd-fonts.iosevka-term-slab;
-        name = "IosevkaTermSlab Nerd Font";
+        name = "IosevkaTermSlab Nerd Font Propo";
       };
       sansSerif = {
         package = pkgs.nerd-fonts.inconsolata-lgc;
-        name = "Inconsolata Nerd Font";
+        name = "Inconsolata LGC Nerd Font";
       };
       sizes = {
         applications = 13;
