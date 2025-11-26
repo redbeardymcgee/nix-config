@@ -206,13 +206,8 @@
           "steam" = asus;
           "*steam" = "tags ${toString (pow2 8)}";
 
-          ## FIXME:
-          ## Manually tested every variant of quotes, nothing works
-          ## "Nextcloud Talk" = samsung;
-          ## Spaces in the app-id may break rules entirely
-          ## Using bad globs instead, could try globbing the space
-          "Nextcloud*" = samsung;
-          "*Talk" = "tags ${toString (pow2 2)}";
+          "com.nextcloud.talk" = samsung;
+          "com.nextcloud.talk*" = "tags ${toString (pow2 2)}";
 
           "ghostty.chat" = samsung;
           "ghostty.chat*" = "tags ${toString (pow2 2)}";
