@@ -3,13 +3,15 @@
     enable = true;
     package = pkgs.gitFull;
     lfs.enable = true;
-    userName = "redbeardymcgee";
-    userEmail = "redbeardymcgee@proton.me";
-    aliases = {
-      co = "checkout";
-      dlog = "log -p --ext-diff";
-    };
-    extraConfig = {
+    settings = {
+      user = {
+        name = "redbeardymcgee";
+        email = "redbeardymcgee@proton.me";
+      };
+      alias = {
+        co = "checkout";
+        dlog = "log -p --ext-diff";
+      };
       branch.sort = "committerdate";
       column.ui = "auto";
       commit.verbose = true;
