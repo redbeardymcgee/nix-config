@@ -2,7 +2,8 @@
   programs.rbw = {
     enable = true;
     settings = {
-      email = "redbeardymcgee@gmail.com";
+      base_url = "https://vaultwarden.mcgee.red";
+      email = "redbeardymcgee@proton.me";
       lock_timeout = 86400;
       pinentry = pkgs.pinentry-gnome3;
     };
