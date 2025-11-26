@@ -43,8 +43,8 @@
   # };
 
   ## TODO: `river-classic` is 0.3.x branch in 25.11
-  # services.displayManager.sessionPackages = [pkgs.river-classic];
-  services.displayManager.sessionPackages = [pkgs.river];
+  services.displayManager.sessionPackages = [pkgs.river-classic];
+  # services.displayManager.sessionPackages = [pkgs.river];
 
   hardware = {
     enableRedistributableFirmware = true;
