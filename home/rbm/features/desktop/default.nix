@@ -24,7 +24,7 @@
       # affine
       # fractal
       grayjay
-      jellyfin-media-player
+      # jellyfin-media-player
       ladybird
       moonlight-qt
       mpv
