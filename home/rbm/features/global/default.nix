@@ -26,6 +26,8 @@
     };
   };
 
+  fonts.fontconfig.enable = true;
+
   home = {
     stateVersion = "24.05";
     homeDirectory = "/home/${config.home.username}";
