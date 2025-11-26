@@ -4,11 +4,9 @@
 
        if [[ $1 == game ]]
        then
-         way-displays -d scale "ASUSTek COMPUTER INC VG27AQ3A T6LMAV005817"
          way-displays -s mode "ASUSTek COMPUTER INC VG27AQ3A T6LMAV005817" 1920 1080 120
        else
-         way-displays -s mode "ASUSTek COMPUTER INC VG27AQ3A T6LMAV005817" 2560 1440 180
-         way-displays -s scale "ASUSTek COMPUTER INC VG27AQ3A T6LMAV005817" 1.5
+         systemctl --user restart way-displays
        fi
 
     '';
@@ -37,17 +35,6 @@
       ORDER = [
         samsung
         asus
-      ];
-
-      SCALE = [
-        {
-          NAME_DESC = samsung;
-          SCALE = 1.50;
-        }
-        {
-          NAME_DESC = asus;
-          SCALE = 1.50;
-        }
       ];
 
       VRR_OFF = [
