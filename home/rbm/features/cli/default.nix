@@ -11,6 +11,7 @@
     ./bottom.nix
     ./browsh.nix
     ./comma.nix
+    ./difftastic.nix
     ./direnv.nix
     ./eza.nix
     ./fastfetch
@@ -56,14 +57,12 @@
     clipboard-jh
     csview
     csvlens
-    difftastic
     discordo
     distrobox
     entr
     gtrash
     magic-wormhole
     procs
-    protonvpn-cli
     sass
     typos
     xan
