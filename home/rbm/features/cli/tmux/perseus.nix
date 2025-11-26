@@ -18,8 +18,8 @@
             panes = [
               {
                 focus = true;
-                start_directory = "~/src/redbeardymcgee/podbox";
-                shell = "~/.nix-profile/bin/redvim";
+                start_directory = "~/src/redbeardymcgee/quadlet-store/";
+                # shell = "~/.nix-profile/bin/redvim";
               }
 
               {
