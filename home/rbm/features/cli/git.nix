@@ -1,7 +1,7 @@
 {pkgs, ...}: {
   programs.git = {
     enable = true;
-    package = pkgs.gitAndTools.gitFull;
+    package = pkgs.gitFull;
     lfs.enable = true;
     userName = "redbeardymcgee";
     userEmail = "redbeardymcgee@proton.me";
@@ -9,7 +9,6 @@
       co = "checkout";
       dlog = "log -p --ext-diff";
     };
-    difftastic.enable = true;
     extraConfig = {
       branch.sort = "committerdate";
       column.ui = "auto";
