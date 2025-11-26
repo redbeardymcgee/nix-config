@@ -35,7 +35,6 @@
       qpwgraph
       streamcontroller
       signal-desktop
-      # slack
       vlc
     ];
   };
