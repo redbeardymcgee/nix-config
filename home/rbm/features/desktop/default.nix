@@ -18,6 +18,7 @@
   home = {
     packages = with pkgs; [
       # affine
+      bitwarden-desktop
       # fractal
       grayjay
       # jellyfin-media-player
