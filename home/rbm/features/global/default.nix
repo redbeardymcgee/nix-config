@@ -38,6 +38,7 @@
       nerd-fonts.fira-code
       nerd-fonts.inconsolata-lgc
       nerd-fonts.iosevka-term-slab
+      nerd-fonts.victor-mono
       dejavu_fonts
       gcc
       pwvucontrol
