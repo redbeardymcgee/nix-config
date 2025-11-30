@@ -30,6 +30,7 @@
     ../common/services/keyring.nix
     ../common/services/udisks2.nix
     ../common/services/jellyfin.nix
+    ../common/services/localsend.nix
     ../common/services/polkit.nix
     ../common/services/sunshine.nix
     # ../common/services/wormhole.nix
