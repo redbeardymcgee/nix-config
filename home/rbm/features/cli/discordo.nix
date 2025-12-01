@@ -12,11 +12,6 @@
           enabled = false;
         };
       };
-      theme = {
-        guilds_tree = {
-          auto_expand_folders = false;
-        };
-      };
     };
   };
 }
