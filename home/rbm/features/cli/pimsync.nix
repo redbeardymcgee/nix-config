@@ -2,18 +2,27 @@
   config,
   pkgs,
   ...
-}: {
-  # programs.pimsync = {
-  #   enable = true;
-  # };
+}: let
+  calendarPath = "${config.xdg.dataHome}/calendar";
+  contactPath = "${config.xdg.dataHome}/contact";
+in {
+  programs.pimsync = {
+    enable = true;
+  };
 
   services.pimsync = {
     enable = true;
   };
 
+  systemd.user.tmpfiles.rules = [
+    "d ${calendarPath} - - - - -"
+    "d ${contactPath} - - - - -"
+  ];
+
   accounts = let
     nextcloudUrl = "https://cloud.ocdp.social";
     protonMailAddress = "redbeardymcgee@proton.me";
+    protonMailAliases = ["josh.mcgee@ocdp.social"];
     nextcloudPassCmd = [
       "rbw"
       "get"
@@ -28,6 +37,7 @@
         bridgePassword = "XDwKddnGVbaFI5mLxzVQaw";
       in {
         address = protonMailAddress;
+        aliases = protonMailAliases;
         primary = true;
         realName = realName;
         userName = "redbeardymcgee";
@@ -58,57 +68,68 @@
       };
     };
 
-    contact.accounts = {
-      nextcloud = {
-        remote = {
-          type = "carddav";
-          url = nextcloudUrl;
-          userName = protonMailAddress;
-          passwordCommand = nextcloudPassCmd;
-        };
-        pimsync = {
-          enable = true;
-          extraPairDirectives = [
-            {
-              name = "collections";
-              params = [
-                "all"
-              ];
-            }
-          ];
-        };
-        khal = {
-          enable = true;
-          addresses = [protonMailAddress];
+    contact = {
+      basePath = "${config.xdg.dataHome}/contact";
+
+      accounts = {
+        nextcloud = {
+          remote = {
+            type = "carddav";
+            url = nextcloudUrl;
+            userName = protonMailAddress;
+            passwordCommand = nextcloudPassCmd;
+          };
+          local = {
+            type = "filesystem";
+          };
+          pimsync = {
+            enable = true;
+            extraPairDirectives = [
+              {
+                name = "collections";
+                params = [
+                  "all"
+                ];
+              }
+            ];
+          };
+          khal = {
+            enable = true;
+            addresses = [protonMailAddress];
+          };
         };
       };
     };
 
-    calendar.accounts = {
-      nextcloud = {
-        primary = true;
-        primaryCollection = "Indivisible Meetings";
-        remote = {
-          type = "caldav";
-          url = nextcloudUrl;
-          userName = protonMailAddress;
-          passwordCommand = nextcloudPassCmd;
-        };
-        pimsync = {
-          enable = true;
-          extraPairDirectives = [
-            {
-              name = "collections";
-              params = [
-                "all"
-              ];
-            }
-          ];
-        };
-        khal = {
-          enable = true;
-          addresses = [protonMailAddress];
-          type = "discover";
+    calendar = {
+      basePath = "${config.xdg.dataHome}/calendar";
+
+      accounts = {
+        nextcloud = {
+          primary = true;
+          primaryCollection = "Indivisible Meetings";
+          remote = {
+            type = "caldav";
+            url = nextcloudUrl;
+            userName = protonMailAddress;
+            passwordCommand = nextcloudPassCmd;
+          };
+          pimsync = {
+            enable = true;
+            extraPairDirectives = [
+              {
+                name = "collections";
+                params = [
+                  "all"
+                ];
+              }
+            ];
+          };
+          khal = {
+            enable = true;
+            addresses = [protonMailAddress] ++ protonMailAliases;
+            type = "discover";
+          };
         };
       };
     };
