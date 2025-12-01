@@ -4,7 +4,7 @@
     ./firefox
     ./ghostty.nix
     ./kitty.nix
-    ./protonvpn.nix
+    # ./protonvpn.nix
     ./qutebrowser.nix
     ./streamlink.nix
     ./thunderbird.nix
