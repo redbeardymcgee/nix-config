@@ -107,7 +107,7 @@ in {
       accounts = {
         nextcloud = {
           primary = true;
-          primaryCollection = "Indivisible Meetings";
+          primaryCollection = "nextcloud";
           remote = {
             type = "caldav";
             url = nextcloudUrl;
