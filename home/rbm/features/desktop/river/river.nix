@@ -229,9 +229,6 @@
           "ghostty.notesterm" = "float";
           "ghostty.fsel" = "float";
 
-          "vesktop" = samsung;
-          "*vesktop" = "tags ${toString (pow2 2)}";
-
           # "org.gnome.Fractal" = samsung;
           # "*org.gnome.Fractal" = "tags ${toString (pow2 2)}";
 
@@ -256,7 +253,6 @@
         ## TODO: riverguile seems to have more features
         ''"rivercarro -outer-gaps 0 -per-tag -main-location right"''
 
-        "vesktop"
         "firefox"
 
         # "signal-desktop"

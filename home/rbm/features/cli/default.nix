@@ -13,6 +13,7 @@
     ./comma.nix
     ./difftastic.nix
     ./direnv.nix
+    ./discordo.nix
     ./eza.nix
     ./fastfetch
     ./fd.nix

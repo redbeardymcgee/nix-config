@@ -8,9 +8,6 @@
 
   home.packages = with pkgs; [
     lswt
-    (vesktop.override {
-      withSystemVencord = false;
-    })
     wl-clipboard
     wl-screenrec
   ];
