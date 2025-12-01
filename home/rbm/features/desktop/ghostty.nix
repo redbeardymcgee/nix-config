@@ -6,7 +6,6 @@
     settings = {
       window-decoration = false;
       gtk-titlebar = false;
-      # keybind = "clear";
     };
   };
 }
