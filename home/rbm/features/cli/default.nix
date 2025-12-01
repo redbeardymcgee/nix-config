@@ -32,6 +32,7 @@
     ./nix-index.nix
     ./nvim.nix
     ./otter-launcher.nix
+    ./pimsync.nix
     ./posting.nix
     ./rbw.nix
     ./ripgrep.nix
@@ -40,7 +41,6 @@
     ./tealdeer.nix
     ./tmux
     ./tokei.nix
-    ./vdirsyncer.nix
     ./yazi
     ./zk.nix
     ./zoxide.nix

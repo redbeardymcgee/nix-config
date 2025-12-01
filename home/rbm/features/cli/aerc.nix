@@ -72,38 +72,4 @@
   #     };
   #   };
   # };
-
-  accounts.email.accounts.protonmail = let
-    perseus = "203.0.113.250";
-    bridgePassword = "XDwKddnGVbaFI5mLxzVQaw";
-  in {
-    address = "redbeardymcgee@proton.me";
-    primary = true;
-    realName = "redbeardymcgee";
-    userName = "redbeardymcgee";
-    signature = {
-      delimiter = "---";
-      showSignature = "append";
-    };
-    imap = {
-      host = perseus;
-      port = 1143;
-    };
-    smtp = {
-      host = perseus;
-      port = 1025;
-    };
-
-    aerc = {
-      enable = true;
-
-      extraAccounts = {
-        source = "imap+insecure://redbeardymcgee%40proton.me:${bridgePassword}@${perseus}:1143";
-        outgoing = "smtp+insecure://redbeardymcgee%40proton.me:${bridgePassword}@${perseus}:1025";
-        default = "INBOX";
-        from = "redbeardymcgee <redbeardymcgee@proton.me>";
-        copy-to = "Sent";
-      };
-    };
-  };
 }
