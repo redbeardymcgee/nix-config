@@ -5,6 +5,9 @@
     age = {
       keyFile = "${config.xdg.configHome}/sops/age/keys.txt";
     };
-    secrets.phone_number = {};
+    secrets = {
+      phone_number = {};
+      gmail_password = {};
+    };
   };
 }
