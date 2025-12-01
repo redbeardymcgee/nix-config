@@ -1,6 +1,8 @@
 {pkgs, ...}: {
-  ## TODO: Wait for upstream flake to be fixed
+  ## TODO: Upstream simple home-manager module?
+  ## The dev retired their flake support with included module
   home.packages = [pkgs.discordo];
+
   xdg.configFile."discordo/config.toml" = {
     enable = true;
 
@@ -17,20 +19,4 @@
       };
     };
   };
-  # programs.discordo = {
-  #   enable = true;
-  #
-  #   settings = {
-  #     notifications = {
-  #       sound = {
-  #         enabled = false;
-  #       };
-  #     };
-  #     theme = {
-  #       guilds_tree = {
-  #         auto_expand_folders = false;
-  #       };
-  #     };
-  #   };
-  # };
 }
