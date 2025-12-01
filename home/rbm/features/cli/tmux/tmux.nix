@@ -15,7 +15,7 @@
     mouse = true;
     prefix = "M-a";
     terminal = "tmux-256color";
-    tmuxp.enable = true;
+    # tmuxp.enable = true;
 
     plugins = with pkgs.tmuxPlugins; [
       copy-toolkit

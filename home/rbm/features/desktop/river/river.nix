@@ -95,9 +95,9 @@
             "Super S" = "toggle-focused-tags ${scratchTagString}";
             "Super+Shift S" = "set-view-tags ${scratchTagString}";
 
-            "Super Space" = ''spawn 'ghostty --class=ghostty.localhost -e tmuxp load -y localhost' '';
+            "Super Space" = ''spawn 'ghostty --class=ghostty.localhost -e smug start localhost' '';
             "Super Return" = ''spawn 'ghostty --class=ghostty.scratchterm' '';
-            "Super N" = ''spawn 'ghostty --class=ghostty.notesterm -e tmuxp load -y notes' '';
+            "Super N" = ''spawn 'ghostty --class=ghostty.notesterm -e smug start notes' '';
 
             "Super H" = "focus-view left";
             "Super J" = "focus-view down";
@@ -214,8 +214,6 @@
 
           "ghostty.localhost" = asus;
           "ghostty.localhost*" = "tags ${toString (pow2 0)}";
-          "ghostty.notes" = asus;
-          "ghostty.notes*" = "tags ${toString (pow2 1)}";
           "ghostty.perseus" = asus;
           "ghostty.perseus*" = "tags ${toString (pow2 2)}";
           "ghostty.mcgeedia" = asus;
@@ -258,7 +256,7 @@
         # "signal-desktop"
         "nextcloud-talk-desktop"
         # "fractal"
-        ''"ghostty --class=ghostty.chat -e tmuxp load -y chat"''
+        ''"ghostty --class=ghostty.chat -e smug start chat"''
 
         "thunderbird"
 
@@ -267,12 +265,11 @@
 
         "steam"
 
-        ''"ghostty --class=ghostty.localhost -e tmuxp load -y localhost"''
-        ''"ghostty --class=ghostty.notes -e tmuxp load -y notes"''
-        ''"ghostty --class=ghostty.perseus -e tmuxp load -y perseus"''
-        ''"ghostty --class=ghostty.mcgeedia -e tmuxp load -y mcgeedia"''
-        ''"ghostty --class=ghostty.projects -e tmuxp load -y projects"''
-        ''"ghostty --class=ghostty.leetcode -e tmuxp load -y leetcode"''
+        ''"ghostty --class=ghostty.localhost -e smug start localhost"''
+        ''"ghostty --class=ghostty.perseus -e smug start perseus"''
+        ''"ghostty --class=ghostty.mcgeedia -e smug start mcgeedia"''
+        ''"ghostty --class=ghostty.projects -e smug start projects"''
+        ''"ghostty --class=ghostty.leetcode -e smug start leetcode"''
       ];
     };
   };

@@ -17,6 +17,19 @@
             inherit layout options;
             window_name = "nixcats";
             start_directory = "~/src/redbeardymcgee/nixcats";
+            # focus = true;
+            panes = [
+              {
+                focus = true;
+                shell = "~/.nix-profile/bin/redvim";
+              }
+            ];
+          }
+
+          {
+            inherit layout options;
+            window_name = "pwf";
+            start_directory = "~/src/redbeardymcgee/pwf";
             focus = true;
             panes = [
               {
