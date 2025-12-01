@@ -26,6 +26,7 @@
     ./htop.nix
     ./iamb.nix
     ./jq.nix
+    ./khal.nix
     ./lazygit.nix
     ./less.nix
     ./man.nix

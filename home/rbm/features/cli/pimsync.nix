@@ -77,6 +77,10 @@
             }
           ];
         };
+        khal = {
+          enable = true;
+          addresses = [protonMailAddress];
+        };
       };
     };
 
@@ -100,6 +104,11 @@
               ];
             }
           ];
+        };
+        khal = {
+          enable = true;
+          addresses = [protonMailAddress];
+          type = "discover";
         };
       };
     };
