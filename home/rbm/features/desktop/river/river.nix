@@ -219,9 +219,7 @@
           "ghostty.mcgeedia" = asus;
           "ghostty.mcgeedia*" = "tags ${toString (pow2 3)}";
           "ghostty.projects" = asus;
-          "ghostty.projects*" = "tags ${toString (pow2 4)}";
-          "ghostty.leetcode" = asus;
-          "ghostty.leetcode*" = "tags ${toString (pow2 5)}";
+          "ghostty.projects*" = "tags ${toString (pow2 1)}";
 
           "ghostty.scratchterm" = "float";
           "ghostty.notesterm" = "float";
@@ -268,7 +266,6 @@
         ''"ghostty --class=ghostty.perseus -e smug start perseus"''
         ''"ghostty --class=ghostty.mcgeedia -e smug start mcgeedia"''
         ''"ghostty --class=ghostty.projects -e smug start projects"''
-        ''"ghostty --class=ghostty.leetcode -e smug start leetcode"''
       ];
     };
   };
