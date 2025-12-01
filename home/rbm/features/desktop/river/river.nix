@@ -248,7 +248,6 @@
 
         ## TODO: Convert to systemd user units
 
-        ## TODO: riverguile seems to have more features
         ''"rivercarro -outer-gaps 0 -per-tag -main-location right"''
 
         "firefox"
