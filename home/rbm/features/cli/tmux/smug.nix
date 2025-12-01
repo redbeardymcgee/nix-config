@@ -14,6 +14,13 @@
               "redvim"
             ];
           }
+          {
+            name = "mail";
+            layout = "main-vertical";
+            commands = [
+              "aerc"
+            ];
+          }
         ];
       };
 
