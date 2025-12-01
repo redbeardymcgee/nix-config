@@ -40,6 +40,7 @@
     ./tealdeer.nix
     ./tmux
     ./tokei.nix
+    ./vdirsyncer.nix
     ./yazi
     ./zk.nix
     ./zoxide.nix
