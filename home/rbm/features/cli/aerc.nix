@@ -6,7 +6,7 @@
     extraConfig = {
       filters = {
         "text/plain" = "colorize";
-        "text/html" = "! w3m -I UTF-8 text/html";
+        "text/html" = "! cha -T text/html";
         "text/calendar" = "calendar";
         # "text/*" = ''bat -fP --style=plain'';
         ".headers" = "colorize";
