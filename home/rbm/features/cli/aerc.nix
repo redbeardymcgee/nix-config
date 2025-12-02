@@ -8,7 +8,7 @@
         "text/plain" = "colorize";
         "text/html" = "! cha -T text/html";
         "text/calendar" = "calendar";
-        # "text/*" = ''bat -fP --style=plain'';
+        # "text/*" = ''bat -fP --file-name=''"$AERC_FILENAME" --style=plain'';
         ".headers" = "colorize";
         "message/delivery-status" = "colorize";
       };
