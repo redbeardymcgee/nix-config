@@ -31,9 +31,10 @@ in {
     ];
     realName = "Redbeardy McGee";
   in {
-    email.accounts = {
+    email.accounts = let
+      perseus = "203.0.113.250";
+    in {
       protonmail = let
-        perseus = "203.0.113.250";
         bridgePassword = "XDwKddnGVbaFI5mLxzVQaw";
       in {
         address = protonMailAddress;
@@ -57,11 +58,48 @@ in {
         aerc = {
           enable = true;
 
-          extraAccounts = {
-            source = "imap+insecure://redbeardymcgee%40proton.me:${bridgePassword}@${perseus}:1143";
-            outgoing = "smtp+insecure://redbeardymcgee%40proton.me:${bridgePassword}@${perseus}:1025";
+          extraAccounts = let
+            userName = pkgs.lib.strings.escapeURL protonMailAddress;
+          in {
+            source = "imap+insecure://${userName}:${bridgePassword}@${perseus}:1143";
+            outgoing = "smtp+insecure://${userName}:${bridgePassword}@${perseus}:1025";
             default = "INBOX";
             from = "${realName} <${protonMailAddress}>";
+            copy-to = "Sent";
+          };
+        };
+      };
+      indivisible = let
+        indivisibleMailAddress = "IndivisibleNWTN@proton.me";
+        bridgePassword = "oAi1URXze0p7DVX_e5daWA";
+        realName = "Indivisible NWTN";
+      in {
+        address = indivisibleMailAddress;
+        realName = realName;
+        userName = "IndivisibleNWTN";
+        signature = {
+          delimiter = "---";
+          showSignature = "append";
+        };
+        imap = {
+          host = perseus;
+          port = 1143;
+        };
+        smtp = {
+          host = perseus;
+          port = 1025;
+        };
+
+        aerc = {
+          enable = true;
+
+          extraAccounts = let
+            userName = pkgs.lib.strings.escapeURL indivisibleMailAddress;
+          in {
+            source = "imap+insecure://${userName}:${bridgePassword}@${perseus}:1143";
+            outgoing = "smtp+insecure://${userName}:${bridgePassword}@${perseus}:1025";
+            default = "INBOX";
+            from = "${realName} <${indivisibleMailAddress}>";
             copy-to = "Sent";
           };
         };
