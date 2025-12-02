@@ -10,6 +10,7 @@
     ./bat.nix
     ./bottom.nix
     ./browsh.nix
+    ./chawan.nix
     ./comma.nix
     ./difftastic.nix
     ./direnv.nix
