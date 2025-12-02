@@ -23,8 +23,8 @@
             (eq .OriginalMIMEType "text/html")
             (contains (toLower .OriginalText) "<html")
           }}
-          {{- $text := exec `/usr/lib/aerc/filters/html` .OriginalText | replace `\r` `` -}}
-          {{- range split "\n" $text -}}
+            {{- $text := exec `/usr/lib/aerc/filters/html` .OriginalText | replace `\r` `` -}}
+            {{- range split "\n" $text -}}
             {{- if eq . "References:" }}
               {{break}}
             {{end}}
@@ -35,9 +35,9 @@
               {{continue}}
             {{end}}
             {{- printf "%s\n" . | replace `^[\s]+` "" | quote}}
-          {{- end -}}
+            {{- end -}}
           {{- else }}
-          {{- trimSignature .OriginalText | quote -}}
+            {{- trimSignature .OriginalText | quote -}}
           {{- end -}}
 
           {{.Signature -}}
