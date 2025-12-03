@@ -6,6 +6,7 @@
     settings = {
       window-decoration = false;
       gtk-titlebar = false;
+      quit-after-last-window-closed = false;
     };
   };
 }

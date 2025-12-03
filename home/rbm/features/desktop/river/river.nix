@@ -95,9 +95,9 @@
             "Super S" = "toggle-focused-tags ${scratchTagString}";
             "Super+Shift S" = "set-view-tags ${scratchTagString}";
 
-            "Super Space" = ''spawn 'ghostty --class=ghostty.localhost -e smug start localhost' '';
-            "Super Return" = ''spawn 'ghostty --class=ghostty.scratchterm' '';
-            "Super N" = ''spawn 'ghostty --class=ghostty.notesterm -e smug start notes' '';
+            "Super Space" = ''spawn 'ghostty +new-window --title=ghostty.localhost -e smug start localhost' '';
+            "Super Return" = ''spawn 'ghostty +new-window --title=ghostty.scratchterm' '';
+            "Super N" = ''spawn 'ghostty +new-window --title=ghostty.notesterm -e smug start notes' '';
 
             "Super H" = "focus-view left";
             "Super J" = "focus-view down";
@@ -191,9 +191,6 @@
         samsung = "output 'Samsung Electric Company SE790C Unknown'";
       in {
         "-app-id" = {
-          "firefox" = samsung;
-          "*firefox" = "tags ${toString (pow2 1)}";
-
           "thunderbird" = samsung;
           "*thunderbird" = "tags ${toString (pow2 4)}";
 
@@ -208,6 +205,16 @@
 
           "com.nextcloud.talk" = samsung;
           "com.nextcloud.talk*" = "tags ${toString (pow2 2)}";
+
+          "xdg-desktop-portal-*" = "float";
+          "Xdg-desktop-portal-*" = "float";
+
+          "org.qbittorrent.qBittorrent" = samsung;
+          "*org.qbittorrent.qBittorrent" = "tags ${toString (pow2 8)}";
+        };
+
+        "-title" = {
+          "Picture-in-Picture" = "float";
 
           "ghostty.chat" = samsung;
           "ghostty.chat*" = "tags ${toString (pow2 2)}";
@@ -224,19 +231,6 @@
           "ghostty.scratchterm" = "float";
           "ghostty.notesterm" = "float";
           "ghostty.fsel" = "float";
-
-          # "org.gnome.Fractal" = samsung;
-          # "*org.gnome.Fractal" = "tags ${toString (pow2 2)}";
-
-          "xdg-desktop-portal-*" = "float";
-          "Xdg-desktop-portal-*" = "float";
-
-          "org.qbittorrent.qBittorrent" = samsung;
-          "*org.qbittorrent.qBittorrent" = "tags ${toString (pow2 8)}";
-        };
-
-        "-title" = {
-          "Picture-in-Picture" = "float";
         };
       };
 
@@ -244,28 +238,17 @@
         ## NOTE: Inner quotes are required
         ##       This is mostly like `sh -c '$spawn_cmd'`
 
-        ## TODO: Convert to systemd user units
-
+        ## TODO: Convert to systemd user units or xdg autostarts
         ''"rivercarro -outer-gaps 0 -per-tag -main-location right"''
-
-        "firefox"
-
-        # "signal-desktop"
         "nextcloud-talk-desktop"
-        # "fractal"
-        ''"ghostty --class=ghostty.chat -e smug start chat"''
-
+        ''"ghostty +new-window --title=ghostty.chat -e smug start chat"''
         "thunderbird"
-
         "qbittorrent"
-        # "qutebrowser"
-
         "steam"
-
-        ''"ghostty --class=ghostty.localhost -e smug start localhost"''
-        ''"ghostty --class=ghostty.perseus -e smug start perseus"''
-        ''"ghostty --class=ghostty.mcgeedia -e smug start mcgeedia"''
-        ''"ghostty --class=ghostty.projects -e smug start projects"''
+        ''"ghostty +new-window --title=ghostty.localhost -e smug start localhost"''
+        ''"ghostty +new-window --title=ghostty.perseus -e smug start perseus"''
+        ''"ghostty +new-window --title=ghostty.mcgeedia -e smug start mcgeedia"''
+        ''"ghostty +new-window --title=ghostty.projects -e smug start projects"''
       ];
     };
   };
