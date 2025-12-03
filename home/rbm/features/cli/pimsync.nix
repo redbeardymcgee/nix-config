@@ -16,7 +16,9 @@ in {
 
   systemd.user.tmpfiles.rules = [
     "d ${calendarPath} - - - - -"
+    "d ${calendarPath}/nextcloud - - - - -"
     "d ${contactPath} - - - - -"
+    "d ${contactPath}/nextcloud - - - - -"
   ];
 
   accounts = let
@@ -29,13 +31,13 @@ in {
       "OCDP cloud"
       protonMailAddress
     ];
-    realName = "Redbeardy McGee";
   in {
     email.accounts = let
       perseus = "203.0.113.250";
     in {
       protonmail = let
         bridgePassword = "XDwKddnGVbaFI5mLxzVQaw";
+        realName = "Redbeardy McGee";
       in {
         address = protonMailAddress;
         aliases = protonMailAliases;
