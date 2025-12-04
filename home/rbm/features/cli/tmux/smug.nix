@@ -134,7 +134,6 @@
             layout = "main-vertical";
             commands = [
               "ssh perseus"
-              "tmux attach || tmux"
             ];
           }
         ];
