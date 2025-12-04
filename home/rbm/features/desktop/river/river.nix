@@ -95,9 +95,9 @@
             "Super S" = "toggle-focused-tags ${scratchTagString}";
             "Super+Shift S" = "set-view-tags ${scratchTagString}";
 
-            "Super Space" = ''spawn 'ghostty +new-window --title=ghostty.localhost -e smug start localhost' '';
-            "Super Return" = ''spawn 'ghostty +new-window --title=ghostty.scratchterm' '';
-            "Super N" = ''spawn 'ghostty +new-window --title=ghostty.notesterm -e smug start notes' '';
+            "Super Space" = ''spawn 'ghostty --class=ghostty.localhost -e smug start localhost' '';
+            "Super Return" = ''spawn 'ghostty --class=ghostty.scratchterm' '';
+            "Super N" = ''spawn 'ghostty --class=ghostty.notesterm -e smug start notes' '';
 
             "Super H" = "focus-view left";
             "Super J" = "focus-view down";
@@ -211,10 +211,6 @@
 
           "org.qbittorrent.qBittorrent" = samsung;
           "*org.qbittorrent.qBittorrent" = "tags ${toString (pow2 8)}";
-        };
-
-        "-title" = {
-          "Picture-in-Picture" = "float";
 
           "ghostty.chat" = samsung;
           "ghostty.chat*" = "tags ${toString (pow2 2)}";
@@ -232,6 +228,10 @@
           "ghostty.notesterm" = "float";
           "ghostty.fsel" = "float";
         };
+
+        "-title" = {
+          "Picture-in-Picture" = "float";
+        };
       };
 
       spawn = [
@@ -241,14 +241,14 @@
         ## TODO: Convert to systemd user units or xdg autostarts
         ''"rivercarro -outer-gaps 0 -per-tag -main-location right"''
         "nextcloud-talk-desktop"
-        ''"ghostty +new-window --title=ghostty.chat -e smug start chat"''
+        ''"ghostty --class=ghostty.chat -e smug start chat"''
         "thunderbird"
         "qbittorrent"
         "steam"
-        ''"ghostty +new-window --title=ghostty.localhost -e smug start localhost"''
-        ''"ghostty +new-window --title=ghostty.perseus -e smug start perseus"''
-        ''"ghostty +new-window --title=ghostty.mcgeedia -e smug start mcgeedia"''
-        ''"ghostty +new-window --title=ghostty.projects -e smug start projects"''
+        ''"ghostty --class=ghostty.localhost -e smug start localhost"''
+        ''"ghostty --class=ghostty.perseus -e smug start perseus"''
+        ''"ghostty --class=ghostty.mcgeedia -e smug start mcgeedia"''
+        ''"ghostty --class=ghostty.projects -e smug start projects"''
       ];
     };
   };
