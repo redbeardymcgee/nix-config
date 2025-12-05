@@ -17,10 +17,18 @@
 
   home.packages = with pkgs; [
     eject
+    exiftool
+    file
     fzf
-    mediainfo
+    glow
+    hexyl
     imagemagick
+    mediainfo
+    miller
     ouch
+    p7zip
+    poppler
+    ripdrag
     trash-cli
     udisks
   ];
