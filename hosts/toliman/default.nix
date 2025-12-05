@@ -59,7 +59,6 @@
       overdrive.enable = true;
       initrd.enable = true;
     };
-    # xone.enable = true;
     xpadneo.enable = true;
 
     bluetooth = {
