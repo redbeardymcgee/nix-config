@@ -1,8 +1,8 @@
 {pkgs, ...}: {
   home.packages = let
-    setRes = pkgs.writeShellScriptBin "setres" ''      #bash
+    game = pkgs.writeShellScriptBin "game" ''      #bash
 
-       if [[ $1 == game ]]
+       if [[ $1 == on ]]
        then
          way-displays -s mode "ASUSTek COMPUTER INC VG27AQ3A T6LMAV005817" 1920 1080 120
        else
@@ -12,7 +12,7 @@
     '';
   in [
     pkgs.way-displays
-    setRes
+    game
   ];
 
   services.way-displays = {
@@ -30,15 +30,34 @@
           NAME_DESC = samsung;
           MAX = true;
         }
+        {
+          NAME_DESC = "!^DP-7$";
+          MAX = true;
+        }
+        {
+          NAME_DESC = "!^DP-8$";
+          MAX = true;
+        }
       ];
 
       ORDER = [
         samsung
         asus
+        "!^DP-7$"
+        "!^DP-8$"
       ];
 
       VRR_OFF = [
         samsung
+      ];
+
+      DISABLED = [
+        {
+          NAME_DESC = "!^DP-7$";
+        }
+        {
+          NAME_DESC = "!^DP-8$";
+        }
       ];
     };
   };
