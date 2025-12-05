@@ -51,13 +51,7 @@
   home.packages = with pkgs; [
     inputs.posting.packages.${pkgs.stdenv.hostPlatform.system}.default
 
-    # nix tools
-    alejandra
-    # comma
     manix
-
-    # Generally useful
-    bun
     clipboard-jh
     csview
     csvlens
@@ -71,22 +65,5 @@
     typos
     xan
     yq
-
-    # Editor support
-    # cargo
-    # nodejs
-    # python3
-    # tree-sitter
-
-    # Yazi deps but generally useful
-    exiftool
-    file
-    glow
-    hexyl
-    miller
-    ouch
-    p7zip
-    poppler
-    ripdrag
   ];
 }
