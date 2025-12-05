@@ -146,7 +146,6 @@
             layout = "main-vertical";
             commands = [
               "ssh mcgeedia"
-              "btm"
             ];
           }
           {
@@ -155,8 +154,6 @@
             selected = true;
             commands = [
               "ssh mcgeedia"
-              "cd /opt/containers"
-              "yazi"
             ];
           }
           {
