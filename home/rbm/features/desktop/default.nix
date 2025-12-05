@@ -4,6 +4,7 @@
     ./firefox
     ./ghostty.nix
     ./kitty.nix
+    ./mangohud.nix
     # ./protonvpn.nix
     ./qutebrowser.nix
     ./streamlink.nix
