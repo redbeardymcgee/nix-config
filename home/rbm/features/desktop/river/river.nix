@@ -200,9 +200,6 @@
           "com.moonlight_stream.Moonlight" = asus;
           "*com.moonlight_stream.Moonlight" = "tags ${toString (pow2 7)}";
 
-          "steam" = asus;
-          "*steam" = "tags ${toString (pow2 8)}";
-
           "com.nextcloud.talk" = samsung;
           "com.nextcloud.talk*" = "tags ${toString (pow2 2)}";
 
@@ -244,7 +241,6 @@
         ''"ghostty --class=ghostty.chat -e smug start chat"''
         "thunderbird"
         "qbittorrent"
-        "steam"
         ''"ghostty --class=ghostty.localhost -e smug start localhost"''
         ''"ghostty --class=ghostty.perseus -e smug start perseus"''
         ''"ghostty --class=ghostty.mcgeedia -e smug start mcgeedia"''
