@@ -141,7 +141,7 @@
       qwant = "https://www.qwant.com/?q={}";
       reddit = "https://old.reddit.com/r/{}";
       rust = "https://doc.rust-lang.org/std/index.html?search={}";
-      searx = "https://searx.me/?q={}&categories=general&language=en-US";
+      searx = "https://search.mcgee.red/?q={}&categories=general&language=en-US";
       steam = "https://store.steampowered.com/search/?term={}";
       tmuxp = "https://tmuxp.git-pull.com/search.html?q={}&check_keywords=yes&area=default#";
       w = "https://en.wikipedia.org/w/index.php?search={}&title=Special%3ASearch";
