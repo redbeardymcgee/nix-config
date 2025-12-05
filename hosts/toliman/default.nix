@@ -47,8 +47,18 @@
   services.displayManager.sessionPackages = [pkgs.river-classic];
   # services.displayManager.sessionPackages = [pkgs.river];
 
+  environment.systemPackages = [pkgs.lact];
+  services.lact = {
+    enable = true;
+  };
+
   hardware = {
     enableRedistributableFirmware = true;
+    amdgpu = {
+      opencl.enable = true;
+      overdrive.enable = true;
+      initrd.enable = true;
+    };
     # xone.enable = true;
     xpadneo.enable = true;
 
