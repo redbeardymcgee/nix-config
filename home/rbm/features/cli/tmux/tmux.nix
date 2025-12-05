@@ -33,7 +33,7 @@
       yank
     ];
 
-    # TODO: fetch plugins directly
+    # TODO: fetch plugins directly as flake inputs
     extraConfig =
       # tmux
       ''
@@ -60,6 +60,8 @@
         bind -n M-C 'source-file ~/.config/tmux/tmux.conf; display-message "Refreshed config!"'
         bind r respawn-pane
         bind R respawn-window
+
+        bind-key -T root KPEnter send-keys Escape O M
       '';
   };
 }
