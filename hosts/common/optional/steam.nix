@@ -26,6 +26,9 @@
   programs.steam = {
     enable = true;
     package = pkgs.steam.override {
+      extraEnv = {
+        OBS_VKCAPTURE = true;
+      };
       extraPkgs = pkgs':
         with pkgs'; [
           dxvk
