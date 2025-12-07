@@ -11,6 +11,7 @@
       enable = true;
       variables = ["--all"];
     };
+    xwayland.enable = true;
 
     settings = let
       pow2 = n:
