@@ -14,18 +14,10 @@
 
   programs.steam = {
     enable = true;
-    # package = pkgs.steam.overrideAttrs (old: {
-    #   postInstall =
-    #     old.postInstall
-    #     + ''
-    #       sed -i 's:PrefersNonDefaultGPU=true::' $out/share/applications/steam.desktop
-    #     '';
-    # });
     package = pkgs.steam.override {
       extraPkgs = pkgs':
         with pkgs'; [
           dxvk
-          gamemode
           harfbuzz
           pango
           python3
@@ -40,7 +32,6 @@
           libkrb5
           keyutils
         ];
-      # extraLibraries = pkgs': [pkgs'.gperftools];
       # Automatically enable gamemode whenever Steam is running
       extraProfile = ''
         export LD_LIBRARY_PATH="${lib.getLib (pkgs.gamemode)}/lib:$LD_LIBRARY_PATH"
