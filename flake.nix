@@ -10,15 +10,36 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-25.11";
     # systems.url = "github:nix-systems/default-linux";
-    nixos-hardware.url = "github:NixOS/nixos-hardware";
-    home-manager.url = "github:nix-community/home-manager/release-25.11";
+    nixos-hardware = {
+      url = "github:NixOS/nixos-hardware";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    home-manager = {
+      url = "github:nix-community/home-manager/release-25.11";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
-    fsel.url = "github:Mjoyufull/fsel";
-    nix-index-database.url = "github:nix-community/nix-index-database";
-    nixcats.url = "git+file:///home/rbm/src/redbeardymcgee/nixcats";
+    fsel = {
+      url = "github:Mjoyufull/fsel";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    nix-index-database = {
+      url = "github:nix-community/nix-index-database";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    nixcats = {
+      url = "git+file:///home/rbm/src/redbeardymcgee/nixcats";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     # nixcats.url = "github:redbeardymcgee/nixcats";
-    otter-launcher.url = "github:kuokuo123/otter-launcher";
-    posting.url = "github:justdeeevin/posting/flake";
+    otter-launcher = {
+      url = "github:kuokuo123/otter-launcher";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    posting = {
+      url = "github:justdeeevin/posting/flake";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     sops-nix = {
       url = "github:Mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs";
