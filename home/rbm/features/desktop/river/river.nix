@@ -20,6 +20,8 @@
         else 2 * (pow2 (n - 1));
       scratchTag = pow2 20;
       scratchTagString = toString scratchTag;
+      asus = "output 'ASUSTek COMPUTER INC VG27AQ3A T6LMAV005817'";
+      samsung = "output 'Samsung Electric Company SE790C Unknown'";
     in {
       set-cursor-warp = "on-focus-change";
       set-repeat = "50 300";
@@ -191,10 +193,7 @@
         };
       };
 
-      rule-add = let
-        asus = "output 'ASUSTek COMPUTER INC VG27AQ3A T6LMAV005817'";
-        samsung = "output 'Samsung Electric Company SE790C Unknown'";
-      in {
+      rule-add = {
         "-app-id" = {
           "thunderbird" = samsung;
           "*thunderbird" = "tags ${toString (pow2 4)}";
