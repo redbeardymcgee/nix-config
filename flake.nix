@@ -2,11 +2,9 @@
   description = "rbm flake";
 
   nixConfig = {
-    extra-substituters = [
-    ];
+    # extra-substituters = [ ];
 
-    extra-trusted-public-keys = [
-    ];
+    # extra-trusted-public-keys = [ ];
   };
 
   inputs = {
