@@ -15,6 +15,6 @@
   ];
 
   wayland.windowManager.river.settings.map.normal = {
-    "Super P" = "spawn rofi-rbw";
+    "Super I" = "spawn rofi-rbw";
   };
 }
