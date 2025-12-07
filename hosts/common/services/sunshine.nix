@@ -1,4 +1,9 @@
 {
+  boot.kernelParams = [
+    "video=DP-8:1920x1080@60"
+    "video=DP-7:1280x800@60"
+  ];
+
   services.sunshine = let
     asus = "ASUSTek COMPUTER INC VG27AQ3A T6LMAV005817";
   in {
