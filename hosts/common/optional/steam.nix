@@ -3,10 +3,21 @@
   pkgs,
   ...
 }: {
-  # programs.gamescope = {
-  #   enable = true;
-  #   capSysNice = true;
-  # };
+  hardware.graphics.extraPackages = [
+    pkgs.gamescope-wsi
+  ];
+  programs.gamescope = {
+    enable = true;
+    capSysNice = true;
+    args = [
+      "--borderless"
+      "--steam"
+      "--expose-wayland"
+      "--force-windows-fullscreen"
+      "--adaptive-sync"
+      "--mangoapp"
+    ];
+  };
 
   programs.gamemode = {
     enable = true;
