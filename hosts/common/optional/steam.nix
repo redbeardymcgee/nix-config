@@ -50,8 +50,5 @@
     extest.enable = true;
     localNetworkGameTransfers.openFirewall = true;
     remotePlay.openFirewall = true;
-    # gamescopeSession = {
-    #   enable = true;
-    # };
   };
 }
