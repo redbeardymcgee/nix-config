@@ -46,7 +46,7 @@
         export LD_LIBRARY_PATH="${lib.getLib (pkgs.gamemode)}/lib:$LD_LIBRARY_PATH"
       '';
     };
-    # protontricks.enable = true;
+    protontricks.enable = true;
     extest.enable = true;
     localNetworkGameTransfers.openFirewall = true;
     remotePlay.openFirewall = true;
