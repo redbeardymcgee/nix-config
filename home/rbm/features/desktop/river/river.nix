@@ -76,6 +76,8 @@
           "Super+Shift J" = "swap down";
           "Super+Shift K" = "swap up";
           "Super+Shift L" = "swap right";
+          "Super+Shift N" = "swap next";
+          "Super+Shift P" = "swap previous";
         };
       in {
         normal =
@@ -98,12 +100,14 @@
 
             "Super Space" = ''spawn 'ghostty --class=ghostty.localhost -e smug start localhost' '';
             "Super Return" = ''spawn 'ghostty --class=ghostty.scratchterm' '';
-            "Super N" = ''spawn 'ghostty --class=ghostty.notesterm -e smug start notes' '';
+            "Super X" = ''spawn 'ghostty --class=ghostty.notesterm -e smug start notes' '';
 
             "Super H" = "focus-view left";
             "Super J" = "focus-view down";
             "Super K" = "focus-view up";
             "Super L" = "focus-view right";
+            "Super N" = "focus-view next";
+            "Super P" = "focus-view previous";
 
             "Super Z" = "zoom";
 
