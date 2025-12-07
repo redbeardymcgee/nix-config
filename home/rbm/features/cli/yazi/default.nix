@@ -35,67 +35,31 @@
 
   programs.yazi = {
     enable = true;
-    package = inputs.yazi.packages.${pkgs.stdenv.hostPlatform.system}.default;
     enableFishIntegration = true;
     initLua = ./init.lua;
     keymap = import ./keymap.nix;
-
-    plugins = let
-      officialPluginsNames = [
-        "chmod"
-        "diff"
-        "full-border"
-        # "git"
-        # "jump-to-char"
-        # "lsar"
-        # "mactag" # NOTE: MacOS only
-        # "mime-ext"
-        "mount"
-        # "no-status"
-        # "piper"
-        # "smart-enter"
-        "smart-filter"
-        # "smart-paste"
-        # "toggle-pane" # TODO: This is worth adding
-        # "vcs-files"
-        "zoom"
-      ];
-
-      officialPluginsSrc = pkgs.fetchgit {
-        url = "https://github.com/yazi-rs/plugins.git";
-        sparseCheckout = map (p: "${p}.yazi") officialPluginsNames;
-        rev = "2301ff803a033cd16d16e62697474d6cb9a94711";
-        hash = "sha256-89Y3v/fAaZA1Im4OR6KwwbK1N7THsmU90JYpxfWsD1A=";
-      };
-
-      officialPlugins =
-        lib.lists.fold (
-          a: b:
-            {
-              ${a} = "${officialPluginsSrc}/${a}.yazi";
-            }
-            // b
-        )
-        {}
-        officialPluginsNames;
-    in
-      officialPlugins
-      // {
-        augment-command = "${inputs.augment-command-yazi}";
-        bunny = "${inputs.bunny-yazi}";
-        cd-git-root = "${inputs.cd-git-root-yazi}";
-        mediainfo = "${inputs.mediainfo-yazi}";
-        duckdb = "${inputs.duckdb-yazi}";
-        ouch = "${inputs.ouch-yazi}";
-        pref-by-location = "${inputs.pref-by-location-yazi}";
-        recycle-bin = "${inputs.recycle-bin-yazi}";
-        restore = "${inputs.restore-yazi}";
-        wl-clipboard = "${inputs.wl-clipboard-yazi}";
-      };
+    plugins = {
+      augment-command = "${inputs.augment-command-yazi}";
+      bunny = "${inputs.bunny-yazi}";
+      cd-git-root = "${inputs.cd-git-root-yazi}";
+      chmod = pkgs.yaziPlugins.chmod;
+      diff = pkgs.yaziPlugins.diff;
+      full-border = pkgs.yaziPlugins.full-border;
+      mediainfo = pkgs.yaziPlugins.mediainfo;
+      mount = pkgs.yaziPlugins.mount;
+      duckdb = pkgs.yaziPlugins.duckdb;
+      ouch = pkgs.yaziPlugins.ouch;
+      pref-by-location = "${inputs.pref-by-location-yazi}";
+      smart-filter = pkgs.yaziPlugins.smart-filter;
+      recycle-bin = pkgs.yaziPlugins.recycle-bin;
+      restore = pkgs.yaziPlugins.restore;
+      wl-clipboard = pkgs.yaziPlugins.wl-clipboard;
+      # zoom = pkgs.yaziPlugins.zoom; ## TODO: Not in nixpkgs 25.11
+    };
 
     settings = {
       mgr = {
-        ratio = [1 2 5];
+        ratio = [1 3 4];
         scrolloff = 10;
         sort_dir_first = true;
       };

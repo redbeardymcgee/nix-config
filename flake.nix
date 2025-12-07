@@ -3,11 +3,9 @@
 
   nixConfig = {
     extra-substituters = [
-      "https://yazi.cachix.org"
     ];
 
     extra-trusted-public-keys = [
-      "yazi.cachix.org-1:Dcdz63NZKfvUCbDGngQDAZq6kOroIrFoyO064uvLh8k="
     ];
   };
 
@@ -29,7 +27,7 @@
     };
     stylix.url = "github:danth/stylix/release-25.11";
 
-    yazi.url = "github:sxyazi/yazi";
+    ## TODO: These want to be removed by using mkYaziPlugin somehow
     augment-command-yazi = {
       url = "github:hankertrix/augment-command.yazi";
       flake = false;
@@ -42,36 +40,8 @@
       url = "github:ciarandg/cd-git-root.yazi";
       flake = false;
     };
-    duckdb-yazi = {
-      url = "github:wylie102/duckdb.yazi";
-      flake = false;
-    };
-    mediainfo-yazi = {
-      url = "github:boydaihungst/mediainfo.yazi";
-      flake = false;
-    };
-    # official-plugins-yazi = {
-    #   url = "github:yazi-rs/plugins"
-    #   flake = false;
-    # };
-    ouch-yazi = {
-      url = "github:ndtoan96/ouch.yazi";
-      flake = false;
-    };
     pref-by-location-yazi = {
       url = "github:boydaihungst/pref-by-location.yazi";
-      flake = false;
-    };
-    restore-yazi = {
-      url = "github:boydaihungst/restore.yazi";
-      flake = false;
-    };
-    recycle-bin-yazi = {
-      url = "github:uhs-robert/recycle-bin.yazi";
-      flake = false;
-    };
-    wl-clipboard-yazi = {
-      url = "github:grappas/wl-clipboard.yazi";
       flake = false;
     };
   };
