@@ -4,7 +4,7 @@
   in {
     enable = true;
     autoStart = true;
-    capSysAdmin = true;
+    capSysAdmin = false;
     openFirewall = true;
 
     settings = {
