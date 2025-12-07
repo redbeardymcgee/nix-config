@@ -21,6 +21,20 @@
 
   programs.gamemode = {
     enable = true;
+    enableRenice = true;
+    settings = {
+      general = {
+        reaper_freq = 5;
+        desiredgov = "performance";
+        softrealtime = "on";
+        renice = 10;
+      };
+
+      gpu = {
+        apply_gpu_optimisations = "accept-responsibility";
+        amd_performance_level = "high";
+      };
+    };
   };
 
   programs.steam = {
