@@ -1,6 +1,7 @@
 {
   programs.posting = {
-    enable = false;
+    enable = true;
+    # package = inputs.posting.packages.${pkgs.stdenv.hostPlatform.system}.default;
     settings = {
       animation = "full";
       theme = "oxocarbon";

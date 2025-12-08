@@ -19,7 +19,7 @@
     ./fastfetch
     ./fd.nix
     ./fish.nix
-    ./fsel.nix
+    # ./fsel.nix
     ./fzf.nix
     ./git.nix
     ./go.nix
@@ -33,11 +33,12 @@
     ./man.nix
     ./nix-index.nix
     ./nvim.nix
-    ./otter-launcher.nix
+    # ./otter-launcher.nix
     ./pimsync.nix
-    ./posting.nix
+    # ./posting.nix
     ./rbw.nix
     ./ripgrep.nix
+    ./sesh.nix
     ./ssh.nix
     ./starship.nix
     ./tealdeer.nix
@@ -49,8 +50,6 @@
   ];
 
   home.packages = with pkgs; [
-    inputs.posting.packages.${pkgs.stdenv.hostPlatform.system}.default
-
     manix
     clipboard-jh
     csview
