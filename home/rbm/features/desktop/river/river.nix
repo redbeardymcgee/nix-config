@@ -138,10 +138,10 @@
             "None Return" = "enter-mode normal";
             "None Escape" = "enter-mode normal";
 
-            "Alt H" = "resize horizontal -50";
-            "Alt J" = "resize vertical 50";
-            "Alt K" = "resize vertical -50";
-            "Alt L" = "resize horizontal 50";
+            "Shift H" = "resize horizontal -50";
+            "Shift J" = "resize vertical 50";
+            "Shift K" = "resize vertical -50";
+            "Shift L" = "resize horizontal 50";
 
             "None H" = "resize horizontal -100";
             "None J" = "resize vertical 100";
@@ -153,20 +153,20 @@
             "Control K" = "resize vertical -500";
             "Control L" = "resize horizontal 500";
 
-            "Super K" = "send-layout-cmd rivercarro 'main-location top'";
-            "Super L" = "send-layout-cmd rivercarro 'main-location right'";
-            "Super J" = "send-layout-cmd rivercarro 'main-location bottom'";
-            "Super H" = "send-layout-cmd rivercarro 'main-location left'";
+            "Alt K" = "send-layout-cmd rivercarro 'main-location top'";
+            "Alt L" = "send-layout-cmd rivercarro 'main-location right'";
+            "Alt J" = "send-layout-cmd rivercarro 'main-location bottom'";
+            "Alt H" = "send-layout-cmd rivercarro 'main-location left'";
           };
 
         move = {
           "None Return" = "enter-mode normal";
           "None Escape" = "enter-mode normal";
 
-          "Alt H" = "move left 50";
-          "Alt J" = "move down 50";
-          "Alt K" = "move up 50";
-          "Alt L" = "move right 50";
+          "Shift H" = "move left 50";
+          "Shift J" = "move down 50";
+          "Shift K" = "move up 50";
+          "Shift L" = "move right 50";
 
           "None H" = "move left 100";
           "None J" = "move down 100";
@@ -178,10 +178,10 @@
           "Control K" = "move up 500";
           "Control L" = "move right 500";
 
-          "Shift H" = "snap left";
-          "Shift J" = "snap down";
-          "Shift K" = "snap up";
-          "Shift L" = "snap right";
+          "Alt H" = "snap left";
+          "Alt J" = "snap down";
+          "Alt K" = "snap up";
+          "Alt L" = "snap right";
         };
       };
 
