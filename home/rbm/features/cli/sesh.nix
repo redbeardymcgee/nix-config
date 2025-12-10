@@ -7,41 +7,44 @@
     settings = {
       sort_order = [
         "tmux"
-        "zoxide"
+        "config"
       ];
 
-      session = [
+      session = let
+        eza = "eza -a --git --icons --color=always {}";
+      in [
         {
           name = "localhost";
-          startup_command = "smug start localhost";
+          startup_command = "smug start localhost -i";
         }
 
         {
           name = "notes";
           path = "~/Documents/Notebooks";
-          startup_command = "smug start notes";
-          preview-command = "ls {}";
+          startup_command = "smug start notes -i";
+          preview-command = eza;
         }
 
         {
           name = "perseus";
-          startup_command = "smug start perseus";
+          startup_command = "smug start perseus -i";
         }
 
         {
           name = "mcgeedia";
-          startup_command = "smug start mcgeedia";
+          startup_command = "smug start mcgeedia -i";
         }
 
         {
           name = "projects";
-          startup_command = "smug start projects";
-          preview_command = "ls {}";
+          path = "~/src/redbeardymcgee";
+          startup_command = "smug start projects -i";
+          preview_command = eza;
         }
 
         {
           name = "chat";
-          startup_command = "smug start chat";
+          startup_command = "smug start chat -i";
         }
       ];
     };
