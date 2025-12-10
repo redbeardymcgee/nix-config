@@ -124,7 +124,7 @@
           ''
             set -g '@fzf-links-key' u
             set -g '@fzf-links-editor-open-cmd' "tmux popup -E -w 80% -h 80% nvim +%line '%file'"
-            set -g '@fzf-links-browser-open-cmd' "xdg-open '$url'"
+            set -g '@fzf-links-browser-open-cmd' "xdg-open '%url'"
             set -g '@fzf-links-python' "${lib.getExe pkgs.python3}"
           '';
       }
@@ -154,8 +154,8 @@
     extraConfig =
       # tmux
       ''
-        set -g allow-passthrough 'on'
-        set -g status-position 'top'
+        set -g allow-passthrough on
+        set -g status-position top
 
         set -ga update-environment TERM
         set -ga update-environment TERM_PROGRAM
@@ -167,14 +167,16 @@
         set -g display-time 4000
         set -g status-interval 5
 
+        set -g detach-on-destroy off
+
         # set -g @plugin 'tmux-plugins/tpm'
         # if "test ! -d ~/.config/tmux/plugins/tpm" \
         #   "run 'git clone https://github.com/tmux-plugins/tpm ~/.config/tmux/plugins/tpm && ~/.config/tmux/plugins/tpm/bin/install_plugins'"
         # run '~/.config/tmux/plugins/tpm/tpm'
 
-        unbind 'Space'
+        unbind Space
 
-        # bind -n M-C 'source-file ~/.config/tmux/tmux.conf; display-message "Refreshed config!"'
+        bind -n M-C 'source-file ~/.config/tmux/tmux.conf; display-message "Refreshed config!"'
         bind r respawn-pane
         bind R respawn-window
 
