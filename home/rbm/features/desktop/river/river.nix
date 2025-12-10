@@ -237,18 +237,22 @@
 
       spawn = [
         ## NOTE: Inner quotes are required
-        ##       This is mostly like `sh -c '$spawn_cmd'`
+        ## This is mostly like `sh -c '$spawn_cmd'`
 
         ## TODO: Convert to systemd user units or xdg autostarts
         ''"rivercarro -outer-gaps 0 -per-tag -main-location right"''
         "nextcloud-talk-desktop"
-        ''"ghostty --class=ghostty.chat -e smug start chat"''
+        # ''"ghostty --class=ghostty.chat -e smug start chat"''
+        "smug start chat"
         "thunderbird"
         "qbittorrent"
         ''"ghostty --class=ghostty.localhost -e smug start localhost"''
-        ''"ghostty --class=ghostty.perseus -e smug start perseus"''
-        ''"ghostty --class=ghostty.mcgeedia -e smug start mcgeedia"''
-        ''"ghostty --class=ghostty.projects -e smug start projects"''
+        # ''"ghostty --class=ghostty.perseus -e smug start perseus"''
+        "smug start perseus"
+        # ''"ghostty --class=ghostty.mcgeedia -e smug start mcgeedia"''
+        "smug start mcgeedia"
+        # ''"ghostty --class=ghostty.projects -e smug start projects"''
+        "smug start projects"
       ];
     };
   };
