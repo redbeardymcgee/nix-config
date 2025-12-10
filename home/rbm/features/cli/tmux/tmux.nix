@@ -138,16 +138,16 @@
           '';
       }
 
-      {
-        ## TODO: https://github.com/2KAbhishek/tmux-tilit
-        plugin = tilish;
-        extraConfig =
-          # tmux
-          ''
-            # set -g @tilish-smartsplits 'on'
-            # set -g @tilish-default 'main-vertical'
-          '';
-      }
+      # {
+      #   ## TODO: https://github.com/2KAbhishek/tmux-tilit
+      #   plugin = tilish;
+      #   extraConfig =
+      #     # tmux
+      #     ''
+      #       # set -g @tilish-smartsplits 'on'
+      #       # set -g @tilish-default 'main-vertical'
+      #     '';
+      # }
     ];
 
     # TODO: fetch plugins directly as flake inputs
