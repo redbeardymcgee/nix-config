@@ -132,8 +132,12 @@
             name = "perseus";
             root = "~";
             layout = "main-vertical";
+            # before_start = [
+            #   "ssh perseus"
+            # ];
             commands = [
               "ssh perseus"
+              # "machinectl shell ct@ /bin/bash"
             ];
           }
         ];
@@ -144,7 +148,11 @@
           {
             name = "monitor";
             layout = "main-vertical";
+            # before_start = [
+            #   "ssh mcgeedia"
+            # ];
             commands = [
+              # "btm"
               "ssh mcgeedia"
             ];
           }
@@ -152,8 +160,12 @@
             name = "docker";
             layout = "main-vertical";
             selected = true;
+            # before_start = [
+            #   "ssh mcgeedia"
+            # ];
             commands = [
               "ssh mcgeedia"
+              # "cd /opt/containers"
             ];
           }
           {
