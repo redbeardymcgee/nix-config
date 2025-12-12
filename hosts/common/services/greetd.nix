@@ -18,9 +18,9 @@
             "--time"
             "--user-menu"
             "--power-shutdown"
-            "'sudo systemctl poweroff'"
+            "systemctl poweroff"
             "--power-reboot"
-            "'sudo systemctl reboot'"
+            "systemctl reboot"
             "--debug"
           ];
         in
