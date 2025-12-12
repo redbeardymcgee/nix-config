@@ -1,18 +1,14 @@
 {pkgs, ...}: {
   services.kmscon = {
     enable = true;
+    autologinUser = "rbm";
     hwRender = true;
     useXkbConfig = true;
-
-    # extraConfig = ''
-    #   "font-size=10"
-    # '';
-    #
-    # fonts = [
-    #   {
-    #     name = "FiraCode Nerd Font";
-    #     package = pkgs.nerdfonts.override {fonts = ["FiraCode"];};
-    #   }
-    # ];
+    fonts = [
+      {
+        name = "FiraCode Nerd Font Mono";
+        package = pkgs.nerd-fonts.fira-code;
+      }
+    ];
   };
 }
