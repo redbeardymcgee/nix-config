@@ -116,9 +116,9 @@
             root = "quadlet-store";
             layout = "main-vertical";
             selected = true;
-            commands = [
-              "redvim"
-            ];
+            # commands = [
+            #   "redvim"
+            # ];
           }
           {
             name = "dox";
