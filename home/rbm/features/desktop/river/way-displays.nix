@@ -1,18 +1,20 @@
 {pkgs, ...}: {
   home.packages = let
-    game = pkgs.writeShellScriptBin "game" ''      #bash
-
-       if [[ $1 == on ]]
-       then
-         way-displays -s mode "ASUSTek COMPUTER INC VG27AQ3A T6LMAV005817" 1920 1080 120
-       else
-         systemctl --user restart way-displays
-       fi
-
-    '';
+    gameres =
+      pkgs.writeShellScriptBin "gameres"
+      #bash
+      ''
+        width=$(way-displays -gy | yq '.STATE.HEADS.[] | select(.NAME == "DP-4").CURRENT.MODE.WIDTH')
+        if (( $width == 2560 ))
+        then
+          way-displays -s mode "ASUSTek COMPUTER INC VG27AQ3A T6LMAV005817" 1920 1080 120
+        else
+          systemctl --user restart way-displays
+        fi
+      '';
   in [
     pkgs.way-displays
-    game
+    gameres
   ];
 
   services.way-displays = {

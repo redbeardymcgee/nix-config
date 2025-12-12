@@ -97,6 +97,8 @@
             "Super F" = "toggle-fullscreen";
             "Super+Shift F" = "toggle-float";
 
+            "Super+Shift R" = "spawn gameres";
+
             "Super S" = "toggle-focused-tags ${scratchTagString}";
             "Super+Shift S" = "set-view-tags ${scratchTagString}";
 
@@ -242,17 +244,10 @@
         ## TODO: Convert to systemd user units or xdg autostarts
         ''"rivercarro -outer-gaps 0 -per-tag -main-location right"''
         "nextcloud-talk-desktop"
-        # ''"ghostty --class=ghostty.chat -e smug start chat"''
         "smug start chat"
         "thunderbird"
         "qbittorrent"
         ''"ghostty --class=ghostty.localhost -e smug start localhost"''
-        # ''"ghostty --class=ghostty.perseus -e smug start perseus"''
-        "smug start perseus"
-        # ''"ghostty --class=ghostty.mcgeedia -e smug start mcgeedia"''
-        "smug start mcgeedia"
-        # ''"ghostty --class=ghostty.projects -e smug start projects"''
-        "smug start projects"
       ];
     };
   };
