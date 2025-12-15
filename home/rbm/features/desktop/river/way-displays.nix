@@ -4,7 +4,7 @@
       pkgs.writeShellScriptBin "gameres"
       #bash
       ''
-        width=$(way-displays -gy | yq '.STATE.HEADS.[] | select(.NAME == "DP-4").CURRENT.MODE.WIDTH')
+        width=$(way-displays -yg | yq '.STATE.HEADS.[] | select(.NAME == "DP-4").CURRENT.MODE.WIDTH')
         if (( $width == 2560 ))
         then
           way-displays -s mode "ASUSTek COMPUTER INC VG27AQ3A T6LMAV005817" 1920 1080 120
