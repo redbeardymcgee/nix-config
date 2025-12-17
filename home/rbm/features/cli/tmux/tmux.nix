@@ -169,13 +169,6 @@
 
         set -g detach-on-destroy off
 
-        # set -g @plugin 'tmux-plugins/tpm'
-        # if "test ! -d ~/.config/tmux/plugins/tpm" \
-        #   "run 'git clone https://github.com/tmux-plugins/tpm ~/.config/tmux/plugins/tpm && ~/.config/tmux/plugins/tpm/bin/install_plugins'"
-        # run '~/.config/tmux/plugins/tpm/tpm'
-
-        unbind Space
-
         bind -n M-C 'source-file ~/.config/tmux/tmux.conf; display-message "Refreshed config!"'
         bind r respawn-pane
         bind R respawn-window
