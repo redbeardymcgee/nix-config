@@ -63,5 +63,6 @@
     sass
     typos
     xan
+    yq-go
   ];
 }
