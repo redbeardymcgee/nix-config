@@ -21,7 +21,7 @@
         session = true;
       };
       colors.webpage = {
-        darkmode.enabled = false;
+        darkmode.enabled = true;
         preferred_color_scheme = "dark";
       };
       content = {
