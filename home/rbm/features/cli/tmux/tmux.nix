@@ -134,7 +134,7 @@
         extraConfig =
           # tmux
           ''
-            set -g @menus_trigger 'Space'
+            set -g @menus_trigger 'M-Space'
           '';
       }
 
