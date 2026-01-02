@@ -8,10 +8,6 @@
     keyutils
   ];
 
-  # home.sessionVariables = {
-  #   QT_SCALE_FACTOR = 1.5;
-  # };
-
   programs.qutebrowser = {
     enable = true;
 
