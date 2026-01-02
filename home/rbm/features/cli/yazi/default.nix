@@ -38,23 +38,23 @@
     enableFishIntegration = true;
     initLua = ./init.lua;
     keymap = import ./keymap.nix;
-    plugins = {
+    plugins = with pkgs.yaziPlugins; {
       augment-command = "${inputs.augment-command-yazi}";
       bunny = "${inputs.bunny-yazi}";
       cd-git-root = "${inputs.cd-git-root-yazi}";
-      chmod = pkgs.yaziPlugins.chmod;
-      diff = pkgs.yaziPlugins.diff;
-      full-border = pkgs.yaziPlugins.full-border;
-      mediainfo = pkgs.yaziPlugins.mediainfo;
-      mount = pkgs.yaziPlugins.mount;
-      duckdb = pkgs.yaziPlugins.duckdb;
-      ouch = pkgs.yaziPlugins.ouch;
+      chmod = chmod;
+      diff = diff;
+      full-border = full-border;
+      mediainfo = mediainfo;
+      mount = mount;
+      duckdb = duckdb;
+      ouch = ouch;
       pref-by-location = "${inputs.pref-by-location-yazi}";
-      smart-filter = pkgs.yaziPlugins.smart-filter;
-      recycle-bin = pkgs.yaziPlugins.recycle-bin;
-      restore = pkgs.yaziPlugins.restore;
-      wl-clipboard = pkgs.yaziPlugins.wl-clipboard;
-      # zoom = pkgs.yaziPlugins.zoom; ## TODO: Not in nixpkgs 25.11
+      smart-filter = smart-filter;
+      recycle-bin = recycle-bin;
+      restore = restore;
+      wl-clipboard = wl-clipboard;
+      # zoom = zoom; ## TODO: Not in nixpkgs 25.11
     };
 
     settings = {
