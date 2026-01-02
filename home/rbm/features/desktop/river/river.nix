@@ -218,6 +218,9 @@
           "ghostty.chat" = samsung;
           "ghostty.chat*" = "tags ${toString (pow2 2)}";
 
+          "ghostty.monitor" = samsung;
+          "ghostty.monitor*" = "tags ${toString (pow2 0)}";
+
           "ghostty.localhost" = asus;
           "ghostty.localhost*" = "tags ${toString (pow2 0)}";
           "ghostty.perseus" = asus;
@@ -242,12 +245,14 @@
         ## This is mostly like `sh -c '$spawn_cmd'`
 
         ## TODO: Convert to systemd user units or xdg autostarts
+        ## see: uwsm (Universal Wayland Session Manager)
         ''"rivercarro -outer-gaps 0 -per-tag -main-location right"''
         "nextcloud-talk-desktop"
         "smug start chat"
         "thunderbird"
         "qbittorrent"
         ''"ghostty --class=ghostty.localhost -e smug start localhost"''
+        ''"ghostty --class=ghostty.monitor -e btm"''
       ];
     };
   };
