@@ -18,9 +18,7 @@
 
   home = {
     packages = with pkgs; [
-      # affine
       bitwarden-desktop
-      # fractal
       grayjay
       # jellyfin-media-player
       ladybird
@@ -31,8 +29,10 @@
       pw-viz # TODO: crashy
       qbittorrent
       qpwgraph
-      streamcontroller
       signal-desktop
+      streamcontroller
+      # supersonic-wayland
+      supersonic
       vlc
     ];
   };
