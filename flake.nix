@@ -42,24 +42,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     stylix.url = "github:danth/stylix/release-25.11";
-
-    ## TODO: These want to be removed by using mkYaziPlugin somehow
-    augment-command-yazi = {
-      url = "github:hankertrix/augment-command.yazi";
-      flake = false;
-    };
-    bunny-yazi = {
-      url = "github:stelcodes/bunny.yazi";
-      flake = false;
-    };
-    cd-git-root-yazi = {
-      url = "github:ciarandg/cd-git-root.yazi";
-      flake = false;
-    };
-    pref-by-location-yazi = {
-      url = "github:boydaihungst/pref-by-location.yazi";
-      flake = false;
-    };
   };
 
   outputs = {
