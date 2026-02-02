@@ -29,35 +29,6 @@
       }
 
       {
-        on = ["g" "r"];
-        run = "plugin cd-git-root";
-        desc = "Navigate to git root";
-      }
-
-      {
-        on = ";";
-        run = "plugin bunny";
-        desc = "Hop to bookmarks";
-      }
-
-      {
-        on = ["d" "u"];
-        run = "plugin restore";
-        desc = "Restore last deleted files";
-      }
-      {
-        on = ["d" "U"];
-        run = "plugin restore -- --interactive";
-        desc = "Restore last deleted files interactively";
-      }
-
-      {
-        on = ["R" "b"];
-        run = "plugin recycle-bin";
-        desc = "Open Recycle Bin menu";
-      }
-
-      {
         on = "<C-y>";
         run = "plugin wl-clipboard";
         desc = "Yank file to clipboard";
@@ -70,31 +41,6 @@
           "yank"
         ];
         desc = "Yank file";
-      }
-
-      {
-        on = ["t" "s"];
-        for = "unix";
-        run = ''shell "$SHELL" --block'';
-        desc = "Open $SHELL here";
-      }
-
-      {
-        on = ["t" "m"];
-        run = "plugin chmod";
-        desc = "Chmod on selected files";
-      }
-
-      {
-        on = ["t" "d"];
-        run = "plugin diff";
-        desc = "Diff the selected with the hovered file";
-      }
-
-      {
-        on = ["t" "c"];
-        run = "plugin ouch 7z";
-        desc = "Compress with ouch";
       }
 
       {
@@ -177,16 +123,27 @@
       }
 
       # Bookmarks
+      {
+        on = ["g" "r"];
+        run = "plugin cd-git-root";
+        desc = "Navigate to git root";
+      }
+
+      {
+        on = ";";
+        run = "plugin bunny";
+        desc = "Hop to bookmarks";
+      }
 
       # Rename
       {
-        on = ["r" "r"];
+        on = ["r" "e"];
         run = "plugin augment-command -- rename --cursor=before_ext";
         desc = "Rename a file or directory";
       }
 
       {
-        on = ["r" "R"];
+        on = ["r" "r"];
         run = "plugin augment-command -- rename --empty=all";
         desc = "Rename file and remove the whole file name";
       }
@@ -224,9 +181,27 @@
 
       # Create & Delete
       {
-        on = ["d"];
+        on = ["d" "d"];
         run = "plugin augment-command -- remove";
         desc = "Move the files to the trash";
+      }
+
+      {
+        on = ["d" "r"];
+        run = "plugin restore";
+        desc = "Restore last deleted files";
+      }
+
+      {
+        on = ["d" "R"];
+        run = "plugin restore -- --interactive";
+        desc = "Restore last deleted files interactively";
+      }
+
+      {
+        on = ["R" "b"];
+        run = "plugin recycle-bin";
+        desc = "Open Recycle Bin menu";
       }
 
       # Open
@@ -261,6 +236,31 @@
           plugin augment-command -- shell ripdrag "$@" -x 2>/dev/null & --confirm
         '';
         desc = "Drag and drop into the hovered directory or CWD";
+      }
+
+      {
+        on = ["t" "s"];
+        for = "unix";
+        run = ''shell "$SHELL" --block'';
+        desc = "Open $SHELL here";
+      }
+
+      {
+        on = ["t" "m"];
+        run = "plugin chmod";
+        desc = "Chmod on selected files";
+      }
+
+      {
+        on = ["t" "d"];
+        run = "plugin diff";
+        desc = "Diff the selected with the hovered file";
+      }
+
+      {
+        on = ["t" "c"];
+        run = "plugin ouch 7z";
+        desc = "Compress with ouch";
       }
     ];
   };
