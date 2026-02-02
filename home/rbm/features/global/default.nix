@@ -35,6 +35,10 @@
     preferXdgDirectories = true;
 
     packages = with pkgs; [
+      brogue-ce
+      cataclysm-dda-git
+      crawlTiles
+      infra-arcana
       nerd-fonts.fira-code
       nerd-fonts.inconsolata-lgc
       nerd-fonts.iosevka-term-slab
