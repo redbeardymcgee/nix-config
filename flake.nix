@@ -9,6 +9,7 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-25.11";
+    nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     # systems.url = "github:nix-systems/default-linux";
     nixos-hardware.url = "github:NixOS/nixos-hardware";
     home-manager = {
@@ -54,6 +55,7 @@
     nix-index-database,
     nixos-hardware,
     nixpkgs,
+    nixpkgs-unstable,
     otter-launcher,
     posting,
     sops-nix,
@@ -61,6 +63,8 @@
     ...
   } @ inputs: let
     inherit (self) outputs;
+    pkgs = nixpkgs.legacyPackages.x86_64-linux;
+    pkgs-unstable = nixpkgs-unstable.legacyPackages.x86_64-linux;
   in {
     nixosModules = import ./modules/nixos;
     homeManagerModules = import ./modules/home-manager;
@@ -74,7 +78,7 @@
     in {
       arcturus = nixpkgs.lib.nixosSystem {
         specialArgs = {
-          inherit inputs outputs;
+          inherit inputs outputs pkgs-unstable;
         };
         modules =
           commonModules
@@ -84,7 +88,7 @@
       };
       luhman = nixpkgs.lib.nixosSystem {
         specialArgs = {
-          inherit inputs outputs;
+          inherit inputs outputs pkgs-unstable;
         };
         modules =
           commonModules
@@ -95,7 +99,7 @@
       };
       toliman = nixpkgs.lib.nixosSystem {
         specialArgs = {
-          inherit inputs outputs;
+          inherit inputs outputs pkgs-unstable;
         };
         modules =
           commonModules
@@ -116,9 +120,9 @@
       ];
     in {
       "rbm@arcturus" = home-manager.lib.homeManagerConfiguration {
-        pkgs = nixpkgs.legacyPackages.x86_64_linux;
+        inherit pkgs;
         extraSpecialArgs = {
-          inherit inputs outputs;
+          inherit inputs outputs pkgs-unstable;
         };
         modules =
           commonModules
@@ -128,9 +132,9 @@
       };
 
       "rbm@luhman" = home-manager.lib.homeManagerConfiguration {
-        pkgs = nixpkgs.legacyPackages.x86_64-linux;
+        inherit pkgs;
         extraSpecialArgs = {
-          inherit inputs outputs;
+          inherit inputs outputs pkgs-unstable;
         };
         modules =
           commonModules
@@ -139,9 +143,9 @@
           ];
       };
       "rbm@toliman" = home-manager.lib.homeManagerConfiguration {
-        pkgs = nixpkgs.legacyPackages.x86_64-linux;
+        inherit pkgs;
         extraSpecialArgs = {
-          inherit inputs outputs;
+          inherit inputs outputs pkgs-unstable;
         };
         modules =
           commonModules

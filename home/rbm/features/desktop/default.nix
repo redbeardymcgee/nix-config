@@ -1,4 +1,8 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  pkgs-unstable,
+  ...
+}: {
   imports = [
     ./davinci.nix
     ./firefox
@@ -20,7 +24,7 @@
     packages = with pkgs;
       [
         bitwarden-desktop
-        # grayjay
+        grayjay
         # jellyfin-media-player
         ladybird
         moonlight-qt
@@ -38,7 +42,7 @@
       ]
       ++ (with pkgs-unstable; [
         pixieditor
-        grayjay
+        # grayjay
       ]);
   };
 }

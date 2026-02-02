@@ -2,6 +2,7 @@
   config,
   lib,
   pkgs,
+  pkgs-unstable,
   ...
 }: {
   boot = {
@@ -9,6 +10,6 @@
       "ath3k"
     ];
 
-    kernelPackages = pkgs.linuxKernel.packages.linux_xanmod_latest;
+    kernelPackages = pkgs-unstable.linuxKernel.packages.linux_xanmod_latest;
   };
 }

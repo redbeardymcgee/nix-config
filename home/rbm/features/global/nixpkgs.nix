@@ -4,6 +4,7 @@
   lib,
   inputs,
   pkgs,
+  pkgs-unstable,
   ...
 }: let
   flakeInputs = lib.filterAttrs (_: lib.isType "flake") inputs;
