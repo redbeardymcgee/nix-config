@@ -47,7 +47,6 @@
           owner = "hankertrix";
           repo = "augment-command.yazi";
           rev = "v25.5.31-or-lower";
-          # rev = "f0e6f4468606ac7545b7695decd2c3e7212c23f6";
           hash = "sha256-HRs/wVEg1fEkMtpT0k4W2rzz/NXbXgBWk3/qhWeZHH0=";
         };
 
