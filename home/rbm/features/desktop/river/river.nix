@@ -213,8 +213,10 @@
           "com.moonlight_stream.Moonlight" = asus;
           "*com.moonlight_stream.Moonlight" = "tags ${toString (pow2 7)}";
 
-          "com.nextcloud.talk" = samsung;
-          "com.nextcloud.talk*" = "tags ${toString (pow2 2)}";
+          # "com.nextcloud.talk" = samsung;
+          # "com.nextcloud.talk*" = "tags ${toString (pow2 2)}";
+          "\"Nextcloud Talk\"" = samsung;
+          "\"Nextcloud Talk\"*" = "tags ${toString (pow2 2)}";
 
           "xdg-desktop-portal-*" = "float";
           "Xdg-desktop-portal-*" = "float";
