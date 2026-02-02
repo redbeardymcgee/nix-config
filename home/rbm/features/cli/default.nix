@@ -14,7 +14,7 @@
     ./comma.nix
     ./difftastic.nix
     ./direnv.nix
-    ./discordo.nix
+    # ./discordo.nix
     ./eza.nix
     ./fastfetch
     ./fd.nix
@@ -34,6 +34,7 @@
     ./nix-index.nix
     ./nvim.nix
     # ./otter-launcher.nix
+    ./oxicord.nix
     ./pimsync.nix
     # ./posting.nix
     ./rbw.nix
@@ -54,7 +55,6 @@
     clipboard-jh
     csview
     csvlens
-    discordo
     distrobox
     entr
     gtrash

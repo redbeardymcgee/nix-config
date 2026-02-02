@@ -55,7 +55,7 @@
             layout = "main-horizontal";
             selected = true;
             commands = [
-              "discordo"
+              "oxicord"
             ];
           }
         ];

@@ -33,6 +33,10 @@
       url = "github:kuokuo123/otter-launcher";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    oxicord = {
+      url = "github:linuxmobile/oxicord";
+      # inputs.nixpkgs.follows = "nixpkgs";
+    };
     posting = {
       url = "github:justdeeevin/posting/flake";
       inputs.nixpkgs.follows = "nixpkgs";

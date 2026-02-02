@@ -17,23 +17,28 @@
   qt.enable = true;
 
   home = {
-    packages = with pkgs; [
-      bitwarden-desktop
-      grayjay
-      # jellyfin-media-player
-      ladybird
-      moonlight-qt
-      mpv
-      nextcloud-talk-desktop
-      pixieditor
-      pw-viz # TODO: crashy
-      qbittorrent
-      qpwgraph
-      signal-desktop
-      streamcontroller
-      # supersonic-wayland
-      supersonic
-      vlc
-    ];
+    packages = with pkgs;
+      [
+        bitwarden-desktop
+        # grayjay
+        # jellyfin-media-player
+        ladybird
+        moonlight-qt
+        mpv
+        nextcloud-talk-desktop
+        # pixieditor
+        pw-viz # TODO: crashy
+        qbittorrent
+        qpwgraph
+        signal-desktop
+        streamcontroller
+        # supersonic-wayland
+        supersonic
+        vlc
+      ]
+      ++ (with pkgs-unstable; [
+        pixieditor
+        grayjay
+      ]);
   };
 }
