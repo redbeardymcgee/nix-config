@@ -19,7 +19,7 @@
     ./fastfetch
     ./fd.nix
     ./fish.nix
-    # ./fsel.nix
+    ./fsel.nix
     ./fzf.nix
     ./git.nix
     ./go.nix
@@ -33,7 +33,7 @@
     ./man.nix
     ./nix-index.nix
     ./nvim.nix
-    # ./otter-launcher.nix
+    ./otter-launcher.nix
     ./oxicord.nix
     ./pimsync.nix
     # ./posting.nix

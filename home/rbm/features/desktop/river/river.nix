@@ -94,6 +94,13 @@
             "Super Q" = "close";
             "Super+Control+Shift Q" = "riverctl exit";
 
+            # "None Menu" = "spawn 'wofi --show drun'";
+            # "Super Menu" = "spawn 'wofi --show run'";
+
+            "None Menu" = "spawn 'ghostty --class=ghostty.launcher -e otter-launcher'";
+            # "Super Menu" = "spawn 'ghostty --class=ghostty.launcher -e fsel'";
+            "Super V" = "spawn 'cliphist list | wofi -S dmenu | cliphist decode | wl-copy'";
+
             "Super F" = "toggle-fullscreen";
             "Super+Shift F" = "toggle-float";
 
@@ -232,7 +239,8 @@
 
           "ghostty.scratchterm" = "float";
           "ghostty.notesterm" = "float";
-          "ghostty.fsel" = "float";
+          "ghostty.launcher" = "float";
+          # "ghostty.launcher*" = "dimensions 360 360";
         };
 
         "-title" = {
