@@ -8,6 +8,7 @@
     ./atuin.nix
     ./bash.nix
     ./bat.nix
+    ./bluetuith.nix
     ./bottom.nix
     ./browsh.nix
     ./chawan.nix

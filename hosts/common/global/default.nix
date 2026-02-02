@@ -60,7 +60,7 @@
 
   services = {
     avahi.enable = true;
-    blueman.enable = true;
+    # blueman.enable = true;
   };
 
   system = {
