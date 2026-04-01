@@ -97,8 +97,8 @@
             # "None Menu" = "spawn 'wofi --show drun'";
             # "Super Menu" = "spawn 'wofi --show run'";
 
-            "None Menu" = "spawn 'ghostty --class=ghostty.launcher -e otter-launcher'";
-            # "Super Menu" = "spawn 'ghostty --class=ghostty.launcher -e fsel'";
+            "Super Menu" = "spawn 'ghostty --class=ghostty.launcher -e otter-launcher'";
+            "None Menu" = "spawn 'ghostty --class=ghostty.launcher -e otter-launcher app'";
             "Super V" = "spawn 'cliphist list | wofi -S dmenu | cliphist decode | wl-copy'";
 
             "Super F" = "toggle-fullscreen";

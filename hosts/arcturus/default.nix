@@ -21,7 +21,8 @@
 
     # ../common/services/ly.nix
     # ../common/services/greetd.nix
-    ../common/services/regreet.nix
+    # ../common/services/regreet.nix
+    ../common/services/dms-greeter.nix
     ../common/services/keyring.nix
     ../common/services/udisks2.nix
     ../common/services/jellyfin.nix
@@ -36,7 +37,7 @@
   #   enable = true;
   #   text = "auth include login";
   # };
-  services.displayManager.sessionPackages = [pkgs.river];
+  services.displayManager.sessionPackages = [pkgs.niri pkgs.river];
 
   fileSystems = {
     "/2tb" = {

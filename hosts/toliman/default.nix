@@ -26,7 +26,8 @@
     ../common/optional/firewall.nix
     ../common/optional/razer.nix
 
-    ../common/services/regreet.nix
+    ../common/services/dms-greeter.nix
+    # ../common/services/regreet.nix
     ../common/services/keyring.nix
     ../common/services/udisks2.nix
     ../common/services/jellyfin.nix
@@ -38,13 +39,13 @@
     ../common/users
   ];
 
-  # security.pam.services.swaylock = {
-  #   enable = true;
-  #   text = "auth include login";
-  # };
+  security.pam.services.swaylock = {
+    # enable = true;
+    # text = "auth include login";
+  };
 
-  ## TODO: `river-classic` is 0.3.x branch in 25.11
-  services.displayManager.sessionPackages = [pkgs.river-classic];
+  ## TODO: `river-classic` is 0.3.x branch
+  services.displayManager.sessionPackages = [pkgs.niri pkgs.river-classic];
   # services.displayManager.sessionPackages = [pkgs.river];
 
   environment.systemPackages = [pkgs.lact];

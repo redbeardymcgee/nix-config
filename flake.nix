@@ -17,9 +17,26 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    dgop = {
+      url = "github:AvengeMedia/dgop";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
+    };
+    dms = {
+      url = "github:AvengeMedia/DankMaterialShell/stable";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
+    };
+    dms-plugin-registry = {
+      url = "github:AvengeMedia/dms-plugin-registry";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     fsel = {
       url = "github:Mjoyufull/fsel";
       inputs.nixpkgs.follows = "nixpkgs";
+    };
+    niri = {
+      url = "github:sodiboo/niri-flake";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
     nix-index-database = {
       url = "github:nix-community/nix-index-database";
@@ -51,7 +68,10 @@
 
   outputs = {
     self,
+    dms,
+    dms-plugin-registry,
     home-manager,
+    niri,
     nix-index-database,
     nixos-hardware,
     nixpkgs,
@@ -84,6 +104,7 @@
           commonModules
           ++ [
             ./hosts/arcturus
+            dms.nixosModules.greeter
           ];
       };
       luhman = nixpkgs.lib.nixosSystem {
@@ -93,8 +114,8 @@
         modules =
           commonModules
           ++ [
-            ./hosts/luhman
             nixos-hardware.nixosModules.framework-12-13th-gen-intel
+            ./hosts/luhman
           ];
       };
       toliman = nixpkgs.lib.nixosSystem {
@@ -104,8 +125,11 @@
         modules =
           commonModules
           ++ [
-            ./hosts/toliman
             nixos-hardware.nixosModules.framework-desktop-amd-ai-max-300-series
+            niri.nixosModules.niri
+            dms.nixosModules.dank-material-shell
+            dms.nixosModules.greeter
+            ./hosts/toliman
           ];
       };
     };
@@ -127,6 +151,11 @@
         modules =
           commonModules
           ++ [
+            dms.homeModules.dank-material-shell
+            dms.homeModules.niri
+            dms-plugin-registry.modules.default
+            niri.homeModules.niri
+            niri.homeModules.stylix
             ./home/rbm/arcturus.nix
           ];
       };
@@ -150,6 +179,11 @@
         modules =
           commonModules
           ++ [
+            dms.homeModules.dank-material-shell
+            dms.homeModules.niri
+            dms-plugin-registry.modules.default
+            niri.homeModules.niri
+            niri.homeModules.stylix
             ./home/rbm/toliman.nix
           ];
       };

@@ -14,7 +14,7 @@
     ./apps/streamlink.nix
     ./apps/thunderbird.nix
 
-    ../services/gammastep.nix
+    # ../services/gammastep.nix
   ];
 
   gtk.enable = true;
@@ -40,7 +40,7 @@
         streamcontroller
         # supersonic-wayland
         supersonic
-        vlc
+        # vlc
       ]
       ++ (with pkgs-unstable; [
         pixieditor
