@@ -14,7 +14,7 @@
     ../apps/wofi.nix
     ../apps/wlogout.nix
 
-    ../../services/cliphist.nix
+    # ../../services/cliphist.nix
     # ../../services/easyeffects.nix
     # ../../services/gammastep.nix
     # ../../services/lorri.nix

@@ -29,8 +29,7 @@ in {
   };
 
   nixpkgs = {
-    overlays =
-      builtins.attrValues outputs.overlays;
+    overlays = builtins.attrValues outputs.overlays;
 
     config = {
       allowUnfreePredicate = pkg:
@@ -38,8 +37,7 @@ in {
           "davinci-resolve"
           "grayjay"
         ];
-      permittedInsecurePackages = [
-      ];
+      permittedInsecurePackages = [];
     };
   };
 }

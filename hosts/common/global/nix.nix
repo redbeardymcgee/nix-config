@@ -22,6 +22,7 @@
       ++ ["repl=${path}/repl.nix" "nixpkgs=${inputs.nixpkgs}"];
 
     settings = {
+      accept-flake-config = true;
       auto-optimise-store = lib.mkDefault true;
       flake-registry = "";
       warn-dirty = false;

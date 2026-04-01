@@ -1,0 +1,5 @@
+{
+  programs.niri.settings.overview = {
+    workspace-shadow.enable = false;
+  };
+}
