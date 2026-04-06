@@ -89,22 +89,22 @@
               "redvim"
             ];
           }
-          {
-            name = "leetcode";
-            root = "leetcode";
-            layout = "main-vertical";
-            commands = [
-              "redvim -c Leet"
-            ];
-          }
-          {
-            name = "advent of code";
-            root = "aoc";
-            layout = "main-vertical";
-            commands = [
-              "redvim"
-            ];
-          }
+          # {
+          #   name = "leetcode";
+          #   root = "leetcode";
+          #   layout = "main-vertical";
+          #   commands = [
+          #     "redvim -c Leet"
+          #   ];
+          # }
+          # {
+          #   name = "advent of code";
+          #   root = "aoc";
+          #   layout = "main-vertical";
+          #   commands = [
+          #     "redvim"
+          #   ];
+          # }
         ];
       };
 
