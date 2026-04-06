@@ -8,6 +8,7 @@
     secrets = {
       phone_number = {};
       gmail_password = {};
+      bitwarden_password = {};
     };
   };
 }
