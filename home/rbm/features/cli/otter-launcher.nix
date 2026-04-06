@@ -1,6 +1,7 @@
 {
   lib,
   pkgs,
+  config,
   ...
 }: {
   programs.otter-launcher = {
@@ -50,8 +51,8 @@
             ${blue}$USER${yellow}@${green}$(printf $HOSTNAME)${reset}     ${red} $(${mpstat} | awk 'FNR ==4 {print $4}')${reset}
           '';
         header_cmd_trimmed_lines = 0;
-        place_holder = "type & search";
-        place_holder_color = "${gray}";
+        place_holder = "app";
+        place_holder_color = "${dimmed}${gray}";
         suggestion_mode = "list";
         separator = "                  ${magenta}modules ────────────────${reset}";
         footer = "";
@@ -65,7 +66,7 @@
         indicator_with_arg_module = "${yellow}${reset} ";
         indicator_no_arg_module = "";
         prefix_color = "${dimmed}${green}";
-        description_color = "${dimmed}${gray}";
+        description_color = "${blue}";
         hint_color = "${cyan}";
         move_interface_right = 16;
         move_interface_down = 1;
@@ -73,19 +74,20 @@
 
       modules = [
         {
-          description = "web search";
+          description = "Web Search";
           prefix = "s";
+          with_argument = true;
+          url_encode = true;
+          unbind_proc = true;
           cmd =
             # bash
             ''
               xdg-open https://search.mcgee.red/search?q="{}"
             '';
-          with_argument = true;
-          url_encode = true;
-          unbind_proc = true;
         }
+
         {
-          description = "launch apps";
+          description = "Launch Apps";
           prefix = "app";
           cmd =
             # bash
@@ -93,8 +95,9 @@
               fsel --detach --replace
             '';
         }
+
         {
-          description = "power menu";
+          description = "Power Menu";
           prefix = "power";
           cmd =
             # bash
@@ -111,20 +114,87 @@
                   esac
                 fi
               }
-              power $(echo -e 'reboot\nshutdown\nlogout\nsuspend\nhibernate' | fzf --padding 1,2 --info-command 'printf " power menu ($FZF_POS/$FZF_TOTAL_COUNT)"' --cycle --gutter " " --pointer " ▌" --color "bg+:-1,pointer:1,info:8,separator:8,scrollbar:0" --prompt '  ' | tail -1)
+              power $(printf 'reboot\nshutdown\nlogout\nsuspend\nhibernate' | fzf --padding 1,2 --info-command 'printf " power menu ($FZF_POS/$FZF_TOTAL_COUNT)"' --cycle --gutter " " --pointer " ▌" --color "bg+:-1,pointer:1,info:8,separator:8,scrollbar:0" --prompt '  ' | tail -1)
             '';
         }
 
         {
-          description = "run commands";
+          description = "Run Commands";
           prefix = "sh";
+          with_argument = true;
+          unbind_proc = true;
           cmd =
             # bash
             ''
-              ghostty --wait-after-command --class=ghostty.launcher -e "{}"
+              ghostty --class=ghostty.launcher --wait-after-command -e sh -c "{}"
             '';
-          with_argument = true;
-          unbind_proc = true;
+        }
+
+        {
+          description = "Bluetooth Menu";
+          prefix = "bt";
+          cmd =
+            # bash
+            ''
+              bluetuith
+            '';
+        }
+
+        {
+          description = "Passwords";
+          prefix = "pw";
+          cmd = lib.getExe (
+            pkgs.writeShellApplication {
+              name = "get-password";
+              runtimeInputs = with pkgs; [
+                bitwarden-cli
+                jq
+                wtype
+              ];
+              # runtimeEnv = { };
+              text = ''
+                list() {
+                  bw list items
+                }
+
+                filter() {
+                  list | jq -r '.[].name' | fzf
+                }
+
+                pw() {
+                  bw get password "$1"
+                }
+
+                user() {
+                  bw get username "$1"
+                }
+
+                paste() {
+                  local entry ans user pw
+                  entry=$(filter)
+                  user=$(user "$entry")
+                  pw=$(pw "$entry")
+
+                  read -r -p "Paste user, password/pw, or both? " ans
+
+                  case "$ans" in
+                    user) wtype "$user" ;;
+                    password|pw) wtype "$pw" ;;
+                    *)
+                      wtype "$user"
+                      wtype -k "Tab"
+                      wtype "$pw"
+                      ;;
+                  esac
+                }
+
+                BW_SESSION=$(bw unlock --raw --passwordfile ${config.sops.secrets.bitwarden_password.path})
+                export BW_SESSION
+
+                paste
+              '';
+            }
+          );
         }
       ];
     };
