@@ -43,7 +43,7 @@ in {
         aliases = protonMailAliases;
         primary = true;
         realName = realName;
-        userName = "redbeardymcgee";
+        userName = protonMailAddress;
         signature = {
           delimiter = "---";
           showSignature = "append";
@@ -78,7 +78,7 @@ in {
       in {
         address = indivisibleMailAddress;
         realName = realName;
-        userName = "IndivisibleNWTN";
+        userName = indivisibleMailAddress;
         signature = {
           delimiter = "---";
           showSignature = "append";

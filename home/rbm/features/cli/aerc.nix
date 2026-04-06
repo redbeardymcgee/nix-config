@@ -1,4 +1,22 @@
 {pkgs, ...}: {
+  # accounts.email.accounts = {
+  #   protonmail = {
+  #     aerc = {
+  #       enable = true;
+  #
+  #       extraAccounts = let
+  #         userName = pkgs.lib.strings.escapeURL protonMailAddress;
+  #       in {
+  #         source = "imap+insecure://${userName}:${bridgePassword}@${perseus}:1143";
+  #         outgoing = "smtp+insecure://${userName}:${bridgePassword}@${perseus}:1025";
+  #         default = "INBOX";
+  #         from = "${realName} <${protonMailAddress}>";
+  #         copy-to = "Sent";
+  #       };
+  #     };
+  #   };
+  # };
+
   programs.aerc = {
     enable = true;
     extraConfig.general.unsafe-accounts-conf = true;
