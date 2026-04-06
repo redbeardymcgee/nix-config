@@ -62,6 +62,7 @@
     magic-wormhole
     procs
     sass
+    serie
     typos
     xan
     yq-go
