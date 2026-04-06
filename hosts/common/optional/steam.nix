@@ -47,26 +47,28 @@
         with pkgs'; [
           dxvk
           harfbuzz
-          pango
-          python3
-          xorg.libXcursor
-          xorg.libXi
-          xorg.libXinerama
-          xorg.libXScrnSaver
+          keyutils
+          libkrb5
           libpng
           libpulseaudio
           libvorbis
+          pango
+          python3
           stdenv.cc.cc.lib
-          libkrb5
-          keyutils
+          xorg.libXScrnSaver
+          xorg.libXcursor
+          xorg.libXi
+          xorg.libXinerama
+          xorg.libXxf86vm
         ];
       # Automatically enable gamemode whenever Steam is running
       extraProfile = ''
         export LD_LIBRARY_PATH="${lib.getLib (pkgs.gamemode)}/lib:$LD_LIBRARY_PATH"
       '';
     };
+    gamescopeSession.enable = true;
     protontricks.enable = true;
-    extest.enable = true;
+    # extest.enable = true;
     localNetworkGameTransfers.openFirewall = true;
     remotePlay.openFirewall = true;
   };
