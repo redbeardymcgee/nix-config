@@ -20,13 +20,28 @@
           {
             do = "riverctl focus-output DP-4";
           }
+
+          {
+            undo = "riverctl focus-output DP-4";
+          }
+
           {
             do = "riverctl set-focused-tags 256";
             undo = "riverctl set-focused-tags 1";
           }
+
           {
-            do = ''sh -c "way-displays -d scale '${asus}'"'';
-            undo = ''sh -c "way-displays -s scale '${asus}' 1.5"'';
+            # do = "steam -shutdown";
+            undo = "steam -shutdown";
+          }
+
+          {
+            do = "riverctl enter-mode passthrough";
+            undo = "riverctl enter-mode normal";
+          }
+
+          {
+            undo = "systemctl --user restart way-displays";
           }
         ];
 
@@ -35,30 +50,57 @@
 
       ## Audio/Video
       output_name = 1;
+      virtual_sink = "sink-sunshine-stereo";
     };
 
     applications = {
       apps = let
-        res = width: height: refresh: [
+        bigPicture = width: height:
+        ## FIXME: gamescope crashes when launched with any program
+        # "setsid gamescope -W ${toString width} -H ${toString height} -- gamemoderun steam -bigpicture"
+        "setsid gamemoderun steam -bigpicture";
+        enableDisableOutput = output: [
           {
-            do = ''sh -c "way-displays -s mode '${asus}' ${toString width} ${toString height} ${toString refresh}"'';
-            undo = ''sh -c "way-displays -s mode '${asus}' 2560 1440 180"'';
+            do = "way-displays --delete DISABLED ${output}";
+          }
+
+          {
+            do = "riverctl focus-output ${output}";
           }
         ];
-        bigPicture = ["setsid steam steam://open/bigpicture"];
       in [
         {
           name = "FHD";
           image = "desktop.png";
-          prep-cmd = res 1920 1080 60;
-          detached = bigPicture;
+          ## FIXME: Virtual displays seem to be missing
+          # prep-cmd = enableDisableOutput "DP-8";
+          prep-cmd = [
+            {
+              do = "riverctl focus-output DP-4";
+            }
+
+            {
+              do = "riverctl set-focused-tags 256";
+            }
+
+            {
+              do = ''sh -c 'way-displays -s mode "${asus}" 1920 1080 60'';
+            }
+          ];
+          detached = [(bigPicture 1280 800)];
         }
 
         {
           name = "Deck";
           image = "steam.png";
-          prep-cmd = res 1280 800 60;
-          detached = bigPicture;
+          ## FIXME: Virtual displays seem to be missing
+          # prep-cmd = enableDisableOutput "DP-7";
+          prep-cmd = [
+            {
+              do = ''sh -c "way-displays -s mode '${asus}' 1280 720 60" '';
+            }
+          ];
+          detached = [(bigPicture 1280 800)];
         }
       ];
     };

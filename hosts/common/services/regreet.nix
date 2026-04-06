@@ -6,7 +6,8 @@
 
     settings = {
       # env = {
-      #   ENV_VARIABLE = "value";
+      #   TODO: Must this be set here?
+      #   WLR_BACKENDS = "headless,wayland";
       # };
 
       GTK = {
