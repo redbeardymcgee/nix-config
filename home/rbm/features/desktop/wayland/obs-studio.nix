@@ -5,12 +5,13 @@
     # enableVirtualCamera = true;
 
     plugins = with pkgs.obs-studio-plugins; [
-      wlrobs
-      obs-websocket
-      obs-vkcapture
-      obs-pipewire-audio-capture
+      obs-advanced-masks
       obs-aitum-multistream
+      obs-pipewire-audio-capture
       obs-source-record
+      obs-vkcapture
+      obs-websocket
+      wlrobs
     ];
   };
 }
