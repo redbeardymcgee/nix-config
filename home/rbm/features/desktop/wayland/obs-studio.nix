@@ -9,6 +9,8 @@
       obs-websocket
       obs-vkcapture
       obs-pipewire-audio-capture
+      obs-aitum-multistream
+      obs-source-record
     ];
   };
 }
