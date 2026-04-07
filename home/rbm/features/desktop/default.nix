@@ -24,8 +24,10 @@
     packages = with pkgs;
       [
         bitwarden-desktop
+        gimp
         grayjay
-        # jellyfin-media-player
+        jellyfin-desktop
+        inkscape-with-extensions
         ladybird
         moonlight-qt
         mpv
