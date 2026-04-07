@@ -42,6 +42,10 @@
         user = "git";
         identityFile = "~/.ssh/toliman-to-forgejo";
       };
+      "alta.mcgee.red" = {
+        user = "root";
+        identityFile = "~/.ssh/toliman-to-alta";
+      };
     };
   };
 }
