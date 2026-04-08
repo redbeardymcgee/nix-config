@@ -28,7 +28,7 @@
         grayjay
         jellyfin-desktop
         inkscape-with-extensions
-        ladybird
+        # ladybird
         moonlight-qt
         mpv
         nextcloud-talk-desktop
