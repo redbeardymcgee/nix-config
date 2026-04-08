@@ -5,7 +5,7 @@
 }: {
   imports = [
     ./apps/davinci.nix
-    ./apps/firefox
+    # ./apps/firefox
     ./apps/ghostty.nix
     ./apps/kitty.nix
     ./apps/mangohud.nix
