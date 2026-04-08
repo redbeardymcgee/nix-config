@@ -2,17 +2,17 @@
   imports = [
     ../wayland
     ../../desktop
-
-    ./fnott.nix
-    ./foot.nix
-    # ./gradia.nix
     ./river.nix
-    ./satty.nix
-    ./swaylock.nix
-    ./way-displays.nix
-    ./wezterm
-    ./wofi.nix
-    ./wlogout.nix
+
+    ../apps/fnott.nix
+    ../apps/foot.nix
+    # ../apps/gradia.nix
+    ../apps/satty.nix
+    ../apps/swaylock.nix
+    ../apps/way-displays.nix
+    ../apps/wezterm
+    ../apps/wofi.nix
+    ../apps/wlogout.nix
 
     ../../services/cliphist.nix
     # ../../services/easyeffects.nix

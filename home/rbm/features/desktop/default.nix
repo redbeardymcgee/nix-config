@@ -4,15 +4,15 @@
   ...
 }: {
   imports = [
-    ./davinci.nix
-    ./firefox
-    ./ghostty.nix
-    ./kitty.nix
-    ./mangohud.nix
-    # ./protonvpn.nix
-    ./qutebrowser.nix
-    ./streamlink.nix
-    ./thunderbird.nix
+    ./apps/davinci.nix
+    ./apps/firefox
+    ./apps/ghostty.nix
+    ./apps/kitty.nix
+    ./apps/mangohud.nix
+    # ./apps/protonvpn.nix
+    ./apps/qutebrowser.nix
+    ./apps/streamlink.nix
+    ./apps/thunderbird.nix
 
     ../services/gammastep.nix
   ];
