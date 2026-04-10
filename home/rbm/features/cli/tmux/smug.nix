@@ -74,7 +74,7 @@
           }
           {
             name = "pwf";
-            root = "pwf";
+            root = "pridewithfriends";
             layout = "main-vertical";
             selected = true;
             commands = [
