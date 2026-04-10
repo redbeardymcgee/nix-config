@@ -38,6 +38,8 @@
     ../common/users
   ];
 
+  programs.nix-ld.enable = true;
+
   # security.pam.services.swaylock = {
   #   enable = true;
   #   text = "auth include login";
