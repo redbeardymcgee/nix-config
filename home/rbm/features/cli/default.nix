@@ -15,7 +15,6 @@
     ./comma.nix
     ./difftastic.nix
     ./direnv.nix
-    # ./discordo.nix
     ./eza.nix
     ./fastfetch
     ./fd.nix
@@ -34,10 +33,11 @@
     ./man.nix
     ./nix-index.nix
     ./nvim.nix
+    ./opencode.nix
     ./otter-launcher.nix
     ./oxicord.nix
     ./pimsync.nix
-    # ./posting.nix
+    ./posting.nix
     ./rbw.nix
     ./ripgrep.nix
     ./sesh.nix
