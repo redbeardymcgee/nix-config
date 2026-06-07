@@ -35,7 +35,7 @@
     ./nvim.nix
     ./opencode.nix
     ./otter-launcher.nix
-    ./oxicord.nix
+    # ./oxicord.nix
     ./pimsync.nix
     ./posting.nix
     ./rbw.nix
