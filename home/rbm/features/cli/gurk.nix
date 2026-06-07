@@ -1,9 +1,10 @@
 {
   pkgs,
+  pkgs-unstable,
   config,
   ...
 }: {
-  home.packages = [pkgs.gurk-rs];
+  home.packages = [pkgs-unstable.gurk-rs];
 
   xdg.configFile."gurk/gurk.toml" = let
     cfg = config.sops.templates.gurk.path;
