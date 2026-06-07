@@ -4,16 +4,16 @@
   pkgs,
   ...
 }: {
-  programs.fish.functions = {
-    y = {
-      wraps = "yazi";
-      body =
-        # fish
-        ''
-          builtin cd -- "$(command yazi $argv --cwd-file /dev/stdout)"
-        '';
-    };
-  };
+  # programs.fish.functions = {
+  #   y = {
+  #     wraps = "yazi";
+  #     body =
+  #       # fish
+  #       ''
+  #         builtin cd -- "$(command yazi $argv --cwd-file /dev/stdout)"
+  #       '';
+  #   };
+  # };
 
   home.packages = with pkgs; [
     eject
@@ -36,6 +36,7 @@
   programs.yazi = {
     enable = true;
     enableFishIntegration = true;
+    shellWrapperName = "y";
     initLua = ./init.lua;
     keymap = import ./keymap.nix;
     plugins = with pkgs.yaziPlugins; {
