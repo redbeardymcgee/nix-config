@@ -10,20 +10,18 @@
 
   services.resolved = {
     enable = true;
-    # dnsovertls = "true";
-    # dnssec = "true";
-    domains = [
-      "~."
-      "localdomain"
-    ];
-    fallbackDns = [
-      "9.9.9.9"
-      "149.112.112.112"
-    ];
-
-    # settings = {
-    #   DNSStubListenerExtra = "[::1]:53";
-    # };
+    settings = {
+      Resolve = {
+        Domains = [
+          "~."
+          "localdomain"
+        ];
+        FallbackDNS = [
+          "9.9.9.9"
+          "149.112.112.112"
+        ];
+      };
+    };
   };
 
   systemd.network = {
