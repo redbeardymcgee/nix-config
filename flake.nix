@@ -1,25 +1,18 @@
 {
   description = "rbm flake";
 
-  nixConfig = {
-    # extra-substituters = [ ];
-
-    # extra-trusted-public-keys = [ ];
-  };
-
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-25.11";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-26.05";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     # systems.url = "github:nix-systems/default-linux";
     nixos-hardware.url = "github:NixOS/nixos-hardware";
     home-manager = {
-      url = "github:nix-community/home-manager/release-25.11";
+      url = "github:nix-community/home-manager/release-26.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
     fsel = {
       url = "github:Mjoyufull/fsel";
-      inputs.nixpkgs.follows = "nixpkgs";
     };
     nix-index-database = {
       url = "github:nix-community/nix-index-database";
@@ -27,26 +20,18 @@
     };
     nixcats = {
       url = "git+file:///home/rbm/src/redbeardymcgee/nixcats";
-      inputs.nixpkgs.follows = "nixpkgs";
     };
     # nixcats.url = "github:redbeardymcgee/nixcats";
     otter-launcher = {
       url = "github:kuokuo123/otter-launcher";
-      inputs.nixpkgs.follows = "nixpkgs";
     };
     oxicord = {
       url = "github:linuxmobile/oxicord";
-      # inputs.nixpkgs.follows = "nixpkgs";
-    };
-    posting = {
-      url = "github:justdeeevin/posting/flake";
-      inputs.nixpkgs.follows = "nixpkgs";
     };
     sops-nix = {
       url = "github:Mic92/sops-nix";
-      inputs.nixpkgs.follows = "nixpkgs";
     };
-    stylix.url = "github:danth/stylix/release-25.11";
+    stylix.url = "github:danth/stylix/release-26.05";
   };
 
   outputs = {
@@ -57,7 +42,6 @@
     nixpkgs,
     nixpkgs-unstable,
     otter-launcher,
-    posting,
     sops-nix,
     stylix,
     ...
@@ -114,7 +98,6 @@
       commonModules = [
         nix-index-database.homeModules.nix-index
         otter-launcher.homeModules.default
-        posting.modules.homeManager.default
         sops-nix.homeModules.default
         stylix.homeModules.stylix
       ];
