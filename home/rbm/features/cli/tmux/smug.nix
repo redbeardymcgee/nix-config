@@ -75,8 +75,16 @@
           {
             name = "pwf";
             root = "pridewithfriends";
-            layout = "main-vertical";
+            layout = "main-horizontal";
             selected = true;
+            panes = [
+              {
+                type = "horizontal";
+                commands = [
+                  "npm run dev"
+                ];
+              }
+            ];
             commands = [
               "redvim"
             ];
