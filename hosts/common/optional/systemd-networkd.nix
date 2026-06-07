@@ -21,9 +21,9 @@
       "149.112.112.112"
     ];
 
-    extraConfig = ''
-      DNSStubListenerExtra=[::1]:53
-    '';
+    # settings = {
+    #   DNSStubListenerExtra = "[::1]:53";
+    # };
   };
 
   systemd.network = {
