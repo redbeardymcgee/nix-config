@@ -9,7 +9,7 @@
 
     ../common/global
 
-    ../common/optional/adb.nix
+    # ../common/optional/adb.nix
     ../common/optional/dygma.nix
     # ../common/optional/gamemode.nix
     # ../common/optional/kmscon.nix
