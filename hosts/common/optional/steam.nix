@@ -55,11 +55,11 @@
           pango
           python3
           stdenv.cc.cc.lib
-          xorg.libXScrnSaver
-          xorg.libXcursor
-          xorg.libXi
-          xorg.libXinerama
-          xorg.libXxf86vm
+          libxscrnsaver
+          libxcursor
+          libxi
+          libxinerama
+          libxxf86vm
         ];
       # Automatically enable gamemode whenever Steam is running
       extraProfile = ''

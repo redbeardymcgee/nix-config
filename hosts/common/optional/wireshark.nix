@@ -1,7 +1,7 @@
 {pkgs, ...}: {
   programs.wireshark = {
     enable = true;
-    package = pkgs.wireshark-qt;
+    package = pkgs.wireshark;
   };
   environment.systemPackages = [pkgs.termshark];
 }
