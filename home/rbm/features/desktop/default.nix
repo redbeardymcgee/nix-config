@@ -8,13 +8,14 @@
     # ./apps/firefox
     ./apps/ghostty.nix
     ./apps/kitty.nix
+    ./apps/foot.nix
     ./apps/mangohud.nix
     # ./apps/protonvpn.nix
     ./apps/qutebrowser.nix
     ./apps/streamlink.nix
     ./apps/thunderbird.nix
 
-    ../services/gammastep.nix
+    # ../services/gammastep.nix
   ];
 
   gtk.enable = true;
