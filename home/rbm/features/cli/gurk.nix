@@ -6,16 +6,8 @@
 }: {
   home.packages = [pkgs-unstable.gurk-rs];
 
-  xdg.configFile."gurk/gurk.toml" = let
-    cfg = config.sops.templates.gurk.path;
-    cfgSource = config.lib.file.mkOutOfStoreSymlink cfg;
-  in {
-    enable = true;
-
-    source = cfgSource;
-  };
-
   sops.templates."gurk" = {
+    path = "${config.xdg.configHome}/gurk/gurk.toml";
     file = (pkgs.formats.toml {}).generate "gurk.toml" {
       default_keybindings = true;
 
