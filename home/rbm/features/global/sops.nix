@@ -9,6 +9,7 @@
       phone_number = {};
       gmail_password = {};
       bitwarden_password = {};
+      opencode_api_key = {};
     };
   };
 }
