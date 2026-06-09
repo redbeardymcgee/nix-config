@@ -10,15 +10,11 @@
       ./locale.nix
       ./kernel.nix
       ./nix.nix
-      ./qemu.nix
       ./sudo.nix
       ./systemd-initrd.nix
 
-      ../services/libinput.nix
+      ../hardware
       ../services/openssh.nix
-      ../services/pipewire.nix
-      ../services/ssd.nix
-      ./shared-hardware.nix
     ]
     ++ (builtins.attrValues outputs.nixosModules);
 

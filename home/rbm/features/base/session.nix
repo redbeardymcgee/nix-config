@@ -1,21 +1,8 @@
 {
   config,
   lib,
-  outputs,
-  pkgs,
   ...
 }: {
-  imports =
-    [
-      ./gtk.nix
-      ./nixpkgs.nix
-      ./sops.nix
-      ./stylix.nix
-      ./xdg-mimeapps.nix
-      ./xdg-user-dirs.nix
-    ]
-    ++ (builtins.attrValues outputs.homeManagerModules);
-
   news.display = "show";
   systemd.user.startServices = "sd-switch";
 
@@ -33,21 +20,6 @@
     homeDirectory = "/home/${config.home.username}";
     username = "rbm";
     preferXdgDirectories = true;
-
-    packages = with pkgs; [
-      brogue-ce
-      cataclysm-dda-git
-      crawlTiles
-      infra-arcana
-      nerd-fonts.fira-code
-      nerd-fonts.inconsolata-lgc
-      nerd-fonts.iosevka-term-slab
-      nerd-fonts.victor-mono
-      dejavu_fonts
-      gcc
-      pwvucontrol
-      unzip
-    ];
 
     sessionPath = [
       "$HOME/.local/lib/node_modules/bin"
