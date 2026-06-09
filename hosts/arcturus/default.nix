@@ -39,48 +39,6 @@
   # };
   services.displayManager.sessionPackages = [pkgs.niri pkgs.river];
 
-  fileSystems = {
-    "/2tb" = {
-      device = "/dev/disk/by-uuid/0b8b0c5d-8363-43a5-8a3a-a71fa3c7d953";
-      fsType = "ext4";
-      mountPoint = "/mnt/2tb";
-      options = [
-        "users"
-        "exec"
-        "nofail"
-      ];
-    };
-  };
-
-  hardware = {
-    enableRedistributableFirmware = true;
-    xpadneo.enable = true;
-
-    bluetooth = {
-      enable = true;
-      powerOnBoot = true;
-      settings = {
-        General = {
-          Experimental = true;
-        };
-      };
-    };
-    # };
-    # services.pulseaudio = {
-    pulseaudio = {
-      enable = false;
-      package = pkgs.pulseaudioFull;
-
-      configFile = pkgs.writeText "default.pa" ''
-        load-module module-bluetooth-policy
-        load-module module-bluetooth-discover
-      '';
-
-      extraConfig = ''
-        load-module module-switch-on-connect
-      '';
-    };
-  };
   networking = {
     domain = "home";
     hostName = "arcturus";

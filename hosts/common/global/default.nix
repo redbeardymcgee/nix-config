@@ -18,6 +18,7 @@
       ../services/openssh.nix
       ../services/pipewire.nix
       ../services/ssd.nix
+      ./shared-hardware.nix
     ]
     ++ (builtins.attrValues outputs.nixosModules);
 

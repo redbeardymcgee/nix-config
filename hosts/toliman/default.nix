@@ -1,8 +1,4 @@
-{
-  pkgs,
-  lib,
-  ...
-}: {
+{pkgs, ...}: {
   imports = [
     ./hw.nix
     ./davinci.nix
@@ -56,41 +52,15 @@
   };
 
   hardware = {
-    enableRedistributableFirmware = true;
     amdgpu = {
       opencl.enable = true;
       overdrive.enable = true;
       initrd.enable = true;
-    };
-    xpadneo.enable = true;
-
-    bluetooth = {
-      enable = true;
-      powerOnBoot = true;
-      settings = {
-        General = {
-          Experimental = true;
-        };
-      };
     };
   };
 
   networking = {
     domain = "home";
     hostName = "toliman";
-  };
-
-  services.pulseaudio = {
-    enable = false;
-    package = pkgs.pulseaudioFull;
-
-    configFile = pkgs.writeText "default.pa" ''
-      load-module module-bluetooth-policy
-      load-module module-bluetooth-discover
-    '';
-
-    extraConfig = ''
-      load-module module-switch-on-connect
-    '';
   };
 }
