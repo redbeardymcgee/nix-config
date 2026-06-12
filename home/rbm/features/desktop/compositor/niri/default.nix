@@ -54,7 +54,7 @@
         skip-at-startup = true;
       };
       input = {
-        focus-follows-mouse.enable = true;
+        focus-follows-mouse.enable = false;
         keyboard = {
           repeat-delay = 300;
           xkb.layout = "us";
