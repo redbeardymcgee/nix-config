@@ -37,16 +37,11 @@
     };
     niri = {
       url = "github:sodiboo/niri-flake";
-      # inputs.nixpkgs.follows = "nixpkgs";
     };
     nix-index-database = {
       url = "github:nix-community/nix-index-database";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    # nixcats = {
-    #   url = "git+file:///home/rbm/src/redbeardymcgee/nixcats";
-    # };
-    # nixcats.url = "github:redbeardymcgee/nixcats";
     redvim = {
       url = "git+https://git.mcgee.red/redbeardymcgee/nvim";
     };
@@ -65,11 +60,9 @@
     stylix.url = "github:danth/stylix/release-26.05";
     tmux-which-key = {
       url = "github:alexwforsythe/tmux-which-key";
-      inputs.nixpkgs.follows = "nixpkgs";
     };
     tmux-nerd-font-window-name = {
       url = "github:joshmedeski/tmux-nerd-font-window-name";
-      inputs.nixpkgs.follows = "nixpkgs";
     };
     tmux-power-zoom = {
       url = "github:jaclu/tmux-power-zoom";
@@ -174,7 +167,7 @@
           ++ [
             dms.homeModules.dank-material-shell
             dms.homeModules.niri
-            dms-plugin-registry.modules.default
+            dms-plugin-registry.homeModules.default
             niri.homeModules.niri
             niri.homeModules.stylix
             ./home/rbm/arcturus.nix
@@ -202,7 +195,7 @@
           ++ [
             dms.homeModules.dank-material-shell
             dms.homeModules.niri
-            dms-plugin-registry.modules.default
+            dms-plugin-registry.homeModules.default
             niri.homeModules.niri
             niri.homeModules.stylix
             ./home/rbm/toliman.nix
