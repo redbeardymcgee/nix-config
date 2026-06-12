@@ -12,7 +12,7 @@
     ./khal.nix
     # ./oxicord.nix
     ./pimsync.nix
-    ./rbw.nix
+    # ./rbw.nix
     ./ssh.nix
   ];
 }
