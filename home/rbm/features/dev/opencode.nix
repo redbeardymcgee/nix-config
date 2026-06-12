@@ -5,13 +5,19 @@
 }: let
   model = "mcgeedia/qwen";
 in {
+  home.packages = with pkgs; [
+    ast-grep
+    bun
+  ];
+
   programs.opencode = {
     enable = true;
+    package = pkgs.llm-agents.opencode;
 
     settings = {
       model = model;
       plugin = ["oh-my-openagent@latest"];
-      # lsp = true;
+      lsp = true;
       provider = {
         mcgeedia = {
           name = "McGeedia";

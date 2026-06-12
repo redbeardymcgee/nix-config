@@ -59,6 +59,9 @@
     sops-nix = {
       url = "github:Mic92/sops-nix";
     };
+    llm-agents = {
+      url = "github:numtide/llm-agents.nix";
+    };
     stylix.url = "github:danth/stylix/release-26.05";
   };
 

@@ -22,4 +22,5 @@
   };
 
   niri = inputs.niri.overlays.niri;
+  llm-agents = inputs.llm-agents.overlays.default;
 }
