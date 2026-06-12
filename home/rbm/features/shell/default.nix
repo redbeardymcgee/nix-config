@@ -7,6 +7,7 @@
     ./atuin.nix
     ./bash.nix
     ./bat.nix
+    ./comma.nix
     ./difftastic.nix
     ./direnv.nix
     ./eza.nix
@@ -25,7 +26,7 @@
     ./tealdeer.nix
     ./tmux
     ./yazi
-    ./zellij.nix
+    # ./zellij.nix
     ./zoxide.nix
   ];
 
@@ -36,6 +37,7 @@
     distrobox
     entr
     gtrash
+    lsof
     magic-wormhole
     procs
     sass
