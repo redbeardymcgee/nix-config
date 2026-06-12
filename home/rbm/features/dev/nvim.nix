@@ -3,8 +3,8 @@
   inputs,
   ...
 }: {
-  home.packages = with pkgs; [
-    inputs.nixcats.packages.${pkgs.stdenv.hostPlatform.system}.redvim
+  home.packages = [
+    inputs.redvim.packages.${pkgs.stdenv.hostPlatform.system}.default
   ];
 
   home.sessionVariables = {

@@ -43,10 +43,13 @@
       url = "github:nix-community/nix-index-database";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    nixcats = {
-      url = "git+file:///home/rbm/src/redbeardymcgee/nixcats";
-    };
+    # nixcats = {
+    #   url = "git+file:///home/rbm/src/redbeardymcgee/nixcats";
+    # };
     # nixcats.url = "github:redbeardymcgee/nixcats";
+    redvim = {
+      url = "git+https://git.mcgee.red/redbeardymcgee/nvim";
+    };
     otter-launcher = {
       url = "github:kuokuo123/otter-launcher";
     };

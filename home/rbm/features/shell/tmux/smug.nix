@@ -65,8 +65,8 @@
         root = "~/src/redbeardymcgee";
         windows = [
           {
-            name = "nixcats";
-            root = "nixcats";
+            name = "nvim";
+            root = "nvim";
             layout = "main-vertical";
             commands = [
               "redvim"
@@ -75,16 +75,8 @@
           {
             name = "pwf";
             root = "pridewithfriends";
-            layout = "main-horizontal";
+            layout = "main-vertical";
             selected = true;
-            panes = [
-              {
-                type = "horizontal";
-                commands = [
-                  "npm run dev"
-                ];
-              }
-            ];
             commands = [
               "redvim"
             ];
