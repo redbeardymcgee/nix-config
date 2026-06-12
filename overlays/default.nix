@@ -1,5 +1,5 @@
 # This file defines overlays
-{inputs, ...}: {
+{ inputs, ... }: {
   # This one brings our custom packages from the 'pkgs' directory
   additions = final: _prev: import ../pkgs final.pkgs;
 
@@ -23,4 +23,6 @@
 
   niri = inputs.niri.overlays.niri;
   llm-agents = inputs.llm-agents.overlays.default;
+  tmux-which-key = inputs.tmux-which-key.overlays.default;
+  tmux-nerd-font-window-name = inputs.tmux-nerd-font-window-name.overlays.default;
 }

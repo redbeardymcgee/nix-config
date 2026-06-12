@@ -1,8 +1,11 @@
 {
   lib,
   pkgs,
+  inputs,
   ...
-}: {
+}:
+{
+  imports = [ inputs.tmux-which-key.homeManagerModules.default ];
   home.packages = with pkgs; [
     python312Packages.libtmux
   ];
@@ -19,138 +22,90 @@
     mouse = true;
     prefix = "M-Space";
     terminal = "tmux-256color";
+    tmux-which-key = {
+      enable = true;
+    };
 
-    plugins = with pkgs.tmuxPlugins; let
-      tmux-nerd-font-window-name = mkTmuxPlugin {
-        pluginName = "nerd-font-window-name";
-        rtpFilePath = "tmux-nerd-font-window-name.tmux";
-        version = "git";
-        src = pkgs.fetchFromGitHub {
-          owner = "joshmedeski";
-          repo = "tmux-nerd-font-window-name";
-          rev = "9a66e18972de25c0bb3a58b7422d6e6555f166ba";
-          hash = "sha256-X4Li6xkxKjqac7xedCNzzSoW7wT6N2oqVKIx7TFay64=";
+    plugins =
+      with pkgs.tmuxPlugins;
+      let
+        tmux-power-zoom = mkTmuxPlugin {
+          pluginName = "power-zoom";
+          rtpFilePath = "power-zoom.tmux";
+          version = "git";
+          src = inputs.tmux-power-zoom;
         };
-      };
 
-      tmux-power-zoom = mkTmuxPlugin {
-        pluginName = "power-zoom";
-        rtpFilePath = "power-zoom.tmux";
-        version = "git";
-        src = pkgs.fetchFromGitHub {
-          owner = "jaclu";
-          repo = "tmux-power-zoom";
-          rev = "5916f2087c140e9fbac7f3bbf64765581646c042";
-          hash = "sha256-3RI/waUjmAoqRrihjenDSq777kf3sLXaWWYJMCRlEvQ=";
+        tmux-matryoshka = mkTmuxPlugin {
+          pluginName = "matryoshka";
+          rtpFilePath = "matryoshka.tmux";
+          version = "git";
+          src = inputs.tmux-matryoshka;
         };
-      };
 
-      tmux-matryoshka = mkTmuxPlugin {
-        pluginName = "matryoshka";
-        rtpFilePath = "matryoshka.tmux";
-        version = "git";
-        src = pkgs.fetchFromGitHub {
-          owner = "niqodea";
-          repo = "tmux-matryoshka";
-          rev = "2865a5913e0884b2bdd731b610e39d125c281979";
-          hash = "sha256-r1p8soVcG+GFvacubr3R7eHqzaUwSfbvgvWFeYXntZQ=";
+        tmux-fzf-links = mkTmuxPlugin {
+          pluginName = "fzf-links";
+          rtpFilePath = "fzf-links.tmux";
+          version = "git";
+          src = inputs.tmux-fzf-links;
         };
-      };
 
-      tmux-fzf-links = mkTmuxPlugin {
-        pluginName = "fzf-links";
-        rtpFilePath = "fzf-links.tmux";
-        version = "git";
-        src = pkgs.fetchFromGitHub {
-          owner = "alberti42";
-          repo = "tmux-fzf-links";
-          rev = "3c4b7acb4b94d2bb8791a3b0b5798d740238216d";
-          hash = "sha256-Ems/tvPQiQaTMHfeshED1tIJyeZC2+4KTQTlhZJXAuI=";
+        tmux-smart-splits = mkTmuxPlugin {
+          pluginName = "smart-splits";
+          rtpFilePath = "smart-splits.tmux";
+          version = "git";
+          src = inputs.tmux-smart-splits;
         };
-      };
+      in
+      [
+        extrakto
+        mode-indicator
+        tmux-nerd-font-window-name
+        tmux-power-zoom
+        tmux-matryoshka
+        yank
 
-      tmux-menus = mkTmuxPlugin {
-        pluginName = "menus";
-        rtpFilePath = "menus.tmux";
-        version = "git";
-        src = pkgs.fetchFromGitHub {
-          owner = "jaclu";
-          repo = "tmux-menus";
-          rev = "879f56df1b9703ac277fa16b9bbaf8705f2e6a1c";
-          hash = "sha256-UPWsa7sFy6P3Jo3KFEvZrz4M4IVDhKI7T1LNAtWqTT4=";
-        };
-      };
+        {
+          plugin = tmux-smart-splits;
+          extraConfig =
+            # tmux
+            ''
+              set -g @smart-splits_move_left_key  'M-h'
+              set -g @smart-splits_move_down_key  'M-j'
+              set -g @smart-splits_move_up_key    'M-k'
+              set -g @smart-splits_move_right_key 'M-l'
 
-      tmux-smart-splits = mkTmuxPlugin {
-        pluginName = "smart-splits";
-        rtpFilePath = "smart-splits.tmux";
-        version = "git";
-        src = pkgs.fetchFromGitHub {
-          owner = "mrjones2014";
-          repo = "smart-splits.nvim";
-          rev = "076426b93a0654b6e1467258514dd9021a5e33e2";
-          hash = "sha256-3khwZo1/R3DGmwzy/sAoch6uZuEnkOL7XMogWfgzmoc";
-        };
-      };
-    in [
-      extrakto
-      mode-indicator
-      tmux-nerd-font-window-name
-      tmux-power-zoom
-      tmux-matryoshka
-      yank
+              set -g @smart-splits_resize_left_key  'M-H'
+              set -g @smart-splits_resize_down_key  'M-J'
+              set -g @smart-splits_resize_up_key    'M-K'
+              set -g @smart-splits_resize_right_key 'M-L'
+            '';
+        }
 
-      {
-        plugin = tmux-smart-splits;
-        extraConfig =
-          # tmux
-          ''
-            set -g @smart-splits_move_left_key  'M-h'
-            set -g @smart-splits_move_down_key  'M-j'
-            set -g @smart-splits_move_up_key    'M-k'
-            set -g @smart-splits_move_right_key 'M-l'
+        {
+          plugin = tmux-fzf-links;
+          extraConfig =
+            # tmux
+            ''
+              set -g '@fzf-links-key' u
+              set -g '@fzf-links-editor-open-cmd' "tmux popup -E -w 80% -h 80% nvim +%line '%file'"
+              set -g '@fzf-links-browser-open-cmd' "xdg-open '%url'"
+              set -g '@fzf-links-python' "${lib.getExe pkgs.python3}"
+            '';
+        }
 
-            set -g @smart-splits_resize_left_key  'M-H'
-            set -g @smart-splits_resize_down_key  'M-J'
-            set -g @smart-splits_resize_up_key    'M-K'
-            set -g @smart-splits_resize_right_key 'M-L'
-          '';
-      }
+        # {
+        #   ## TODO: https://github.com/2KAbhishek/tmux-tilit
+        #   plugin = tilish;
+        #   extraConfig =
+        #     # tmux
+        #     ''
+        #       # set -g @tilish-smartsplits 'on'
+        #       # set -g @tilish-default 'main-vertical'
+        #     '';
+        # }
+      ];
 
-      {
-        plugin = tmux-fzf-links;
-        extraConfig =
-          # tmux
-          ''
-            set -g '@fzf-links-key' u
-            set -g '@fzf-links-editor-open-cmd' "tmux popup -E -w 80% -h 80% nvim +%line '%file'"
-            set -g '@fzf-links-browser-open-cmd' "xdg-open '%url'"
-            set -g '@fzf-links-python' "${lib.getExe pkgs.python3}"
-          '';
-      }
-
-      {
-        plugin = tmux-menus;
-        extraConfig =
-          # tmux
-          ''
-            set -g @menus_trigger 'M-Space'
-          '';
-      }
-
-      # {
-      #   ## TODO: https://github.com/2KAbhishek/tmux-tilit
-      #   plugin = tilish;
-      #   extraConfig =
-      #     # tmux
-      #     ''
-      #       # set -g @tilish-smartsplits 'on'
-      #       # set -g @tilish-default 'main-vertical'
-      #     '';
-      # }
-    ];
-
-    # TODO: fetch plugins directly as flake inputs
     extraConfig =
       # tmux
       ''

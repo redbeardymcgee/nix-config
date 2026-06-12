@@ -63,6 +63,30 @@
       url = "github:numtide/llm-agents.nix";
     };
     stylix.url = "github:danth/stylix/release-26.05";
+    tmux-which-key = {
+      url = "github:alexwforsythe/tmux-which-key";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    tmux-nerd-font-window-name = {
+      url = "github:joshmedeski/tmux-nerd-font-window-name";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    tmux-power-zoom = {
+      url = "github:jaclu/tmux-power-zoom";
+      flake = false;
+    };
+    tmux-matryoshka = {
+      url = "github:niqodea/tmux-matryoshka";
+      flake = false;
+    };
+    tmux-fzf-links = {
+      url = "github:alberti42/tmux-fzf-links";
+      flake = false;
+    };
+    tmux-smart-splits = {
+      url = "github:mrjones2014/smart-splits.nvim";
+      flake = false;
+    };
   };
 
   outputs = {
