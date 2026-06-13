@@ -28,6 +28,7 @@
     ./yazi
     # ./zellij.nix
     ./zoxide.nix
+    ./zk.nix
   ];
 
   home.packages = with pkgs; [

@@ -1,0 +1,5 @@
+{
+  programs.zk = {
+    enable = true;
+  };
+}
