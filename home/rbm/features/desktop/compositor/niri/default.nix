@@ -26,10 +26,6 @@
 
     ../../apps/foot.nix
     ../../apps/wezterm
-
-    ../../../services/cliphist.nix
-    ../../../services/ssh-agent.nix
-    ../../../services/udiskie.nix
   ];
 
   # systemd.user.services.niri-flake-polkit.enable = false;
