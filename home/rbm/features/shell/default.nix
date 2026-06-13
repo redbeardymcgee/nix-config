@@ -39,7 +39,6 @@
     entr
     gtrash
     lsof
-    magic-wormhole
     procs
     sass
     serie
