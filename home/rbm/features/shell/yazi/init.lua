@@ -45,7 +45,6 @@ require("bunny"):setup {
   fuzzy_cmd = "fzf", -- Fuzzy searching command, default is "fzf"
 }
 
-require("duckdb"):setup()
 require("pref-by-location"):setup {}
 
 require("full-border"):setup {

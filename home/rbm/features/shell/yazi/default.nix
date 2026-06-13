@@ -121,7 +121,6 @@
       full-border = full-border;
       mediainfo = mediainfo;
       mount = mount;
-      duckdb = duckdb;
       ouch = ouch;
       smart-filter = smart-filter;
       recycle-bin = recycle-bin;
@@ -155,63 +154,9 @@
             mime = "application/postscript";
             run = "mediainfo";
           }
-          {
-            name = "*.csv";
-            run = "duckdb";
-            multi = false;
-          }
-          {
-            name = "*.tsv";
-            run = "duckdb";
-            multi = false;
-          }
-          {
-            name = "*.json";
-            run = "duckdb";
-            multi = false;
-          }
-          {
-            name = "*.parquet";
-            run = "duckdb";
-            multi = false;
-          }
-          {
-            name = "*.xlsx";
-            run = "duckdb";
-            multi = false;
-          }
         ];
 
         prepend_previewers = [
-          {
-            name = "*.csv";
-            run = "duckdb";
-          }
-          {
-            name = "*.tsv";
-            run = "duckdb";
-          }
-          {
-            name = "*.json";
-            run = "duckdb";
-          }
-          {
-            name = "*.parquet";
-            run = "duckdb";
-          }
-          {
-            name = "*.xlsx";
-            run = "duckdb";
-          }
-          {
-            name = "*.db";
-            run = "duckdb";
-          }
-          {
-            name = "*.duckdb";
-            run = "duckdb";
-          }
-
           {
             mime = "{audio,video,image}/*";
             run = "mediainfo";
