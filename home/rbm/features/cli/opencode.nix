@@ -2,16 +2,22 @@
   config,
   pkgs,
   ...
-}: let
+}:
+let
   model = "mcgeedia/qwen";
 in {
+  home.packages = with pkgs; [
+    ast-grep
+    bun
+  ];
+
   programs.opencode = {
     enable = true;
 
     settings = {
       model = model;
       plugin = ["oh-my-openagent@latest"];
-      # lsp = true;
+      lsp = true;
       provider = {
         mcgeedia = {
           name = "McGeedia";
@@ -35,19 +41,54 @@ in {
   };
 
   xdg.configFile."opencode/oh-my-openagent.jsonc" = {
-    source = (pkgs.formats.json {}).generate "oh-my-openagent.jsonc" {
-      "$schema" = "https://raw.githubusercontent.com/code-yeongyu/oh-my-openagent/dev/assets/oh-my-opencode.schema.json";
+    source = (pkgs.formats.json { }).generate "oh-my-openagent.jsonc" {
+      "$schema" =
+        "https://raw.githubusercontent.com/code-yeongyu/oh-my-openagent/dev/assets/oh-my-opencode.schema.json";
       agents = {
-        sisyphus = {model = model;};
-        hephaestus = {model = model;};
-        prometheus = {model = model;};
-        oracle = {model = model;};
-        librarian = {model = model;};
-        explore = {model = model;};
-        multimodal-looker = {model = model;};
-        metis = {model = model;};
-        momus = {model = model;};
-        atlas = {model = model;};
+        sisyphus = {
+          model = model;
+          temperature = 0.3;
+        };
+        sisyphus-junior = {
+          model = model;
+          temperature = 0.3;
+        };
+        hephaestus = {
+          model = model;
+          temperature = 0.3;
+        };
+        prometheus = {
+          model = model;
+          temperature = 0.3;
+        };
+        oracle = {
+          model = model;
+          temperature = 0.5;
+        };
+        librarian = {
+          model = model;
+          temperature = 0.7;
+        };
+        explore = {
+          model = model;
+          temperature = 0.5;
+        };
+        multimodal-looker = {
+          model = model;
+          temperature = 0.5;
+        };
+        metis = {
+          model = model;
+          temperature = 0.5;
+        };
+        momus = {
+          model = model;
+          temperature = 0.5;
+        };
+        atlas = {
+          model = model;
+          temperature = 0.5;
+        };
       };
     };
   };
