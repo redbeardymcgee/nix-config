@@ -1,8 +1,10 @@
 {
   imports = [
-    # ./features/global
-
-    # ./features/cli
-    # ./features/desktop/cosmic
+    ./features/base
+    ./features/shell
+    ./features/dev
+    ./features/apps
+    ./features/desktop
+    ./features/desktop/compositor/niri
   ];
 }

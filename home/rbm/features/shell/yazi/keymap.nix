@@ -17,18 +17,6 @@
       }
 
       {
-        on = "<C-h>";
-        run = "plugin duckdb -1";
-        desc = "Scroll one column to the left";
-      }
-
-      {
-        on = "<C-l>";
-        run = "plugin duckdb +1";
-        desc = "Scroll one column to the right";
-      }
-
-      {
         on = "<C-y>";
         run = "plugin wl-clipboard";
         desc = "Yank file to clipboard";

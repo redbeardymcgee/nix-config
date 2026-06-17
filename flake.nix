@@ -2,8 +2,11 @@
   description = "rbm flake";
 
   nixConfig = {
-    extra-substituters = ["https://niri.cachix.org"];
-    extra-trusted-public-keys = ["niri.cachix.org-1:Wv0OmO7PsuocRKzfDoJ3mulSl7Z6oezYhGhR+3W2964="];
+    extra-substituters = ["https://niri.cachix.org" "https://cache.numtide.com"];
+    extra-trusted-public-keys = [
+      "niri.cachix.org-1:Wv0OmO7PsuocRKzfDoJ3mulSl7Z6oezYhGhR+3W2964="
+      "niks3.numtide.com-1:DTx8wZduET09hRmMtKdQDxNNthLQETkc/yaX7M4qK0g="
+    ];
   };
 
   inputs = {
@@ -34,16 +37,14 @@
     };
     niri = {
       url = "github:sodiboo/niri-flake";
-      inputs.nixpkgs.follows = "nixpkgs";
     };
     nix-index-database = {
       url = "github:nix-community/nix-index-database";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    nixcats = {
-      url = "git+file:///home/rbm/src/redbeardymcgee/nixcats";
+    redvim = {
+      url = "git+https://git.mcgee.red/redbeardymcgee/nvim";
     };
-    # nixcats.url = "github:redbeardymcgee/nixcats";
     otter-launcher = {
       url = "github:kuokuo123/otter-launcher";
     };
@@ -53,7 +54,32 @@
     sops-nix = {
       url = "github:Mic92/sops-nix";
     };
+    llm-agents = {
+      url = "github:numtide/llm-agents.nix";
+    };
     stylix.url = "github:danth/stylix/release-26.05";
+    tmux-which-key = {
+      url = "github:alexwforsythe/tmux-which-key";
+    };
+    tmux-nerd-font-window-name = {
+      url = "github:joshmedeski/tmux-nerd-font-window-name";
+    };
+    tmux-power-zoom = {
+      url = "github:jaclu/tmux-power-zoom";
+      flake = false;
+    };
+    tmux-matryoshka = {
+      url = "github:niqodea/tmux-matryoshka";
+      flake = false;
+    };
+    tmux-fzf-links = {
+      url = "github:alberti42/tmux-fzf-links";
+      flake = false;
+    };
+    tmux-smart-splits = {
+      url = "github:mrjones2014/smart-splits.nvim";
+      flake = false;
+    };
   };
 
   outputs = {
@@ -141,7 +167,7 @@
           ++ [
             dms.homeModules.dank-material-shell
             dms.homeModules.niri
-            dms-plugin-registry.modules.default
+            dms-plugin-registry.homeModules.default
             niri.homeModules.niri
             niri.homeModules.stylix
             ./home/rbm/arcturus.nix
@@ -169,7 +195,7 @@
           ++ [
             dms.homeModules.dank-material-shell
             dms.homeModules.niri
-            dms-plugin-registry.modules.default
+            dms-plugin-registry.homeModules.default
             niri.homeModules.niri
             niri.homeModules.stylix
             ./home/rbm/toliman.nix

@@ -4,6 +4,13 @@
     ./obs-studio.nix
     ./wpaperd.nix
     ./xdg-portal.nix
+
+    # ../../services/cliphist.nix
+    # ../../services/mpris-proxy.nix
+    # ../../services/playerctld.nix
+    ../../services/ssh-agent.nix
+    ../../services/udiskie.nix
+    ../../services/wl-clip-persist.nix
   ];
 
   home.packages = with pkgs; [

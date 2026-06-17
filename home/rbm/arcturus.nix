@@ -1,8 +1,10 @@
 {
   imports = [
-    ./features/global
+    ./features/base
 
-    ./features/cli
-    ./features/desktop/river
+    ./features/shell
+    ./features/dev
+    ./features/apps
+    ./features/desktop/compositor/river
   ];
 }

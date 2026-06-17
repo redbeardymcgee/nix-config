@@ -4,14 +4,9 @@
   ...
 }: {
   imports = [
-    ./aerc.nix
     ./atuin.nix
     ./bash.nix
     ./bat.nix
-    ./bluetuith.nix
-    ./bottom.nix
-    ./browsh.nix
-    ./chawan.nix
     ./comma.nix
     ./difftastic.nix
     ./direnv.nix
@@ -19,52 +14,37 @@
     ./fastfetch
     ./fd.nix
     ./fish.nix
-    ./fsel.nix
     ./fzf.nix
-    ./git.nix
-    ./go.nix
-    ./gurk.nix
-    ./htop.nix
-    ./iamb.nix
     ./jq.nix
-    ./khal.nix
-    ./lazygit.nix
     ./less.nix
     ./man.nix
     ./nix-index.nix
-    ./nvim.nix
-    ./opencode.nix
-    ./otter-launcher.nix
-    # ./oxicord.nix
-    ./pimsync.nix
-    ./posting.nix
-    ./rbw.nix
+    ./nix.nix
     ./ripgrep.nix
     ./sesh.nix
-    ./ssh.nix
     ./starship.nix
     ./tealdeer.nix
     ./tmux
-    ./tokei.nix
     ./yazi
-    ./zk.nix
+    # ./zellij.nix
     ./zoxide.nix
+    ./zk.nix
   ];
 
   home.packages = with pkgs; [
-    manix
     clipboard-jh
     csview
     csvlens
     distrobox
     entr
     gtrash
-    magic-wormhole
+    lsof
     procs
     sass
     serie
     typos
     xan
     yq-go
+    manix
   ];
 }

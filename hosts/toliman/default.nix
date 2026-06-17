@@ -1,39 +1,35 @@
-{
-  pkgs,
-  lib,
-  ...
-}: {
+{pkgs, ...}: {
   imports = [
     ./hw.nix
     ./davinci.nix
 
     ../common/global
 
-    # ../common/optional/adb.nix
-    ../common/optional/dygma.nix
-    # ../common/optional/gamemode.nix
-    # ../common/optional/kmscon.nix
-    ../common/optional/nixpkgs.nix
-    ../common/optional/podman.nix
-    ../common/optional/protonvpn.nix
-    ../common/optional/qmk.nix
-    ../common/optional/quietboot.nix
-    ../common/optional/steam.nix
-    ../common/optional/stylix.nix
-    ../common/optional/systemd-boot.nix
-    ../common/optional/systemd-networkd.nix
-    ../common/optional/wireshark.nix
-    ../common/optional/firewall.nix
-    ../common/optional/razer.nix
+    # ../common/optional/apps/adb.nix
+    ../common/optional/hardware/dygma.nix
+    # ../common/optional/gaming/gamemode.nix
+    # ../common/optional/hardware/kmscon.nix
+    ../common/optional/dev/nixpkgs.nix
+    ../common/optional/dev/podman.nix
+    ../common/optional/networking/protonvpn.nix
+    ../common/optional/hardware/qmk.nix
+    ../common/optional/boot/quietboot.nix
+    ../common/optional/gaming/steam.nix
+    ../common/optional/apps/stylix.nix
+    ../common/optional/boot/systemd-boot.nix
+    ../common/optional/networking/systemd-networkd.nix
+    ../common/optional/networking/wireshark.nix
+    ../common/optional/networking/firewall.nix
+    ../common/optional/hardware/razer.nix
 
-    ../common/services/dms-greeter.nix
-    # ../common/services/regreet.nix
+    ../common/greeters/dms-greeter.nix
+    # ../common/greeters/regreet.nix
     ../common/services/keyring.nix
     ../common/services/udisks2.nix
     ../common/services/jellyfin.nix
     ../common/services/localsend.nix
     ../common/services/polkit.nix
-    ../common/services/sunshine.nix
+    ./sunshine.nix
     # ../common/services/wormhole.nix
 
     ../common/users
@@ -56,41 +52,15 @@
   };
 
   hardware = {
-    enableRedistributableFirmware = true;
     amdgpu = {
       opencl.enable = true;
       overdrive.enable = true;
       initrd.enable = true;
-    };
-    xpadneo.enable = true;
-
-    bluetooth = {
-      enable = true;
-      powerOnBoot = true;
-      settings = {
-        General = {
-          Experimental = true;
-        };
-      };
     };
   };
 
   networking = {
     domain = "home";
     hostName = "toliman";
-  };
-
-  services.pulseaudio = {
-    enable = false;
-    package = pkgs.pulseaudioFull;
-
-    configFile = pkgs.writeText "default.pa" ''
-      load-module module-bluetooth-policy
-      load-module module-bluetooth-discover
-    '';
-
-    extraConfig = ''
-      load-module module-switch-on-connect
-    '';
   };
 }

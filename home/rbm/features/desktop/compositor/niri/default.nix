@@ -5,11 +5,11 @@
   ...
 }: {
   imports = [
-    ../wayland
-    ../../desktop
+    ../../wayland
+    ../../../desktop
 
     ## NOTE: This includes launcher and other utilities
-    ../dank-material-shell
+    ../../dank-material-shell
 
     ## Niri settings
     ./animations.nix
@@ -24,12 +24,8 @@
     ./window-rules.nix
     ./workspaces.nix
 
-    ../apps/foot.nix
-    ../apps/wezterm
-
-    ../../services/cliphist.nix
-    ../../services/ssh-agent.nix
-    ../../services/udiskie.nix
+    ../../apps/foot.nix
+    ../../apps/wezterm
   ];
 
   # systemd.user.services.niri-flake-polkit.enable = false;
@@ -54,7 +50,7 @@
         skip-at-startup = true;
       };
       input = {
-        focus-follows-mouse.enable = true;
+        focus-follows-mouse.enable = false;
         keyboard = {
           repeat-delay = 300;
           xkb.layout = "us";
